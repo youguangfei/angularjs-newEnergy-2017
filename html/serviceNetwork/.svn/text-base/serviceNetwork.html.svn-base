@@ -1,0 +1,119 @@
+<style type="text/css">
+	.ngGrid .ng-isolate-scope:first-child{
+		height: calc(100% - .56rem);
+	}
+</style>
+<div class="side_right borderNone dataTopposition">
+	<div class="Box">
+		<div class="Font_size12 Service_boxMargin">
+			<div class="RepairTop_box1 indexright_cont_top">
+				<div class="RepairTop_list1 fl">
+				<fieldset class="RepairText_boxlist fl font-small">
+					<div class="form-group">
+						<div class="col-md-12 p0">
+							<label class="col-sm-5 LabelTextColor labelWidth p0">服务网点类型</label>
+							<div class="col-sm-5 p0 serviceAll_select">
+								<select-block config="selectConfig" model="selectValue"  select-change="selectChange(newModel)" class="borderNone SelectBlock_width p0"/>
+							</div>
+						</div>
+					</div>
+			 </fieldset>
+				<fieldset class="RepairText_boxlist fl font-small">
+						<div class="col-md-12 p0">
+							<label class="col-sm-3 LabelTextColor">名称</label>
+							<input type="text" class="col-sm-6 borderNone BgTransparent InputColor_list font-large ht100 p0 pl" placeholder="请输入搜索的数据" ng-model="searchName"/>							
+						</div>
+			 </fieldset>
+			 </div>
+			 <button class="BgTransparent  borderNone RepairBtn_search1" ng-click="searchSelect()">查询</button>
+			 </div>
+			 
+			 
+				<div class="indexright_cont_con td_color">
+					<div class="border_box borderbox  RepairTable_list1">
+						<div class="RepairTable_list_top">
+									<div class="AddBtn_boxlist Service_Addposition" ng-click='service_add()'>
+										<button class="borderNone BgTransparent  Service_btnMl font-center fl">新建</button>
+										<img src="images/img1/add16x16.png" alt="" class="fl"/>						
+									</div>
+						</div>
+					<div class="RepairTable_list_center">
+					<table class="table Table_trlist">
+						<thead class="thead_bg">
+						<tr>
+							<th class="Service_operationWidth Repair_tabfirth">
+								<span class="thfir_text">操作</span>
+							</th>
+							<th class="Repair_theadth2">服务网点类型</th>
+							<th>名称</th>
+							<th>联系人</th>
+							<th>联系电话</th>
+							<th>地址</th>
+							<th>地图显示</th>
+						</tr>
+						</thead>
+						<tbody class="Tr_hoverlist">
+						<tr ng-repeat='i in selectSpinner' ng-class="{active:activeIndex==$index}" ng-click="changeIndex($index)" class="{{ $even ? 'BackColor1even': 'BackColor1odd'}} ">
+							<td class="text-left">
+								<button ng-click="service_Modify(i)" class="Btn_colorGreen borderNone RepairModify_btn mr-sm Modify_btn1">修改</button>
+								<button ng-click='delete1(i)'  class="Btn_colorGreen borderNone modifyButton_top RepairModify_btn ml-sm">删除</button>
+							</td>
+							<td >{{i.type}}</td>
+							<td >{{i.name|textLengthSet:true:20:'...'}}</td>
+							<td >{{i.contacts|textLengthSet:true:20:'...'}}</td>
+							<td >{{i.phone}}</td>
+							<td >{{i.address|textLengthSet:true:20:'...'}}</td>
+							<td>
+								<a href="#" ng-click='service_look_map(i)' class="ServiceMap_textColor">查看地图</a>
+							</td>
+
+						</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="myPagelistBox">
+					<div ng-if="myPagelist.totalCount>10" ui-pagination pg="myPagelist"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--地图-->
+	</div>
+</div>
+<script type="text/javascript">
+	var start = {
+		    format: 'YYYY-MM-DD hh:mm',
+		    minDate: '2014-06-16 23:59:59', //设定最小日期为当前日期
+		    initAddVal:{MM:"-1"},   //初始化日期加n月
+		    isinitVal:true,
+		    festival:true,
+		    ishmsVal:false,
+		    maxDate: $.nowDate({DD:0}), //最大日期
+		    choosefun: function(elem,datas){
+		        end.minDate = datas; //开始日选好后，重置结束日的最小日期
+		        endDates();
+		    }
+	};
+	var end = {
+	    format: 'YYYY-MM-DD hh:mm',
+	    initAddVal:[0],
+	    minDate: $.nowDate(0), //设定最小日期为当前日期
+	    isinitVal:true,
+		festival:true,
+		ishmsVal:false,
+	    maxDate: '2099-06-16 23:59:59', //最大日期
+	    choosefun: function(elem,datas){ //选中之后的回调函数
+	        start.maxDate = datas; //将结束日的初始值设定为开始日的最大日期
+	    }
+	};
+	//这里是日期联动的关键        
+	function endDates() {
+	    //将结束日期的事件改成 false 即可
+	    end.trigger = false;
+	    $("#inpend").jeDate(end);
+	}
+	$.jeDate('#inpstart',start);
+	$.jeDate('#inpend',end);
+	
+	
+</script>

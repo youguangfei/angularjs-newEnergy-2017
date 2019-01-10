@@ -1,0 +1,246 @@
+<style type="text/css">
+	.mainsite .selectblock .select-header.focus+.select-content{
+		    height: 4.5rem;
+    		width: 1.6rem;
+    		overflow-y: scroll;
+    		overflow-x: hidden;
+}
+.mainsite .selectblock .select-header.focus+.select-content::-webkit-scrollbar-track-piece:vertical{
+	width: 0.6rem;
+	height: 1.6rem;
+	background: url(images/img1/repair_scroll_bar10x80.png) no-repeat;
+	background-size: 100% 100%;
+}
+.mainsite .selectblock .select-header.focus+.select-content::-webkit-scrollbar-thumb{
+	height: 1.3rem;
+	background:url(images/img1/repair_scroll_bar10x36.png) no-repeat;
+	background-size: 120% 90%;
+	filter: alpha(opacity=50);
+	-moz-opacity: 0.5;
+	opacity: 0.5,
+}
+.siteWidth input{
+	padding-right: 0.1rem;
+	width: 100%;
+	height: 0.35rem;
+	font-size: 0.18rem;
+}
+</style>
+<div class="side_right borderNone dataTopposition">
+	<div class="Box td_color">
+		<div class="td_color">
+			<div class="indexright_cont_top RepairTop_box">
+				<div class="topBox1 dateBox clearfix downBox RepairTop_boxlist1">
+					<fieldset class="RepairText_boxlist fl clearfix fildedsetAfter cm-positive">
+								<div class="p0 Repari_carNum1 fl">
+									<select-block config="vin_Config" model='selectVin' class="borderNone SelectBlock_width p0 Repai_carWidth Repai_carpadd"/>
+								</div>
+								<input type="text" class="pl-sm Repari_carNumInput fr borderNone BgTransparent InputColor" placeholder="请输入搜索的数据" ng-model="selectVin_value"/>
+					</fieldset>
+					<fieldset class="RepairText_boxlist fl">
+						<div class="form-group ">
+							<div class="col-md-12 p0">
+								<label class="col-sm-4 LabelTextColor">故障等级</label>
+								<div class="col-sm-6 p0">
+									<select-block config="faultLevel_Config1" model='selectLevel' class="borderNone SelectBlock_width p0" select-change="selectChange1(newModel)"/>
+								</div>
+							</div>
+						</div>
+					</fieldset>
+
+					<fieldset class="RepairText_boxlist fl">
+						<div class="form-group  ">
+							<div class="col-md-12 p0 siteWidth">
+								<label class="col-sm-4 LabelTextColor labelWidth p0">预约维修站点</label>
+								<!--<div class="col-sm-6 p0 mainsite">
+									<select-block config="repair_siteList" class="borderNone SelectBlock_width p0" model='repair_site' />
+								</div>-->
+								<input-search search="search_name(name)" searchlist="searchSite_list"  class="borderNone col-sm-6  p0 customSeach1" model='searchName' select-change="selectNewname(newModel)"/>
+							</div>
+						</div>
+					</fieldset>
+					<fieldset class="RepairText_boxlist fl">
+						<div class="form-group  Repari_typeselect">
+							<div class="col-md-12 p0 ">
+								<label class="col-sm-4 LabelTextColor">故障类型</label>
+								<div class="col-sm-6 p0">
+									<select-block config="faultType_Config1" class="borderNone SelectBlock_width p0" model='serviceType' select-change="selectChangeType(newModel)">
+								</div>
+							</div>
+						</div>
+					</fieldset>
+					<!--时间日期-->
+					<div class="twoLine fl mt-lg RepairTop_boxlist2" style="width: 100%;">
+						<div class="RepairText_boxlist p0 fl">
+							<label class="fl col-md-4 text-center p0 LabelTextColor Repair_lineHeight">报修日期</label>
+							<div class="col-md-6 p0 DateBox_list">
+								<input type="text" class="p0 pl form-control date_icon fl color_blue" id="startTime" ng-model="startTime1" readonly/>
+							</div>
+						</div>
+						<div class="Repair_Caleline fl"></div>
+						<div class="RepairText_boxlist p0 fl">
+							<label class="fl col-md-4 text-center p0 LabelTextColor Repair_lineHeight">报修日期</label>
+							<div class="col-md-6 p0 DateBox_list">
+								<input type="text" class="form-control date_icon fl color_blue" id="endTime" ng-model="endTime1" readonly/>
+							</div>
+						</div>
+						<fieldset class="RepairText_boxlist fl">
+							<div class="form-group">
+								<div class="col-md-12 p0">
+									<label class="col-sm-4 LabelTextColor modify_poter">报修人</label>
+									<input type="text" class="col-sm-6 borderNone  BgTransparent InputColor pr0 pt font-large ht100 repairnput_padd" placeholder="" ng-model='operator' />
+								</div>
+							</div>
+						</fieldset>
+						<fieldset class="RepairText_boxlist fl">
+							<div class="form-group">
+								<div class="col-md-12 p0">
+									<label class="col-sm-4 LabelTextColor">维修人</label>
+									<input type="text" class="col-sm-6 borderNone  BgTransparent InputColor pl-lg pr0 pt font-large ht100" placeholder="" ng-model='maintainer' />
+								</div>
+							</div>
+						</fieldset>
+						<button ng-click="repair_search()" class="BgTransparent  borderNone RepairBtn_search">
+							查询
+						</button>
+
+					</div>
+
+				</div>
+			</div>
+			<div class="indexright_cont_con ">
+				<div class="contentright_cont_con">
+					<div class="border_box borderbox RepairTable_list">
+						<div class="RepairTable_list_top">
+							<div class="AddBtn_boxlist Repair_Adddposition" ng-click='Repair_AddOrder()'>
+								<button class="borderNone BgTransparent fl font-center ml">新建报修单</button>
+								<img src="images/img1/add16x16.png" alt="" class="fl" />
+							</div>
+						</div>
+						<div class="RepairTable_list_center fl">
+							<table class="table Table_trlist">
+								<thead class="thead_bg">
+									<tr>
+										<th class="Repair_tabfirth backImg_common1">
+											<span class="thfir_text">操作</span>
+										</th>
+										<th class="Repair_theadth2">报修单号</th>
+										<th>维修状态</th>
+										<th>车牌号</th>
+										<th>VIN码</th>
+										<th>SIM卡ICCID号</th>
+										<th>故障类型</th>
+										<th>故障等级</th>
+										<th>故障地点</th>
+										<th>故障描述</th>
+										<th>预约维修站点</th>
+										<th>报修日期</th>
+										<th>报修人</th>
+										<th>报修人电话</th>
+										<th>维修开始日期</th>
+										<th>维修结束日期</th>
+										<th>实际维修站点</th>
+										<th>维修人</th>
+										<th>维修方案</th>
+										<th>备注</th>
+									</tr>
+								</thead>
+								<tbody class="Tr_hoverlist">
+									<tr ng-repeat="x in recordList" ng-class="{active:activeIndex==$index}" ng-click="changeIndex($index)" class="{{ $even ? 'BackColor1even': 'BackColor1odd'}}">
+										<td>
+											<span class="Btn_colorGreen borderNone modifyButton_top RepairModify_btn  td_color" ng-click="repairLook_open(x.workformCode,'modify')">修改</span>
+											<button ng-click='managementDelete(x)' class="Btn_colorGreen borderNone  modifyButton_top RepairModify_btn ml-sm">删除</button>
+										</td>
+										<td>
+											<!--href="#/Repair_LookOpen/{{x.workformCode}}/look" target="_blank" -->
+											<span class="td_color Text_decoration" ng-click="repairLook_open(x.workformCode,'look')">{{x.workformCode}}</span>
+										</td>
+										<td >
+											<span ng-if="x.status == 0">待处理</span>
+											<span ng-if="x.status == 1">处理中</span>
+											<span ng-if="x.status == 2">已完成</span>
+										</td>
+										<td>{{x.licenseNumber}}</td>
+										<td>{{x.vin}}</td>
+										<td>{{x.iccid}}</td>
+										<td>{{x.faulType||""}}</td>
+										<td>{{x.faultRank}}</td>
+										<td>{{x.faultAddress|textLengthSet:true:20:'...'}}</td>
+										<td>{{x.faultDescription|textLengthSet:true:20:'...'}}</td>
+										<td>{{x.siteName}}</td>
+										<td>{{x.creaTime}}</td>
+										<td>{{x.operator|textLengthSet:true:20:'...'}}</td>
+										<td>{{x.phone}}</td>
+										<td>{{x.starTime | date:'yyyy-MM-dd'}}</td>
+										<td>{{x.endTime | date:'yyyy-MM-dd'}}</td>
+										<td>{{x.realSiteName}}</td>
+										<td>{{x.maintainer}}</td>
+										<td>{{x.program|textLengthSet:true:20:'...'}}</td>
+										<td>{{x.remark|textLengthSet:true:20:'...'}}</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<!--分页-->
+						<!--<div class="PagingData_list displayFlex">
+										<div class="RepairPrev_pagetion">
+											<button class="BgTransparent borderNone color_blue Repairpagetion_btn">上一页</button>
+										</div>	
+										<div class="RepairNumber_pagetion">
+											
+										</div>
+										<div class="RepairNext_pagetion">
+											<button class="BgTransparent borderNone color_blue Repairpagetion_btn">下一页</button>
+										</div>
+								</div>-->
+					<div class="myPagelistBox">
+						<div ng-if="myPagelist.totalCount>10" ui-pagination pg="myPagelist"></div>
+					</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+</div>
+
+<script type="text/javascript">
+	var day3=$.nowDate(0);
+	console.log(day3);
+	var start = {
+		format: 'YYYY-MM-DD',
+		isinitVal: true,
+		festival: false,
+		ishmsVal: false,
+		maxDate: $.nowDate(0), //最大日期
+		choosefun: function(elem, datas) {
+			end.minDate = datas; //开始日选好后，重置结束日的最小日期
+			endDates();
+		}
+	};
+	var end = {
+		//		skinCell:"je-bg-olive",
+		format: 'YYYY-MM-DD',
+		initAddVal: [0],
+		isinitVal: true,
+		festival: false,
+		ishmsVal: false,
+		maxDate: $.nowDate(0), //最大日期
+		choosefun: function(elem, datas) { //选中之后的回调函数
+			start.maxDate = datas; //将结束日的初始值设定为开始日的最大日期
+		}
+	};
+	//这里是日期联动的关键        
+	function endDates() {
+		//将结束日期的事件改成 false 即可
+		end.trigger = false;
+	}
+	$.jeDate('#startTime', start);
+	$.jeDate('#endTime', end);
+
+	function initDate(startEnd) {
+		$.jeDate('#' + startEnd, { trigger: false, festival: true, isinitVal: true, ishmsVal: false, format: 'YYYY-MM-DD hh:mm:ss' })
+	}
+</script>

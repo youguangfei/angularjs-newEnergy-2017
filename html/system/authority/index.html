@@ -1,0 +1,552 @@
+<div class="side_right">
+	<div class="Box">
+		<div class="indexright_cont systembox2">
+			<div class="indexright_cont_top">
+				<div class="RepairTop_box">
+				<div class="topBox1 dateBox clearfix authority_Top">
+					<div class="twoLine clearfix wt100">
+						<div class="p0 RepairText_boxlist fl">
+								<label class="text-center p0 LabelTextColor">用户组</label>
+								<select class="borderNone p0 BgTransparent pt-sm Wt50" id="search_value" ng-model="groupType">
+									<option value="1" class="OPtionback">请选择</option>
+									<option value="1" class="OPtionback">当前用户组</option>
+									<option value="0"class="OPtionback" >所有用户组</option>
+								</select>
+						</div>
+						<div class="p0 RepairText_boxlist fl">
+							<label class="text-center p0 LabelTextColor">用户id</label>
+							<input type="text" class="Wt50 borderNone BgTransparent ht100 font-large InputColor" placeholder="请输入用户id" ng-model="userId">
+						</div>
+						<div class="p0 RepairText_boxlist fl">
+							<label class="text-center p0 LabelTextColor">用户名</label>
+							<input type="text" class="Wt50 borderNone BgTransparent InputColor ht100 font-large" placeholder="请输入用户名" ng-model="name">
+							
+						</div>
+					</div>
+					<div class="twoLine clearfix pt wt100">
+						<div class="p0 RepairText_boxlist fl">
+							<label class="text-center p0 LabelTextColor fl">起始时间</label>
+							<div class="p0 DateBox_list DateTimelate h100 Wt50 fl cm-positive">
+								<input type="text" class="form-control date_icon color_blue ht100 font-large" id="startTime" ng-model="data.paramUser.firstDate"/>
+							</div>
+						</div>
+						<div class="p0 RepairText_boxlist fl">
+							<label class="text-center p0 LabelTextColor fl">结束时间</label>
+							<div class="p0 DateBox_list DateTimelate ht100 Wt50 fl cm-positive">
+								<input type="text" class="form-control date_icon color_blue ht100 font-large" id="endTime" ng-model="data.paramUser.endDate" />
+							</div>
+						</div>
+						
+						<button ng-click="resetQueryPanel()" class="BgTransparent  borderNone RepairBtn_search">
+							查询
+						</button>
+					</div>
+				</div>
+				</div>
+				<div class="topBox2 clearfix mt-lg">
+					<div class="button_box fr">
+						<button class="mt-sm" ng-disabled="isRole||!isRoot" ng-click="createGroup(0)">
+							<em class="icon-users"></em>
+							<span>新建用户组</span>
+						</button>
+						<button class="mt-sm" ng-disabled="isRole||!groupEdit||!isRoot" ng-click="createGroup(1)">
+							<em class="icon-pencil"></em>
+							<span>编辑用户组</span>
+						</button>
+						<button class="mt-sm" ng-disabled="isRole||!isRoot"  ng-click="createRole(0)">
+							<em class="icon-user"></em>
+							<span>新建角色</span>
+						</button>
+						<button class="mt-sm" ng-disabled="!isRole||!roleEdit||!isRoot" ng-click="createRole(1)">
+							<em class="icon-note"></em>
+							<span>编辑角色</span>
+						</button>
+						<button class="mt-sm" ng-disabled="!isRoot||!isAddUser" ng-click="createUser()">
+							<em class="icon-user-follow"></em>
+							<span>新建用户</span>
+						</button>
+						<button class="mt-sm" ng-disabled="!isAuth"  ng-click="showEmpower()">
+							<em class="icon-shield"></em>
+							<span>授权</span>
+						</button>
+					</div>
+				</div>
+			
+			</div>
+				
+			<!--右侧内容表格部分-->
+			<div  class="indexright_cont_con authority_contentWidth">
+				<!--左侧树形菜单列表 start-->
+				<div class="indexright_cont_conl">
+					<div class="indexright_cont_conlt border_box" style="height:calc(100% - 45px);overflow:auto;">
+						<abn-tree tree-data="groupData" tree-control="groupTree" on-select="groupSelected(branch)" expand-level="2"></abn-tree>
+					</div>
+				</div>
+					
+				<!--左侧树形菜单列表  end-->
+				<div class="contentright_cont_con system_conRwidth">
+					<!-- start show table -->
+					<div ng-if="showUserDataTable==true" class="ngGrid" style="height: 100%;">
+						<div class="border_box borderbox">
+							<table lg-grid class="table" model="dataProvider.getGridModel()">
+								<thead class="thead_bg">
+									<tr>
+										<th>选择</th>
+										<th>用户ID</th>
+										<th>用户名称</th>
+										<th>用户类型</th>
+										<th>联系电话</th>
+										<th>邮箱</th>
+										<th>角色列表</th>
+										<th>操作</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr lg-row-start>
+										<td class="td_color font-small">
+											<label class="checkbox c-checkbox">
+												<input type="radio" name="row2" ng-model="redio.userId" ng-click="selectRow(row)" value="{{ row.data.userId }}" />
+												<span></span>
+											</label>
+										</td>
+										<td class="td_color font-small">{{ row.data.userId }}</td>
+										<td class="td_color font-small">{{ row.data.name }}</td>
+										<td class="td_color font-small" ng-if="row.data.userType == 1">系统内用户</td>
+										<td class="td_color color_green" ng-if="row.data.userType == 0">系统外用户</td>
+										<td class="td_color font-small" ng-if="row.data.userType != 1&& row.data.userType != 0" >其他</td>
+										<td class="td_color font-small">{{ row.data.telephone }}</td>
+										<td class="td_color font-small">{{ row.data.email }}</td>
+										<td>
+											<button class="bgNone btn btn-sm borderNone" ng-click="showRoles='rolesTemplate.html'" lg-toggle-expanded-row title="查看角色列表">
+												<i class="icon-user color_fonts"></i>
+											</button>
+										</td>
+										<td>
+											<button class="bgNone btn btn-sm borderNone" ng-click="showRoles='detailsTemplate.html'" lg-toggle-expanded-row title="查看">
+												<i class="icon-eye color_fonts"></i>
+											</button>
+											<button class="bgNone btn btn-sm borderNone" ng-if="isUserOption==true" ng-click="restPassword(row)" title="密码重置">
+												<i class="icon-wrench color_fonts"></i>
+											</button>
+											<button class="bgNone btn btn-sm borderNone" ng-if="isUserOption==true" ng-click="updateItem(row)" title="修改">
+												<i class="fa fa-edit color_fonts"></i>
+											</button>
+											<button class="bgNone btn btn-sm borderNone" ng-if="isUserOption==true" ng-click="removeRow(row)" title="删除">
+												<i class="fa fa-trash-o text-danger">
+												</i>
+											</button>
+										</td>
+									</tr>
+									<tr lg-row-end lg-expanded-row class="bigBg_default" style="margin: 0;padding: 0;">
+			 							<td colspan="12" ng-include="showRoles" style="margin: 0;padding: 0;"></td>
+									</tr> 
+								</tbody>
+							</table>
+						</div>
+						<!--分页-->
+						<div class="authority_pager">
+							<service-pager data-provider="dataProvider"></service-pager>
+						</div>
+			            <script type="text/ng-template" id="detailsTemplate.html">
+			                <div class="panel bigBg_default" style="margin-bottom: 0;">
+			                    <div class="panel-body">
+			                        <table cellpadding="0" class="tablef">
+			                            <thead class="thead_bg">
+			                                <tr>
+			                                    <th class="color_w">描述信息</th>
+			                                    <th class="color_w">启用时间</th>
+			                                    <th class="color_w">结束时间</th>
+			                                    <th class="color_w">创建时间</th>
+			                                    <th class="color_w">所在机构</th>
+			                                </tr>
+			                            </thead>
+			                            <tbody>
+			                                <tr>
+			                                    <td class="td_color font-small">{{ row.data.description }}</td>
+			                                    <td class="td_color font-small">{{ row.data.beginTime | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+			                                    <td class="td_color font-small">{{ row.data.endTime | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+			                                    <td class="td_color font-small">{{ row.data.createTime | date:'yyyy-MM-dd'}}</td>
+			                                    <td class="td_color font-small">{{ row.data.orgName }}</td>
+			                                </tr>
+			                            </tbody>
+			                        </table>
+			                    </div>
+			                </div>
+			            </script>
+			            <script type="text/ng-template" id="rolesTemplate.html">
+			                <div class="panel bigBg_default" style="margin-bottom: 0;">
+			                    <div class="panel-body">
+			                        <table cellpadding="0" class="tablef">
+			                            <thead class="thead_bg">
+			                                <tr>
+			                                    <th class="color_w">角色名称</th>
+			                                    <th class="color_w">角色类型</th>
+			                                    <th class="color_w">描叙</th>
+			                                    <th class="color_w">创建时间</th>
+			                                </tr>
+			                            </thead>
+			                            <tbody>
+			                                <tr ng-repeat="item in row.data.roles">
+			                                    <td class="td_color font-small">{{ item.roleName}}</td>
+			                                    <td class="color_green font-small" ng-if="item.roleType == 0">管理员</td>
+			                                    <td class="color-fonts font-small" ng-if="item.roleType == 1">普通角色</td>
+			                                    <td class="text-danger font-small" ng-if="item.roleType == 2">通用角色</td>
+			                                    <td class="td_color font-small" ng-if="item.roleType != 1 && item.roleType != 0&& item.roleType != 2">其他</td>
+			                                    <td class="td_color font-small">{{ item.description}}</td>
+			                                    <td class="td_color font-small">{{ item.createTime| date:'yyyy-MM-dd HH:mm:ss'}}</td>
+			                                </tr>
+			                            </tbody>
+			                        </table>
+			                    </div>
+			                </div>
+			            </script>
+					</div>
+					<!-- end show table -->
+			
+					<!-- start hidden-form-info -->
+					<script type="text/ng-template" id="detailsTemplate.html">
+						<div class="panel bigBg_default" style="margin-bottom: 0;">
+							<div class="panel-body">
+								<table cellpadding="0" class="tablef">
+									<thead class="thead_bg">
+										<tr>
+											<th class="color_w">描述信息</th>
+											<th class="color_w">启用时间</th>
+											<th class="color_w">结束时间</th>
+											<th class="color_w">创建时间</th>
+											<th class="color_w">所在机构</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr >
+											<td class="td_color font-small">{{ row.data.description }}</td>
+											<td class="td_color font-small">{{ row.data.beginTime | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+											<td class="td_color font-small">{{ row.data.endTime | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+											<td class="td_color font-small">{{ row.data.createTime | date:'yyyy-MM-dd'}}</td>
+											<td class="td_color font-small">{{ row.data.orgName }}</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</script>
+					
+					<!-- start create user 用户-->
+						<form name="myForm" ng-if="showCreateUserTable" class="form-validate" style="height:100%">
+							<div class="pt-xl border_box border_box3">
+								<fieldset>
+									<div class="form-group">
+										<div class="col-md-6">
+											<label class="col-sm-3 control-label">用户组</label>
+											<div class="col-sm-9">
+												<input type="text" class="form-control color_blue inp_default2 inpBorder" ng-model="user.groupName" disabled>
+											</div>
+										</div>
+										<div class="col-md-6">
+											<label class="col-sm-3 control-label">用户名称*</label>
+											<div class="col-sm-9">
+												<input type="text" class="form-control color_blue inp_default2 inpBorder" ng-model="user.realName">
+											</div>
+										</div>
+									</div>
+								</fieldset>
+								<fieldset ng-if="user.userId==null">
+									<div class="form-group">
+										<div class="col-md-6">
+											<label class="col-sm-3 control-label">密码*</label>
+											<div class="col-sm-9">
+												<input type="password" class="form-control color_blue inp_default2 inpBorder" name="passwordOne" ng-model="user.password">
+											</div>
+										</div>
+										<div class="col-md-6">
+											<label class="col-sm-3 control-label">重输密码*</label>
+											<div class="col-sm-9">
+												<input type="password" class="form-control color_blue inp_default2 inpBorder" name="passwordTwo" ng-model="user.passwordTwo">
+											</div>
+										</div>
+									</div>
+								</fieldset>
+								<fieldset>
+									<div class="form-group">
+										<div class="col-md-6">
+											<label class="col-sm-3 control-label">联系电话</label>
+											<div class="col-sm-9">
+												<input type="tel" class="form-control color_blue inp_default2 inpBorder" ng-model="user.name" name="telephone" ng-pattern="/^[1][35789][0-9]{9}$/" required/>
+												<span class="text-danger" ng-show="myForm.telephone.$dirty && myForm.telephone.$invalid">*电话号码不合法</span>
+											</div>
+										</div>
+										<div class="col-md-6">
+											<label class="col-sm-3 control-label">用户类型</label>
+											<div class="col-sm-9">
+												<input type="text" class="form-control color_blue inp_default2 inpBorder" value="系统内用户" ng-if="user.userType == 1&&user.userId!=null" disabled/>
+												<input type="text" class="form-control color_blue inp_default2 inpBorder" value="系统外用户" ng-if="user.userType == 0&&user.userId!=null" disabled/>
+												<select class="form-control color_blue inp_default2 inpBorder" ng-if="user.userId==null" ng-select="user.userType" ng-model="user.userType" ng-options="obj.selectVal as obj.selectName for obj in user.userTypeSelect">
+												</select>
+											</div>
+										</div>
+									</div>
+								</fieldset>
+								<fieldset>
+									<div class="form-group">
+										<div class="col-md-6">
+											<label class="col-sm-3 control-label">起始时间</label>
+											<div class="col-sm-9">
+												<input type="text" class="form-control color_blue date_icon inpBorder" id="userBeginTime" ng-model="user.beginTime" onclick="initDate('userBeginTime')" />
+											</div>
+										</div>
+										<div class="col-md-6">
+											<label class="col-sm-3 control-label">结束时间</label>
+											<div class="col-sm-9">
+												<input type="text" class="form-control date_icon color_blue inpBorder" id="userEndTime" ng-model="user.endTime" onclick="initDate('userEndTime')"/>
+											</div>
+										</div>
+										
+									</div>
+								</fieldset>
+								<fieldset>
+									<div class="form-group">
+										<div class="col-md-6">
+											<label class="col-sm-3 control-label">邮箱</label>
+											<div class="col-sm-9">
+												<input autocomplete="off" value="" name="email" type="email" class="form-control inpBorder color_blue inp_default2" ng-model="user.email">
+												<span class="text-danger" ng-show="myForm.email.$dirty && myForm.email.$invalid">*邮箱不合法</span>
+											</div>
+										</div>
+										<div class="col-md-6">
+											<label class="col-sm-3 control-label">分配角色</label>
+											<div class="col-sm-7" style="padding-right: 0;width: 61%;">
+												<input type="text" class="form-control color_blue inp_default2 inpBorder" ng-model="user.roleNames" disabled>
+											</div>
+											<span class="input-group-btn">
+												<button ng-click="bindRole()" class="ChooseBtn inp_default2 fa_brColor color_blue" style="border-left: none;">选择</button>
+											</span>
+										</div>
+									</div>
+								</fieldset>
+								<fieldset>
+									<div class="form-group">
+										<div class="col-md-6">
+											<label class="col-sm-3 control-label">员工绑定</label>
+											<div class="col-sm-9">
+												<input type="text" class="form-control color_blue inp_default2 inpBorder" ng-model="empName" readonly ng-click="showEmpList()" placeholder="点击选择人员">
+											</div>
+										</div>
+										<div class="col-md-6">
+											<label class="col-sm-3 control-label">描述信息</label>
+											<div class="col-sm-9">
+												<textarea ng-model="user.description" cols="75" rows="3" style="resize: none;" class="form-control inpBorder color_blue inp_default2"></textarea>
+											</div>
+										</div>
+									</div>
+								</fieldset>
+							</div>
+							<div class="panel-footer h60">
+								<div class="col-md-6">
+									<label class="col-sm-3 control-label"></label>
+									<a class="save" ng-click="insertOrUpdate()" ng-if="user.userId!=null">修改</a>
+									<a class="save" ng-click="insertOrUpdate()" ng-if="user.userId==null">添加</a>
+								</div>
+								<div class="col-md-6">
+									<label class="col-sm-3 control-label"></label>
+									<a class="cancel"  ng-click="goBack()" style="margin-left: 15px;">取消</a>
+								</div>
+							</div>
+						</form>
+					<!-- end create form -->
+					<!-- start create role 角色 -->
+					<form name="myForm" class="form-validate" ng-if="showCreateRoleTable" style="height:100%;">
+							<div class="pt-xl border_box border_box3">
+								<fieldset>
+									<div class="form-group">
+										<div class="col-md-6">
+											<label class="col-sm-3 control-label">角色名称</label>
+											<div class="col-sm-9">
+												<input type="text" class="form-control color_blue inp_default2 inpBorder" ng-model="role.roleName" ng-disabled="!isRoleOption" placeholder="">
+											</div>
+										</div>
+										<div class="col-md-6">
+											<label class="col-sm-3 control-label">角色类型</label>
+											<div class="col-sm-9">
+												<input ng-if="role.roleType==0" type="text" class="form-control color_blue inp_default2 inpBorder" ng-model="管理员" disabled placeholder="管理员">
+												<select class="form-control color_blue inp_default2 inpBorder" ng-if="role.roleType!=0" ng-select="role.roleType" ng-disabled="!isRoleOption" ng-model="role.roleType" ng-options="obj.selectVal as obj.selectName for obj in role.roleTypeSelect">
+												</select>
+											</div>
+										</div>
+									</div>
+								</fieldset>
+								<fieldset>
+									<div class="form-group">
+										<div class="col-md-6">
+											<label class="col-sm-3 control-label">启用日期</label>
+											<div class="col-sm-9">
+												<input type="text" class="form-control date_icon inpstart inpBorder color_blue" id="roleBeginTime" ng-model="role.beginTime" ng-disabled="!isRoleOption" onclick="initDate('roleBeginTime')"/>
+											</div>
+										</div>
+										<div class="col-md-6">
+											<label class="col-sm-3 control-label">结束日期</label>
+											<div class="col-sm-9">
+												<input type="text" class="form-control date_icon inpBorder color_blue" id="roleEndTime" ng-model="role.endTime" onclick="initDate('roleEndTime')"/>
+											</div>
+										</div>
+									</div>
+								</fieldset>
+								<fieldset>
+									<div class="form-group">
+										<div class="col-md-6">
+											<label class="col-sm-3 control-label">创建时间</label>
+											<div class="col-sm-9">
+												<input type="text" class="form-control date_icon inpstart inpBorder color_blue" id="roleCreateTime" ng-model="role.createTime" onclick="initDate('roleCreateTime')"/>
+											</div>
+										</div>
+										<div class="col-md-6">
+											<label class="col-sm-3 control-label">编辑时间</label>
+											<div class="col-sm-9">
+												<input type="text" class="form-control date_icon inpBorder color_blue" id="roleEditTime" ng-model="role.editTime" onclick="initDate('roleEditTime')"/>
+											</div>
+										</div>
+									</div>
+								</fieldset>
+								<fieldset>
+									<div class="form-group">
+										<div class="col-md-6">
+											<label class="col-sm-3 control-label">描述信息</label>
+											<div class="col-sm-9">
+												<textarea ng-model="role.description" cols="75" rows="3" style="resize: none;" class="form-control inpBorder color_blue inp_default2"></textarea>
+											</div>
+										</div>
+									</div>
+								</fieldset>
+							</div>
+							<div class="panel-footer h60">
+								<div class="col-md-6">
+									<label class="col-sm-3 control-label"></label>
+									<a class="save"  ng-click="insertOrUpdateRole()" ng-if="role.roleId!=null">修改</a>
+									<a class="save"  ng-click="insertOrUpdateRole()" ng-if="role.roleId==null">添加</a>
+								</div>
+								<div class="col-md-6">
+									<label class="col-sm-3 control-label"></label>
+									<a class="cancel"  ng-click="removeRole()" ng-if="role.roleId!=null">删除</a>
+									<a class="cancel"  ng-click="goBack()" style="margin-left: 15px;">取消</a>
+								</div>
+							</div>
+					</form>
+					<!-- end create form -->
+					<!-- start create usergroup 用户组 -->
+					<form name="myForm" class="form-validate" ng-if="showCreateGroupTable" style="height:100%;">
+							<div class="pt-xl border_box border_box3">
+								<fieldset>
+									<div class="form-group">
+										<div class="col-md-6">
+											<label class="col-sm-3 control-label">上级用户组</label>
+											<div class="col-sm-9">
+												<input type="text" class="form-control color_blue inp_default2 inpBorder" ng-model="group.pName" disabled placeholder="">
+											</div>
+										</div>
+										<div class="col-md-6">
+											<label class="col-sm-3 control-label">用户组名称</label>
+											<div class="col-sm-9">
+												<input type="text" class="form-control color_blue inp_default2 inpBorder" ng-model="group.name" placeholder="">
+											</div>
+										</div>
+									</div>
+								</fieldset>
+								<fieldset>
+									<div class="form-group">
+										<div class="col-md-6">
+											<label class="col-sm-3 control-label">创建时间</label>
+											<div class="col-sm-9">
+												<input type="text" class="form-control date_icon inpBorder color_blue" id="groupCreateTime" ng-model="group.createTime" onclick="initDate('groupCreateTime')" />
+											</div>
+										</div>
+										<div class="col-md-6">
+											<label class="col-sm-3 control-label">编辑时间</label>
+											<div class="col-sm-9">
+												<input type="text" class="form-control date_icon inpBorder color_blue" id="groupLastModifyTime" ng-model="group.lastModifyTime" onclick="initDate('groupLastModifyTime')"/>
+											</div>
+										</div>
+									</div>
+								</fieldset>
+								<fieldset>
+									<div class="form-group">
+										<div class="col-md-6">
+											<label class="col-sm-3 control-label">角色继承</label>
+											<div class="col-sm-7" style="padding-right: 0;width: 61%;">
+												<input type="text" class="form-control color_blue inp_default2 inpBorder" ng-model="group.roleNames" disabled/>
+											</div>
+											<span class="input-group-btn">
+												<button ng-if="group.groupId!=null" ng-click="findParentRole(1)" class="ChooseBtn inp_default2 fa_brColor color_blue" style="border-left: none;">选择</button>
+												<button ng-if="group.groupId==null" ng-click="findParentRole(0)" class="ChooseBtn inp_default2 fa_brColor color_blue" style="border-left: none;">选择</button>
+											</span>
+										</div>
+										<div class="col-md-6">
+											<label class="col-sm-3 control-label">描述信息</label>
+											<div class="col-sm-9">
+												<textarea ng-model="group.description" class="form-control color_blue inp_default2 inpBorder" name="description"></textarea>
+											</div>
+										</div>
+									</div>
+								</fieldset>
+							</div>
+							<div class="panel-footer h60">
+								<div class="col-md-6">
+									<label class="col-sm-3 control-label"></label>
+									<a class="save"  ng-click="insertOrUpdateGroup()" ng-if="group.groupId!=null">修改</a>
+									<a class="save"  ng-click="insertOrUpdateGroup()" ng-if="group.groupId==null">添加</a>
+								</div>
+								<div class="col-md-6">
+									<label class="col-sm-3 control-label"></label>
+									<a class="cancel"  ng-click="removeGroup()" ng-if="group.groupId!=null">删除</a>
+									<a class="cancel"  ng-click="goBack()" style="margin-left: 15px;">取消</a>
+								</div>
+							</div>
+						</form>
+					<!-- end create form -->
+				</div>
+			</div>
+				
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	var start = {
+		format: 'YYYY-MM-DD',
+		minDate: '2014-06-16 23:59:59', //设定最小日期为当前日期
+		initAddVal:{MM:"-1"},   //初始化日期加n月
+		isinitVal:true,
+		festival:false,
+		ishmsVal:false,
+		maxDate: $.nowDate({DD:0}), //最大日期
+		choosefun: function(elem,datas){
+		    end.minDate = datas; //开始日选好后，重置结束日的最小日期
+		    endDates();
+		}
+	};
+	var end = {
+	    format: 'YYYY-MM-DD',
+	    initAddVal:[0],
+	    minDate: $.nowDate(0), //设定最小日期为当前日期
+	    isinitVal:true,
+		festival:false,
+		ishmsVal:false,
+	    maxDate: '2099-06-16 23:59:59', //最大日期
+	    choosefun: function(elem,datas){ //选中之后的回调函数
+	        start.maxDate = datas; //将结束日的初始值设定为开始日的最大日期
+	    }
+	};
+	//这里是日期联动的关键        
+	function endDates() {
+	    //将结束日期的事件改成 false 即可
+	    end.trigger = false;
+	}
+	$.jeDate('#startTime',start);
+	$.jeDate('#endTime',end);
+	$.jeDate('#inpstart_createUser1',start);
+	$.jeDate('#inpend_createUser2',end);
+	
+	function initDate(startEnd){
+		$.jeDate('#'+startEnd,{trigger:false,festival:true,isinitVal:true,ishmsVal:false,format:'YYYY-MM-DD'})
+	}
+	
+	
+	
+</script>

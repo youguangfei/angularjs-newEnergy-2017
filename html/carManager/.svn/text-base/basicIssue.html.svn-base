@@ -1,0 +1,304 @@
+<style type="text/css">
+	.ngGrid .ng-isolate-scope:first-child{
+		height: calc(100% - .56rem);
+	}
+</style>
+<div class="side_right">
+	<div class="Box">
+		<div class="indexright_cont">
+			<div class="indexright_cont_top clearfix">
+				<div class="topBox1 clearfix">
+					<div class="wd_xs fl selectUi">
+						<select-block config="selectConfig" model="selectValue" />
+					</div>
+					<input type="text" class="br_left form-control inp_default2 border_hight color_blue fl" style="width: 3rem;" placeholder="例：京：123456" ng-model="keyword" />
+					<button ng-click="search(keyword)" class="btn inp_default2 border_raNone border_hight color_blue fl mlNine">
+						查询
+					</button>
+				</div>
+				<div class="topBox2 clearfix bg_top">
+					<div class="fl">
+						<p>共计<em class="text-danger ml-sm mr-sm ">{{myPage.totalCount}}</em>辆车</p>
+					</div>
+					<div class="button_box fr">
+						<button class="border_hight border1 a_add" ng-click="addForm()">
+							<em class="fl addForm_icon"></em>
+							<span class="ml-sm">新增</span>
+						</button>
+						<div class="line_br br_right ml-lg"></div>
+						<button ng-click="editDetail()">
+							<em class="ti-pencil text-underline"></em>
+							<span class="ml-sm">修改</span>
+						</button>
+						<div class="line_br br_right" style="margin-right: .2rem;"></div>
+						<div id="importPanel" class="fl panelDemo1 cm-positive">
+							<button class="border1 border_hight" ng-click="toggleUserBlock()">
+								<em class="fl import"></em>
+								<span class="ml-sm">批量操作</span>
+							</button>
+							<div collapse="importPanel" class="tooltip cm-absolute">
+								<div class="tooltip_arrow">
+								</div>
+								<div class="tooltip-inner tooltip_box bg_blue">
+									<div class="ti-close color_w" panel-collapse='' ng-click="importPanel = !importPanel">
+									</div>
+									<fieldset class="mt-lg clearfix">
+										<div class="form-group">
+											<div class="col-md-12 p0" style="width: 5.5rem;">
+												<label class="col-sm-3 control-label p0">批量导入:</label>
+												<div class="col-sm-5 p0" style="width: 45%;">
+													<input filestyle="" id="excelFile" type="file" data-button-text="选择" data-class-button="btn btn-default" data-class-input="form-control inline" multiple="" class="form-control font-small"/>
+												</div>
+												<a class="btn_bg color_w fl ml-lg border_hight" ng-click="importFile()" ng-if="showButton">
+													导入
+												</a>
+												<div class="whirl double-up" ng-show="loading">
+												</div>
+											</div>
+										</div>
+									</fieldset>
+									<fieldset class="clearfix mt-lg">
+										<label class="fl col-sm-3 control-label p0 mt-sm">下载模板:</label>
+										<div class="fl col-sm-9 p0">
+											<div class="mt-lg radio c-radio c-radio-nofont clearfix">
+												<label class="fl">
+													<input type="radio" value="excel001" ng-model="excel">
+													<span class="fa fa-check" style="margin-top: 0;"></span>
+													<i class="color_w font-small fl">模板1&nbsp;完整车辆与车主信息录入EXCEL模板</i>
+												</label>
+											</div>
+											<div class="mt-lg radio c-radio c-radio-nofont clearfix">
+												<label class="fl">
+													<input type="radio" value="excel002" ng-model="excel">
+													<span class="fa fa-check" style="margin-top: 0;"></span>
+													<i class="color_w font-small fl">模板2&nbsp;车主信息录入EXCEL模板</i>
+												</label>
+											</div>
+										</div>
+									</fieldset>
+									<fieldset class="mt-sm text-center clearfix ">
+										<label class="col-sm-4 control-label"></label>
+										<div class="col-sm-4">
+											<a class="btn_bg color_w fl ml-lg border_hight" ng-click="downloadTemplet()">
+												下载模板
+											</a>
+										</div>
+									</fieldset>
+								</div>
+							</div>
+						</div>
+						<div class="line_br br_right ml-lg mr-sm"></div>
+						<div class="panelDemo1 exportExcel cm-positive fl" id="panelDemo1">
+							<button ng-click="exportExcel()">
+								<em class="fl export"></em>
+								<span class="ml-sm">导出</span>
+							</button>
+							<div collapse="panelDemo1" class="tooltip cm-absolute">
+								<div class="tooltip_arrow">
+								</div>
+								<div class="panel-body tooltip-inner tooltip_box">
+									<div class="ti-close color_w" panel-collapse='' ng-click="panelDemo1 = !panelDemo1">
+									</div>
+									<fieldset class="clearfix mt-lg">
+										<label class="fl col-sm-3 control-label p0 mt-sm" style="width: 18%;">导出模板:</label>
+										<div class="fl col-sm-9 p0" style="width: 80%;">
+											<div class="mt-lg radio c-radio c-radio-nofont clearfix">
+												<label class="fl">
+													<input type="radio" value="excel001" ng-model="excel">
+													<span class="fa fa-check" style="margin-top: 0;"></span>
+													<i class="color_w font-small fl">模板1&nbsp;完整车辆与车主信息录入EXCEL模板</i>
+												</label>
+											</div>
+											<div class="mt-lg radio c-radio c-radio-nofont clearfix">
+												<label class="fl">
+													<input type="radio" value="excel002" ng-model="excel">
+													<span class="fa fa-check" style="margin-top: 0;"></span>
+													<i class="color_w font-small fl">模板2&nbsp;车主信息录入EXCEL模板</i>
+												</label>
+											</div>
+										</div>
+									</fieldset>
+									<fieldset class="mt-sm text-center clearfix ">
+										<label class="col-sm-4 control-label"></label>
+										<div class="col-sm-4">
+											<a class="btn_bg color_w fl ml-lg border_hight" ng-click="conformTemplet()">
+												确定
+											</a>
+										</div>
+									</fieldset>
+								</div>
+							</div>
+						</div>
+				</div>
+			</div>
+			</div>
+			<div class="indexright_cont_con">
+				<div class="contentright_cont_con" style="width: calc(100% - 0px);">
+					<div class="ngGrid h100" id="basicIssue">
+						<tabset>
+	         				<tab heading="车辆信息">
+	         					<div class="border_box borderbox">
+									<table class="table">
+										<thead class="thead_bg">
+											<tr>
+												<th>序号</th>
+												<th>VIN码</th>
+												<th>SIM卡</th>
+												<th>供应商</th>
+												<th>型号</th>
+												<th>车辆批次</th>
+												<th>最高车速(km/h)</th>
+												<th>纯电续驶里程</th>
+												<th>驱动电机布置形式</th>
+												<th>各档位传动比</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr ng-repeat="x in recordList" ng-class="{active:activeIndex==$index}" ng-click="changeIndex($index)">
+												<td class="td_color font-small">
+													<div class="checkbox c-checkbox">
+														<label>
+															<input type="radio" ng-checked="isChecked" ng-click="changeCurrent(x,x.vin)" name="$index+1" />
+															<span class="fa fa-check"></span>
+															<em>{{$index+1}}</em>
+														</label>
+													</div>
+												</td>
+												<td class="td_color font-small">{{x.vin }}</td>
+												<td class="td_color font-small">{{x.iccid}}</td>
+												<td class="td_color font-small">{{x.siteName}}</td>
+												<td class="td_color font-small">{{x.model | dicFilter:dicId_model}}</td>
+												<td class="td_color font-small">{{x.batch | dicFilter:dicId_batch}}</td>
+												<td class="td_color font-small">{{x.maxSpeed}}</td>
+												<td class="td_color font-small">{{x.tdpe }}</td>
+												<td class="td_color font-small">{{x.dma | dicFilter:dicId_dma}}</td>
+												<td class="td_color font-small">{{x.gearRatio }}</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+	         				</tab>
+	         				<tab heading="可充电储能装置和驱动电机信息">
+	         					<div class="border_box borderbox">
+									<table class="table table_collapse">
+										<thead class="thead_bg">
+											<tr>
+												<!--<th>序号</th>-->
+												<th>VIN</th>
+												<th>SIM卡号</th>
+												<th>可充电储能装置个数</th>
+												<th>装置信息</th>
+												<th>驱动电机个数</th>
+												<th>驱动电机信息</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr ng-repeat="x in recordList" ng-class="{active:activeIndex==$index}" ng-click="changeIndex($index)">
+												<!--<td class="td_color font-small">
+													<div class="checkbox c-checkbox">
+														<label>
+															<input type="radio" ng-model="checked" ng-checked="isChecked" ng-click="changeCurrent(x,x.vin, $event,checked)" name="i-radio" />
+															<span class="fa fa-check"></span>
+															<em>{{$index+1}}</em>
+														</label>
+													</div>
+												</td>-->
+												<td class="td_color font-small">{{x.vin }}</td>
+												<td class="td_color font-small">{{x.iccid}}</td>
+												<td class="td_color font-small">{{x.energy}}</td>
+												<td class="td_color font-small" style="cursor: pointer;" ng-click="carEnergyDetail(x.vin)">
+													查看详情
+												</td>
+												<td class="td_color font-small">{{x.motor}}</td>
+												<td class="td_color font-small" style="cursor: pointer;" ng-click="carDriveMotorDetail(x.vin)">查看详情</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+	         				</tab>
+	         				<tab heading="车主信息">
+	         					<div class="border_box borderbox">
+									<table class="table  table_collapse">
+										<thead class="thead_bg">
+											<tr>
+												<!--<th>序号</th>-->
+												<th>VIN</th>
+												<th>SIM卡号</th>
+												<th>车牌号</th>
+												<th>车主姓名</th>
+												<th>车主手机号</th>
+												<th>车辆使用方式</th>
+												<th>车辆使用单位</th>
+												<th>购买/使用时间</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr ng-repeat="x in recordList" ng-class="{active:activeIndex==$index}" ng-click="changeIndex($index)">
+												<!--<td class="td_color font-small">
+													<div class="checkbox c-checkbox">
+														<label>
+															<input type="radio" ng-model="checked"  ng-checked="isChecked" ng-click="changeCurrent(x,x.vin, $event,checked)" name="i-radio" />
+															<span class="fa fa-check"></span>
+															<em>{{$index+1}}</em>
+														</label>
+													</div>
+												</td>-->
+												<td class="td_color font-small">{{x.vin }}</td>
+												<td class="td_color font-small">{{x.iccid}}</td>
+												<td class="td_color font-small">{{x.licenseNumber}}</td>
+												<td class="td_color font-small">{{x.name}}</td>
+												<td class="td_color font-small">{{x.phone}}</td>
+												<td class="td_color font-small">{{x.vehicle | dicFilter:dicId_vehicle}}</td>
+												<td class="td_color font-small">{{x.unit | dicFilter:dicId_unit}}</td>
+												<td class="td_color font-small">{{x.buyingTime | date:'yyyy-MM-dd HH:mm'}}</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+	         				</tab>
+	         			</tabset>
+						<!--<service-pager data-provider="dataProvider"></service-pager>-->
+						<div ng-if="myPage.totalCount" ui-pagination pg="myPage"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	var start = {
+		    format: 'YYYY-MM-DD hh:mm',
+		    minDate: '2014-06-16 23:59:59', //设定最小日期为当前日期
+		    initAddVal:{MM:"-1"},   //初始化日期加n月
+		    isinitVal:true,
+		    festival:true,
+		    ishmsVal:false,
+		    maxDate: $.nowDate({DD:0}), //最大日期
+		    choosefun: function(elem,datas){
+		        end.minDate = datas; //开始日选好后，重置结束日的最小日期
+		        endDates();
+		    }
+	};
+	var end = {
+	    format: 'YYYY-MM-DD hh:mm',
+	    initAddVal:[0],
+	    minDate: $.nowDate(0), //设定最小日期为当前日期
+	    isinitVal:true,
+		festival:true,
+		ishmsVal:false,
+	    maxDate: '2099-06-16 23:59:59', //最大日期
+	    choosefun: function(elem,datas){ //选中之后的回调函数
+	        start.maxDate = datas; //将结束日的初始值设定为开始日的最大日期
+	    }
+	};
+	//这里是日期联动的关键        
+	function endDates() {
+	    //将结束日期的事件改成 false 即可
+	    end.trigger = false;
+	    $("#inpend").jeDate(end);
+	}
+	$.jeDate('#inpstart',start);
+	$.jeDate('#inpend',end);
+	
+	
+</script>

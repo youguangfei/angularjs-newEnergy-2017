@@ -1,0 +1,22 @@
+<div class="Bselect_box mt">
+		<label class="control-label ml-xl  mr  fl">{{labelNameOne}}</label>
+		<!--<select class="form-control fl ml" >
+			<option value="请选择地区">地区</option>
+			<option value="北京">批次</option>
+			<option value="河北">型号</option>
+			<option value="天津">电池类型</option>
+		</select>-->
+		<ng-select-custom dic-id="dicId" ng-model="selectmodel1" required change-event="changeEvent()"/></ng-select-custom>
+		<!--ng-selected="item.name"-->
+		<select ng-show="selectType!=2" class="form-control fl ml " ng-options="item as item.name for item in selectArrd"  ng-model="myCity" ng-change="consoSel({name:myCity})">
+			<option value="">请选择</option>
+		</select>
+		
+		<label class="control-label ml-xl  mr fl ">{{lableNameTwo}}</label>
+		<ng-select-custom dic-id="dicId" ng-model="selectmodel2" change-event="changeEvent2()" required /></ng-select-custom>
+		
+		<select class="form-control fl ml" ng-show="selectType!=2">
+			<option value="">请选择</option>
+		</select>
+		
+</div>

@@ -1,0 +1,8 @@
+<div class="selectblock" ng-mouseleave="leave();">
+	<div class="{{config.style?config.style:'blue'}}">
+	    <div  ng-class="{'select-header select-arrow focus':focus,'select-header select-arrow':arrow,'select-header':start}" ng-click="open()"><input type="text" ng-model="text" placeholder="{{config.placeholder?config.placeholder:'请选择...'}}"  readonly="readonly"></div>
+	    <ul class="select-content newscrollbar" ng-show="isShow">
+	      <li ng-repeat=" i in config.data track by $index"  ng-class="{true:'active'}[model==i]" ng-click="select($index);">{{i.name}}</li>
+	    </ul>   	
+	</div>
+</div>

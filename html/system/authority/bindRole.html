@@ -1,0 +1,26 @@
+<style type="text/css">
+	.ngdialog-content{
+		left: 32.5%;
+		top: 15%;
+	}
+</style>
+<div class="window dialog wd-wide BindRole_background">
+    <div class="bg_default1 modal-header BindRole_background1">
+    	<h4 class="modal-title text-center">分配角色</h2>
+	</div>
+	<div class="panel-body" style="padding: .15rem 0;">
+		<div ng-if="showRoleBinding==true">
+			<p class="font-center color_blue pl-lg" ng-if="treeRoleType==2">您正在给用户分配角色</p>
+			<p class="font-center color_blue pl-lg" ng-if="treeRoleType==1">通用角色</p>
+			<div class="tree row_box mt-sm" style="min-height: 200px;">
+				<tree-selection tree="data.treeRole"></tree-selection>
+			</div>
+			<div class="panel-footer clearfix">
+				<a ng-if="treeRoleType==1" class="save" ng-click="saveRole(1)">保存</a>
+				<a ng-if="treeRoleType==2" class="save" ng-click="saveRole(2)">保存</a>
+				<a ng-if="treeRoleType==1" class="cancel fr" ng-click="goBackForEmpoyee(1)">取消</a>
+				<a ng-if="treeRoleType==2" class="cancel fr" ng-click="goBackForEmpoyee(2)">取消</a>
+			</div>
+		</div>
+	</div>
+</div>

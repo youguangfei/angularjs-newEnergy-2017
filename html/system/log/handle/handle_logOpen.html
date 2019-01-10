@@ -1,0 +1,122 @@
+<style>
+	.dialog_inner_content .waterRate_Dialogtable{
+		width:calc(100% - 92px);
+		width:-webkit-calc(100% - 92px);
+		width:-webkit-moz(100% - 92px);
+		text-align:center;
+		margin-left:10px;
+		}
+	.waterRate_Dialogtable td{
+		border:1px solid #ccc;
+		height:28px;
+	}
+	.waterRate_Dialogtable td input{
+		width:80%;
+		border:none;
+		text-align:center;
+	}
+	.waterPrice_dia_btn{
+		position:absolute;
+		top:0px;
+		left:14px;
+		width:85px;
+	}
+</style>
+
+<div class="dialog_inner_content">
+	<h4 class="modal-header bg_default1 clearfix ac color_w">操作日志</h4>
+	<div class="border_box border_box2" style="min-height:390px;">
+		<form name="myForm" style="min-height:360px;">
+			<div class="row_box">
+				
+				<div class="row mt20 clearfix">
+					<div class="col-md-6">
+				    	<div class="input-group">
+							<div class="input-group-btn">
+								<button type="button" class="btn btn-primary">用户ID</button>
+							</div>
+							<input type="text" class="form-control "  placeholder="请输入用户ID">
+					    </div>
+						
+					</div>
+					<div class="col-md-6">
+				    	<div class="input-group">
+							<div class="input-group-btn">
+								<button type="button" class="btn btn-primary">员工姓名</button>
+							</div>
+							<input type="text" class="form-control "  placeholder="请输入员工姓名">
+					    </div>
+						
+					</div>
+				</div>
+				
+				<div class="row mt20 clearfix">
+					<div class="col-md-6">
+				    	<div class="input-group w100" style="width:312px;">
+							<date-ui labelName="操作日期" ng-model="data.paramUser.firstDate"  dt="data.paramUser.firstDate" style="margin-top:15px;"></date-ui>
+					    </div>
+					</div>
+					<div class="col-md-6">
+				    	<div class="input-group">
+							<div class="input-group-btn">
+								<button type="button" class="btn btn-primary">功能编码</button>
+							</div>
+							<input type="text" class="form-control " placeholder="请输入功能编码">
+					    </div>
+					</div>
+				</div>
+				
+				<div class="row mt20 clearfix">
+					<div class="col-md-6">
+				    	<div class="input-group">
+							<div class="input-group-btn">
+								<button type="button" class="btn btn-primary">信息类型</button>
+							</div>
+							<input type="text" class="form-control "  placeholder="请输入信息分类">
+					    </div>
+					</div>
+					<div class="col-md-6">
+				    	<div class="input-group">
+							<div class="input-group-btn">
+								<button type="button" class="btn btn-primary">操作编码</button>
+							</div>
+							<input type="text" class="form-control " placeholder="请输入操作编辑">
+					    </div>
+						
+					</div>
+				</div>
+				
+				<div class="row mt20 clearfix">
+					<div class="col-md-12">
+				    	<div class="input-group">
+							<div class="input-group-btn">
+								<button type="button" class="btn btn-primary">客户端IP</button>
+							</div>
+							<input type="text" class="form-control "  placeholder="请输入客户端IP">
+					    </div>
+					</div>
+					
+				</div>
+				<div class="row mt20 clearfix">
+					<div class="col-md-12">
+				    	<div class="input-group">
+							<div class="input-group-btn">
+								<button type="button" class="btn btn-primary" style="height:70px;">操作描述</button>
+							</div>
+							<textarea class="form-control" placeholder="请输入操作描述" style="height:68px;"></textarea>
+					    </div>
+					</div>
+				</div>
+				
+		
+			</div>
+		</form>
+	</div>
+	
+	<div class="modal-footer" style="border-top:solid 2px #dcdcdc;padding: 15px;">
+		    <button type="button" class="btn btn-primary waterPrice_save_button" style="position:static;" data-dismiss="modal" ng-click="saveNew(orgId,data.paramUser.firstDate,selectWaterType)">保存</button>
+		    <button type="button" class="btn btn-danger ngdialog-close" data-dismiss="modal" style="position:static;" ng-click="laderWater_cancel()">取消</button>
+	 </div>
+	 
+</div>
+

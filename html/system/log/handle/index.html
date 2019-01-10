@@ -1,0 +1,136 @@
+<div class="side_right">
+	<div class="Box">
+		<div class="indexright_cont systembox2">
+			<div class="indexright_cont_top clearfix">
+				<div class="topBox2 clearfix">
+					<div class="text_box fl">
+						<p>日志记录:<em class="ml-sm">{{totalCount}}</em></p>
+					</div>
+					<!--<div class="button_box fr">
+						<button class="addForm_icon" ng-click="addForm()">
+							<em class="addForm_icon "></em>
+							<span class="ml-sm">新增</span>
+						</button>
+					</div>-->
+				</div>
+			</div>
+			
+			<div class="indexright_cont_con table_border">
+				<div ng-show="showTable" class="ngGrid" style="height:100%;">
+					<div class="border_box borderbox">
+						<table lg-grid class="table" model="dataProvider.getGridModel()" style="margin-top: -0.3rem;">
+							<thead class="thead_bg">
+								<tr>
+								    <th>序号</th> 
+									<th>日志ID</th>
+									<th>操作功能</th>
+									<th>操作结果</th>
+									<th>相关ID</th>
+									<th>相关字符</th>
+								　　　<th>操作用户</th>
+								    <th>操作用户用户组</th>
+								　　　<th>操作IP</th>
+									<th>操作时间</th>
+									<th class="table_width">操作</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr lg-row-start>
+									<td class="td_color font-small">{{ (dataProvider.viewSettings.pageSize * (dataProvider.viewSettings.pageNo - 1)) + row.index + 1 }}</td>
+									<td class="td_color font-small">{{ row.data.id}}</td>
+									<td class="td_color font-small">{{ row.data.methodName }}</td>
+									<td class="color_green font-small" ng-if="row.data.dataCode == '成功'">{{ row.data.dataCode }}</td>
+									<td class="text-danger font-small" ng-if=" row.data.dataCode != '成功'">{{ row.data.dataCode }}</td>
+									<td class="td_color font-small">{{ row.data.relatedId }}</td>
+									<td class="td_color font-small">{{ row.data.relatedChar }}</td>
+									<td class="td_color font-small">{{ row.data.optionUserName }}</td>
+									<td class="td_color font-small">{{ row.data.optionUserGroupName }}</td>
+									<td class="td_color font-small">{{ row.data.optionIp }}</td>
+									<td class="td_color font-small">{{ row.data.optionTime| date:'yyyy-MM-dd' }}</td>
+									<td>
+										<button lg-toggle-expanded-row class="bgNone btn btn-sm borderNone" title="查看">
+											<i class="icon-eye color_fonts"></i>
+										</button>
+									</td>
+								</tr>
+								<tr lg-row-end lg-expanded-row class="bigBg_default" style="margin: 0;padding: 0;">
+									<td colspan="12" style="margin: 0;padding: 0;">
+										<div class="panel bigBg_default" style="margin: 0;padding: 0;">
+											<div class="panel-body">
+												<table cellpadding="0" class="tablef">
+													<thead class="thead_bg">
+														<tr>
+															<th class="color_w" ng-repeat="c1 in  row.data.thParamName track by $index">{{c1}}</th>
+														</tr>
+													</thead>
+													<tbody>
+														<tr>
+															<td class="td_color font-small"  ng-repeat="c in  row.data.tdParamData track by $index">{{c}}</td>
+														</tr>
+														
+													</tbody>
+													<thead ng-if="row.data.thResultName.length>0">
+														<tr>
+															<th class="color_w">修改后</th>
+														</tr>
+													</thead>
+													<thead>
+														<tr>
+															<th class="color_w" ng-repeat="c1 in  row.data.thResultName track by $index">{{c1}}</th>
+														</tr>
+													</thead>
+													<tbody>
+														<tr>
+															<td class="td_color font-small" ng-repeat="b in  row.data.tdResulData track by $index">{{b}}</td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+										</div>
+									</td>
+								</tr>
+								
+							</tbody>
+						</table>
+					</div>
+					<service-pager data-provider="dataProvider"></service-pager>
+					
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	var start = {
+		    format: 'YYYY-MM-DD hh:mm',
+		    minDate: '2014-06-16 23:59:59', //设定最小日期为当前日期
+		    initAddVal:{MM:"-1"},   //初始化日期加n月
+		    isinitVal:true,
+		    festival:true,
+		    ishmsVal:false,
+		    maxDate: $.nowDate({DD:0}), //最大日期
+		    choosefun: function(elem,datas){
+		        end.minDate = datas; //开始日选好后，重置结束日的最小日期
+		        endDates();
+		    }
+	};
+	var end = {
+	    format: 'YYYY-MM-DD hh:mm',
+	    initAddVal:[0],
+	    minDate: $.nowDate(0), //设定最小日期为当前日期
+	    isinitVal:true,
+		festival:true,
+		ishmsVal:false,
+	    maxDate: '2099-06-16 23:59:59', //最大日期
+	    choosefun: function(elem,datas){ //选中之后的回调函数
+	        start.maxDate = datas; //将结束日的初始值设定为开始日的最大日期
+	    }
+	};
+	//这里是日期联动的关键        
+	function endDates() {
+	    //将结束日期的事件改成 false 即可
+	    end.trigger = false;
+	    $("#inpend").jeDate(end);
+	}
+	$.jeDate('#inpstart',start);
+	$.jeDate('#inpend',end);
+	
+</script>

@@ -1,0 +1,136 @@
+<style type="text/css">
+	.ngdialog_add1.ngdialog .ngdialog-content {
+		height: 60%;
+	}
+	.ngdialog_add2.ngdialog .ngdialog-content {
+		height: 5rem;
+	}
+	
+	.ngdialog_setLocation.ngdialog .ngdialog-content {
+		width: 60%;
+		height: 5rem;
+	}
+	.form-validate .employ_addbtn{
+		bottom: 0.7rem;
+	}
+	.form-validate .employ_saveBtn{
+		bottom: 0.7rem;
+	}
+</style>
+<div class="window dialog backImg_common1 RepairAdd_Popup" ng-class="{'RepairAdd_Popup':EmployeeForm_dialog==1||EmployeeForm_dialog==2,'Modifypwd_Popup Modifypwd_Popup2':EmployeeForm_dialog==3}">
+	<div class="customer_title">
+		<h5>{{title1}}</h5>
+	</div>
+	<!--新建-->
+	<form name="myForm" class="form-validate employ_formmargin"  novalidate ng-if="EmployeeForm_dialog==1" ng-init="alreadyBt=false">
+		<div class="panel-body border_box border_box2 font-large">
+			<fieldset class="RepairText_boxlist mt-lg">
+				<div class="col-md-12 p0">
+					<label class="col-sm-6 LabelTextColor labelWidth">员工权限</label>
+					<div class="col-sm-4 p0">
+						<select-block config="addEmployee_config" model="addEmployee_authority" select-change="selectAdd_Change(newModel,'add')"/>
+					</div>
+				</div>
+			</fieldset>
+			<fieldset class="RepairText_boxlist mt-lg">
+				<div class="col-md-12 p0">
+					<label class="col-sm-5 LabelTextColor">员工姓名</label>
+					<input type="text" class="col-sm-6 borderNone td_color BgTransparent font-large pt-sm p0 ml-lg ht100" ng-model="add_realName"  name="name_text1" autocomplete="off" required ng-maxlength='50'/>
+					<span class="Requiredtext1">*</span>
+					<div class="Service_error Errorprompt" ng-show="myForm.name_text1.$error.required && alreadyBt"></div>
+				</div>
+			</fieldset>
+
+			<fieldset class="RepairText_boxlist mt-lg">
+				<div class="col-md-12 p0">
+					<label class="col-sm-5 LabelTextColor">手机号码</label>
+					<input type="text" class="col-sm-6 borderNone td_color BgTransparent font-large p0 pt-sm ml-lg ht100" ng-model="add_account" name="add_mobile" ng-pattern="/(^1[3|4|5|7|8|9][0-9]{9}$)|(^\d{3}-\d{7,8}$)|(^\d{4}-\d{7,8}$)/" required/>
+					 <span class="Requiredtext1">*</span>
+					 <div class="Service_error Errorprompt" ng-show="myForm.add_mobile.$dirty  && myForm.add_mobile.$invalid && alreadyBt ||(myForm.add_mobile.$error.required && alreadyBt)"></div>      
+				</div>
+			</fieldset>
+			<fieldset class="RepairText_boxlist mt-lg" ng-if="add_showSite">
+				<div class="col-md-12 p0">
+					<label class="col-sm-6 LabelTextColor labelWidth">维修站点</label>
+					<div class="col-sm-4 p0">
+						<select-block config="employeeAdd_siteConfig" model="employeeAdd_site" select-change="selectep_site(newModel)" class="mUnit_select mUnit_selectemployee"/>
+					</div>
+				</div>
+			</fieldset>
+			<fieldset class="RepairText_boxlist mt-lg">
+				<div class="col-md-12 p0">
+					<label class="col-sm-5 LabelTextColor">所属部门</label>
+					<input type="text" class="col-sm-6 borderNone td_color BgTransparent font-large p0 pt-sm ml-lg ht100" ng-model="add_deptName"  name="name_text2"  autocomplete="off" ng-maxlength='50'/>
+				</div>
+			</fieldset>
+			
+			<fieldset class="RepairText_boxlist mt-lg">
+				<div class="col-md-12 p0">
+					<label class="col-sm-5 LabelTextColor">邮箱</label>
+					<input type="email" class="col-sm-6 borderNone td_color BgTransparent font-large p0 pt-sm ml-lg ht100" ng-model="add_email"  name="name_textEmail"  autocomplete="off" ng-pattern="/^(\w)+(\.\w+)*@(\w)+((\.\w{2,3}){1,3})$/"/>
+					<div class="Service_error Errorprompt" ng-show="myForm.name_textEmail.$dirty  && myForm.name_textEmail.$invalid"></div> 
+				</div>
+			</fieldset>
+		</div>
+			<!--ng-disabled="myForm.$invalid"-->
+		<div class="AddBtn_boxlist td_color employ_addbtn">
+			<button  class="borderNone BgTransparent wt100 h100" ng-click='employee_addSave(add_realName,add_account, add_deptName,add_email,myForm.$invalid);alreadyBt=true'>保存</button>
+		</div>
+	</form>
+	
+	<!--修改-->
+	<form name="myForm" class="form-validate ml-xl" ng-if="EmployeeForm_dialog==2" novalidate ng-init="alreadyBt1=false">
+		<div class="panel-body border_box border_box2">
+			<fieldset class="RepairText_boxlist mt-lg">
+				<div class="col-md-12 p0">
+					<label class="col-sm-6 LabelTextColor labelWidth">员工权限</label>
+					<div class="col-sm-4 p0">
+						<select-block config="modifyEmployee_config" model="modifyEmployee_authority" select-change="selectAdd_Change(newModel,'modify')"/>
+					</div>
+				</div>
+			</fieldset>
+			<fieldset class="RepairText_boxlist mt-lg">
+				<div class="col-md-12 p0">
+					<label class="col-sm-5 LabelTextColor">员工姓名</label>
+					<input type="text" class="col-sm-6 borderNone td_color BgTransparent font-large p0 pt-sm ml-lg ht100" ng-model="employeeModify.realName"  name="name_text11"  autocomplete="off" required ng-maxlength='50'/>
+					<span class="Requiredtext1">*</span>
+					<div class="Service_error Errorprompt" ng-show="myForm.name_text11.$error.required && alreadyBt1"></div>
+				</div>
+			</fieldset>
+
+			<fieldset class="RepairText_boxlist mt-lg">
+				<div class="col-md-12 p0">
+					<label class="col-sm-5 LabelTextColor">手机号码</label>
+					<input type="text" class="col-sm-6 borderNone td_color BgTransparent font-large p0 pt-sm ml-lg ht100" ng-model="employeeModify.account" ng-pattern="/(^1[3|4|5|7|8|9][0-9]{9}$)|(^\d{3}-\d{7,8}$)|(^\d{4}-\d{7,8}$)/" name="modify_mobile" required/>
+					<span class="Requiredtext1">*</span>
+					<div class="Service_error Errorprompt" ng-show="myForm.modify_mobile.$dirty  && myForm.modify_mobile.$invalid && alreadyBt1 ||(myForm.modify_mobile.$error.required && alreadyBt1)"></div>   
+				</div>
+			</fieldset>
+			<fieldset class="RepairText_boxlist mt-lg" ng-show="modify_showSite">
+				<div class="col-md-12 p0">
+					<label class="col-sm-6 LabelTextColor labelWidth">维修站点</label>
+					<div class="col-sm-4 p0">
+						<select-block config="employeeModify_siteConfig" model="employeeModify_site" class="mUnit_select mUnit_selectemployee"/>
+					</div>
+				</div>
+			</fieldset>
+			<fieldset class="RepairText_boxlist mt-lg">
+				<div class="col-md-12 p0">
+					<label class="col-sm-5 LabelTextColor">所属部门</label>
+					<input type="text" class="col-sm-6 borderNone td_color BgTransparent font-large p0 pt-sm ml-lg ht100" ng-model="employeeModify.deptName"  name="name_text12" id='Add_name' autocomplete="off" ng-maxlength='50'/>
+				</div>
+			</fieldset>
+			
+			<fieldset class="RepairText_boxlist mt-lg">
+				<div class="col-md-12 p0">
+					<label class="col-sm-5 LabelTextColor">邮箱</label>
+					<input type="text" class="col-sm-6 borderNone td_color BgTransparent font-large p0 pt-sm ml-lg ht100" ng-model="employeeModify.email"  name="name_modifyEmail" id='Add_name' autocomplete="off" ng-pattern="/^(\w)+(\.\w+)*@(\w)+((\.\w{2,3}){1,3})$/"/>
+					<div class="Service_error Errorprompt" ng-show="myForm.name_modifyEmail.$dirty  && myForm.name_modifyEmail.$invalid"></div> 
+				</div>
+			</fieldset>
+		</div>
+		<div class="AddBtn_boxlist td_color employ_saveBtn">
+			<button class="borderNone BgTransparent wt100 ht100" ng-click='modify_employeeSave(employeeModify_site,myForm.$invalid);alreadyBt1=true'>保存</button>
+		</div>
+	</form>
+</div>

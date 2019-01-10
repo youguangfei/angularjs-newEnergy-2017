@@ -1,0 +1,54 @@
+<style type="text/css">
+	#getLocation_mapBox{
+		background-color: none;
+		border: none;
+	}
+	.ngdialog-content{
+		height: 6.5rem;
+	}
+	.dialog{
+		display: -webkit-box; 
+	    display: -moz-box; 
+	    display: -ms-flexbox;
+	    display:flex;
+	    flex-direction:column;
+	}
+	.getLocation_mapBox1{
+		position: relative;
+		width: 9.4rem;
+		height: 90%;
+		margin-left: 0.3rem;
+		background: none !important;
+	}
+	.getLocation_map{
+		width: 94%;
+		height: 98%;
+		margin: 0 auto;
+	}
+	.getLocation_map_Tagging{
+		position: absolute;
+		right: 0px;
+	  	top:15%;
+	  	width: 30px;
+	  	height: 45px;
+	  	/*border: 1px solid #ccc;*/
+	  	background:url(images/img1/markerCar_myNormal.png) no-repeat;
+	  	background-size: 100% 100%;
+	  	transform:-webkit-translate(-50%,0);
+	  	transform:-moz-translate(-50%,0);
+	  	transform:-o-translate(-50%,0);
+	}
+</style>
+<div class="window dialog wd-wide service_mappop">
+	
+    <div id="ngdialogContent-header">
+    	<h4 class="modal-title text-center H4normalfont">行驶轨迹</h2>
+	</div>
+	<div class="getLocation_mapBox1" id="getLocation_mapBox">
+		
+		<div id="getLocation_map" class="getLocation_map1"></div>
+		<div ng-show="setLocationInput" class="getLocation_map_Tagging getLocation_map_Tagging1" ng-click="map_Tagging()" id="getLocation_map_Tagging"></div>
+		<div ng-show="setLocationInput" class="getLocation_map_Tagging getLocation_map_Tagging2" ng-click="map_Tagging()" id="getLocation_map_Tagging">	
+		</div>
+	</div>
+</div>

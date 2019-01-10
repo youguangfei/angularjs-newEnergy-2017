@@ -1,0 +1,6 @@
+<div class="inputSeachBox" ng-mouseleave="leave();">
+	<input type="text" class="Height35 td_color BgTransparent font-large pl-lg borderNone" id="unitName" ng-model="text" ng-focus="search({name:text})"  ng-keyup="search({name:text})"   placeholder="{{placeHolder?placeHolder:''}}"     name="name_addUnit"  autocomplete="off"  required/>
+	<ul class="unitName_listUl" ng-show="searchulShow">
+		<li ng-repeat="x in searchlist  track by $index"  ng-click="select(x);" class="font-large">{{x.likeName}}</li>
+	</ul>
+</div>

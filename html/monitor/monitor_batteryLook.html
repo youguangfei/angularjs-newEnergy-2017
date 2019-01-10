@@ -1,0 +1,104 @@
+<!--电池监控-->
+<style>
+	.ngdialog.ngdialog_mBattery .ngdialog-close, .ngdialog-close{
+		top:0.03rem;
+	}
+	.ngdialog.ngdialog_mReal .ngdialog-close, .ngdialog-close{
+		top:0.2rem;
+	}
+</style>
+<div class="window dialog monitor_batteryDialog backImg_common1 confirm_dialog" ng-if="monitor_batteryRealLook==1">
+  	
+  	<div class="mlong_title">
+  		 {{battery_title|textLengthSet:true:12:'...'}}
+  	</div>
+	<form name="myForm"   class="form-validate"  novalidate>
+		<div class="panel-body">
+			 <fieldset class="font-small">
+			 <ul class="commonColor1 mBattery_ul font-large">
+			 	<li>			 					<em>VIN码</em><i>{{infoBox_data.vin|textLengthSet:true:10:'...'}}</i>
+			 	</li>
+			 	<li>			 					<em>SOC</em><i>{{infoBox_data.vehicle.soc}}%</i>
+			 	</li>
+			 	<li>			 					
+			 		<em>电池单体总数</em><i>--</i>
+			 	</li>
+			 	<li>			 					
+			 		<em>总电压 (V)</em><i>{{infoBox_data.vehicle.totalVoltage}}</i>
+			 	</li>
+			 	
+			 	<li>			 					
+			 		<em>总电流 (A)</em><i>{{infoBox_data.vehicle.totalCurrent}}</i>
+			 	</li>
+			 	<li>			 					
+			 		<em>单体最高电压 (V)</em><i>{{infoBox_data.extremum
+.highestV}}</i><strong>(第{{infoBox_data.extremum.highestVSubsystem}}箱第{{infoBox_data.extremum.highestVProbe}}节)</strong>
+			 	</li>
+			 	<li>			 					
+			 		<em>单体最低电压 (V)</em><i>{{infoBox_data.extremum
+.lowestV}}</i><strong>(第{{infoBox_data.extremum.lowestVSubsystem}}箱第{{infoBox_data.extremum.lowestVProbe}}节)</strong>
+			 	</li>
+			 	<li>			 					
+			 		<em>监测点最高温度 (℃)</em><i>{{infoBox_data.extremum
+.highestT}}</i><strong>(第{{infoBox_data.extremum.highestTSubsystem}}箱第{{infoBox_data.extremum.highestTProbe}}节)</strong>
+			 	</li>
+			 	<li>			 					
+			 		<em>监测点最低温度 (℃)</em><i>{{infoBox_data.extremum
+.lowestT}}</i><strong>(第{{infoBox_data.extremum.lowestTSubsystem}}箱第{{infoBox_data.extremum.lowestTProbe}}节)</strong>
+			 	</li>
+			 </ul>
+			 
+			 </fieldset>
+		</div>
+  	</form>
+ </div>
+ 
+ <!--实时看板-->
+ <div class="window dialog monitor_realDialog backImg_common1" ng-if="monitor_batteryRealLook==2">
+  	<div class="monitor_realDialogbox">
+  		<!--标题-->
+  		<div class="wt100 text-center pt">
+  			<h5>{{title|textLengthSet:true:16:'...'}}</h5>
+  		</div>
+  		<!--图表1-->
+  		<div class="monitor_realDialog1">
+  			<div class="monitor_realDialoglist1 displayFlex">
+  				<label>电池实时监控</label>
+  				<div class="monitor_realslect">
+  					<select-block config="Soc_Config" model='socdata' class="borderNone SelectBlock_width p0" select-change="selectChange_vin2(newModel)"/>
+  				</div>
+  			</div>
+  			<div id="mReal_echart1" class="mReal_echart1"></div>
+  		</div>
+  		<!--图表2-->
+  		<div class="monitor_realDialog2">
+  			<div class="monitor_realDialoglist1 displayFlex">
+  				<label>电机实时监控</label>
+  				<div class="monitor_realslect">
+  					<select-block config="Mointor_Config" model='mointordata' class="borderNone SelectBlock_width p0" select-change="selectChange_vin3(newModel)"/>
+  				</div>
+  				<!--<div id="Mainearchs1"></div>-->
+  			</div>	
+  			<div id="mReal_echart2" class="mReal_echart1"></div>
+  		</div>
+  	</div>
+ </div>
+<script>
+	setTimeout(function(){
+		if($(".monitor_batteryDialog").length>0){
+			$('.ngdialog-content').myDrag({
+				randomPosition: false,
+				direction: 'all',
+				handler: false,
+				parent: 'body',
+				dragEnd: function(x, y) {
+		
+				},
+			});
+		}
+		
+	},100) 
+	
+	
+	
+</script>

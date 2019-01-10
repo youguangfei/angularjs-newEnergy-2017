@@ -1,0 +1,82 @@
+<style type="text/css">
+	.Repairadd_select .select-content{
+		width: 1.7rem;
+		height: 2.8rem;
+		overflow: auto;
+	}
+</style>
+<div class="window dialog backImg_common1 RepairAdd_Popup RepairAdd_Popup1">
+	<div class="Repair_title2">
+		<h5>{{title}}</h5>
+	</div>
+	<form name="myForm" class="form-validate" novalidate ng-init="alreadyBt=false">
+		<div class="panel-body border_box border_box2">
+			<fieldset class="RepairText_boxlist mt-lg font-small RepairText_boxlistWidth ">
+				<div class="col-md-12 p0">
+					<label class="col-sm-6 LabelTextColor">车牌号</label>
+					<input type="text" ng-model="repairAdd_licenseNumber" class="col-sm-6 borderNone td_color BgTransparent font-large p0 pl-lg pr-lg RepariAdd_messages ht100" name="name_text2" autocomplete="off" required ng-maxlength='50'/>
+					<span class="Requiredtext">*</span>
+					<div class="Service_error Errorprompt" ng-show="myForm.name_text2.$dirty  && myForm.name_text2.$invalid && alreadyBt ||(myForm.name_text2.$error.required && alreadyBt)"></div>
+				</div>
+			</fieldset>
+			<fieldset class="RepairText_boxlist mt-lg font-small">
+				<div class="col-md-12 p0">
+					<label class="col-sm-5 LabelTextColor">故障类型</label>
+					<div class="col-sm-4 p0">
+						<select-block config="repairAdd_TypeConfig" model='repairAdd_Type' class="borderNone SelectBlock_width p0" />
+					</div>
+				</div>
+			</fieldset>
+			<fieldset class="RepairText_boxlist mt-lg font-small">
+				<div class="col-md-12 p0">
+					<label class="col-sm-5 LabelTextColor">故障等级</label>
+
+					<div class="col-sm-4 p0">
+						<select-block config="repairAdd_LevelConfig" model='repairAdd_Level' class="borderNone SelectBlock_width p0" />
+					</div>
+				</div>
+			</fieldset>
+			<fieldset class="RepairText_boxlist mt-lg font-small">
+				<div class="col-md-12 p0">
+					<label class="col-sm-5 LabelTextColor">故障地点</label>
+					<input type="text" ng-model="repairAdd_address" class="col-sm-6 borderNone td_color BgTransparent font-large p0 pl-lg pr-lg RepariAdd_messages ht100" ng-maxlength='50' name="Rpair_addressfault"/>
+					<div class="Service_error Errorprompt" ng-show="myForm.Rpair_addressfault.$dirty  && myForm.Rpair_addressfault.$invalid && alreadyBt"></div>
+				</div>
+			</fieldset>
+			<fieldset class="RepairText_boxlist1 mt-lg font-small RepairText_boxlist3">
+				<div class="col-md-12 p0 clearfix">
+					<label class="col-sm-5 LabelTextColor fl font-large">故障描述</label>
+					<div class="pt-sm LabelTextColor RepariVertical_line fl p0"></div>
+					<textarea ng-model="repairAdd_faultDescription" class="BgTransparent borderNone td_color textareaSroller fr font-large mt-lg dialog_textareaWidth dialog_textareaHeight" cols="" rows="" ng-maxlength='500' name="faultDescription"></textarea>
+					<div class="Service_error Errorprompt" ng-show="myForm.faultDescription.$dirty  && myForm.faultDescription.$invalid && alreadyBt"></div>
+				</div>
+			</fieldset>
+			<fieldset class="RepairText_boxlist mt-lg font-small">
+				<div class="col-md-12 p0">
+					<label class="col-sm-5 LabelTextColor labelWidth">维修站点</label>
+					<div class="col-sm-4 p0 Repairadd_select">
+						<select-block config="repairAdd_siteConfig" model='repairAdd_site' class="borderNone SelectBlock_width p0 mUnit_select" />
+					</div>
+				</div>
+			</fieldset>
+			<fieldset class="RepairText_boxlist mt-lg font-small ">
+				<div class="col-md-12 p0">
+					<label class="col-sm-5 LabelTextColor">报修人</label>
+					<input type="text" ng-model="Add_realName" class="col-sm-6 borderNone td_color BgTransparent font-large p0 pl-lg pr-lg RepariAdd_messages ht100" ng-maxlength='50' name="Add_realName"/>
+					<div class="Service_error Errorprompt" ng-show="myForm.Add_realName.$dirty  && myForm.Add_realName.$invalid && alreadyBt"></div>
+				</div>
+			</fieldset>
+			<fieldset class="RepairText_boxlist mt-lg font-small">
+				<div class="col-md-12 p0">
+					<label class="col-sm-5 LabelTextColor">报修人电话</label>
+					<input type="text" ng-model="AdduserName" class="col-sm-6 borderNone td_color BgTransparent font-large p0 ml-lg pr-lg ht100"/>
+				</div>
+			</fieldset>
+		</div>
+		<div class="panel-footer h60 Reipair_Addbtn">
+			<div class="AddBtn_boxlist td_color Addbtn_bottom" ng-click='serviceSave1($event,myForm.$invalid);alreadyBt=true'>
+				<button class="BgTransparent borderNone">提交</button>
+			</div>
+		</div>
+	</form>
+</div>

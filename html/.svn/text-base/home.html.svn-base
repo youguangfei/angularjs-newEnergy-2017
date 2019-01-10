@@ -1,0 +1,78 @@
+<!-- top navbar-->
+<header ng-include="'html/blocks/top-navbar.html'" class="topnavbar-wrapper">
+</header>
+<div ng-include="'html/blocks/Public_background.html'"></div>
+<!-- Main section-->
+<section ui-view class="wrapper wrapper_Inner changeColor">
+
+</section>
+
+<aside ng-include="'html/blocks/offsidebar.html'" class="offsidebarT"></aside>
+<!-- Inline template with sidebar items markup and ng-directives-->
+<script type="text/ng-template" id="sidebar-renderer.html">
+   <a class="item_heading" 
+   	ng-href="{{$state.href(item.url, item.params)}}"
+   ng-if="showThisMenu(item)"
+   	 title="{{item.name}}">
+	  <div class="item-content">
+		   	<div class="item_icon">
+		   	</div>
+		   	<div class="item_inner" ng-click="changeIndex1($index)" ng-class="{active:activeIndex1==$index}">
+		   		 {{item.name}} 
+		   		 <!--item.menu && item.menu.length>0-->
+		   		<!--<em class="pull-right fa icon-arrow" ng-if="showArrowIcon(item)"></em>-->
+		   	</div>
+		</div>
+   </a>
+   <ul ng-if="item.menu" collapse="isCollapse(pIndex)" ng-init="addCollapse(pIndex, item)" id="sidebar-subnav" class="nav sidebar-subnav"><li class="sidebar-subnav-header">{{item.name}}</li><li ng-repeat="item in item.menu" ng-include="'sidebar-renderer.html'" ng-class="getMenuItemPropClasses(item)" ng-init="pIndex=(pIndex+'-'+$index); inmenu = true" ng-click="toggleCollapse(pIndex,item.url)"></li></ul>
+</script>
+<aside class="aside">
+	<div class="aside-inner">
+	   <nav sidebar="" sidebar-anyclick-close="" class="sidebar" id="sidebar">
+	      <ul class="nav navLevelFirst">
+	         <li ng-class="getMenuItemPropClasses(item)" ng-repeat="item in menuItems" ng-init="pIndex = $index" ng-include="'sidebar-renderer.html'" ng-click="toggleCollapse(pIndex,item.url,true)"></li>
+	      </ul>
+	   </nav>
+	</div>
+	<div class="monitor_leftShowbtn" ng-show="(!leftMap)&&Monitor_left" id="monitor_leftShowbtn" ng-click="changeLeftMap2()"></div>
+</aside>
+<!--消息提醒-->
+<div ng-show="news"  id="news">
+		<div class="MessagePopups">
+			<h5>{{getT_msgtitle}}</h5>
+			<p>{{getT_msgBody}}</p>
+			<div class="MessagesBox displayFlex">
+				<div class="MessagesBoxlist1 AddBtn_boxlist">
+					<button ng-click="closeNews()" class="BgTransparent borderNone wt100 ht100">关闭</button>
+				</div>
+				<div class="MessagesBoxlist2 AddBtn_boxlist">
+					<button ng-click="lookNewsDetail()" class="BgTransparent borderNone wt100 ht100">查看详情</button>
+				</div>
+			</div>
+			
+		</div>
+		<div><audio id="bgMusic" src="html/MessageMusic.mp3"></audio></div>
+</div>
+
+<!--操作权限变更，异地登录-->
+<div class="ngdialog ngdialog-theme-default" ng-if="changeImtBox">
+	<div class="ngdialog-overlay"></div>
+	<div class="ngdialog-content" id="changeImtBox">
+		<div class="MessagePopups1">
+			<div class="text-center changeImtBoxTile">
+				<h5>{{changeImtMsg}}</h5>
+			</div>
+			<div class="changeImtDiv clearfix">
+				<div class="AddBtn_boxlist mg_auto MessagesBoxlistbtn1">
+					<button ng-click="changeImt()" class="BgTransparent borderNone wt100 ht100">确定</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!--<div class="setting_icon">
+	<a href="#" toggle-state="offsidebar-open" no-persist="no-persist">
+		<i class="fa fa-spin fa-gear"></i>
+	</a>
+</div>-->

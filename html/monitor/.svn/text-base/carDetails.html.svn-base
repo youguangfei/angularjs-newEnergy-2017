@@ -1,0 +1,890 @@
+<style type="text/css">
+	.ChargingMap1 {
+		width: 15rem;
+		/*height: 4rem;*/
+		margin-left: 0.32rem;
+		margin-top: 0.32rem;
+	}
+	
+	.carDtalbox2_right .Chargingfooter {
+		position: initial;
+	}
+</style>
+<!--大的div-->
+<div class="carDtal">
+	<div class="Repair_Detpage_closeBtn" id="Repair_Detpage_closeBtn" ng-click="closeBlank()"></div>
+	<div class="carDtalbox1">
+		<!--头部-->
+		<div class="carDtalbox1_top">
+			<div class="carDtalbox1_logo fl"></div>
+			<h5 class="fl">车辆详情</h5>
+		</div>
+		<!--内容1-->
+		<div class="carDtalbox1_list1 clearfix">
+			<!--左边列表-->
+			<div class="carDtalbox1_list1left fl">
+				<h6>车辆基本信息</h6>
+				<ul>
+					<li class="carStatus1">
+						<div class="carDtalcontent1 fl">
+							<p class="LabelTextColor">车辆类型</p>
+							<span>{{Careverydata.carType}}</span>
+						</div>
+						<div class="carDtalcontent2 fl">
+							<p class="LabelTextColor">车辆状态</p>
+							<span>{{Careverydata.carStatus}}</span>
+						</div>
+						<div class="carDtalcontent2 carDtalSpeed">
+							<p class="LabelTextColor">车速</p>
+							<span>{{vehicle.speed}}</span>
+						</div>
+
+					</li>
+					<li>
+						<div class="carDtalcontent1 fl">
+							<p class="LabelTextColor">当日里程</p>
+							<span>{{Careverydata.mileage}}</span>
+						</div>
+						<div class="carDtalcontent2 fl">
+							<p class="LabelTextColor">总里程</p>
+							<span>{{Careverydata.vehicle.totalMileage}}</span>
+						</div>
+					</li>
+					<li ng-show='Careverydata.alarmName'>
+						<div class="carDtalcontent1 fl carDtalcontent3">
+							<p class="LabelTextColor">报警名称</p>
+							<span>{{Careverydata.alarmName}}</span>
+						</div>
+					</li>
+					<li ng-show='Careverydata.alarmType'>
+						<div class="carDtalcontent1 fl carDtalcontent3">
+							<p class="LabelTextColor">报警类型</p>
+							<span>{{Careverydata.alarmType}}</span>
+						</div>
+					</li>
+					<li>
+						<div class="carDtalcontent1">
+							<p class="LabelTextColor">VIN码</p>
+							<span>{{Careverydata.vin}}</span>
+						</div>
+					</li>
+					<li>
+						<div class="carDtalcontent3 cm-positive">
+							<p class="LabelTextColor">地理位置</p>
+							<span>{{Careverydata.position.address}}</span>
+							<div class="position_icon" ng-click="carDetail_position()" ng-show="Careverydata.position"></div>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<!--中间圆形-->
+			<div class="carDtalbox1_list1center fl">
+				<div class="carDtalnews text-center pt-sm wt100">
+					<input type="text" ng-model="Careverydata.licenseNumber" class="BgTransparent text-center borderNone" disabled="disabled" />
+					<div class="followtOrflist1">
+						<p class="followtOrf font-large" ng-click="mCar_care2(Careverydata)" id="info_careBtn">{{Careverydata.is_follow?'已关注':'+关注'}}</p>
+					</div>
+				</div>
+				<!--五个模块-->
+				<ul class="carDtal_lionBox">
+					<li class="carDtal_lionlist1">
+						<div class="carDtal_lionlist">
+							<div class="carDtal_lion1 carDtal_lion"></div>
+							<div class="mapTool_hover mapTool_hover1">实时看板</div>
+						</div>
+					</li>
+					<li class="carDtal_lionlist2">
+						<div class="carDtal_lionlist">
+							<div class="carDtal_lion2 carDtal_lion"></div>
+							<div class="mapTool_hover mapTool_hover1">电池监控</div>
+						</div>
+					</li>
+					<li class="carDtal_lionlist3">
+						<div class="carDtal_lionlist">
+							<div class="carDtal_lion3 carDtal_lion"></div>
+							<div class="mapTool_hover mapTool_hover1">远程控制</div>
+						</div>
+					</li>
+					<li class="carDtal_lionlist4">
+						<div class="carDtal_lionlist">
+							<div class="carDtal_lion4 carDtal_lion"></div>
+							<div class="mapTool_hover mapTool_hover1">维修预约</div>
+						</div>
+					</li>
+					<li class="carDtal_lionlist5">
+						<div class="carDtal_lionlist">
+							<div class="carDtal_lion5 carDtal_lion"></div>
+							<div class="mapTool_hover mapTool_hover1">历史轨迹</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<!--右边列表-->
+			<div class="carDtalbox1_list1right fl">
+				<h6>车辆详细信息</h6>
+				<div class="carDtalbox_list panel-group" id="accordion">
+					<div class="carDtal_list_every panel" ng-click="collpArrInit('collp1')">
+						<div data-parent="#accordion" data-toggle="collapse" href="#collapse1" class="carDtal_list_title">
+							<p class="everydata fl">基本数据</p>
+							<p class="fl carDtal_icon" ng-show="collp1">-</p>
+							<p class="fl carDtal_icon" ng-show="!collp1">+</p>
+						</div>
+						<div id="collapse1" class="panel-collapse collapse mUnit_select1">
+							<ul class="Everydatacars">
+								<li class="displayFlex">
+									<span>车主姓名:</span>
+									<p>{{Careverydata.name}}</p>
+								</li>
+								<li class="displayFlex">
+									<span>车主手机:</span>
+									<p>{{Careverydata.phone}}</p>
+								</li>
+								<li class="displayFlex">
+									<span>车牌号:</span>
+									<p>{{Careverydata.licenseNumber}}</p>
+								</li>
+								<li class="displayFlex">
+									<span>SIM卡号:</span>
+									<p>{{Careverydata.iccid}}</p>
+								</li>
+								<li class="displayFlex">
+									<span>发动机编号:</span>
+									<p>{{Careverydata.engineNumber}}</p>
+								</li>
+								<li class="displayFlex">
+									<span>存电续驶里程:</span>
+									<p>{{Careverydata.mileage}}</p>
+								</li>
+								<li class="displayFlex">
+									<span>最高车速:</span>
+									<p>{{Careverydata.maxSpeed}}</p>
+								</li>
+								<li class="displayFlex">
+									<span>VIN:</span>
+									<p>{{Careverydata.vin}}</p>
+								</li>
+								<li class="displayFlex">
+									<span>各档位传动比:</span>
+									<p>{{Careverydata.geaRatio}}</p>
+								</li>
+								<li class="displayFlex">
+									<span>车辆型号:</span>
+									<p>{{Careverydata.model}}</p>
+								</li>
+								<li class="displayFlex">
+									<span>使用方式:</span>
+									<p ng-if="Careverydata.useWay==1">自购车</p>
+									<p ng-if="Careverydata.useWay==2">租赁车</p>
+								</li>
+								<li class="displayFlex">
+									<span>使用单位:</span>
+									<p>{{Careverydata.unit}}</p>
+								</li>
+								<li class="displayFlex">
+									<span>生产批次:</span>
+									<p>{{Careverydata.batch}}</p>
+								</li>
+								<li class="displayFlex">
+									<span>驱动布置形式:</span>
+									<p>{{Careverydata.dma}}</p>
+								</li>
+							</ul>
+						</div>
+					</div>
+
+					<div class="carDtal_list_every panel" ng-click="collpArrInit('collp2')">
+						<div data-parent="#accordion" data-toggle="collapse" href="#collapse2" class="carDtal_list_title">
+							<p class="everydata fl">整车数据</p>
+							<p class="fl carDtal_icon" ng-show="collp2">-</p>
+							<p class="fl carDtal_icon" ng-show="!collp2">+</p>
+						</div>
+						<div id="collapse2" class="panel-collapse collapse mUnit_select1">
+							<ul class="Everydatacars fl">
+								<li class="displayFlex">
+									<span>整车状态:</span>
+									<p>{{vehicle.vehicleStatus}}</p>
+								</li>
+								<li class="displayFlex">
+									<span>充电状态:</span>
+									<p>{{vehicle.chargedStatus}}</p>
+								</li>
+								<li class="displayFlex">
+									<span>运行模式:</span>
+									<p>{{vehicle.runMode}}</p>
+								</li>
+								<li class="displayFlex">
+									<span>车速:</span>
+									<p>{{vehicle.speed}}</p>
+								</li>
+								<li class="displayFlex">
+									<span>累计里程:</span>
+									<p>{{vehicle.totalMileage}}</p>
+								</li>
+								<li class="displayFlex">
+									<span>总电压:</span>
+									<p>{{vehicle.totalVoltage}}</p>
+								</li>
+								<li class="displayFlex">
+									<span>总电流:</span>
+									<p>{{vehicle.totalCurrent}}</p>
+								</li>
+								<li class="displayFlex">
+									<span>SOC:</span>
+									<p>{{vehicle.soc}}</p>
+								</li>
+								<li class="displayFlex">
+									<span>档位:</span>
+									<p>{{vehicle.tapPosition}}</p>
+								</li>
+								<li class="displayFlex">
+									<span>DC/DC状态:</span>
+									<p>{{vehicle.dcStatus}}</p>
+								</li>
+								<li class="displayFlex">
+									<span>绝缘电阻:</span>
+									<p>{{vehicle.insulationResistance}}</p>
+								</li>
+								<li class="displayFlex">
+									<span>加速踏板行程值:</span>
+									<p>{{vehicle.acceleratorPedalStroke}}</p>
+								</li>
+								<li class="displayFlex">
+									<span>制动踏板状态:</span>
+									<p>{{vehicle.stateBrakePedal}}</p>
+								</li>
+
+							</ul>
+						</div>
+					</div>
+
+					<div class="carDtal_list_every panel" ng-click="collpArrInit('collp3')">
+						<div data-parent="#accordion" data-toggle="collapse" href="#collapse3" class="carDtal_list_title">
+							<p class="everydata fl everydata1">驱动电机数据</p>
+							<p class="fl carDtal_icon" ng-show="collp3">-</p>
+							<p class="fl carDtal_icon" ng-show="!collp3">+</p>
+						</div>
+						<div id="collapse3" class="panel-collapse collapse mUnit_select1">
+							<div class="EverydatacarsH1 text-center">
+								<p><span>驱动电机个数:</span>{{driveMotor.driveMotorNum}}</p>
+							</div>
+							<ul class="Everydatacars fl" ng-repeat="everyDrive in  driveMotorList">
+								<li class="displayFlex">
+									<span>驱动电机序号:</span>
+									<p>{{everyDrive.driveMotorSerial}}</p>
+								</li>
+								<li class="displayFlex">
+									<span>驱动电机控制器温度:</span>
+									<p>{{everyDrive.driveControllerT}}</p>
+								</li>
+								<li class="displayFlex">
+									<span>驱动电机转速:</span>
+									<p>{{everyDrive.driveMotorSpeed}}</p>
+								</li>
+								<li class="displayFlex">
+									<span>驱动电机转矩:</span>
+									<p>{{everyDrive.driveMotorTorque}}</p>
+								</li>
+								<li class="displayFlex">
+									<span>驱动电机温度:</span>
+									<p>{{everyDrive.driveMotorT}}</p>
+								</li>
+								<li class="displayFlex">
+									<span>电机输入电压:</span>
+									<p>{{everyDrive.motorVoltage}}</p>
+								</li>
+								<li class="displayFlex">
+									<span>电机控制器直流母线电流:</span>
+									<p>{{everyDrive.motorElectricity}}</p>
+								</li>
+							</ul>
+						</div>
+					</div>
+
+					<div class="carDtal_list_every panel" ng-click="collpArrInit('collp4')">
+						<div data-parent="#accordion" data-toggle="collapse" href="#collapse4" class="carDtal_list_title">
+							<p class="everydata fl everydata1">燃料电池数据</p>
+							<p class="fl carDtal_icon" ng-show="collp4">-</p>
+							<p class="fl carDtal_icon" ng-show="!collp4">+</p>
+						</div>
+						<div id="collapse4" class="panel-collapse collapse mUnit_select1">
+							<ul class="EverydatacarsH1 fl">
+								<li class="displayFlex">
+									<span>燃料电池电压:</span>
+									<p class="td_color">{{fuelCell.fuelCellVoltage}}</p>
+								</li>
+								<li class="displayFlex">
+									<span>燃料电池电流:</span>
+									<p class="td_color">{{fuelCell.fuelCellElectricity}}</p>
+								</li>
+								<li class="displayFlex">
+									<span>燃料消耗率:</span>
+									<p class="td_color">{{fuelCell.fuelConsumptionRate}}</p>
+								</li>
+								<li class="displayFlex">
+									<span>燃料电池温度探针总数:</span>
+									<p class="td_color">{{fuelCell.ProbeSum}}</p>
+								</li>
+								<li class="displayFlex">
+									<span>探针温度值:</span>
+									<p class="td_color">{{fuelCell.probeT}}</p>
+								</li>
+								<li class="displayFlex">
+									<span>氢系统中最高温度:</span>
+									<p class="td_color">{{fuelCell.hydrogenSystemT}}</p>
+								</li>
+								<li class="displayFlex">
+									<span>氢系统中最高温度探针代号:</span>
+									<p class="td_color">{{fuelCell.hydrogenSystemProbeMark}}</p>
+								</li>
+								<li class="displayFlex">
+									<span>氢气最高浓度:</span>
+									<p class="td_color">{{fuelCell.hydrogenConcentration}}</p>
+								</li>
+								<li class="displayFlex">
+									<span>氢气最高浓度传感器代号:</span>
+									<p class="td_color">{{fuelCell.hydrogenConcentrationMark}}</p>
+								</li>
+								<li class="displayFlex">
+									<span>氢气最高压力:</span>
+									<p class="td_color">{{fuelCell.hydrogenPressure}}</p>
+								</li>
+								<li class="displayFlex">
+									<span>氢气最高压力传感器代号:</span>
+									<p class="td_color">{{fuelCell.hydrogenPressureMark}}</p>
+								</li>
+								<li class="displayFlex">
+									<span>高压DC/DC状态:</span>
+									<p class="td_color">{{fuelCell.pressureDcStatus}}</p>
+								</li>
+
+							</ul>
+						</div>
+					</div>
+
+					<div class="carDtal_list_every panel" ng-click="collpArrInit('collp5')">
+						<div data-parent="#accordion" data-toggle="collapse" href="#collapse5" class="carDtal_list_title">
+							<p class="everydata fl everydata2">发动机数据</p>
+							<p class="fl carDtal_icon" ng-show="collp5">-</p>
+							<p class="fl carDtal_icon" ng-show="!collp5">+</p>
+						</div>
+						<div id="collapse5" class="panel-collapse collapse mUnit_select1">
+							<ul class="Everydatacars fl">
+								<li class="displayFlex">
+									<span>发动机状态:</span>
+									<p>{{motor.motorStatus}}</p>
+								</li>
+								<li class="displayFlex">
+									<span>曲轴转速:</span>
+									<p>{{motor.crankshaftSpeed}}</p>
+								</li>
+								<li class="displayFlex">
+									<span>燃料消耗率:</span>
+									<p>{{motor.rateFuelConsumption}}</p>
+								</li>
+
+							</ul>
+						</div>
+					</div>
+
+					<div class="carDtal_list_every panel" ng-click="collpArrInit('collp6')">
+						<div data-parent="#accordion" data-toggle="collapse" href="#collapse6" class="carDtal_list_title">
+							<p class="everydata fl">极值数据</p>
+							<p class="fl carDtal_icon" ng-show="collp6">-</p>
+							<p class="fl carDtal_icon" ng-show="!collp6">+</p>
+						</div>
+						<div id="collapse6" class="panel-collapse collapse mUnit_select1">
+							<ul class="EverydatacarsH1">
+								<li class="displayFlex">
+									<span>最高电压电池子系统号:</span>
+									<p class="td_color">{{extremum.highestVSubsystem}}</p>
+								</li>
+								<li class="displayFlex">
+									<span>最高电压电池单体代号:</span>
+									<p class="td_color">{{extremum.highestVProbe}}</p>
+								</li>
+								<li class="displayFlex">
+									<span>电池单体电压最高值:</span>
+									<p class="td_color">{{extremum.highestV}}</p>
+								</li>
+								<li class="displayFlex">
+									<span>最低电压电池子系统号:</span>
+									<p class="td_color">{{extremum.lowestVSubsystem}}</p>
+								</li>
+								<li class="displayFlex">
+									<span>最低电压电池单体代号:</span>
+									<p class="td_color">{{extremum.lowestVProbe}}</p>
+								</li>
+								<li class="displayFlex">
+									<span>电池单体电压最低值:</span>
+									<p class="td_color">{{extremum.lowestV}}</p>
+								</li>
+								<li class="displayFlex">
+									<span>最高温度子系统号:</span>
+									<p class="td_color">{{extremum.highestTSubsystem}}</p>
+								</li>
+								<li class="displayFlex">
+									<span>最高温度探针序号:</span>
+									<p class="td_color">{{extremum.highestTProbe}}</p>
+								</li>
+								<li class="displayFlex">
+									<span>最高温度值:</span>
+									<p class="td_color">{{extremum.highestT}}</p>
+								</li>
+								<li class="displayFlex">
+									<span>最低温度子系统号:</span>
+									<p class="td_color">{{extremum.lowestTSubsystem}}</p>
+								</li>
+								<li class="displayFlex">
+									<span>最低温度探针序号:</span>
+									<p class="td_color">{{extremum.lowestTProbe}}</p>
+								</li>
+								<li class="displayFlex">
+									<span>最低温度值:</span>
+									<p class="td_color">{{extremum.lowestT}}</p>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="carDtal_list_every panel" ng-click="collpArrInit('collp7')">
+						<div data-parent="#accordion" data-toggle="collapse" href="#collapse7" class="carDtal_list_title">
+							<p class="everydata fl">车辆位置</p>
+							<p class="fl carDtal_icon" ng-show="collp7">-</p>
+							<p class="fl carDtal_icon" ng-show="!collp7">+</p>
+						</div>
+						<div id="collapse7" class="panel-collapse collapse mUnit_select1">
+							<ul class="Everydatacars fl">
+								<li class="displayFlex">
+									<span>车辆定位:</span>
+									<span class="td_color">{{Careverydata.position.longitude}}</span>
+									<span class="td_color">{{Careverydata.position.latitude}}</span>
+								</li>
+								<li class="displayFlex">
+									<span>具体位置:</span>
+									<p>{{position1.address}}</p>
+								</li>
+							</ul>
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<!--内容2-->
+	<div class="carDtalbox2">
+		<div class="carDtalbox2_list">
+			<!--内容2左边-->
+			<div class="carDtalbox2_left">
+				<ul  ng-init='activeTab=0'>
+					<li ng-repeat="x in carDatalist track by $index" ng-click='changeIndex($index)' ng-class='{"active":activeTab==$index}'>{{x.title}}</li>
+				</ul>
+			</div>
+			<!--中间内容-->
+			<!--充电统计-->
+			<div class="carDtalbox2_right" ng-show='activeTab==0'>
+				<!--中间内容头部-->
+				<div class="carDtalbox2top clearfix ">
+					<div class=" carDtalbox2Magrin">
+						<div class="DateBox_list2 fl">
+							<input type="text" class="form-control date_icon fl color_blue" id="startTime1" ng-model="startTime1" readonly/>
+						</div>
+						<div class="Caleline fl"></div>
+						<div class="DateBox_list2 fl">
+							<input type="text" class="form-control date_icon fl color_blue" id="endTime1" ng-model="endTime1" readonly/>
+						</div>
+					</div>
+					<div class="carDetail_searchbtn" ng-click="carDt_chargingSrbtn()">
+						<button class="BgTransparent borderNone wt100 ht100">查询</button>
+					</div>
+				</div>
+				<div class="Chargingcontent mt  mg_auto  Chargingcontent2">
+					<div class="ChargingMapBox1">
+						<div id="ChargingMap1" class="ChargingMap1"></div>
+					</div>
+				</div>
+				<!--地图-->
+				<div class="Chargingfooter  mg_auto">
+					<div class="RepairTable_list_center Chargingpadd">
+						<table class="table Table_trlist">
+							<thead class="thead_bg">
+								<tr>
+									<th class="Service_operationWidth Repair_tabfirth CharTd1">
+										<span class="thfir_text">序号</span>
+									</th>
+									<th class="Repair_theadth2 CharTd2">开始时间</th>
+									<th class="CharTd3">结束时间</th>
+									<th class="CharTd4">持续时间</th>
+									<th class="CharTd5">充电前SOC</th>
+									<th class="CharTd5">充电后SOC</th>
+									<th class="CharTd7">发生位置</th>
+								</tr>
+							</thead>
+						</table>
+						<div class="Chargingpadd1">
+							<table>
+								<tbody class="Tr_hoverlist">
+									<tr ng-repeat="x in charginglist" ng-class="{active:activeIndex==$index}" ng-click="changeIndex($index)" class="{{ $even ? 'BackColor1even': 'BackColor1odd'}}">
+										<td class="charginglisttd1">{{x.seqNum}}</td>
+										<td class="charginglisttd2">{{x.startTime | date:'yyyy-MM-dd HH:mm'}}</td>
+										<td class="charginglisttd3">{{x.endTime | date:'yyyy-MM-dd HH:mm'}}</td>
+										<td class="charginglisttd4">{{x.durationTime}}秒</td>
+										<td class="charginglisttd2">{{x.socBefore}}%</td>
+										<td class="charginglisttd2">{{x.socAfter}}%</td>
+										<td class="charginglisttd7">{{x.address}}</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--电耗分析-->
+			<div class="carDtalbox2_right" ng-show='activeTab==1'>
+				<!--中间内容头部-->
+				<div class="carDtalbox2top clearfix ">
+					<div class=" carDtalbox2Magrin">
+						<div class="DateBox_list2 fl">
+							<input type="text" class="form-control date_icon fl color_blue" id="startTime2" ng-model="startTime2" readonly/>
+						</div>
+						<div class="Caleline fl"></div>
+						<div class="DateBox_list2 fl">
+							<input type="text" class="form-control date_icon fl color_blue" id="endTime2" ng-model="endTime2" readonly/>
+						</div>
+					</div>
+					<div class="carDetail_searchbtn" ng-click="carDetails_searchbtn2()">
+						<button class="BgTransparent borderNone wt100 ht100">查询</button>
+					</div>
+				</div>
+				<!--中间内容-->
+
+				<div class="powerAnalysisCenter RepairTable_list1 mg_auto">
+					<div class="AddBtn_boxlist powerAnalysisBtn" ng-click='powerAnalysisBtn()'>
+						<button class="borderNone BgTransparent font-center">电耗走势图</button>
+					</div>
+					<div class="RepairTable_list_center powerAnalysisCenterTR">
+						<table class="table Table_trlist">
+							<thead class="thead_bg">
+								<tr>
+									<th class="Service_operationWidth Repair_tabfirth CharTd1">
+										<span class="thfir_text">电耗</span>
+									</th>
+									<th class="Repair_theadth2">百公里电耗</th>
+									<th>行驶里程</th>
+									<th>SOC开始值</th>
+									<th>SOC结束值</th>
+									<th>开始时间</th>
+									<th>结束时间</th>
+									<th>行驶时间</th>
+									<th>行驶轨迹</th>
+								</tr>
+							</thead>
+							<tbody class="Tr_hoverlist">
+								<tr ng-repeat='i in powerAnalysis' ng-class="{active:activeIndex==$index}" ng-click="changeIndex($index)" class="{{ $even ? 'BackColor1even': 'BackColor1odd'}} ">
+									<td>{{i.consumption}}</td>
+									<td>{{i.hundredConsumption}}</td>
+									<td>{{i.mileage}}</td>
+									<td>{{i.socBefore}}%</td>
+									<td>{{i.socAfter}}%</td>
+									<td>{{i.startTime | date:'yyyy-MM-dd HH:mm'}}</td>
+									<td>{{i.endTime | date:'yyyy-MM-dd HH:mm'}}</td>
+									<td>{{i.runtime}}</td>
+									<td>
+										<a href="#" ng-click='LookpowerAnalymap(i.runTrack)' ng-click='powerAnalymap()'>查看</a>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<!--分页-->
+					<div class="myPagelistBox">
+						<div ng-if="myPagelist2.totalCount>10" ui-pagination pg="myPagelist2"></div>
+					</div>
+				</div>
+			</div>
+			<!--电位极差分析-->
+			<div class="carDtalbox2_right" ng-show='activeTab==2'>
+				<!--中间内容头部-->
+				<div class="carDtalbox2top clearfix">
+					<div class=" carDtalbox2Magrin">
+						<div class="DateBox_list2 fl">
+							<input type="text" class="form-control date_icon fl color_blue" id="startTime3" ng-model="startTime3" readonly/>
+						</div>
+						<div class="Caleline fl"></div>
+						<div class="DateBox_list2 fl">
+							<input type="text" class="form-control date_icon fl color_blue" id="endTime3" ng-model="endTime3" readonly/>
+						</div>
+					</div>
+					<div class="carDetail_searchbtn" ng-click="carDetails_searchbtn3()">
+						<button class="BgTransparent borderNone wt100 ht100">查询</button>
+					</div>
+				</div>
+				<!--中间内容区域-->
+				<div class="carDtalbox2center">
+					<div id="Mainearchs"></div>
+					<div id="Mainearchs1"></div>
+				</div>
+			</div>
+			<!--电池数据统计-->
+			<div class="carDtalbox2_right" ng-show='activeTab==3'>
+				<!--中间内容头部-->
+				<div class="carDtalbox2top clearfix ">
+					<div class=" carDtalbox2Magrin">
+						<div class="DateBox_list2 fl">
+							<input type="text" class="form-control date_icon fl color_blue" id="startTime4" ng-model="startTime4" readonly/>
+						</div>
+						<div class="Caleline fl"></div>
+						<div class="DateBox_list2 fl">
+							<input type="text" class="form-control date_icon fl color_blue" id="endTime4" ng-model="endTime4" readonly/>
+						</div>
+					</div>
+					<div class="carDetail_searchbtn" ng-click="carDetails_searchbtn4()">
+						<button class="BgTransparent borderNone wt100 ht100">查询</button>
+					</div>
+				</div>
+				<!--中间部分-->
+				<div class="batteryDataCenter RepairTable_list1  mg_auto">
+					<div class="RepairTable_list_center batteryDatatTr">
+						<table class="table Table_trlist">
+							<thead class="thead_bg">
+								<tr>
+									<th class="Service_operationWidth Repair_tabfirth">
+										<span class="thfir_text">存储时间</span>
+									</th>
+									<th class="Repair_theadth2">SOC(电容量)</th>
+									<th>总电流</th>
+									<th>总电压</th>
+									<th>消耗量</th>
+								</tr>
+							</thead>
+							<tbody class="Tr_hoverlist">
+								<tr ng-repeat='i in batteryData2' ng-class="{active:activeIndex==$index}" ng-click="changeIndex($index)" class="{{ $even ? 'BackColor1even': 'BackColor1odd'}} ">
+									<td>{{i.storeTime | date:'yyyy-MM-dd HH:mm'}}</td>
+									<td>{{i.soc}}</td>
+									<td>{{i.totalCurrent}}</td>
+									<td>{{i.totalVoltage}}</td>
+									<td>{{i.fuelConsumptionRate}}</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="myPagelistBox">
+						<div ng-if="myPagelist4.totalCount>10" ui-pagination pg="myPagelist4"></div>
+					</div>
+				</div>
+			</div>
+			<!--电机数据统计-->
+			<div class="carDtalbox2_right" ng-show='activeTab==4'>
+				<!--中间内容头部-->
+				<div class="carDtalbox2top clearfix ">
+					<div class=" carDtalbox2Magrin">
+						<div class="DateBox_list2 fl">
+							<input type="text" class="form-control date_icon fl color_blue" id="startTime5" ng-model="startTime5" readonly/>
+						</div>
+						<div class="Caleline fl"></div>
+						<div class="DateBox_list2 fl">
+							<input type="text" class="form-control date_icon fl color_blue" id="endTime5" ng-model="endTime5" readonly/>
+						</div>
+					</div>
+					<div class="carDetail_searchbtn" ng-click="carDetails_searchbtn5()">
+						<button class="BgTransparent borderNone wt100 ht100">查询</button>
+					</div>
+				</div>
+				<!--中间-->
+				<div class="motorDataCenter RepairTable_list1  mg_auto">
+
+					<div class="RepairTable_list_center faultStatistTr">
+						<table class="table Table_trlist">
+							<thead class="thead_bg">
+								<tr>
+									<th class="Service_operationWidth Repair_tabfirth">
+										<span class="thfir_text">存储时间</span>
+									</th>
+									<th class="Repair_theadth2">驱动电机控制器温度</th>
+									<th>驱动电机温度</th>
+									<th>电机控制器输入电压</th>
+									<th>电机控制器直流母线电流</th>
+									<th>驱动电机转矩</th>
+								</tr>
+							</thead>
+							<tbody class="Tr_hoverlist">
+								<tr ng-repeat='i in motorData1' ng-class="{active:activeIndex==$index}" ng-click="changeIndex($index)" class="{{ $even ? 'BackColor1even': 'BackColor1odd'}} ">
+									<td>{{i.storeTime.date | date:'yyyy-MM-dd HH:mm'}}</td>
+									<td>{{i.driveMotorList[0].driveControllerT}}</td>
+									<td>{{i.driveMotorList[0].driveMotorT}}</td>
+									<td>{{i.driveMotorList[0].motorVoltage}}</td>
+									<td>{{i.driveMotorList[0].motorElectricity}}</td>
+									<td>{{i.driveMotorList[0].driveMotorTorque}}</td>
+
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="myPagelistBox">
+						<div ng-if="myPagelist5.totalCount>10" ui-pagination pg="myPagelist5"></div>
+					</div>
+				</div>
+			</div>
+			<!--故障统计-->
+			<div class="carDtalbox2_right" ng-show='activeTab==5'>
+				<!--中间内容头部-->
+				<div class="carDtalbox2top clearfix  carDtalTop2">
+					<div class="clearfix ml-xl mt-lg">
+						<fieldset class="RepairText_boxlist fl">
+							<div class="form-group ">
+								<div class="col-md-12 p0">
+									<label class="col-sm-4 LabelTextColor">故障等级</label>
+									<div class="col-sm-6 p0">
+										<select-block config="faultLevel_Config1" model='selectLevel' class="borderNone SelectBlock_width p0" select-change="selectChange_level(newModel)" />
+									</div>
+								</div>
+							</div>
+						</fieldset>
+						<div class="DateBox_list2 fl">
+							<input type="text" class="form-control date_icon fl color_blue" id="startTime6" ng-model="startTime6" readonly/>
+						</div>
+						<div class="Caleline fl"></div>
+						<div class="DateBox_list2 fl">
+							<input type="text" class="form-control date_icon fl color_blue" id="endTime6" ng-model="endTime6" readonly/>
+						</div>
+					</div>
+					<div class="carDetail_searchbtn carDetail_searchbtn1" ng-click="carDetails_searchbtn6()">
+						<button class="BgTransparent borderNone wt100 ht100">查询</button>
+					</div>
+					<div class="faultStatisticslist2 clearfix carDialogfault">
+						<fieldset class="RepairText_boxlist fl carDialogfault1">
+							<div class="form-group ">
+								<div class="col-md-12 p0">
+									<label class="col-sm-4 LabelTextColor">故障类型</label>
+									<div class="col-sm-6 p0">
+										<select-block config="faultType_Config1" model='serviceType' select-change="selectChange_type(newModel)" class="borderNone SelectBlock_width p0" />
+									</div>
+								</div>
+							</div>
+						</fieldset>
+					</div>
+				</div>
+				<!--中间内容部分-->
+				<div class="faultStatisticsCenter RepairTable_list mg_auto">
+					<div class="faultStatistBtn">
+						<div class="AddBtn_boxlist faultStatistBtn1 fl" ng-click='faultStatistBtn_btn1()'>
+							<button class="borderNone BgTransparent font-center">故障占比</button>
+						</div>
+						<div class="AddBtn_boxlist faultStatistBtn2 fl" ng-click='faultStatistBtn_btn2()'>
+							<button class="borderNone BgTransparent font-center">故障频率</button>
+						</div>
+					</div>
+					<div class="RepairTable_list_center faultStatistTr faultStatistTr1">
+						<table class="table Table_trlist">
+							<thead class="thead_bg">
+								<tr>
+									<th class="Service_operationWidth Repair_tabfirth CharTd1">
+										<span class="thfir_text">车牌号</span>
+									</th>
+									<th class="Repair_theadth2">故障类型</th>
+									<th>故障等级</th>
+									<th>故障发生时间</th>
+									<th>故障名称</th>
+								</tr>
+							</thead>
+							<tbody class="Tr_hoverlist">
+								<tr ng-repeat='i in faultStatisticsdata1' ng-class="{active:activeIndex==$index}" ng-click="changeIndex($index)" class="{{ $even ? 'BackColor1even': 'BackColor1odd'}} ">
+									<td>{{i.licenseNumber}}</td>
+									<td>{{i.faulType}}</td>
+									<td>{{i.alarmLevel}}</td>
+									<td>{{i.starTime | date:'yyyy-MM-dd'}}</td>
+									<td>{{i.alarmName}}</td>
+
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="myPagelistBox">
+						<div ng-if="myPagelist.totalCount>10" ui-pagination pg="myPagelist"></div>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	
+	function getDay(format){
+		//	年月日
+		var start = {
+			format: format,
+			isinitVal: true,
+			festival: false,
+			ishmsVal: false,
+			maxDate: $.nowDate({
+				DD: 0
+			}), //最大日期
+			choosefun: function(elem, datas) {
+				console.log(datas);
+				var maxDay;
+				var month = new Date(datas).getMonth();
+				var day1 = new Date(datas).setMonth(month + 1);
+				var today = Date.parse(new Date());
+				if(day1 > today) {
+					maxDay = today;
+				} else {
+					maxDay = day1;
+				}
+				end.minDate = datas; //开始日选好后，重置结束日的最小日期
+				end.maxDate = $.nowDate2(maxDay);
+				endDates();
+			}
+		};
+	
+		var end = {
+			format: format, 
+			isinitVal: true,
+			festival: false,
+			ishmsVal: false,
+			maxDate: $.nowDate({
+				DD: 0
+			}), //最大日期
+			choosefun: function(elem, datas) {
+				//选中之后的回调函数
+				start.maxDate = datas; //将结束日的初始值设定为开始日的最大日期
+				var month = new Date(datas).getMonth();
+				var day1 = new Date(datas).setMonth(month - 1);
+				start.minDate = $.nowDate2(day1);
+			}
+		};
+		
+		//这里是日期联动的关键        
+		function endDates() {
+			//将结束日期的事件改成 false 即可
+			end.trigger = false;
+		}
+		return [start,end];
+	}
+
+	var dayt3=getDay('YYYY-MM-DD');
+	$.jeDate('#startTime3', dayt3[0]);
+	$.jeDate('#endTime3', dayt3[1]);
+	
+	var dayt6=getDay('YYYY-MM-DD');
+	$.jeDate('#startTime6', dayt6[0]);
+	$.jeDate('#endTime6', dayt6[1]);
+
+	
+	var dayt1=getDay('YYYY-MM-DD hh:mm');
+	$.jeDate('#startTime1', dayt1[0]);
+	$.jeDate('#endTime1',  dayt1[1]);
+	
+	var dayt2=getDay('YYYY-MM-DD hh:mm');
+	$.jeDate('#startTime2', dayt2[0]);
+	$.jeDate('#endTime2', dayt2[1]);
+	
+	var dayt4=getDay('YYYY-MM-DD hh:mm');
+	$.jeDate('#startTime4', dayt4[0]);
+	$.jeDate('#endTime4', dayt4[1]);
+	
+	var dayt5=getDay('YYYY-MM-DD hh:mm');
+	$.jeDate('#startTime5', dayt5[0]);
+	$.jeDate('#endTime5', dayt5[0]);
+
+</script>

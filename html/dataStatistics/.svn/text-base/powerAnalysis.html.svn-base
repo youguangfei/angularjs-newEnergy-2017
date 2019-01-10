@@ -1,0 +1,126 @@
+<!--电耗分析页面-->
+<div class="powerAnalysisBox dataTopposition">
+	<!--头部-->
+	<div class="powerAnalysisTop RepairTop_box1">
+		<div class="potentialHeaderlist displayFlex">
+			<fieldset class="RepairText_boxlist fl fildedsetAfter cm-positive clearfix">
+				<div class="p0 Repari_carNum1 fl">
+					<select-block config="vin_Config" model='selectVin' class="borderNone SelectBlock_width p0 Repai_carWidth"/>
+				</div>
+				<input type="text" class="Repari_carNumInput fr borderNone BgTransparent font-large InputColor" placeholder="请输入搜索的数据" ng-model="selectVin_value" id="selectVin_value"/>
+			</fieldset>
+			<div class="clearfix Chargingcale">
+				<div class="fl Chargingcale1">
+					<lable class="fl text-center LabelTextColor Repair_lineHeight pl LabelTextAfter font-large">开始时间</lable>
+					<div class="pl fr DateWidth_repair">
+						<input type="text" class="form-control date_icon fr color_blue ChargingTextAfter" id="startTime" ng-model="startTime1" readonly/>
+					</div>
+				</div>
+				<div class="Caleline fl Caleline1"></div>
+				<div class="fl Chargingcale1">
+					<lable class='fl text-center LabelTextColor Repair_lineHeight pl LabelTextAfter font-large'>结束时间</lable>
+					<div class="pl fr DateWidth_repair">
+						<input type="text" class="form-control date_icon fr color_blue ChargingTextAfter" id="endTime" ng-model="endTime1" readonly/>
+					</div>
+				</div>
+			</div>
+			<button class="fl borderNone BgTransparent charging_search1" ng-click='powerAnalydata()'>查询</button>
+		</div>
+	</div>
+	<!--中间内容-->
+	
+	<div class="powerAnalysisCenter RepairTable_list1">
+		<div class="AddBtn_boxlist powerAnalysisBtn" ng-click='powerAnalysisBtn()'>
+			<button class="borderNone BgTransparent font-center">电耗走势图</button>
+		</div>
+		<div class="RepairTable_list_center powerAnalysisCenterTR">
+			<table class="table Table_trlist">
+				<thead class="thead_bg">
+					<tr>
+						<th class="Service_operationWidth Repair_tabfirth CharTd1">
+							<span class="thfir_text">电耗</span>
+						</th>
+						<th class="Repair_theadth2">百公里电耗</th>
+						<th>行驶里程</th>
+						<th>SOC开始值</th>
+						<th>SOC结束值</th>
+						<th>开始时间</th>
+						<th>结束时间</th>
+						<th>行驶时间</th>
+						<th>行驶轨迹</th>
+					</tr>
+				</thead>
+				<tbody class="Tr_hoverlist">
+					<tr ng-repeat='i in powerAnalysis' ng-class="{active:activeIndex==$index}" ng-click="changeIndex($index)" class="{{ $even ? 'BackColor1even': 'BackColor1odd'}} ">
+						<td>{{i.consumption}}</td>
+						<td>{{i.hundredConsumption}}</td>
+						<td>{{i.mileage}}</td>
+						<td>{{i.socBefore}}%</td>
+						<td>{{i.socAfter}}%</td>
+						<td>{{i.startTime | date:'yyyy-MM-dd HH:mm'}}</td>
+						<td>{{i.endTime | date:'yyyy-MM-dd HH:mm'}}</td>
+						<td>{{i.runtime}}</td>
+						<td>
+							<a href="#" ng-click='LookpowerAnalymap(i.runTrack)' ng-click='powerAnalymap()' class="ServiceMap_textColor">查看</a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<!--分页-->
+		<div class="myPagelistBox">
+			<div ng-if="myPagelist.totalCount>10" ui-pagination pg="myPagelist"></div>
+		</div>
+		</div>
+</div>
+<script type="text/javascript">
+	
+	var start = {
+		format: 'YYYY-MM-DD hh:mm',
+		isinitVal: true,
+		festival: false,
+		ishmsVal: false,
+		maxDate: $.nowDate({ DD: 0 }), //最大日期
+		choosefun: function(elem, datas) {
+			console.log(datas);
+			var maxDay;
+			var month=new Date(datas).getMonth();
+			var day1=new Date(datas).setMonth(month+1);
+			var today=Date.parse(new Date());
+			
+			if(day1>today){
+				maxDay=today;
+			}else{
+				maxDay=day1;
+			}
+			end.minDate = datas; //开始日选好后，重置结束日的最小日期
+			end.maxDate=$.nowDate2(maxDay);
+			endDates();
+		}
+	};
+	var end = {
+		format: 'YYYY-MM-DD hh:mm',
+//		initAddVal: [0],
+		isinitVal: true,
+		festival: false,
+		ishmsVal: false,
+		maxDate: $.nowDate({ DD: 0 }), //最大日期
+		choosefun: function(elem, datas) { //选中之后的回调函数
+			start.maxDate = datas; //将结束日的初始值设定为开始日的最大日期
+			var month=new Date(datas).getMonth();
+			var day1=new Date(datas).setMonth(month-1);
+			start.minDate=$.nowDate2(day1);
+		}
+	};
+	//这里是日期联动的关键        
+	function endDates() {
+		//将结束日期的事件改成 false 即可
+		end.trigger = false;
+	}
+	$.jeDate('#startTime', start);
+	$.jeDate('#endTime', end);
+
+	function initDate(startEnd) {
+		$.jeDate('#' + startEnd, { trigger: false, festival: true, isinitVal: true, ishmsVal: false, format: 'YYYY-MM-DD hh:mm:ss' })
+	}
+</script>

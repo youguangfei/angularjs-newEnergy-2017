@@ -1,0 +1,169 @@
+<style type="text/css">
+	.ngGrid div.ng-isolate-scope{
+		height: calc(100% - 50px);
+	}
+	.dialog .form-validate .nav-tabs{
+		width:8.5rem;
+	}
+	.nav.nav-tabs>li>a{
+		width: 1.5rem;
+		text-align: center;
+		margin-right: 0;
+	}
+	.nav.nav-tabs>li:nth-child(2)>a{
+		width: 2.92rem;
+	}
+	.nav.nav-tabs>li:nth-child(3)>a{
+		width: 2.51rem;
+	}
+	.dialog .form-validate .tab-content{
+		padding:0.15rem;
+	}
+	.window .form-validate .mileageInputBox  .form-control {
+		border: none;
+		background: none;
+		line-height: 0.45rem;
+	}
+	.mileageMDtable caption{
+		text-align: center;
+		color: #2e93fb;
+	}
+</style>
+<div class="window dialog wd-wide">
+    <div class="bg_default1 modal-header" id="ngdialogContent-header">
+    	<h4 class="modal-title text-center">{{form_title}}</h2>
+	</div>
+	<form name="myForm" class="form-validate">
+		
+		<div class="panel-body border_box border_box2" ng-if="batteryDialog">
+	      	<fieldset>
+	      		<div class="mileage_modelImg"></div>
+				<div class="form-group mileageInputBox">
+					<div class="row" style="padding: 0 30px;">
+						<div class="col-md-4">
+							<label class="col-sm-6 control-label text-right">电池状态 :</label>
+							<div class="col-sm-6">
+								<span class="form-control color_blue"> {{carBattery.state}}</span>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<label class="col-sm-6 control-label text-right">充电次数 :</label>
+							<div class="col-sm-6">
+								<span type="text" class="form-control color_blue"> {{carBattery.chargeNumber}}</span>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<label class="col-sm-6 control-label text-right">电压 :</label>
+							<div class="col-sm-6">
+								<span class="form-control color_blue"> {{carBattery.voltage}}</span>
+							</div>
+						</div>
+					</div>
+ 					
+ 					<div class="row" style="padding: 0 30px;">
+						<div class="col-md-4">
+							<label class="col-sm-6 control-label text-right">电流 :</label>
+							<div class="col-sm-6">
+								<span class="form-control color_blue"> {{carBattery.elecCurrent}}</span>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<label class="col-sm-6 control-label text-right">消耗率 :</label>
+							<div class="col-sm-6">
+								<span type="text" class="form-control color_blue"> {{carBattery.consoRate}}</span>
+							</div>
+						</div>
+					</div>
+ 					
+				</div>
+				<div class="ngGrid">
+					<table class="table table_collapse mileageMDtable" ng-model="carBattery.tdlist">
+						<caption>车辆充电详细列表</caption>
+						<thead>
+							<th>日期</th>
+							<th>充电时间</th>
+							<th>SOC初始百分比</th>
+							<th>SOC结束百分比</th>	
+						</thead>
+						<tbody>
+							<tr ng-repeat="tdate in carBattery.tdlist">
+								<td class="td_color font-small">{{tdate.name1}}</td>
+								<td class="td_color font-small">{{tdate.name2}}</td>
+								<td class="td_color font-small">{{tdate.name3}}</td>
+								<td class="td_color font-small">{{tdate.name4}}</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+	      	
+	      	</fieldset>
+			
+		</div>
+		
+		<div class="panel-body border_box border_box2" ng-if="mileageDialog">
+	      	<fieldset>
+	      		<div class="mileage_modelImg"></div>
+				<div class="form-group mileageInputBox">
+					<div class="row" style="padding: 0 30px;">
+						<div class="col-md-4">
+							<label class="col-sm-6 control-label text-right">行驶里程 :</label>
+							<div class="col-sm-6">
+								<span class="form-control color_blue"> {{carMileage.distance}}</span>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<label class="col-sm-6 control-label text-right">平均车速 :</label>
+							<div class="col-sm-6">
+								<span type="text" class="form-control color_blue"> {{carMileage.averageSpeed}}</span>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<label class="col-sm-6 control-label text-right">当前电量 :</label>
+							<div class="col-sm-6">
+								<span class="form-control color_blue"> {{carMileage.currentElectricity}}</span>
+							</div>
+						</div>
+					</div>
+ 					
+				</div>
+				<div class="ngGrid">
+					<table class="table table_collapse mileageMDtable" ng-model="carMileage.tdlist">
+						<caption>行驶里程详细列表</caption>
+						<thead>
+							<th>非充电状态行驶里程(km)</th>
+							<th>平均车速(km/h)</th>
+							<th>SOC平均百分比</th>	
+						</thead>
+						<tbody>
+							<tr ng-repeat="tdate in carMileage.tdlist">
+								<td class="td_color font-small">{{tdate.name1}}</td>
+								<td class="td_color font-small">{{tdate.name2}}</td>
+								<td class="td_color font-small">{{tdate.name3}}</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+	      	
+	      	</fieldset>
+			
+		</div>
+		
+		
+		<div class="panel-footer h60">
+			<div class="col-md-6">
+				<label class="col-sm-3 control-label text-right"></label>
+				<div class="col-sm-7">
+					<button class="save fl" ng-disabled="myForm.$invalid" >提交</button>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<label class="col-sm-3 control-label text-right"></label>
+				<div class="col-sm-9">
+					<a class="cancel" ng-click="goBack()">取消</a>
+				</div>
+			</div>
+		</div>
+  	</form>
+</div>
+
+

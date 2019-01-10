@@ -1,0 +1,2715 @@
+/*统一样式*/
+/*复用text-overflow*/
+.TextOverflow {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	-o-text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.Repari_carNum1 .selectblock input {
+	color: #2ceef0;
+	text-align: center;
+	padding: 0;
+	padding-right: 0.1rem;
+}
+.Repari_carNum1 .selectblock .select-header{
+	width: 1.3rem;
+}
+input{
+	font-size: 0.18rem;
+	color: #ffffff;
+	height: 100%;
+}
+/*去掉ie浏览器中输入框后面x*/
+input::-ms-clear, ::-ms-reveal{
+	display: none;
+}
+textarea {
+	resize: none;
+}
+/*placeholder颜色值*/
+input::-webkit-input-placeholder {
+	color: #16595a !important;
+}
+/*通用按钮背景图*/
+.AddBtn_boxlist,.Repair_delete{
+	width: 1.46rem;
+	height: 0.51rem;
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	background-color: transparent;
+	border: none;
+	text-align: center;
+	line-height: 0.51rem;
+	font-size: 0.18rem;
+	cursor: pointer;
+}
+.AddBtn_boxlist{
+	background-image: url(../images/img1/RepairAdd_btn143x51.png);
+}
+.Repair_delete{
+	background-image: url(../images/img1/Repair-delete1.png);
+}
+.ngdialog .AddBtn_boxlist{
+	position: absolute;
+	width: 1rem;
+	height: 0.41rem;
+	line-height: 0.4rem;
+	left: 50%;
+	transform: translate(-50%, 0);
+	-webkit-transform: translate(-50%, 0);
+	-moz-transform: translate(-50%, 0);
+	bottom: 0.4rem;
+}
+.confirm_dialog .AddBtn_boxlist,.powerAnalysis_dialog .AddBtn_boxlist{
+	position: static;
+	transform: translate(0, 0);
+	-webkit-transform: translate(0, 0);
+	-moz-transform: translate(0, 0);
+}
+/*车辆详情 可充电储能装置 驱动电机button*/
+.carInfo_subAd{
+	width:7rem;
+	height: 0.44rem;
+	line-height: 0.44rem;
+	text-align: center;
+	margin: 0.2rem auto 0;
+}
+.carInfo_subAd button{
+	margin-left: 0.3rem;
+}
+.carInfo_box3Title{
+	width: 7.4rem;
+	height: 0.8rem;
+	line-height: 0.8rem;
+	margin: 0 auto;
+	overflow: hidden;
+	text-align: center;
+}
+.carInfo_box3Title button{
+	margin-left: 0.62rem;
+}
+.Modify_CancelBtn {
+	background-image: url(../images/img1/RepairAdd_btn1Cancel.png);
+	color: #1eaab9;
+	margin-left: 1.55rem;
+}
+.indexright_cont label {
+	font-size: 0.14rem;
+}
+/*display:flex兼容性*/
+.displayFlex {
+	display: -webkit-box;  
+    display: -moz-box;     
+    display: -ms-flexbox; 
+    display: -webkit-flex; 
+    display: flex;        
+}
+.flex1{  
+    -webkit-box-flex: 1;   
+    -moz-box-flex: 1;             
+    -webkit-flex: 1;      
+    -ms-flex: 1 ;          
+    flex: 1;              
+}
+.breakWord{
+	word-wrap: break-word;
+    word-break: break-all;
+}
+/*圆角0.05rem*/
+.border_radiusAll05 {
+	border-radius: 0.05rem;
+}
+/*tr hover的颜色*/
+.Tr_hoverlist tr:hover {
+	background: #077879 !important;
+	opacity: 52%;
+}
+/*按钮颜色*/
+.Btn_colorGreen {
+	background: #176466;
+}
+/*背景透明*/
+.BgTransparent {
+	background: transparent;
+}
+/*label字体颜色*/
+.LabelTextColor {
+	color: #2ceef0 !important;
+}
+.commonColor1 {
+	color: #2ceef0 !important;
+}
+/*字体大小*/
+.Font_size12 {
+	font-size: 0.12rem;
+}
+/*服务网点新建按钮位置*/
+.Service_Addposition {
+	position: absolute;
+	right: 0.5rem;
+	top: 0.3rem;
+}
+.Service_btnMl {
+	margin-left: 0.39rem;
+}
+.ngdialog_setLocation1.ngdialog .ngdialog-content{
+	width: 16rem;
+	height: 8rem;
+}
+.ngdialog_setLocation1 .suggestInput{
+	width: 3rem;
+	height: 0.42rem;
+	z-index: 999;
+	border: 1px solid #137178;
+	/*color: #fff;*/
+	background: none;
+	margin-left: 0.5rem;
+	margin-top: 0.1rem;
+	background: #032323;
+}
+.ngdialog_setLocation1 .ngdialog-close:before{
+	width: 0.43rem;
+	font-size: 0.45rem;
+}
+/*单独的lable宽度*/
+.labelWidth {
+	width: 1.4rem !important;
+}
+/*维修管理新建按钮位置*/
+.Repair_Adddposition {
+	position: absolute;
+	right: 0.3rem;
+	top: 0.33rem;
+}
+.topBox1 .selectblock input::-webkit-input-placeholder {
+	color: #FFFFFF;
+}
+/*服务网点和维修管理代码*/
+/*几个大的背景图*/
+.RepairTop_box {
+	position: relative;
+	width: 15.5rem;
+	height: 1.45rem;
+	background: url(../images/img1/ManagementBox1515x188.png) no-repeat;
+	background-size: 100% 100%;
+}
+.RepairText_boxlist3 {
+	height: 0.85rem;
+	padding-bottom: 0.05rem;
+}
+.userName1 {
+	color: #2ceef0;
+	margin-top: -0.08rem;
+}
+.Repari_carNum1 .selectblock  .select-header:after {
+	left: 1.15rem;
+}
+.RepairTop_box1 {
+	position: relative;
+	width: 15.5rem;
+	height: 1.04rem;
+	background: url(../images/img1/ManagementBox1515x188.png) no-repeat;
+	background-size: 100% 100%;
+}
+.RepairTable_list1 {
+	position: relative;
+	width: 15.5rem;
+	height: 6.8rem;
+	background: url(../images/img1/service_Box.png) no-repeat;
+	background-size: 100% 100%;
+	overflow: hidden;
+	z-index: 300;
+	padding: 0 0.1rem;
+	margin-top: 0.1rem;
+}
+.Table_trlist .thead_bg  th {
+	position: relative;
+	height: 0.5rem;
+	line-height: 0.5rem;
+	background: url(../images/img1/thead_bg1.png);
+	background-repeat: repeat-x;
+	background-size:0.08rem 100%;
+	border-right: none;
+	overflow: hidden;
+}
+.Table_trlist .thead_bg  th:after,.Table_trlist .thead_bg .Repair_theadth2:before{
+	content: "";
+	position: absolute;
+	top: 50%;
+	width: 0.02rem;
+	height: 0.38rem;
+	background-color: #0f7c7f;
+	transform: translate(0, -50%);
+	transform: -webkit-translate(0, -50%);
+	transform: -moz-translate(0, -50%);
+}
+.Table_trlist .thead_bg  th:after{
+	right: 0px; 
+}
+.Table_trlist .thead_bg .Repair_theadth2:before{
+	width: 0.03rem;
+	left: 0px; 
+}
+.Table_trlist .thead_bg .Repair_tabfirth {
+	background: none;
+}
+.Table_trlist .thead_bg .Repair_tabfirth:before {
+	content: "";
+	position: absolute;
+	width: 0.3rem;
+	height: 100%;
+	left: 0;
+	top: 0;
+	background: url(../images/img1/thead_thfirstl.png) no-repeat;
+	background-size: 100% 100%;
+}
+.Table_trlist .thead_bg .Repair_tabfirth:after {
+	content: "";
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	left: 0.3rem;
+	top: 0;
+	background: url(../images/img1/thead_bg1.png) 0px 0px;
+	background-repeat: repeat-x ;
+	background-size: 100% 100%;
+	transform: translate(0, 0);
+	-webkit-transform: translate(0, 0);
+	-moz-ttransform: ranslate(0, 0);
+}
+.Repair_tabfirth .thfir_text{
+	position: relative;
+	text-align: center;
+	transform: translate(0, 0);
+	transform: -webkit-translate(0, 0);
+	transform: -moz-translate(0, 0);
+	z-index: 10;
+}
+.RepairTable_list_top {
+	position: relative;
+	width: 100%;
+	height: 0.89rem;
+}
+.RepairTable_list_center {
+	width: calc(100% - 0.3rem);
+	width: -webkit-calc(100% - 0.3rem);
+	width: -moz-calc(100% - 0.3rem);
+	width: -o-calc(100% - 0.3rem);
+	height: calc(100% - 1.4rem);
+	height: -webkit-calc(100% - 1.4rem);
+	height: -moz-calc(100% - 1.4rem);
+	height: -o-calc(100% - 1.4rem);
+	overflow-y: hidden;
+	overflow-x: scroll;
+	margin-left: 0.25rem;
+}
+.RepairTable_list_center::-webkit-scrollbar-track-piece {
+	background-color: palegoldenrod;
+}
+.RepairTable_list_center::-webkit-scrollbar-track-piece:horizontal {
+	margin-right: 0.37rem;
+	background-color: transparent;
+	-webkit-border-radius: 6px;
+}
+.RepairTable_list_center::-webkit-scrollbar-thumb {
+	height: 0.14rem;
+	background: url(../images/img1/repair_scroll_bar.png) no-repeat;
+	background-size: 100% 100%;
+	filter: alpha(opacity=50);
+	-moz-opacity: 0.5;
+	opacity: 0.5;
+}
+.RepairTable_list {
+	position: relative;
+}
+.AddBtn_boxlist img {
+	width: 0.16rem;
+	margin-top: 0.18rem;
+}
+.RepairTop_boxlist1 {
+	padding-top: 0.3rem;
+	padding-left: 0.3rem;
+	margin-bottom: 0rem;
+}
+.RepairTop_boxlist2 {
+	margin-top: 0rem !important;
+	padding: 0.1rem 0rem;
+}
+.RepairBtn_search1 {
+	position: absolute;
+	right: 0.45rem;
+	top: 0.1rem;
+	font-size: 0.2rem;
+	width: 0.9rem;
+	height: 0.9rem;
+}
+.RepairText_boxlist .blue .select-header {
+	border: none;
+}
+.Repair_lineHeight {
+	line-height: 0.4rem;
+}
+.RepairModify_btn {
+	display: inline-block;
+	width: 0.54rem;
+	height: 0.28rem;
+	border-radius: 0.05rem;
+	text-align: center;
+	line-height: 0.28rem;
+	font-size: 0.18rem;
+	padding: 0;
+}
+.RepairModify_btn a {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+.table thead tr th {
+	border-right: 2px solid #0f7c7f;
+	vertical-align: middle;
+	width: 2.6rem;
+}
+/*隔行换色*/
+.BackColor1odd {
+	background: #084045;
+}
+.PagingData_list {
+	position: absolute;
+	bottom: 0rem;
+	left: 34%;
+}
+.RepairNumber_pagetion {
+	width: 2.8rem;
+	height: 0.37rem;
+	line-height: 0.37rem;
+	background: url(../images/img1/Number247x37.png) no-repeat;
+	background-size: 100% 100%;
+	margin: 0 0.1rem;
+	font-size: 0.2rem;
+}
+.RepairPrev_pagetion {
+	width: 1.1rem;
+	height: 0.37rem;
+	background: url(../images/img1/back110x37.png) no-repeat;
+	background-size: 100% 100%;
+	line-height: 0.24rem;
+}
+.pagetion_btn1{
+	margin-left: 0.2rem;
+}
+.pagetion_btn2{
+	margin-left: 0.1rem;
+}
+.RepairNext_pagetion {
+	width: 1.1rem;
+	height: 0.37rem;
+	background: url(../images/img1/next110x37.png) no-repeat;
+	background-size: 100% 100%;
+	line-height: 0.24rem;
+	padding-left: 0.04rem;
+}
+.RepairNext_pagetion button {
+	padding-left: 0.03rem;
+	text-align: left;
+}
+.Repairpagetion_btn {
+	font-size: 0.16rem;
+	text-align: center;
+	margin: 0;
+}
+.RepairTable_list_center .table>tbody>tr:hover,
+.RepairTable_list_center .table>tbody>tr:focus,
+.RepairTable_list_center .table>tbody>tr.active {
+	height: 0.44rem;
+	border-right: none;
+	border-left: none;
+	cursor: pointer;
+	box-sizing: border-box;
+	background: #077879;
+}
+/*维修管理弹窗*/
+.RepairAdd_Popup {
+	position: relative;
+	width: 4.09rem;
+	background: url(../images/img1/RepairAdd_warranty-409x641.png);
+	background-size: 100% 100%;
+	padding: 0.5rem 0.3rem 0;
+}
+.form-validate .customerAdd_Popup .AddBtn_boxlist {
+	bottom: 0.8rem;
+}
+.RepairAdd_Popup1 {
+	padding: 0.5rem 0.5rem;
+	height: 7rem;
+}
+/*修改密码,重置密码*/
+.Modifypwd_Popup,.ForgetPwd_popup,.FresetPwd_popup{
+	width: 5.15rem;
+	height: 4.19rem;
+	background: url(../images/img1/pwd_modify.png);
+	background-size: 100% 100%;
+}
+.Modifypwd_Popup{
+	padding: 0.6rem 0 0 0.6rem;
+}
+.ForgetPwd_popup{
+	padding: 0.8rem 0 0 0.6rem;
+}
+.FresetPwd_popup{
+	padding: 0.8rem 0 0 0rem;
+}
+.ForgetPwd_popup .RepairText_boxlist{
+	border: none;
+	width: 3.9rem;
+}
+.ForgetPwd_popup .RepairText_boxlist input{
+	border: 1px solid #18898a;
+	padding-left: 0.13rem;
+	height: 0.4rem;
+	border-radius: 0.02rem;
+}
+.RepairText_fgtPwd2 input,.RepairText_fgtPwd3 input{
+	width:2.7rem;
+}
+.ForgetPwd_popup .captchaImg,.get_Shmsg{
+	width: 1.15rem;
+	height: 0.4rem;
+}
+.get_Shmsg{
+	background: rgba(43,235,237,0.27);
+	font-size: 12px;
+}
+.FresetPwd_popup .Freset_Tlist{
+	margin: 0 auto 0.3rem;
+}
+.FresetPwd_popup form .Modify_passworld1{
+	left: 2.4rem;
+}
+.ngdialog-content {
+	background: none;
+}
+/*customerAdd_Popup*/
+.customerAdd_Popup .form-validate .AddBtn_boxlist {
+	bottom: 0.55rem;
+}
+.Repai_Address {
+	margin-top: 0.3rem;
+}
+/*维修管理新建按钮弹窗*/
+.RepairText_boxlist1 {
+	width: 3.05rem;
+	height: 0.85rem;
+	background: url(../images/img1/box1305x40.png) no-repeat;
+	background-size: 100% 100%;
+	margin-right: 0.4rem;
+	margin-left: 0;
+	padding-bottom: 0.05rem;
+}
+.RepairText_boxlist1 label {
+	line-height: 0.8rem;
+	padding-left: 0.3rem;
+}
+.RepairText_boxlist1 span {
+	font-size: 0.4rem;
+}
+.Repair_title1 {
+	position: absolute;
+	top: 0;
+	left: 46%;
+}
+.Repair_title2 {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	text-align: center;
+}
+.dialog .mlong_insbox {
+	margin-left: 0.57rem;
+}
+.mlong_title {
+	width: 51%;
+	margin: 0 auto;
+	height: 0.6rem;
+	padding-top: 0.2rem;
+	text-align: center;
+}
+/*维修管理详情页弹框*/
+.Repair_Detpage {
+	position: absolute;
+	top: 0.96rem;
+	left: 50%;
+	transform: translate(-50%, 0);
+	-webkit-transform: translate(-50%, 0);
+	-moz-transform: translate(-50%, 0);
+	width: 17.16rem;
+	height: 7.85rem;
+	background: url(../images/img1/repair_open_bg1.png) no-repeat;
+	background-size: 100% 100%;
+}
+/*placeholder颜色值*/
+.Repair_Detpage input::-webkit-input-placeholder {
+	color: #ffffff;
+}
+.Repair_modifycontnet1 li {
+	padding: 0.01rem 0.1rem;
+	font-size: 0.14rem;
+}
+.Repair_modifycontnetBox {
+	width: 12.2rem;
+	height: 4.8rem;
+	clear: both;
+	margin: 0 auto;
+}
+.modify_selectBox.selectblock .select-content li {
+	width: 3.3rem;
+}
+.Repair_modifycontnetBox .Repair_modifycontnet1 {
+	width: 100%;
+	height: 100%;
+	flex-direction: column;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	margin-top: 0.3rem;
+}
+.ml_08 {
+	margin-left: 0.8rem;
+}
+/*修改保修单按钮*/
+/*保存保修单按钮*/
+.Repair_Detpage .Repair_save {
+	width: 1.5rem;
+	height: 0.45rem;
+	text-align: center;
+	line-height: 0.45rem;
+	margin: 0 auto;
+}
+.Repair_save1,
+.Repair_save2 {
+	position: absolute;
+	width: 6rem;
+	text-align: center;
+	left: 50%;
+	transform: translate(-50%, 0);
+	-webkit-transform: translate(-50%, 0);
+	-moz-transform: translate(-50%, 0);
+}
+.Repair_save1 {
+	bottom: 1.5rem;
+}
+.Repair_save2 {
+	bottom: 0.8rem;
+}
+.textareavertical {
+	vertical-align: top;
+}
+.Repair_Detpage_closeBtn {
+	position: absolute;
+	top: 0.24rem;
+	right: 0.61rem;
+	width: 0.28rem;
+	height: 0.28rem;
+	background: url(../images/img1/repair_open_close.png) no-repeat;
+	background-size: 100% 100%;
+}
+.Repair_modifydelete {
+	width: 3.6rem;
+	margin: 0 auto;
+	overflow: hidden;
+}
+.Repair_modifydelete .Repair_delete {
+	margin-left: 0.45rem;
+}
+.Repair_cartitleContent {
+	width: 10.86rem;
+	height: 0.44rem;
+	background: url(../images/img1/Reapir_modifytop1086x44.png) no-repeat;
+	background-size: 100% 100%;
+	text-align: center;
+	margin: 0 auto;
+	line-height: 0.44rem;
+}
+.Repair_cartitleContent1 {
+	padding-left: 1.35rem;
+}
+.Repair_cartitle {
+	width: 4.2rem;
+	height: 0.9rem;
+	margin: 0 auto 0.1rem;
+	line-height: 0.9rem;
+	text-align: center;
+	font-size: 0.24rem;
+}
+.RepariVertical_line {
+	width: 1px;
+	height: 0.6rem;
+	background: url(../images/img1/1x66shuxian.png) no-repeat;
+	margin-top: 0.1rem;
+	margin-left: 0.1rem;
+}
+.serviceAll_select {
+	margin-top: 0;
+}
+.serviceName_select {
+	margin-top: 0.05rem;
+}
+.Repair_Formverification span {
+	width: 1.4rem;
+}
+.Repair_Formverification span:nth-of-type(2) {
+	position: absolute;
+	left: 0.16rem;
+	top: 0rem;
+	font-size: 0.3rem;
+}
+.RepairAdd_PopupWidth {
+	width: 5.5rem;
+}
+.modify_carnumber {
+	width: 1.5rem;
+	height: 0.36rem;
+	line-height: 0.3rem;
+	border: 1px solid #1da5a9;
+	border-radius: 0.05rem;
+	margin-left: 0.1rem;
+	padding-left: 0.1rem;
+	margin-top: 0.04rem;
+}
+.modify_carnumber1{
+	width: 1.8rem;
+}
+/*分页数量页数*/
+.page_ul li {
+	position: relative;
+	display: inline-block;
+	cursor: pointer;
+	height: 90%;
+	padding: 0 0.1rem;
+}
+.page_ul li:after{
+	display: block;
+	content: '';
+	position: absolute;
+	right: 0;
+	top: 0.05rem;
+	width: 1px;
+	height: 0.3rem;
+	background: #1b96a0;
+}
+.page_ul li:last-of-type:after{
+	display: none;
+}
+.page_ul li.active {
+	color: #2ceef0;
+}
+.page_ul li:nth-last-child {
+	border-right: none !important;
+}
+.page_ul li:hover {
+	color: #2ceef0;
+}
+.pv-sm6 {
+	padding-top: 0.06rem;
+	padding-bottom: 0.06rem;
+}
+.Repair_Caleline {
+	width: 0.28rem;
+	height: 0.03rem;
+	background: url(../images/img1/calelheng28x3.png) no-repeat;
+	background-size: 100% 100%;
+	margin-left: -0.32rem;
+	margin-top: 0.2rem;
+}
+/*修改保修单里面的select框*/
+.Repair_modifycontentList1 .selectblock .blue .select-header {
+	border: none;
+}
+.Repair_process .selectblock .blue .select-header {
+	border: none;
+	width: 1rem;
+	background: transparent;
+	margin-top: -0.05rem;
+}
+.Repair_process1 .selectblock .blue .select-header {
+	margin-top: -0.05rem;
+}
+.Repair_process1 {
+	width: 3.13rem;
+	height: 0.38rem;
+}
+.Repair_process {
+	border: 1px solid #1da5a9;
+	height: 0.35rem;
+	margin-left: 0.1rem;
+	margin-top: 0.04rem;
+}
+/*联系人头像*/
+.Contactavatar {
+	width: 0.35rem;
+	height: 0.35rem;
+	margin-top: -0.15rem;
+	margin-right: 0.1rem;
+}
+.linepadd {
+	color: #165478;
+	padding-right: 0.1rem;
+}
+.pullDown_btn {
+	position: relative;
+	width: 0.13rem;
+	height: 0.09rem;
+	margin-top: 0rem;
+	margin-left: 0.1rem;
+	background: url(../images/img1/pullDown_btn13x9.png) no-repeat;
+	background-size: 100% 100%;
+	cursor: pointer;
+}
+.SignoutBtn {
+	color: #FFFFFF;
+}
+.SignoutBtn:hover {
+	color: #196571;
+}
+/*查看地图颜色*/
+.ServiceMap_textColor {
+	color: #18c4d7;
+}
+/*鼠标滑过文字时的颜色*/
+.ServiceMap_textColor:hover {
+	color: #18d7b5;
+}
+.RepairText_boxlist {
+	width: 3.08rem;
+	height: 0.4rem;
+	border: 1px solid #18898a;
+	border-radius: 0.05rem;
+	margin-right: 0.4rem;
+	margin-left: 0;
+}
+.Modifypwd_Popup .RepairText_boxlist {
+	margin-left: 0.56rem;
+}
+.RepairText_boxlist .col-md-12 {
+	height: 100%;
+}
+.RepairText_boxlist label {
+	position: relative;
+	width: 1.35rem;
+	height: 0.38rem;
+	text-align: center;
+	line-height: 0.38rem;
+	font-size: 0.18rem;
+}
+.RepairText_boxlist label:after {
+	content: "";
+	position: absolute;
+	width: 1px;
+	height: 0.2rem;
+	top: 50%;
+	right: 1px;
+	background-color: #2ceef0;
+	transform: translate(0, -50%);
+	transform: -webkit-translate(0, -50%);
+	transform: -moz-translate(0, -50%);
+}
+.Labaddressafter:after {
+	height: 0.6rem !important;
+}
+.Requiredtext1 {
+	position: absolute;
+	left: 0.15rem;
+	top: -0.01rem;
+	font-size: 0.25rem;
+	color: red;
+}
+/*定位图标*/
+.Map_posicon {
+	width: 0.17rem;
+	height: 0.22rem;
+	background: url(../images/img1/map_position17x22.png) no-repeat;
+	background-size: 100% 100%;
+	margin-top: 0.05rem;
+	margin-right: 0.05rem;
+}
+.mapStation {
+	margin-top: 0.2rem;
+	margin-left: -0.1rem;
+}
+.LableAfter_first:after {
+	content: "";
+	position: absolute;
+	width: 1px;
+	height: 0.2rem;
+	top: 50%;
+	left: 0.3rem;
+	background-color: green;
+	transform: translate(0, -50%);
+	transform: -webkit-translate(0, -50%);
+	transform: -moz-translate(0, -50%);
+}
+.spanAfter_border:after {
+	content: "";
+	position: absolute;
+	width: 1px;
+	height: 0.2rem;
+	top: 50%;
+	left: 0.3rem;
+	background-color: green;
+	transform: translate(0, -50%);
+	transform: -webkit-translate(0, -50%);
+	transform: -moz-translate(0, -50%);
+}
+.Repaircar_inp {
+	position: absolute;
+	right: -0.01rem;
+	padding-left: 0.25rem;
+	padding-top: 0.04rem;
+	font-size: 0.18rem;
+}
+.Repari_carNum .Repaircar_inp {
+	padding-left: 0.15rem;
+	height: 0.36rem;
+	font-size: 0.18rem;
+}
+.SelectBlock_width {
+	width: 1.2rem;
+}
+.LabelWidth_list {
+	width: 1rem;
+}
+/*修改按钮删除按钮hover效果*/
+.RepairModify_btn:hover {
+	background: #31b8b9;
+}
+.Repari_typeselect .selectblock input {
+	padding-left: 0.15rem;
+}
+.DateBox_list:after {
+	content: "";
+	position: absolute;
+	width: 1px;
+	height: 0.36rem;
+	top: 50%;
+	left: 88%;
+	background-color: #2ceef0;
+	transform: translate(0, -50%);
+	transform: -webkit-translate(0, -50%);
+	transform: -moz-translate(0, -50%);
+}
+/*按钮禁止状态颜色*/
+button:disabled {
+	color: #ddd;
+}
+.Repair_status {
+	margin-left: 0rem;
+	margin-right: 0.8rem;
+}
+.Repair_status .selectblock input {
+	padding-left: 0.1rem;
+}
+.Repair_status .selectblock .blue .select-header:after {
+	left: 0.8rem;
+}
+.Repair_modifylist {
+	width: 3.3rem;
+	border: 1px solid #18898a;
+	border-radius: 0.05rem;
+	text-align: left;
+}
+.Repair_modifycontnet2_1 {
+	margin: 0.14rem 0 0.14rem 0.14rem;
+}
+.Repair_modifycontnet2_2 {
+	margin: 0.14rem 0 0.14rem 0.8rem;
+}
+.Repair_modifycontnet2 .LabelTextColor {
+	width: 1.8rem;
+	padding-right: 0.1rem;
+	line-height: 0.35rem;
+}
+.Repair_modifycontnet2 li {
+	display: flex;
+	display: -moz-flex;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	text-align: right;
+	margin-top: 0.1rem;
+	box-sizing: border-box;
+}
+.Reipair_fault .selectblock .select-header {
+	width: 3rem;
+}
+.Reipair_fault .selectblock input {
+	padding-left: 0.1rem;
+}
+.Reipair_fault .selectblock .select-header:after {
+	left: 2.8rem;
+}
+/*文本区域滚动条*/
+.textareaSroller::-webkit-scrollbar-track-piece:vertical {
+	width: 0.05rem;
+	height: 0.8rem;
+	background: url(../images/img1/repair_scroll_bar10x80.png) no-repeat;
+	background-size: 100% 100%;
+}
+.textareaSroller::-webkit-scrollbar-thumb:vertical {
+	height: 0.14rem;
+	background: url(../images/img1/repair_scroll_bar10x36.png) no-repeat;
+	background-size: 100% 100%;
+	filter: alpha(opacity=50);
+	-moz-opacity: 0.5;
+	opacity: 0.5,
+}
+/*车辆详情模块代码*/
+.carDtal {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	overflow-x: hidden;
+	background: #021213;
+}
+/*实时监控里面的车辆详情滚动条1*/
+.carDtal::-webkit-scrollbar-track-piece:vertical{
+	width: 0.1rem;
+	height: 0.8rem;
+	background: url(../images/img1/repair_scroll_bar10x80.png) no-repeat;
+	background-size: 100% 100%;
+}
+.carDtal::-webkit-scrollbar-thumb:vertical {
+	height: 0.14rem;
+	background: url(../images/img1/repair_scroll_bar10x36.png) no-repeat;
+	background-size: 100% 100%;
+	filter: alpha(opacity=50);
+	-moz-opacity: 0.5;
+	opacity: 0.5,
+}
+.carDtalbox1 {
+	width: 18.57rem;
+	height: 6.80rem;
+	background: url(../images/img1/Cardetails-1857x680.png) no-repeat;
+	background-size: 100% 100%;
+	margin: 0 auto;
+}
+.carDtalbox2 {
+	width: 18.53rem;
+	height: 11.57rem;
+	background: url(../images/img1/Carcontentlist_1853x1057.png) no-repeat;
+	background-size: 100% 100%;
+	margin: 0 auto;
+	overflow: hidden;
+}
+.carDtalbox2_list {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+.carDtalbox1_top {
+	width: 18.3rem;
+	height: 0.46rem;
+	background: url(../images/img1/cardetailstop_1837x46.png) no-repeat;
+	background-size: 100% 100%;
+	margin: 0 auto;
+	float: left;
+	margin-left: 0.14rem;
+	margin-top: 0.13rem;
+}
+.carDtalbox1_list1left {
+	width: 5.03rem;
+	height: 6rem;
+	background: url(../images/img1/Cardetailsslideleft-503x600.png) no-repeat;
+	background-size: 100% 100%;
+	margin-left: 0.15rem;
+	margin-top: 0.1rem;
+}
+.carDtalbox1_list1center {
+	position: relative;
+	width: 8.1rem;
+	height: 6.8rem;
+	background: url(../images/img1/Cardetailscenter-824x670.png) no-repeat;
+	background-size: 100% 100%;
+	margin-top: -0.58rem;
+	margin-left: 0.05rem;
+	margin-right: 0.05rem;
+}
+.carDtalbox1_list1right {
+	width: 5.03rem;
+	height: 6rem;
+	background: url(../images/img1/Cardetailsright_503x600.png) no-repeat;
+	background-size: 100% 100%;
+	margin-top: 0.1rem;
+	overflow: hidden;
+}
+.carDtalbox2_right{
+	position: absolute;
+	left: 2.04rem;
+	top: 0.2rem;
+}
+.carDtalbox2_left {
+	position: relative;
+	left: 0.1rem;
+	top: 0.2rem;
+	width: 1.86rem;
+	height: 4.91rem;
+	background: url(../images/img1/Carleft-186x491.png) no-repeat;
+	background-size: 100% 100%;
+}
+.carDtalbox2top {
+	position: relative;
+	width: 16.35rem;
+	height: 0.67rem;
+	background: url(../images/img1/Car-top1635x67.png) no-repeat;
+	background-size: 100% 100%;
+}
+.carDtalbox2center {
+	position: relative;
+	width: 16.33rem;
+	height: 10.53rem;
+	background: url(../images/img1/CarContent_1633x953.png) no-repeat;
+	background-size: 100% 100%;
+	margin-top: 0.1rem;
+}
+.carDtalbox1_logo {
+	width: 0.3rem;
+	height: 0.3rem;
+	background: url(../images/img1/Cardetailslogo-35x35.png) no-repeat;
+	background-size: 100% 100%;
+	margin-left: 0.1rem;
+	margin-top: 0.05rem;
+}
+.carDtalbox1_top h5 {
+	margin-top: 0.1rem;
+	margin-left: 0.1rem;
+}
+.carDtalbox1_list1left h6 {
+	margin-left: 1.9rem;
+	margin-top: 0.08rem;
+}
+.carDtalbox1_list1left ul li {
+	clear: both;
+	padding: 0.1rem 0rem;
+}
+.carDtalbox1_list1left ul {
+	padding: 0.3rem 0.4rem;
+}
+.carDtalcontent1 {
+	width: 2rem;
+	margin-top: 0.1rem;
+}
+.carDtalcontent2 {
+	width: 2rem;
+	margin-top: 0.1rem;
+}
+.carDtalcontent3 {
+	width: 100%;
+}
+.carDtal_lion {
+	position: absolute;
+	width: 0.56rem;
+	height: 0.54rem;
+	left: 0;
+	top: 0;
+	z-index: 300;
+}
+.carDtal_lion1 {
+	background: url(../images/img1/CardetalIcon3_56x54.png) no-repeat;
+	background-size: 100% 100%;
+}
+.carDtal_lion2 {
+	background: url(../images/img1/CardetalIcon156x54.png) no-repeat;
+	background-size: 100% 100%;
+}
+.carDtal_lion3 {
+	background: url(../images/img1/CardetalIcon5_56x54.png) no-repeat;
+	background-size: 100% 100%;
+}
+.carDtal_lion4 {
+	background: url(../images/img1/CardetalIcon4_56x54.png) no-repeat;
+	background-size: 100% 100%;
+}
+.carDtal_lion5 {
+	background: url(../images/img1/CardetalIcon256x54.png) no-repeat;
+	background-size: 100% 100%;
+}
+.carDtalbox1_list1right h6 {
+	margin-left: 1.9rem;
+	margin-top: 0.1rem;
+}
+.everydata {
+	margin-left: 0.2rem;
+}
+.carDtalbox1_list1right .carDtalbox_list {
+	margin-top: 0.2rem;
+}
+.carDtalbox_list .collapse {
+	max-height: 2.44rem;
+	overflow: auto;
+}
+.carDtalbox1_list1right .carDtal_list_every {
+	cursor: pointer;
+	color: #2ceef0;
+}
+.carDtal_list_title {
+	position: relative;
+	overflow: hidden;
+	padding: 0.1rem 0;
+	border-bottom: 1px solid #064446;
+	box-shadow: 0px 0px 7px #52eff5;
+}
+.Caleline {
+	width: 0.28rem;
+	height: 0.03rem;
+	background: url(../images/img1/calelheng28x3.png) no-repeat;
+	margin: 0.2rem 0.35rem;
+}
+.Caleline3 {
+	position: relative;
+	margin: 0.2rem 0.4rem;
+	margin-left: 0.05rem;
+}
+.Caleline3:after {
+	content: '';
+	width: 26px;
+	height: 3px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color: #2ceef0;
+}
+.carDtalbox2top .DateBox_list3 {
+	width: 3.3rem;
+}
+.carDtalbox2top .DateBox_list3 input {
+	width: 76%;
+	padding: 0;
+}
+/*维修管理详情时间*/
+.DateBox_list1 {
+	width: 2.8rem;
+	position: relative;
+}
+.DateBox_list1:after {
+	content: "";
+	position: absolute;
+	width: 1px;
+	height: 0.4rem;
+	top: 60%;
+	left: 96%;
+	background-color: #2ceef0;
+}
+/*维修管理详情,车辆详情，历史轨迹时间*/
+.DateBox_list2 {
+	position: relative;
+	width: 3.3rem;
+	height: 0.41rem;
+	border: 1px solid #18898a;
+	border-radius: 0.05rem;
+}
+.DateBox_list2 .form-control {
+	width: 97%;
+}
+/*历史轨迹时间*/
+.DateBox_list2:after,.DateBox_list3:after{
+	content: '';
+	position: absolute;
+	width: 1px;
+	height: 0.36rem;
+	top: 0;
+	background-color: #2ceef0;
+}
+.DateBox_list2:after{
+	right: 12%;
+}
+.DateBox_list3:after {
+	right: 15.4%;
+}
+.DateBox_list3 input.date_icon{
+	width: 2.38rem;
+}
+.DateBox_list3:before{
+	content: '';
+	position: absolute;
+	width: 1px;
+	height: 0.36rem;
+	top: 0;
+	left: 0.52rem;
+	background-color: #2ceef0;
+}
+.DateBox_list3 label{
+	margin-left: 0.042rem;
+}
+.carDtal_icon{
+	position: absolute;
+	right: 0.3rem;
+}
+.everydata1 {
+	margin-left: 0.2rem;
+}
+.everydata2 {
+	margin-left: 0.2rem;
+}
+/*查询按钮*/
+.carDetail_searchbtn {
+	position: absolute;
+    right: 0;
+    top: -0.014rem;
+	width: 2.29rem;
+	height: 0.67rem;
+	background: url(../images/img1/Car_search229x66.png) no-repeat;
+	background-size: 100% 100%;
+	cursor: pointer;
+}
+.carDetail_searchbtn button {
+	position: absolute;
+	left: 3%;
+}
+.carDtalbox2_left ul li {
+	position: relative;
+	width: 100%;
+	height: 0.5rem;
+	line-height: 0.5rem;
+	margin-bottom: 0.3rem;
+	text-align: center;
+	color: #1c8a8b;
+	cursor: pointer;
+}
+.carDtalbox2_left ul li:hover {
+	color: #2ee8dd;
+	/*background: #2ceef0;*/
+}
+.carDtalbox2_left ul li.active {
+	background: #0a3d3e;
+	color: #ffffff;
+}
+#Mainearchs,#Mainearchs1{
+	width: 16rem;
+	height: 5rem;
+	margin: 0 auto;
+	padding-top: 0.2rem;
+}
+.carDtalbox1_list1left p {
+	font-size: 0.18rem;
+}
+.carDtalbox1_list1left span {
+	font-size: 0.18rem;
+}
+.carDtalbox2_left ul li span {
+	position: relative;
+}
+.carDtalbox2_left ul li span:after {
+	content: '';
+	position: absolute;
+	width: 0.68rem;
+	height: 2px;
+	bottom: -0.25rem;
+	left: 10%;
+	background: #083333;
+	border: 1px solid #083333;
+}
+.carDtalbox2_left ul li:nth-of-type(3) span:after {
+	left: 23%;
+}
+.carDtalbox2_left ul li:nth-of-type(5) span:after {
+	left: 23%;
+}
+.carDtalbox2_left ul li:nth-of-type(6) span:after {
+	left: 23%;
+}
+.carDtal_lionBox{
+	width: 100%;
+	height: calc(100% - 0.7rem);
+	height: -webkit-calc(100% - 0.7rem);
+	height: -moz-calc(100% - 0.7rem);
+	margin-bottom: 0px;
+}
+.followtOrf {
+	width: 0.68rem;
+	height: 0.27rem;
+	background: #0a8081;
+	text-align: center;
+	line-height: 0.27rem;
+	color: #ffffff;
+	font-size: 0.12rem;
+	margin-top: 0.1rem;
+	cursor: pointer;
+}
+.carStatus1 {
+	width: 100% !important;
+}
+.carStatus1 div {
+	width: 1rem;
+}
+.carStatus1 div:nth-of-type(1) {
+	margin-right: 1rem;
+}
+.carDtalbox1_list1left ul {
+	position: relative;
+}
+.carDtalSpeed {
+	position: absolute;
+	right: -0.17rem;
+	top: 0.4rem;
+}
+/*车辆详情结束*/
+/*消息弹框*/
+.MessagePopups{
+	width: 4.09rem;
+	height: 2.55rem;
+}
+.MessagePopups{
+	background: url(../images/img1/Message409x251.png) no-repeat;
+	background-size: 100% 100%;
+}
+.MessagePopups h5 {
+	padding-top: 0.45rem;
+	text-align: center;
+}
+.MessagePopups p {
+	width: 3.5rem;
+	padding-top: 0.1rem;
+	margin: 0 auto;
+}
+.MessagesBox {
+	position: relative;
+	bottom: -0.12rem;
+	left: 0.5rem;
+	font-size: 0.18rem;
+}
+.MessagesBoxlist1 {
+	margin-right: 0.25rem;
+}
+/*消息弹框1*/
+.News_messagesbox {
+	width: 100%;
+	height: 100%;
+	background: url(../images/img1/Newmessages.png) no-repeat;
+	background-size: 100% 100%;
+	position: relative;
+}
+.News_messagesbox1 {
+	position: absolute;
+	left: 5%;
+	top: 13%;
+	text-align: center;
+}
+.Newstitle {
+	width: 1rem;
+	margin-top: 0.1rem;
+	margin-left: 8.2rem;
+}
+.tablecontnent1 {
+	margin-left: 0.4rem;
+	margin-top: 0.5rem;
+}
+.newsTrtop {
+	width: 16.52rem;
+	height: 0.52rem;
+	background: url(../images/img1/newsTrtop_1652x52.png) no-repeat;
+	background-size: 100% 100%;
+}
+.message_readColor {
+	color: #18c4d7;
+}
+.Everydatacars,.EverydatacarsH1{
+	margin-left: 0.3rem;
+	margin-top: 0.1rem;
+}
+.EverydatacarsH1 p span{
+	color: #2ceef0;
+}
+.Everydatacars li,.EverydatacarsH1 li{
+	padding: 0.05rem 0.05rem;
+}
+.Everydatacars li span,.EverydatacarsH1 li span{
+	padding-right: 0.1rem;
+	text-align: left;
+	font-size: 0.18rem;
+}
+.Everydatacars li p {
+	color: #ffffff;
+	font-size: 0.18rem;
+}
+.News_messagesbox .News_tableBox {
+	width: 16.5rem;
+	height: 5.3rem;
+	margin-left: 0.48rem;
+	margin-top: 0.4rem;
+}
+/*验证必填*/
+.Requiredtext {
+	color: red;
+	font-size: 0.25rem;
+	position: absolute;
+	left: 0.2rem;
+	top: 0;
+}
+.Requiredtext2 {
+	left: -0.23rem;
+}
+.Repair_boxwidth {
+	height: 1rem;
+}
+/*充电统计页面*/
+/*tr划过效果*/
+.Chargingpadd1 .table>tbody>tr.active {
+	background: #077879;
+}
+.ChargingHeaderlist {
+	position: relative;
+	left: 0.3rem;
+	top: 0.35rem;
+}
+.Chargingfooter .Chargingpadd table {
+	width: 98%;
+	margin-left: 0.1rem;
+}
+/*头部*/
+/*数据统计页面头部复用*/
+.datastatisticsTop {
+	width: 15.5rem;
+	height: 1rem;
+	background: url(../images/img1/Chargingtop1515x109.png) no-repeat;
+	background-size: 100% 100%;
+}
+/*中间*/
+.Chargingcontent {
+	width: 15.5rem;
+	height: 4.3rem;
+	background: url(../images/img1/Chargingcont1544x462.png) no-repeat;
+	background-size: 100% 100%;
+	z-index: 300;
+}
+.Chargingcontent1{
+	position: relative;
+}
+/*尾部*/
+.Chargingfooter {
+	position: absolute;
+	width: 15.6rem;
+	height: 2.8rem;
+	background: url(../images/img1/Chargingfoot1530x289.png) no-repeat;
+	background-size: 100% 100%;
+	margin-top: 0.15rem;
+}
+.Caleline1 {
+	margin: 0.2rem 0.35rem !important;
+}
+.Chargingpadd {
+	width: 15rem;
+	height: 2.4rem;
+	padding-top: 0.4rem;
+	margin-right: 0.01rem;
+}
+.Chargingpadd1 {
+	width: 98.5%;
+	height: 67%;
+	overflow-y: scroll;
+	margin-right: 0.01rem;
+}
+.Chargingpadd1 table tr td {
+	padding: 0.1rem 0;
+	text-align: center;
+	font-size: 0.12rem;
+}
+.chargingSta_search {
+	width: 0.8rem;
+	height: 0.8rem;
+	margin-top: -0.2rem;
+	font-size: 0.16rem;
+}
+.Chargingpadd .Table_trlist {
+	width: 14.7rem;
+}
+.Chargingcale .Chargingcale1 {
+	width: 3.4rem;
+	height: 0.4rem;
+	border: 1px solid #18898a;
+	border-radius: 0.05rem;
+}
+.Chargingcale {
+	width: 9rem;
+}
+.LabelTextAfter {
+	width: 1rem;
+	position: relative;
+}
+.LabelTextAfter1{
+	position: relative;
+	left: 0.25rem;
+}
+.LabelTextAfter:after {
+	content: '';
+	width: 1px;
+	height: 0.25rem;
+	position: absolute;
+	right: -0.08rem;
+	top: 20%;
+	background: #2ceef0;
+}
+.LabelTextAfter1:after{
+	content: '';
+	width: 1px;
+	height: 0.25rem;
+	position: absolute;
+	right: -0.18rem;
+	top: 20%;
+	background: #2ceef0;
+}
+.ChargingTextAfter {
+	position: relative;
+	width: 2.1rem;
+	margin-right: 0.15rem;
+}
+/*滚动条*/
+.Chargingpadd1::-webkit-scrollbar-track-piece:vertical {
+	width: 0.2rem;
+	height: 2rem;
+	background: url(../images/img1/14x138thumb.png) no-repeat;
+	background-size: 100% 100%s;
+}
+.Chargingpadd1::-webkit-scrollbar-thumb:vertical {
+	width: 0.2rem;
+	height: 1rem;
+	background: url(../images/img1/Charscroller14x78.png) no-repeat;
+	background-size: 100% 100%;
+	filter: alpha(opacity=50);
+	-moz-opacity: 0.5;
+	opacity: 0.5,
+}
+/*确认弹框*/
+.dialog.confirm_dialog1 {
+	width: 4.09rem;
+	height: 2.51rem;
+	background: url(../images/img1/confirmbtn_409x251.png) no-repeat;
+	background-size: 100% 100%;
+}
+.ngdialog.ngdialog-deleteCus .ngdialog-content{
+	top: 30%;
+}
+.AddBtn_boxlist1 {
+	display: inline-block;
+	width: 1.16rem;
+	height: 0.41rem;
+	line-height: 0.41rem;
+	text-align: center;
+}
+.confirmbtnmar {
+	margin-left: 0.6rem;
+}
+.Table_trlist .thead_bg .CharTd4 {
+	width: 1.2rem;
+}
+.Table_trlist .thead_bg .CharTd5 {
+	width: 1rem;
+}
+.Table_trlist .thead_bg .CharTd7 {
+	width: 4rem;
+}
+.Chargingpadd1 .Tr_hoverlist .charginglisttd1 {
+	width: 1.6rem;
+}
+.Chargingpadd1 .Tr_hoverlist .charginglisttd2 {
+	width: 2.2rem;
+}
+.Chargingpadd1 .Tr_hoverlist .charginglisttd4 {
+	width: 1.9rem;
+}
+.Chargingpadd1 .Tr_hoverlist .charginglisttd3 {
+	width: 2.25rem;
+}
+.Chargingpadd1 .Tr_hoverlist .charginglisttd7 {
+	width: 2.4rem;
+}
+/*历史轨迹*/
+.History_searchBtn {
+	width: 0.7rem;
+	height: 0.4rem;
+	background: #177273;
+	color: #FFFFFF;
+	text-align: center;
+	line-height: 0.4rem;
+	font-size: 0.14rem;
+	margin-left: 0.2rem;
+	margin-top: 0.2rem;
+}
+.carDtalbox2top2 {
+	width: 6.4rem;
+}
+.Caleline1 {
+	margin-top: 0.2rem;
+	margin-bottom: 0.2rem;
+}
+.carDtalbox2top2 .form-control {
+	width: 100%;
+}
+.carDtalpTop {
+	padding-top: 0;
+}
+.startTime1 {
+	width: 1.75rem;
+	margin-top: -0.35rem;
+}
+.endTime1 {
+	width: 1.75rem;
+	margin-top: -0.35rem;
+}
+.history_box .carDialogMap {
+	width: 100%;
+	height: 100%;
+}
+/*logo*/
+.HistoryLogo {
+	position: absolute;
+	left: 0.5rem;
+	top: 0.28rem;
+	width: 3.36rem;
+	height: 0.55rem;
+	background: url(../images/img1/logo.png) no-repeat;
+	background-size: 100% 100%;
+}
+/*实时看版弹窗*/
+.monitor_realDialogbox {
+	width: 11.82rem;
+	height: 8.82rem;
+	background: url(../images/img1/monitor_real1548x1282.png) no-repeat;
+	background-size: 100% 100%;
+}
+.monitor_realDialoglist1 {
+	width: 3.55rem;
+	height: 0.4rem;
+	border: 1px solid #18898a;
+	border-radius: 0.05rem;
+	margin: 0.3rem auto 0;
+}
+.monitor_realDialoglist1 label {
+	position: relative;
+	line-height: 0.35rem;
+	margin-left: 0.1rem;
+}
+.monitor_realDialoglist1 label:after {
+	content: '';
+	position: absolute;
+	right: -0.13rem;
+	top: 0.08rem;
+	background: #2ceef0;
+	width: 1px;
+	height: 0.2rem;
+}
+.monitor_realslect .selectblock .select-content{
+	width: 2.18rem;
+	top: 0.39rem;
+}
+.monitor_realslect .selectblock .select-header{
+	width: 2rem;
+}
+.monitor_realslect .selectblock input {
+	width: 1.5rem;
+	padding-left: 0.3rem;
+}
+.nav li .item_inner{
+	font-size: 0.2rem;
+}
+.sidebar-subnav li.active .item_inner.active {
+	color: #fff;
+}
+/*earchs*/
+.mReal_echart1 {
+	width: 8rem;
+	height: 3rem;
+	z-index: 300;
+	margin: 0 auto;
+}
+.RepairTable_list {
+	width: 15.5rem;
+	height: 6.67rem;
+	background: url(../images/img1/Table_list1551x681.png) no-repeat;
+	background-size: 100% 100%;
+	overflow: hidden;
+	z-index: 300;
+	padding: 0 0.1rem;
+	padding-right: 0.15rem;
+	margin-top: 0.1rem;
+}
+.RepairTop_list1{
+	margin-top: 0.32rem;
+	margin-left: 0.3rem;
+}
+.sys_employTop {
+	float: left;
+	padding: 0.1rem;
+}
+.faultStatisticslist2 {
+	margin-left: 0.3rem;
+	margin-top: 0.15rem;
+}
+.faultStatisticsAddTop .potentialHeaderlist1 {
+	padding-top: 0.3rem;
+	margin-left: 0.3rem;
+}
+.faultStatisticsCenter {
+	width: 15.5rem;
+	position: relative;
+	margin-top: 0.1rem;
+}
+.faultStatistics_btn {
+	position: absolute;
+	right: 0.43rem;
+	top: 0.1rem;
+	width: 0.9rem;
+	height: 1.3rem;
+}
+.faultStatistBtn {
+	position: absolute;
+	right: 0.4rem;
+	top: 0.33rem;
+}
+.faultStatisticsAddBox .faultStatisticsCenter .RepairTable_list_center{
+	margin-top: 0.89rem;
+}
+.potentialHeaderlist {
+	position: relative;
+	left: 0.3rem;
+	top: 0.35rem;
+}
+.RepairBtn_search {
+	position: absolute;
+	right: 0.4rem;
+	top: 0.2rem;
+	font-size: 0.2rem;
+	width: 1rem;
+	height: 1rem;
+}
+.ChargingMap1{
+		width: 15rem;
+		height: 3.94rem;
+		margin-left: 0.36rem;
+		margin-top: 0.3rem;
+}
+.powerAnalysisCenter {
+	position: relative;
+	width: 15.5rem;
+}
+/*错误提示*/
+.Errorprompt {
+	width: 0.2rem;
+	height: 0.2rem;
+	background: url(../images/img1/error20x20.png) no-repeat;
+	background-size: 100% 100%;
+}
+/*维修管理错误提示*/
+/*服务网点错误提示*/
+.Service_error {
+	position: absolute;
+	right: 0.06rem;
+	top: 0.08rem;
+}
+.Service_error1 {
+	position: absolute;
+	right: -1.3rem;
+	top: -0.25rem;
+}
+.ForgetPwd_error2{
+	right: 1.27rem;
+}
+/*修改报修单错误提示*/
+.lookopen_error {
+	margin-left: -0.3rem;
+	margin-top: 0.13rem;
+}
+.lookopen_error1 {
+	width: 0.2rem;
+	height: 0.44rem;
+	color: red;
+	font-size: 0.25rem;
+}
+.Service_errorLng{
+	position: absolute;
+	top: 0.05rem;
+}
+/*服务网点地图弹框*/
+.service_mappop {
+	width: 100%;
+	height: 100%;
+	background: url(../images/img1/service_mapop.png) no-repeat;
+	background-size: 100% 100%;
+}
+/*电位极差分析页面*/
+/*头部*/
+/*中间内容*/
+/*中间内容背景图复用*/
+.potentialBack {
+	width: 15.3rem;
+	height: 6rem;
+	background: url(../images/img1/potential1529x668.png) no-repeat;
+	background-size: 100% 100%;
+}
+.potentialCenter {
+	width: 96%;
+	height: 97%;
+	overflow-y: scroll;
+	overflow-x: hidden;
+}
+/*电位极差分析滚动条*/
+.potentialCenter::-webkit-scrollbar-track-piece:vertical {
+	display: none;
+}
+.potentialCenter::-webkit-scrollbar-thumb:vertical{
+	display: none;
+}
+.potentialBox {
+	padding-bottom: 1.3rem;
+	overflow-y: hidden;
+}
+/*列表一*/
+.potentialCenter1 {
+	position: relative;
+	margin-top: 0.1rem;
+}
+/*列表二*/
+.potentialCenter2 {
+	position: relative margin-top: 0.1rem;
+}
+/*图表一*/
+#Mainearchs2 {
+	position: absolute;
+	left: 0.3rem;
+	top: 0.4rem;
+	width: 15rem;
+	height: 5.6rem;
+	padding-top: 0rem;
+}
+/*图表二*/
+#Mainearchs3 {
+	position: absolute;
+	left: 0.3rem;
+	top: 0.4rem;
+	width: 15rem;
+	height: 5.6rem;
+	padding-top: 0rem;
+}
+/*电耗分析页面*/
+/*数据统计页面top头部顶端位置复用*/
+.dataTopposition {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	margin-left: 0.15rem;
+	margin-top: 0.15rem;
+}
+.powerAnalysisCenter .powerAnalysisCenterTR {
+	margin-top: 0.88rem;
+}
+.powerAnalysisCenter .powerAnalysisBtn {
+	position: absolute;
+	right: 0.5rem;
+	top: 0.33rem;
+}
+.powerAnalysisTop .potentialpadd1 .selectblock input {
+	width: 1rem;
+	margin-left: -0.15rem;
+}
+.powerAnalysisTop .Select_position .blue .select-header:after {
+	left: 0.8rem;
+}
+.powerAnalysis_dialog {
+	width: 9.3rem;
+	height: 7rem;
+	background: url(../images/img1/faultStatisticsAdd_box930x760.png) no-repeat;
+	background-size: 100% 100%;
+}
+/*故障统计页面*/
+/*头部*/
+.faultStatisticsAddTop {
+	width: 15.5rem;
+}
+.faultStatisticsAddTop {
+	position: relative;
+}
+.faultStatisticsCenter .faultStatistTr table {
+	width: 100%;
+}
+.faultStatistBtn1 {
+	margin-right: 0.15rem;
+}
+.faultStatisticsAddTop .Repari_carNum .selectblock .blue .select-header:after {
+	left: 1.1rem;
+	top: 0.19rem;
+}
+.faultStatic_dialog .ngdialog-close {
+	right: 0.4rem;
+	top: 0.31rem;
+}
+/*电机数据统计页面*/
+.motorDataCenter {
+	margin-top: 0.1rem;
+	width: 15.5rem;
+}
+.motorDataCenter .faultStatistTr {
+	margin-top: 0.9rem;
+}
+.motorDataCenter .faultStatistTr table {
+	width: 100%;
+}
+.motorDataTop .Repari_carNum .selectblock {
+	margin-left: -0.2rem;
+}
+/*电池统计页面*/
+.batteryDataCenter {
+	width: 15.5rem;
+	margin-top: 0.1rem;
+}
+.batteryDatatTr {
+	margin-top: 0.9rem;
+}
+.batteryDataCenter .batteryDatatTr table {
+	width: 100%;
+}
+.batteryDataTop .Repari_carNum .selectblock {
+	margin-left: -0.2rem;
+}
+.Chargingcale1 {
+	position: relative;
+}
+.Chargingcale1:after {
+	content: '';
+	position: absolute;
+	width: 1px;
+	height: 0.36rem;
+	right: 0.45rem;
+	top: 0;
+	background: #2ceef0;
+}
+/*车牌号*/
+.Repari_carNum3 .selectblock .blue .select-content {
+	margin-left: -0.3rem;
+}
+.Text_decoration {
+	text-decoration: underline;
+}
+.carIf_modifycontnet2_2 {
+	margin: 0.14rem 0 0.14rem 0.5rem;
+}
+/*input统一滚动条*/
+.mUnit_select .select-content::-webkit-scrollbar-track-piece:vertical {
+	width: 0.1rem;
+	height: 0.8rem;
+	background: url(../images/img1/repair_scroll_bar10x80.png) no-repeat;
+	background-size: 100% 100%;
+}
+.mUnit_select .select-content::-webkit-scrollbar-thumb:vertical {
+	height: 0.14rem;
+	background: url(../images/img1/repair_scroll_bar10x36.png) no-repeat;
+	background-size: 100% 100%;
+	filter: alpha(opacity=50);
+	-moz-opacity: 0.5;
+	opacity: 0.5,
+}
+.mUnit_select input{
+	font-size: 0.18rem;
+}
+.monitor_select3 input{
+	font-size: 0.18rem;
+}
+.mUnit_selectemployee .select-content{
+	max-height: 4rem;
+    height: auto;
+    overflow-y: auto;
+}
+.mUnit_select1 .select-content{
+	width: 1.8rem;
+	height: 2.3rem;
+}
+.mUnit_select .select-content{
+	width: 1.6rem;
+}
+/*实时监控里面的车辆详情滚动条*/
+.mUnit_select1::-webkit-scrollbar-track-piece:vertical{
+	width: 0.1rem;
+	height: 0.8rem;
+	background: url(../images/img1/repair_scroll_bar10x80.png) no-repeat;
+	background-size: 100% 100%;
+}
+.mUnit_select1::-webkit-scrollbar-thumb:vertical {
+	height: 0.14rem;
+	background: url(../images/img1/repair_scroll_bar10x36.png) no-repeat;
+	background-size: 100% 100%;
+	filter: alpha(opacity=50);
+	-moz-opacity: 0.5;
+	opacity: 0.5,
+}
+/*实时检索滚动条*/
+.unitName_listUl::-webkit-scrollbar-track-piece:vertical {
+	width: 0.1rem;
+	height: 0.8rem;
+	background: url(../images/img1/repair_scroll_bar10x80.png) no-repeat;
+	background-size: 100% 100%;
+}
+.unitName_listUl::-webkit-scrollbar-thumb:vertical {
+	height: 0.14rem;
+	background: url(../images/img1/repair_scroll_bar10x36.png) no-repeat;
+	background-size: 100% 100%;
+	filter: alpha(opacity=50);
+	-moz-opacity: 0.5;
+	opacity: 0.5,
+}
+.delete_diaolg .AddBtn_boxlist {
+	top: 0rem;
+}
+/*实时监控页面*/
+.startUp {
+	width: 100%;
+}
+.startUp p {
+	width: 80%;
+	margin: 0 auto;
+	color: #278687;
+	text-align: center;
+	border-bottom: 1px solid #1e9194;
+	padding: 0.1rem 0;
+	font-size: 0.18rem;
+}
+.typeMonitor {
+	width: 2.2rem;
+}
+.mapInfoBox1 .panel-body .map_in_box ul {
+	margin-left: 0.18rem;
+}
+/*横断线*/
+.Transectionline {
+	width: 95%;
+	margin: 0 auto;
+	height: 6px;
+	background: url(../images/img1/Transectionline.png) no-repeat;
+	background-size: 100% 100%;
+}
+.mapError {
+	color: red;
+	font-size: 0.25rem;
+	margin-left: -0.1rem;
+	margin-top: -0.05rem;
+}
+.seviceMap_RqIcon{
+	color: red;
+	font-size: 0.25rem;
+	line-height: 0.3rem;
+}
+.ServiceMap1 .ngdialog-close{
+	right: 0.1rem;
+	top: -0.25rem;
+}
+.monitor_select input{
+	width: 0.9rem;
+	padding-right: 0.1rem;
+}
+.ullist2{
+	width: 32%;
+	margin-top: -0.1rem;
+}
+.ullist3{
+	width: 32%;
+	margin-left: 0.5rem;
+	margin-top: -0.1rem;
+}
+.customSeach2 input{
+	width: 1.7rem;
+	padding: 0.05rem 0.1rem;
+}
+.ngdialog_add2 .ngdialog-close{
+	top:-0.06rem;
+	right: 0.1rem;
+}
+.button_box {
+	margin-right: 0.6rem;
+}
+.system_conRwidth {
+	width: 12.2rem;
+	border: 2px solid #0c7878;
+	overflow-x: hidden;
+	overflow-y: scroll;
+}
+/*纵向*/
+.system_conRwidth::-webkit-scrollbar-track-piece:vertical {
+	width: 0.05rem;
+	height: 0.8rem;
+	background: url(../images/img1/repair_scroll_bar10x80.png) no-repeat;
+	background-size: 100% 100%;
+}
+.system_conRwidth::-webkit-scrollbar-thumb:vertical {
+	height: 0.14rem;
+	background: url(../images/img1/repair_scroll_bar10x36.png) no-repeat;
+	background-size: 100% 100%;
+	filter: alpha(opacity=50);
+	-moz-opacity: 0.5;
+	opacity: 0.5,
+}
+.inp_default3{
+	width: 2.6rem;
+}
+.nav-wrapper .navbar-nav .dropdown-menu:hover{
+	background: #086161;
+	color: #fff;
+}
+.Modify_btn1{
+	margin-left: 0.2rem;
+	font-size: 0.18rem;
+}
+.table thead tr .first_thWidth{
+	width: 1.2rem;
+}
+.Table_trlist {
+	width: 100%;
+}
+.customer_title{
+	width: 100%;
+	text-align: center;
+	margin-top: -0.25rem;
+}
+.customMargin{
+	margin-top: 0.3rem;
+}
+.custom_height{
+	height: 4rem;
+}
+.Service_contacts{
+	width: 1.9rem;
+}
+.Reipair_Addbtn .Addbtn_bottom{
+	bottom: 0.8rem;
+}
+.carInfo_sTitleBox1{
+	margin-top: 0.5rem;
+}
+.charging_search1{
+	position: absolute;
+	right: 0.75rem;
+	top: -0.25rem;
+	width: 0.8rem;
+	height: 0.8rem;
+	font-size: 0.18rem;
+}
+.Repai_carWidth .select-content{
+	width: 1.4rem;
+}
+.monitor_carWidth .select-content{
+	width: 1rem;
+}
+.ngdialog_add3 .ngdialog-close{
+	right: 0.15rem;
+	top: 0rem;
+} 
+.employ_formmargin{
+	margin-left: 0.23rem;
+}
+.Repair_save1 .Repair_submit{
+		bottom: 0rem;
+}
+.Repair_save2 .carInfor_Modify{
+	position: absolute;
+	bottom: 0.6rem;
+	left: 42%;
+}
+/*远程监控弹框*/
+.moniter_Remote{
+	width: 4.09rem;
+	height: 2.65rem;
+	background: url(../images/img1/moniter_Remote409x265.png) no-repeat;
+	background-size: 100% 100%;
+}
+/*选择文件*/
+.file{
+	position: relative;
+	left: -0.1rem;
+	width: 80%;
+	height: 0.6rem;
+	margin: 0.45rem auto;
+	border: 1px solid #2ceef0;
+	border-radius: 5px;
+}
+.file .a-upload{
+	 position: relative;
+	 top: 0.1rem;
+	 left: 0.7rem;
+	 display: inline-block;
+	 overflow: hidden;
+	 cursor: pointer;
+	 color: #fff;
+	 line-height: 0.42rem;
+	 text-align: center;
+	 font-size: 0.18rem;
+}
+.importFileAdds{
+	position: absolute;
+	width: 1rem;
+	height: 0.51rem;
+    right: 0;
+    top: 0;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    cursor: pointer;
+}
+.File_title1{
+	width: 100%;
+	text-align: center;
+	padding-top: 0.2rem;
+	margin-left: -0.05rem;
+}
+.choseFile{
+	position: absolute;
+	width: 1.2rem;
+	bottom: 0.13rem;
+	left: 1.6rem;
+	display: block;
+	color: #2ceef0;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+.file:after{
+	content: "";
+	position: absolute;
+	width: 1px;
+	height: 0.3rem;
+	top: 54%;
+	left: 48.5%;
+	background-color: #2ceef0;
+	transform: translate(0, -50%);
+	transform: -webkit-translate(0, -50%);
+	transform: -moz-translate(0, -50%);
+}
+.Already_state{
+	color: #14e5b6;
+}
+.View_data{
+	color: #18c4d7;
+}
+.Repari_carNum .labelAfter1{
+	position: relative;
+}
+.Repari_carNum .labelAfter1:after{
+	content: "";
+	position: absolute;
+	width: 1px;
+	height: 0.2rem;
+	top: 54%;
+	left: 3%;
+	background-color: #2ceef0;
+	transform: translate(0, -50%);
+	transform: -webkit-translate(0, -50%);
+	transform: -moz-translate(0, -50%);
+}
+.Repair_closeBtn1{
+	top:0.25rem;
+	right: 0.65rem;
+}
+.Addcustomer_btn{
+	margin-left: 0.02rem;
+	padding-right: 0.03rem;
+}
+.carManage_btnAdd{
+	margin-left: 0.17rem;
+}
+.Chargingfooter .Chargingpadd .Table_trlist2{
+	width: 98%;
+	margin-left: 0.15rem;
+}
+/*.myPagelistBox .ngPagerContainer{
+	position: absolute;
+	left:5.08rem;
+}*/
+.monitor_select3 .select-content{
+	width: 1.62rem;
+}
+.Repair_modifycontnet2 li{
+	position: relative;
+}
+.ngdialog_addRepai .ngdialog-close{
+	right: 0.1rem;
+	top: 0rem;
+}
+.top-navbarclick{
+	position: relative;
+	margin: 0 0.1rem;
+}
+.sys_employTop{
+	padding-right: 0.25rem;
+}
+.SiteTypetitle{
+	margin: 0;
+	padding-top: 0.1rem;
+	color: #fff;
+	font-size: 0.21rem;
+}
+.mCar_inf_ulist1 ul{
+	float: left;
+}
+.AlarmName{
+	width: ;
+}
+.mCar_inf_ulist1 ul{
+	width: 1.5rem;
+}
+.mCar_inf_ulist1 .wt100{
+	width: 100%;
+}
+.Vinnumber{
+	margin-left: 0.18rem;
+}
+.myPagelistBox1 .RepairNext_pagetion button{
+	margin-left: -0.2rem;
+}
+.carDtalTop2{
+	height: 1.2rem;
+}
+.Carlocation{
+	margin-left: -1rem;
+}
+.getLocation_map_Tagging{
+	cursor: pointer;
+}
+.RepariAdd_messages{
+	width: 1.7rem;
+}
+.carDialogfault{
+	margin-left: -0.5rem;
+}
+.carDetail_searchbtn1{
+	margin-top: 0.2rem;
+    margin-right: 0.3rem;
+}
+.carDialogfault1{
+	margin-left: 0.8rem;
+}
+.faultStatisticsCenter .faultStatistTr1{
+	margin-top: 0.8rem;
+}
+.ngdialogbtn1 .ngdialog-close{
+		top:0.35rem;
+		right:0.35rem;
+}
+.ngdialog_locatClose1 .ngdialog-close{
+	top:-0.3rem;
+	right: 0.1rem;
+}
+.H4normalfont{
+	font-style: normal;
+	font-weight: normal;
+}
+.ChargingMapBox1{
+	width:16rem;
+	border-radius: 21px 233px 152px 21px;
+	overflow: hidden;
+}
+.authority_Top{
+	padding-top: 0.3rem;
+	padding-left: 0.3rem;
+}
+.OPtionback{
+	background: #043a3a;
+	color: #11a6a7;
+}
+.position_icon{
+	position: absolute;
+	top: 0.3rem;
+	right: 0;
+	width: 0.17rem;
+	height: 0.22rem;
+	background: url(../images/img1/position_icon17x22.png) no-repeat;
+	background-size: 100% 100%;
+	cursor: pointer;
+}
+.carDtalbox2_left ul li.active{
+	background: #0a3d3e;
+}
+.MessagePopups1{
+	width: 4.09rem;
+    height: 2.51rem;
+    background: url(../images/img1/confirmbtn_409x251.png) no-repeat;
+    background-size: 100% 100%;
+}
+.changeImtDiv .MessagesBoxlistbtn1{
+	float: left;
+}
+.changeImtBoxTile{
+	padding-top: 0.5rem;
+}
+.BindRole_background{
+	background: rgb(1, 43, 53);
+}
+.BindRole_background1{
+	background: rgb(0, 39, 50);
+}
+.binfRole_ngdialog .ngdialog-close{
+	margin-top: -0.2rem;
+}
+.emolistBackground{
+	background: rgb(4, 70, 70);
+}
+.emplist_ngdialog .ngdialog-close{
+	top: -0.2rem;
+}
+.followtOrflist1{
+	width: 0.68rem;
+	margin: 0 auto;
+}
+.carDtalbox2Magrin{
+	margin-left: 3.6rem;
+	margin-top: 0.15rem;
+	overflow: hidden;
+}
+.Modify_boxlist{
+	margin-top: -0.15rem;
+}
+.ModifyPwd_error2{
+	top: 0.08rem;
+	right: 0.05rem;
+}
+.Repaircar_inp1{
+	padding-left: 0.15rem;
+}
+.carDtal_lionBox li .carDtal_lionlist:hover .mapTool_hover{
+	width: 1.31rem;
+	text-indent: 0.4rem;
+}
+.carDtal_lionBox li{
+	position: relative;
+	width: 1.9rem;
+}
+.carDtal_lionBox li  .carDtal_lionlist{
+	position: relative;
+	width: 0.26rem;
+	height: 0.52rem;
+	margin-right: 0.2rem;
+	transition:width 0.5s;
+	-webkit-transition:width 0.5s;
+	-moz-transition:width 0.5s;
+}
+.carDtal_lionlist1{
+	left: 1.3rem;
+	top: 4rem;
+}
+.carDtal_lionlist2{
+	left: 2.3rem;
+	top: 4.5rem;
+}
+.carDtal_lionlist3{
+	left: 3.7rem;
+	top: 4.3rem;
+}
+.carDtal_lionlist4{
+	left: 5.3rem;
+	top: 3.4rem;
+}
+.carDtal_lionlist5{
+	left: 6.2rem;
+	top: 1.9rem;
+}
+.authority_pager{
+	position: absolute;
+	bottom: 0.3rem;
+	right: 1.8rem;
+}
+.authority_pager .ngPagerContainer{
+	width: 12rem;
+	margin: 0;
+}
+.Service_boxMargin .RepairTable_list_top{
+	height: 0.85rem;
+}
+.DateWidth_repair{
+	width: 2.1rem;
+}
+.RepairText_boxlist .modify_poter:after{
+	right: -0.05rem;
+}
+.RepairTop_boxlist1 .RepairText_boxlist .employPone_height{
+	height: 0.35rem;
+}
+.Repari_carNumInput{
+	width: 54%;
+	height: 100%;
+}
+.fildedsetAfter:after{
+	display: block;
+	content: "";
+	position: absolute;
+	width: 1px;
+	height: 0.2rem;
+	top: 52%;
+	left: 1.33rem;
+	background-color: #2ceef0;
+	transform: translate(0, -50%);
+	transform: -webkit-translate(0, -50%);
+	transform: -moz-translate(0, -50%);
+}
+.RepairText_boxlist .repairnput_padd{
+	padding-left: 0.2rem;
+}
+.DateTimelate:after{
+	left: 90%;
+}
+.table > tbody > tr > td{
+	padding: 0 0.24rem;
+}
+.lookopen_error2{
+	position: absolute;
+	right: -0.25rem;
+	top: 0;
+}
+.mCar_monitorIcon{
+	width: 0.51rem;
+	height: 0.51rem;
+	margin-left: 0.3rem;
+	cursor: pointer;
+}
+.mCar_monitorTiltle{
+	cursor: pointer;
+}
+.Wt50{
+	width: 50%;
+}
+.Height35{
+	height: 0.35rem;
+}
+.myPagelistBox2 .ngPagerContainer{
+	width: 5rem;
+	margin: 0 auto;
+}
+.dialog_textareaHeight{
+	height: 0.6rem;
+}
+.textareaServicetop{
+	margin-top: -0.2rem;
+}
+.dialog_textareaWidth{
+	width: calc(100% - 1.4rem);
+	width: -webkit-calc(100% - 1.4rem);
+	width: -moz-calc(100% - 1.4rem);
+	width: -o-calc(100% - 1.4rem);
+}
+.changeImtDiv .AddBtn_boxlist{
+	bottom: 0.6rem;
+}
+.map_earth{
+	bottom: 115px !important;
+}
+.faultleftop{
+	margin-left: 0.6rem;
+	margin-top: 0.3rem;
+}
+.PowerTitle1{
+	height: 0.6rem;
+	line-height: 0.6rem;
+	font-size: 0.25rem;
+}
+/*一.范围1366x590~1366x614*/
+/*火狐:1.显示标题栏,书签栏,任务栏2.显示标题栏,菜单栏,任务栏3.显示菜单栏,标题栏,书签栏,任务栏;4.显示菜单栏,书签栏,任务栏;*/
+/*360:显示状态栏,书签栏,任务栏;*/
+@media only screen and (min-height:589px) and (max-height:614px){
+	.wrapper>.aside .aside-inner{
+		height: 6.9rem;
+	}
+	.monitor_carList{
+		height: 3.35rem;
+	}
+	.RepairTable_list{
+		height: 5.7rem;
+		margin-top: 0.05rem;
+	}
+	.RepairTable_list .RepairTable_list_center .table .Tr_hoverlist tr td{
+		height: 0.35rem;
+	}
+	.RepairTable_list_center .table>tbody>tr:hover,
+	.RepairTable_list_center .table>tbody>tr:focus,
+	.RepairTable_list_center .table>tbody>tr.active {
+		height: 0.35rem;
+	}
+	.RepairTable_list1{
+		height:6.1rem;
+		margin-top: 0.05rem;
+	}
+	.RepairTable_list1 .RepairTable_list_center .table .Tr_hoverlist tr td{
+		height: 0.38rem;
+	}
+	.Chargingcontent{
+		height: 3.35rem;
+	}
+	.ChargingMap1{
+		height: 2.95rem;
+	}
+	.system_conRwidth{
+		height: 4.8rem;
+	}
+	.mapStation{
+		margin-top: 0.1rem;
+	}
+}
+
+/*二.范围1366x615~1366x644*/
+/*火狐:1.显示书签栏,任务栏;2.显示菜单栏,任务栏;3.显示菜单栏,书签栏,标题栏;4.显示标题栏,任务栏*/
+/*谷歌:1.显示书签栏,任务栏;*/
+/*360:1.显示书签栏,任务栏;2.显示状态栏,任务栏;*/
+@media only screen and (min-height:615px) and (max-height:645px){
+	.wrapper>.aside .aside-inner{
+		height: 7.5rem;
+	}
+	.monitor_carList{
+		height: 3.9rem;
+	}
+	.RepairTable_list{
+		height: 6.2rem;
+	}
+	.RepairTable_list1{
+		margin-top: 0.05rem;
+	}
+	.RepairTable_list .RepairTable_list_center .table .Tr_hoverlist tr td{
+		height: 0.38rem;
+	}
+	.RepairTable_list .RepairTable_list_center .table>tbody>tr:hover,
+	.RepairTable_list .RepairTable_list_center .table>tbody>tr:focus,
+	.RepairTable_list .RepairTable_list_center .table>tbody>tr.active {
+		height: 0.38rem;
+	}
+	.ChargingMap1{
+		height: 3.5rem;
+	}
+	.Chargingcontent{
+		height: 3.9rem;
+	}
+	.system_conRwidth{
+		height: 5.4rem;
+	}
+}
+/*三.范围1366x645~1366x668*/
+/*360:1.显示书签栏,任务栏;2.隐藏状态栏;3.显示书签栏,隐藏任务栏;4.显示书签栏状态栏,隐藏任务栏;*/
+/*谷歌:1.隐藏书签栏*/
+/*火狐:1.隐藏书签栏;2.显示菜单栏,书签栏,隐藏任务栏;*/
+@media only screen and (min-height:646px) and (max-height:668px){
+		
+}
+/*四.范围:1366x669~1366x678*/
+/*360:1.显示状态栏,隐藏任务栏;*/
+/*谷歌:1.显示书签栏,隐藏任务栏;*/
+/*火狐:1.显示书签栏,隐藏任务栏;2.显示菜单栏,隐藏任务栏;*/
+@media only screen and (min-height:669px) and (max-height:678px){
+	
+}
+/*五.范围:1366x679~1366x699*/
+/*火狐:全部隐藏*/
+/*360:全部隐藏*/
+@media only screen and (min-height:679px) and (max-height:699px){
+	.wrapper>.aside .aside-inner{
+		height: 8.2rem;
+	}
+	.monitor_carList{
+		height: 4.3rem;
+	}
+}
+@media only screen and (min-width: 1600px) {
+	.RepairTop_box{
+		margin-top: 0.54rem;
+	}
+	.RepairTop_box1{
+		margin-top: 0.54rem;
+	}
+}

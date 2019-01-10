@@ -1,0 +1,157 @@
+<style type="text/css">
+	.ngdialog-content{
+		height: 7rem;
+		left: 26%;
+		top: 10%;
+	}
+	.ngdialog.ngdialog-theme-default .modal-header {
+	    line-height: initial;
+	}
+	.modal-content #carMap{
+		background: none;
+	}
+</style>
+<div class="window dialog wd-wide bg_default1 border_hight">
+    <div class="bg_default1 modal-header">
+    	<h4 class="modal-title text-center">车号：{{car.licenseNumber}}</h2>
+	</div>
+  	<div class="modal_content bg_default1">
+  		 <div class="carMap" style="height: 6.35rem;">
+  		 	<div class="fl" style="width:60%;height: 100%;">
+  		 		<div id="carMap" class="carMapBox" style="width:100%;height: 100%;">
+	  		 	</div>
+	  		 	<p class="text-center color_w" style="line-height: 6.35rem;" ng-show="noPosition">
+	  		 		无效定位不显示地图
+	  		 	</p>
+  		 	</div>
+  		 	
+  		 	<div class="fl border_box" id="accordtion" style="width:40%;height: 100%;">
+  		 		<accordion>
+	               <accordion-group is-open="status7.open">
+	                  <accordion-heading>
+	                  	基本数据
+	                  	<i class="pull-right" ng-class="{'ti-angle-down': status7.open, 'ti-angle-right': !status7.open}"></i>
+	                  </accordion-heading>
+	                  <div class="accordion_text">
+	                  	<p class="color_w">车主姓名：<b class="color_green">{{car.name}}</b></p>
+	                  	<p class="color_w">车主手机：<b class="color_green">{{car.phone}}</b></p>
+	                  	<p class="color_w">车牌号：<b class="color_green">{{car.licenseNumber}}</b></p>
+	                  	<p class="color_w">SIM卡号：<b class="color_green">{{car.iccid}}</b></p>
+	                  	<p class="color_w">发动机编号：<b class="color_green">{{car.engineNumber}}</b></p>
+	                  	<p class="color_w">存电续驶里程：<b class="color_green">{{car.tdpe}}</b></p>
+	                  	<p class="color_w">最高车速：<b class="color_green">{{car.maxSpeed}}</b></p>
+	                  	<p class="color_w">VIN：<b class="color_green">{{car.vin}}</b></p>
+	                  	<p class="color_w">各档位传动比：<b class="color_green">{{car.gearRatio}}</b></p>
+	                  	<p class="color_w">厂商：<b class="color_green">{{car.siteName}}</b></p>
+	                  	<p class="color_w">车辆型号：<b class="color_green">{{car.model | dicFilter:dicId_model}}</b></p>
+	                  	<p class="color_w">使用方式：<b class="color_green">{{car.vehicle | dicFilter:dicId_vehicle}}</b></p>
+	                  	<p class="color_w">使用单位：<b class="color_green">{{car.unit | dicFilter:dicId_unit}}</b></p>
+						<p class="color_w">生产批次：<b class="color_green">{{car.batch | dicFilter:dicId_batch}}</b></p>
+						<p class="color_w">驱动布置形式：<b class="color_green">{{car.dma | dicFilter:dicId_dma}}</b></p>
+	                  </div>
+	                </accordion-group>
+	               <accordion-group is-open="status1.open">
+	                  <accordion-heading>
+	                  	整车数据
+	                  	<i class="pull-right" ng-class="{'ti-angle-down': status1.open, 'ti-angle-right': !status1.open}"></i>
+	                  </accordion-heading>
+	                  <div class="accordion_text">
+	                  	<p class="color_w">整车状态：<b class="color_green">{{vehicle.vehicleStatus}}</b></p>
+	                  	<p class="color_w">充电状态：<b class="color_green">{{vehicle.chargedStatus}}</b></p>
+	                  	<p class="color_w">运行模式：<b class="color_green">{{vehicle.runMode}}</b></p>
+	                  	<p class="color_w">车速：<b class="color_green">{{vehicle.speed}}</b></p>
+	                  	<p class="color_w">累计里程：<b class="color_green">{{vehicle.totalMileage}}</b></p>
+	                  	<p class="color_w">总电压：<b class="color_green">{{vehicle.totalVoltage}}</b></p>
+	                  	<p class="color_w">总电流：<b class="color_green">{{vehicle.totalCurrent}}</b></p>
+	                  	<p class="color_w">SOC：<b class="color_green">{{vehicle.soc}}</b></p>
+	                  	<p class="color_w">档位：<b class="color_green">{{vehicle.tapPosition}}</b></p>
+	                  	<p class="color_w">DC/DC状态：<b class="color_green">{{vehicle.dcStatus}}</b></p>
+	                  	<p class="color_w">绝缘电阻：<b class="color_green">{{vehicle.insulationResistance}}</b></p>
+	                  	<p class="color_w">加速踏板行程值：<b class="color_green">{{vehicle.acceleratorPedalStroke}}</b></p>
+	                  	<p class="color_w">制动踏板状态：<b class="color_green">{{vehicle.stateBrakePedal}}</b></p>
+						<p class="color_w">预留：<b class="color_green">{{vehicle.reserve}}</b></p>
+	                  </div>
+	                </accordion-group>
+	               <accordion-group is-open="status2.open">
+	                  <accordion-heading>
+	                  	驱动电机数据
+	                  	<i class="pull-right" ng-class="{'ti-angle-down': status2.open, 'ti-angle-right': !status2.open}"></i>
+	                  </accordion-heading>
+	                  <div class="driveMotorNum color_w">
+	                  		驱动电机个数：{{driveMotorNum}}
+	                  </div>
+	                  <div class="accordion_text" ng-repeat="x in driveMotorList">
+	                  	<p class="color_w">驱动电机控制器温度：<b class="color_green">{{x.driveControllerT}}</b></p>
+	                  	<p class="color_w">驱动电机转速：<b class="color_green">{{x.driveMotorSpeed}}</b></p>
+	                  	<p class="color_w">驱动电机转矩：<b class="color_green">{{x.driveMotorTorque}}</b></p>
+	                  	<p class="color_w">驱动电机温度：<b class="color_green">{{x.driveMotorT}}</b></p>
+	                  	<p class="color_w">电机输入电压：<b class="color_green">{{x.motorVoltage}}</b></p>
+	                  	<p class="color_w">电机控制器直流母线电流：<b class="color_green">{{x.motorElectricity}}</b></p>
+	                  </div>
+	               </accordion-group>
+	               <accordion-group is-open="status3.open">
+	                  <accordion-heading>
+	                  	燃料电机数据
+	                  	<i class="pull-right"i ng-class="{'ti-angle-down': status3.open, 'ti-angle-right': !status3.open}"></i>
+	                  </accordion-heading>
+	                  <div class="accordion_text"><span class="color_w">
+	                  	<p class="color_w">燃料电池电压：<b class="color_green">{{fuelCell.fuelCellVoltage}}</b></p>
+	                  	<p class="color_w">燃料电池电流：<b class="color_green">{{fuelCell.fuelCellElectricity}}</b></p>
+	                  	<p class="color_w">燃料消耗率：<b class="color_green">{{fuelCell.fuelConsumptionRate}}</b></p>
+	                  	<p class="color_w">燃料电池温度探针总数：<b class="color_green">{{fuelCell.ProbeSum}}</b></p>
+	                  	<p class="color_w">探针温度值：<b class="color_green">{{fuelCell.probeT}}</b></p>
+	                  	<p class="color_w">氢系统中最高温度：<b class="color_green">{{fuelCell.hydrogenSystemT}}</b></p>
+	                  	<p class="color_w">氢系统中最高温度探针代号：<b class="color_green">{{fuelCell.hydrogenSystemProbeMark}}</b></p>
+	                  	<p class="color_w">氢气最高浓度：<b class="color_green">{{fuelCell.hydrogenConcentration}}</b></p>
+	                  	<p class="color_w">氢气最高浓度传感器代号：<b class="color_green">{{fuelCell.hydrogenConcentrationMark}}</b></p>
+	                  	<p class="color_w">氢气最高压力：<b class="color_green">{{fuelCell.hydrogenPressure}}</b></p>
+	                  	<p class="color_w">氢气最高压力传感器代号：<b class="color_green">{{fuelCell.hydrogenPressureMark}}</b></p>
+	                  	<p class="color_w"> 高压DC/DC状态：<b class="color_green">{{fuelCell.pressureDcStatus}}</b></p>
+	                  </div>
+	               </accordion-group>
+	                <accordion-group is-open="status.open">
+	                  <accordion-heading>
+	                  	发动机数据
+	                  	<i class="pull-right"i ng-class="{'ti-angle-down': status.open, 'ti-angle-right': !status.open}"></i>
+	                  </accordion-heading>
+	                  <div class="accordion_text"><span class="color_w">
+	                  	<p class="color_w">发动机状态：<b class="color_green">{{motor.motorStatus}}</b></p>
+	                  	<p class="color_w">曲轴转速：<b class="color_green">{{motor.crankshaftSpeed}}</b></p>
+	                  	<p class="color_w">燃料消耗率：<b class="color_green">{{motor.rateFuelConsumption}}</b></p>
+	                  </div>
+	               </accordion-group>
+	               <accordion-group is-open="status4.open">
+	                  <accordion-heading>
+	                  	极值数据
+	                  	<i class="pull-right" ng-class="{'ti-angle-down': status4.open, 'ti-angle-right': !status4.open}"></i>
+	                  </accordion-heading>
+	                  <div class="accordion_text"><span class="color_w">
+	                  	<p class="color_w">最高电压电池子系统号：<b class="color_green">{{extremum.highestVSubsystem}}</b></p>
+	                  	<p class="color_w">最高电压电池单体代号：<b class="color_green">{{extremum.highestVProbe}}</b></p>
+	                  	<p class="color_w">电池单体电压最高值：<b class="color_green">{{extremum.highestV}}</b></p>
+	                  	<p class="color_w">最低电压电池子系统号：<b class="color_green">{{extremum.lowestVSubsystem}}</b></p>
+	                  	<p class="color_w">最低电压电池单体代号：<b class="color_green">{{extremum.lowestVProbe}}</b></p>
+	                  	<p class="color_w">电池单体电压最低值：<b class="color_green">{{extremum.lowestV}}</b></p>
+	                  	<p class="color_w">最高温度子系统号：<b class="color_green">{{extremum.highestTSubsystem}}</b></p>
+	                  	<p class="color_w">最高温度探针序号：<b class="color_green">{{extremum.highestTProbe}}</b></p>
+	                  	<p class="color_w">最高温度值：<b class="color_green">{{extremum.highestT}}</b></p>
+	                  	<p class="color_w">最低温度子系统号：<b class="color_green">{{extremum.lowestTSubsystem}}</b></p>
+	                  	<p class="color_w">最低温度探针序号：<b class="color_green">{{extremum.lowestTProbe}}</b></p>
+	                  	<p class="color_w">最低温度值：<b class="color_green">{{extremum.lowestT}}</b></p>
+	                  </div>
+	               </accordion-group>
+	               <accordion-group is-open="status5.open">
+	                  <accordion-heading>
+	                  	车辆位置
+	                  	<i class="pull-right" ng-class="{'ti-angle-down': status5.open, 'ti-angle-right': !status5.open}"></i>
+	                  </accordion-heading>
+	                  <div class="accordion_text"><span class="color_w">
+	                  	<p class="color_w">车辆定位：<b class="color_green">{{positionMarker.longitude}},{{positionMarker.latitude}}</b></p>
+	                  	<p class="color_w">具体位置：<b class="color_green">{{positionMarker.address}}</b></p>
+	                  </div>
+	               </accordion-group> 
+	            </accordion>
+  		 	</div>
+  		 </div>
+  	</div>
+</div>

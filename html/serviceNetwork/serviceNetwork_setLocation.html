@@ -1,0 +1,73 @@
+<style type="text/css">
+	.ngdialog-content{
+		height: 6.5rem;
+	}
+	.dialog{
+		display: -webkit-box; 
+	    display: -moz-box; 
+	    display: -ms-flexbox;
+	    display:flex;
+	    flex-direction:column;
+	}
+	.getLocation_mapBox{
+		position: relative;
+		width: 100%;
+		flex: 1;
+	}
+	.getLocation_map{
+		width: 94%;
+		height: 98%;
+		margin: 0 auto;
+		background-color: rgba(243,241,236,0) !important;
+		-moz-user-select:none;
+       -webkit-user-select:none;
+      	user-select:none;    
+	}
+	.getLocation_map_Tagging{
+		position: absolute;
+		right: 0.5rem;
+	  	top:15%;
+	  	width: 0.5rem;
+	  	height: 0.5rem;
+	  	background:url(images/img1/map_BiaoJi.png) no-repeat;
+	  	background-size: 100% 100%;
+	  	transform:-webkit-translate(-50%,0);
+	  	transform:-moz-translate(-50%,0);
+	  	transform:-o-translate(-50%,0);
+	}
+	input::-webkit-input-placeholder{
+		color: #ffffff;
+	}
+	#getLocation_mapBox{
+		background-color: none;
+		border: none;
+	}
+	.service_mappop{
+		padding: 0.1rem 0;
+	}
+	.titlteHeader{
+		padding-bottom: 0.1rem;
+	}
+	.titlteHeader h4{
+		font-weight: normal;
+	}
+</style>
+<div class="window dialog wd-wide service_mappop">
+	
+    <div id="ngdialogContent-header" class="titlteHeader">
+    	<h4 class="modal-title text-center">{{titleMapposition}}</h4>
+	</div>
+	<div class="getLocation_mapBox" id="getLocation_mapBox">
+		<ul ng-show="setLocationInput" style="position: absolute;z-index:999;">
+			<li>
+				<input type="text" placeholder="搜索服务网点位置" id="suggestId" class="suggestInput pl" ng-model='search_Data1'/>
+			</li>
+		</ul>
+		<div id="getLocation_map" class="getLocation_map"></div>
+		<div ng-show="setLocationInput" class="getLocation_map_Tagging getLocation_map_Tagging1" ng-click="selectBTool()" id="getLocation_map_Tagging" ></div>
+	</div>
+</div>
+
+<script>
+	
+</script>

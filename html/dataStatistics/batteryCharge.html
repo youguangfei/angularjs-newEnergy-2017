@@ -1,0 +1,119 @@
+<div style="width: 100%;height: 100%;" id="MapContent" class="batteryChargeBox">
+	<!--左侧区域-->
+	<div class="leftMap fl defalut_bg" id="left_area" >
+		<div class="BatteryPie1" id="BatteryPie1"></div>
+		<div class="batterySel_category">
+			<!--左侧select选择区-->
+			<div class="Btselectfour mt" ng-init="showSelTab=1">
+					<ul class="nav nav-tabs">
+						<li ng-class="{true:'tab_wd  active',false:'tab_wd'}[showSelTab==1]" ng-click="showSelTab=1"><a>地区</a></li>
+						<li ng-class="{true:'tab_wd  active',false:'tab_wd'}[showSelTab==2]" ng-click="showSelTab=2"><a>批次</a></li>
+						<li ng-class="{true:'tab_wd  active',false:'tab_wd'}[showSelTab==3]" ng-click="showSelTab=3"><a>型号</a></li>
+						<li ng-class="{true:'tab_wd  active',false:'tab_wd'}[showSelTab==4]" ng-click="showSelTab=4"><a>电池类型</a></li>
+					</ul>
+			</div>
+			
+			<div class="battery_leftcategory" id="battery_leftcategory"></div>	
+			
+			<div class="battery_leftSwitch" id="battery_leftSwitch" ng-init="showNavTab=1">
+				<div class="ng-isolate-scope">
+					<ul class="nav nav-tabs">
+						<li ng-class="{true:'tab_wd  active',false:'tab_wd'}[showNavTab==1]" ng-click="showNavTab=1"><a>锰酸锂电池</a></li>
+						<li ng-class="{true:'tab_wd  active',false:'tab_wd'}[showNavTab==2]" ng-click="showNavTab=2"><a>三元电池</a></li>
+					</ul>
+					<div class="tab-content">
+						<div class="" ng-show="showNavTab==1">
+							<p>
+		       						<em>电压：</em>
+		       						<span>37.4v</span>
+		       				</p>
+		       				<p>
+		       						<em>电流：</em>
+		       						<span>12A</span>
+		       				</p>
+		       				<p>
+		       						<em>消耗率：</em>
+		       						<span>0.7424</span>
+		       				</p>
+		       				<p>
+		       						<em>其他：</em>
+		       						<span></span>
+		       				</p>
+						</div>
+						<div class="" ng-show="showNavTab==2">
+							<p>
+		       						<em>电压：</em>
+		       						<span>22.2v</span>
+		       				</p>
+		       				<p>
+		       						<em>电流：</em>
+		       						<span>22A</span>
+		       				</p>
+		       				<p>
+		       						<em>消耗率：</em>
+		       						<span>0.7424</span>
+		       				</p>
+		       				<p>
+		       						<em>其他：</em>
+		       						<span></span>
+		       				</p>
+							
+						</div>
+					</div>
+				</div>
+				
+			</div>
+								
+		</div>
+	</div>
+	<!--右侧区域-->
+	<div  class="rightMap halfMap" id="right_area">
+			<!--<div class="Bselect_box mt">
+					<label class="control-label ml-xl  mr  fl">X轴</label>
+					<select class="form-control fl ml" >
+						<option value="请选择地区">地区</option>
+						<option value="北京">批次</option>
+						<option value="河北">型号</option>
+						<option value="天津">电池类型</option>
+					</select>
+					<select class="form-control fl ml ">
+						<option value="">请选择</option>
+					</select>
+					
+					<label class="control-label ml-xl  mr fl ">X轴图形组</label>
+					<select class="form-control fl ml ">
+						<option value="天津">电池类型</option>
+						<option value="地区">地区</option>
+						<option value="北京">批次</option>
+						<option value="河北">型号</option>
+					</select>
+					<select class="form-control fl ml ">
+						<option value="">请选择</option>
+					</select>
+			</div>-->
+			
+			<select-link-age labelnameone="X轴1" labelnametwo="X轴图形组" select-arrd="selectArr"  conso-sel="changeSelect(name)" my-city="conCity"></select-link-age>
+				
+				
+			<!--柱状折线图-->
+			<div class="batteryCharge_zhezhu" id="batteryCharge_zhezhu"></div>
+				
+			<div class="batteryCharge_map" id="batteryCharge_map">
+				
+			</div>
+				
+				
+				
+				
+			
+		
+		
+		
+		
+	</div>
+	
+</div>
+
+
+
+

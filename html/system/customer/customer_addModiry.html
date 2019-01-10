@@ -1,0 +1,120 @@
+<style type="text/css">
+	.ngdialog_add1.ngdialog .ngdialog-content {
+		height: 60%;
+	}
+	.ngdialog_add2.ngdialog .ngdialog-content {
+		height: 5rem;
+	}
+	
+	.ngdialog_setLocation.ngdialog .ngdialog-content {
+		width: 60%;
+		height: 5rem;
+	}
+	fieldset input{
+		width: 100%;
+		padding: 0 0.1rem;
+	}
+</style>
+<div class="window dialog backImg_common1 RepairAdd_Popup custom_height" ng-class="{'RepairAdd_Popup customerAdd_Popup':customerForm_dialog==1||customerForm_dialog==2,'Modifypwd_Popup Modifypwd_Popup2':customerForm_dialog==3}">
+	<div class="customer_title">
+		<h5>{{title1}}</h5>
+	</div>
+	<!--新建-->
+	<form name="myForm" class="form-validate ml-xl" ng-if="customerForm_dialog==1" ng-init="alreadyBt=false" novalidate>
+		<div class="panel-body border_box border_box2 font-large customMargin">
+			<fieldset class="RepairText_boxlist mt-lg">
+				<div class="col-md-12 p0">
+					<label class="col-sm-5 LabelTextColor">客户姓名</label>
+					<input type="text" class="col-sm-6 borderNone td_color BgTransparent font-large p0 ml-lg ht100" ng-model="addCus_name"  name="name_text1"  autocomplete="off" required ng-maxlength='50'/>
+					<span class="Requiredtext1">*</span>
+					<div class="Service_error Errorprompt" ng-show="myForm.name_text1.$error.required && alreadyBt||(myForm.name_text1.$dirty&&myForm.name_text1.$invalid&&alreadyBt)"></div>
+				</div>
+			</fieldset>
+			<fieldset class="RepairText_boxlist mt-lg" ng-mouseleave="search_unit=false">
+				<div class="col-md-12 p0">
+					<label class="col-sm-5 LabelTextColor">所属公司</label>
+					<div class="col-sm-5 p0 ht100"><input-search search="search_name(name)" searchlist="searchCustomer_unit"  class="borderNone customSeach1" model='searchName' select-change="selectNewname(newModel)" name="name_addUnit" required ng-maxlength='50'/></div>
+					<span class="Requiredtext1">*</span>
+					<div class="Service_error Errorprompt" ng-show="(!searchName &&alreadyBt)||(alreadyBt&&searchName&&searchName.length>50)"></div>
+				</div>
+			</fieldset>
+			<fieldset class="RepairText_boxlist mt-lg">
+				<div class="col-md-12 p0">
+					<label class="col-sm-5 LabelTextColor">手机号码</label>
+					<input type="text" class="col-sm-6 borderNone td_color BgTransparent font-large p0 ml-lg ht100" ng-model="addCus_phone" name="add_mobile" ng-pattern="/(^1[3|4|5|7|8|9][0-9]{9}$)|(^\d{3}-\d{7,8}$)|(^\d{4}-\d{7,8}$)/" required/>
+					 <span class="Requiredtext1">*</span>
+					 <div class="Service_error Errorprompt" ng-show="myForm.add_mobile.$dirty  && myForm.add_mobile.$invalid && alreadyBt ||(myForm.add_mobile.$error.required && alreadyBt)"></div>      
+				</div>
+			</fieldset>
+		</div>
+			<!--ng-disabled="myForm.$invalid"-->
+		<div class="AddBtn_boxlist  td_color">
+			<button  class="borderNone BgTransparent wt100 ht100" ng-click='customer_addSave(addCus_name,addCus_phone,myForm.$invalid);alreadyBt=true'>保存</button>
+		</div>
+	</form>
+	<!--修改-->
+	<form name="myForm" class="form-validate ml-xl" ng-if="customerForm_dialog==2" ng-init="alreadyBt1=false" novalidate>
+		<div class="panel-body border_box border_box2 font-large">
+			<fieldset class="RepairText_boxlist mt-lg">
+				<div class="col-md-12 p0">
+					<label class="col-sm-5 LabelTextColor">客户姓名</label>
+					<input type="text" class="col-sm-6 borderNone td_color BgTransparent font-large p0 ml-lg ht100" ng-model="cus_modiry.name"  name="name_text1"  autocomplete="off" required ng-maxlength='50'/>
+					<span class="Requiredtext1">*</span>
+					<div class="Service_error Errorprompt" ng-show="myForm.name_text1.$error.required && alreadyBt1||(myForm.name_text1.$dirty&&myForm.name_text1.$invalid&&alreadyBt1)"></div>
+				</div>
+			</fieldset>
+			<fieldset class="RepairText_boxlist mt-lg" ng-mouseleave="search_unit=false">
+				<div class="col-md-12 p0">
+					<label class="col-sm-5 LabelTextColor">所属公司</label>
+					<div class="col-sm-5 p0"><input-search search="search_name(name)" searchlist="searchCustomer_unit"  class="borderNone customSeach1 pt-sm" model='searchName' config-name="textInit"  required name="name_addUnit1"  select-change="selectNewname(newModel)" ng-maxlength="50"/></div>
+					<span class="Requiredtext1">*</span>
+					<div class="Service_error Errorprompt" ng-show="alreadyBt1&&(!searchName||searchName.length>50)"></div>
+				</div>
+			</fieldset>
+			<fieldset class="RepairText_boxlist mt-lg">
+				<div class="col-md-12 p0">
+					<label class="col-sm-5 LabelTextColor">手机号码</label>
+					<input type="text" class="col-sm-6 borderNone td_color BgTransparent font-large p0 ml-lg ht100" ng-model="cus_modiry.phone" name="add_mobile" ng-pattern="/(^1[3|4|5|7|8|9][0-9]{9}$)|(^\d{3}-\d{7,8}$)|(^\d{4}-\d{7,8}$)/" required/>
+					 <span class="Requiredtext1">*</span>
+					 <div class="Service_error Errorprompt" ng-show="myForm.add_mobile.$dirty  && myForm.add_mobile.$invalid && alreadyBt1 ||(myForm.add_mobile.$error.required && alreadyBt1)"></div>      
+				</div>
+			</fieldset>
+		</div>
+			<!--ng-disabled="myForm.$invalid"-->
+		<div class="AddBtn_boxlist  td_color">
+			<button class="borderNone BgTransparent wt100 ht100" ng-click='customer_modifySave(myForm.$invalid);alreadyBt1=true'>保存</button>
+		</div>
+	</form>
+	
+	
+	<form name="myForm" class="form-validate ml-xl" ng-if="customerForm_dialog==3" >
+		<div class="panel-body border_box border_box2">
+			<fieldset class="mt-lg">
+				<div class="col-md-12 p0">
+					<!--<div class="row mt20">
+			            <div class="col-md-6">
+			            	<div class="input-group">
+								<div class="input-group-btn">
+									<button type="button" class="btn btn-primary" ng-click="downloadTemplet()">点击下载导入模板</button>
+								</div>
+						    </div>
+			            </div>
+	      			</div>-->
+			      	<div class="row mt20">
+			            <div class="col-md-12">
+				          	<div class="input-group excelupload">
+			            		<div class="file">
+			            			<!--accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"-->
+									<input type="file" id="excelFile"  multiple="multiple"/>
+								</div>
+				          	</div>
+			            </div>
+			      	</div>
+				</div>
+			</fieldset>
+		</div>
+		<div class="AddBtn_boxlist  td_color" ng-click="importFileSave()">
+			<button ng-disabled="myForm.$invalid" class="borderNone BgTransparent saveBtn">保存</button>
+		</div>
+	</form>
+</div>

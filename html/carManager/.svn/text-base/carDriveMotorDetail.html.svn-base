@@ -1,0 +1,54 @@
+<style type="text/css">
+	.ngdialog-content{
+		left: 20%;
+		top: 10%;
+		height: 80%;
+	}
+</style>
+<div class="window dialog wd-wide bg_default1 border_hight">
+    <div class="bg_default1 modal-header">
+    	<h4 class="modal-title text-center">驱动电机信息</h2>
+    </div>
+    <div class="ngGrid" style="height: calc(100% - .35rem);margin: .12rem .2rem;">
+    	<div class="border_box" style="height: calc(100% - .4rem);">
+    		<table class="table table_collapse">
+					<thead class="thead_bg">
+						<tr>
+							<th>VIN</th>
+							<th>驱动电机序号</th>
+							<th>型号</th>
+							<th>额定电压(V)</th>
+							<th>最大工作电流</th>
+							<th>冷却方式</th>
+							<th>峰值功率(kw)</th>
+							<th>最高转速(rpm)</th>
+							<th>峰值转矩(N.m)</th>
+							<th>最大输出转矩(N.m)</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="x in carDriveMotorDetailList track by $index">
+		                    <td class="color_w font-small">{{x.vin}}</td>
+		                    <td class="color_w font-small">{{x.dmNumber}}</td>
+		                    <!--字典-->
+		                    <td class="color_w font-small">{{x.dmType}}</td>
+		                    <td class="color_w font-small">{{x.nominalVoltage}}</td>
+		                    <td class="color_w font-small">{{x.dmMaxElectricity}}</td>
+		                    <!--字典-->
+		                    <td class="color_w font-small">{{x.dmCoolingType}}</td>
+							<td class="color_w font-small">
+								{{x.dmPower}}
+							</td>
+							<!--字典-->
+		                    <td class="color_w font-small">{{x.dmMrs}}</td>
+							<td class="color_w font-small">
+								{{x.dmTorque}}
+							</td>
+		                    <td class="color_w font-small">{{x.dmOutputTorque}}</td>
+		                </tr>
+					</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+

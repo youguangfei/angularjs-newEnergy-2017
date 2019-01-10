@@ -1,0 +1,56 @@
+<!--deleteType-->
+<div class="window dialog confirm_dialog confirm_dialog1" ng-if="confirmlist1==1"  ng-keyup="enter($event)">
+	<div class="text-center color_w  confirm_dialog_body">
+		{{message}}
+	</div>
+	<div class="panel-footer h60  delete_diaolg">
+		<div class="clearfix  text-center">
+			<div class="AddBtn_boxlist AddBtn_boxlist1  mr-lg" id="delete_Cancel" ng-click="goBack()">
+				<a class="td_color">取消</a>
+			</div>
+			<div class="AddBtn_boxlist  AddBtn_boxlist1" ng-click="confirm()">
+				<a class="td_color">确定</a>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="window dialog confirm_dialog confirm_dialog1" ng-if="confirmlist1==2"  ng-keyup="enter($event)">
+	<div class="text-center color_w  confirm_dialog_body">
+		{{message}}
+	</div>
+	<div class="panel-footer h60  delete_diaolg">
+		<div class="clearfix  text-center">
+			<div class="AddBtn_boxlist  AddBtn_boxlist1" ng-click="confirm()">
+				<a class="td_color">确定</a>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="window dialog confirm_dialog confirm_dialog1 confirm_dialog3" ng-if="confirmlist1==3"  ng-keyup="enter($event)">
+	<div class="text-center color_w  confirm_dialog_body">
+		{{message}}
+	</div>
+	<div class="panel-footer h60  delete_diaolg">
+		<div class="clearfix  text-center">
+			<div class="AddBtn_boxlist AddBtn_boxlist1  mr-lg" id="delete_Cancel2" ng-click="goBack2()">
+				<a class="td_color">取消</a>
+			</div>
+			<div class="AddBtn_boxlist  AddBtn_boxlist1" ng-click="confirm()">
+				<a class="td_color">确定</a>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+	
+		$(".ngdialog-content").myDrag({
+			randomPosition: false,
+			direction: 'all',
+			handler: false,
+			parent: 'body',
+			dragEnd: function(x, y) {
+	
+			},
+		});
+		
+</script>

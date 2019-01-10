@@ -1,0 +1,169 @@
+<h3 class="text-center text-thin">style selector</h3>
+<div class="pbox">
+   <!--<h4 class="text-muted text-thin">Layout</h4>-->
+   <div class="clearfix">
+      <p class="pull-left">Fixed header</p>
+      <div class="pull-right">
+         <label class="switch">
+            <input type="checkbox" ng-click="headerFixed()" />
+            <span></span>
+         </label>
+      </div>
+   </div>
+   
+   <div class="clearfix">
+      <p class="pull-left">closed sidebar</p>
+      <div class="pull-right">
+         <label class="switch">
+            <input type="checkbox" ng-click="app.layout.isCollapsed = !app.layout.isCollapsed" />
+            <span></span>
+         </label>
+      </div>
+   </div>
+</div>
+<div ng-if="!app.layout.horizontal" class="pbox">
+   <div class="clearfix">
+      <p class="pull-left">Float</p>
+      <div class="pull-right">
+         <label class="switch">
+            <input type="checkbox" ng-model="app.layout.isFloat" />
+            <span></span>
+         </label>
+      </div>
+   </div>
+   <div class="clearfix">
+      <p class="pull-left">Fixed footer</p>
+      <div class="pull-right">
+         <label class="switch">
+            <input type="checkbox" ng-model="app.layout.asideHover" />
+            <span></span>
+         </label>
+      </div>
+   </div>
+   
+  <div class="p ThemesChangeBox">
+	   <h4 class="text-muted text-thin">Themes</h4>
+	   <div class="table-grid mb">
+	      <div class="col mb">
+	         <div class="setting-color">
+	            <label>
+	               <input type="radio" name="setting-theme" ng-model="app.layout.theme" value="theme/blue/css/platform.css" />
+	               <span class="icon-check"></span>
+	               <span class="split">
+	                  <span class="color bg-info"></span>
+	                  <span class="color bg-info-light"></span>
+	               </span>
+	               <span class="color bg-white"></span>
+	            </label>
+	         </div>
+	      </div>
+	   </div>
+	   
+	   <div class="table-grid mb">
+	      <div class="col mb">
+	         <div class="setting-color">
+	            <label>
+	               <input type="radio" name="setting-theme" ng-model="app.layout.theme" value=""/> 
+	               <span class="icon-check"></span>
+	               <span class="split">
+	                  <span class="color"></span>
+	                  <span class="color bg-info-light"></span>
+	               </span>
+	               <span class="color bg-white"></span>
+	            </label>
+	         </div>
+	      </div>
+	   </div>
+	   
+	</div>
+   
+   
+</div>
+<div class="setting_icon"  ng-click="offsidebarTopen()">
+	<a href="#">
+		<i class="fa fa-spin fa-gear"></i>
+	</a>
+</div>
+
+
+<!--<h3 class="text-center text-thin">Settings</h3>
+<div class="p">
+   <h4 class="text-muted text-thin">Themes</h4>
+   <div class="table-grid mb">
+      <div class="col mb">
+         <div class="setting-color">
+            <label>
+               <input type="radio" name="setting-theme" ng-model="app.layout.theme" value="theme/blue/css/platform.css" />
+               <span class="icon-check"></span>
+               <span class="split">
+                  <span class="color bg-info"></span>
+                  <span class="color bg-info-light"></span>
+               </span>
+               <span class="color bg-white"></span>
+            </label>
+         </div>
+      </div>
+   </div>
+   
+   
+</div>
+<div class="p">
+   <h4 class="text-muted text-thin">Layout</h4>
+   <div class="clearfix">
+      <p class="pull-left">Fixed header</p>
+      <div class="pull-right">
+         <label class="switch">
+            <input type="checkbox" ng-model="app.layout.isFixed" />
+            <span></span>
+         </label>
+      </div>
+   </div>
+   <div class="clearfix">
+      <p class="pull-left">Boxed</p>
+      <div class="pull-right">
+         <label class="switch">
+            <input type="checkbox" ng-model="app.layout.isBoxed" />
+            <span></span>
+         </label>
+      </div>
+   </div>
+   <div class="clearfix">
+      <p class="pull-left">RTL</p>
+      <div class="pull-right">
+         <label class="switch">
+            <input type="checkbox" ng-model="app.layout.isRTL" />
+            <span></span>
+         </label>
+      </div>
+   </div>
+</div>
+<div ng-if="!app.layout.horizontal" class="p">
+   <h4 class="text-muted text-thin">Aside</h4>
+   <div class="clearfix">
+      <p translate="offsidebar.setting.layout.COLLAPSED" class="pull-left">Collapsed</p>
+      <div class="pull-right">
+         <label class="switch">
+            <input type="checkbox" ng-model="app.layout.isCollapsed" />
+            <span></span>
+         </label>
+      </div>
+   </div>
+   <div class="clearfix">
+      <p class="pull-left">Float</p>
+      <div class="pull-right">
+         <label class="switch">
+            <input type="checkbox" ng-model="app.layout.isFloat" />
+            <span></span>
+         </label>
+      </div>
+   </div>
+   <div class="clearfix">
+      <p class="pull-left">Hover</p>
+      <div class="pull-right">
+         <label class="switch">
+            <input type="checkbox" ng-model="app.layout.asideHover" />
+            <span></span>
+         </label>
+      </div>
+   </div>
+</div>-->

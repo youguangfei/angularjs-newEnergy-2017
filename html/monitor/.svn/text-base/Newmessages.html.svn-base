@@ -1,0 +1,43 @@
+<style type="text/css">
+	.News_messagesbox .Repair_Detpage_closeBtn{
+		top: 0.35rem;
+		right: 0.8rem;
+	}
+</style>
+<div class="News_messagesbox">
+	<div class="Repair_Detpage_closeBtn" id="Repair_Detpage_closeBtn" ng-click="closeBlank()"></div>
+	<div class="News_messagesbox1">
+		<div class="Newstitle">
+			<h4>消息</h4>
+		</div>
+		<!--中间内容-->
+		<!--table-->
+		<div class="RepairTable_list_center News_tableBox tablecontnent1">
+			<table class="table Table_trlist Table_trlist1">
+				<thead class="thead_bg">
+					<tr>
+						<th class="Repair_tabfirth backImg_common1">
+							<span class="thfir_text">消息状态</span>
+						</th>
+						<th class="Repair_theadth2">接收时间</th>
+						<th>消息内容</th>
+						<th>操作</th>
+					</tr>
+				</thead>
+				<tbody class="Tr_hoverlist">
+					<tr ng-repeat='x in Newslist track by $index' ng-class="{active:activeIndex==$index}" ng-click="changeIndex($index)" class="{{ $even ? 'BackColor1even': 'BackColor1odd'}}">
+						<td><span ng-if="x.status==0" class="td_color">未读</span><span ng-if="x.status==1" class="Already_state">已读</span></td>
+						<td>{{x.creaTime | date:"yyyy-MM-dd HH:mm:ss"}}</td>
+						<td>{{x.body}}</td>
+						<td class="message_readColor">
+							<span ng-click="lookDetails(x)" class="View_data">查看详情</span>
+							<span ng-if="x.status==0" class="ml-lg" ng-click="setAlreadyRead(x)" class="View_data">设为已读</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	<div class="myPagelistBox2">
+		<div ng-if="myPagelist.totalCount>10" ui-pagination pg="myPagelist"></div>
+	</div>
+	</div>
+</div>

@@ -1,0 +1,160 @@
+<div class="side_right">
+	<div class="Box">
+		<div class="indexright_cont systembox2">
+			<div class="indexright_cont_top">
+				<div class="topBox2 clearfix">
+					<div class="button_box fr">
+						<button class="mt-sm" ng-click="createPack(1)">
+							<em class="fa fa-plus"></em>
+							<span>新增</span>
+						</button>
+						<button class="mt-sm" ng-click="createPack(0)">
+							<em class="icon-pencil"></em>
+							<span>编辑</span>
+						</button>
+						<button class="mt-sm" ng-click="deletePack()">
+							<em class="fa fa-trash-o"></em>
+							<span>删除</span>
+						</button>
+						<button class="mt-sm" ng-click="showEmpower()">
+							<em class="fa fa-plus-square-o"></em>
+							<span>增删模块</span>
+						</button>
+					</div>
+				</div>
+					
+			</div>
+		
+			<div class="indexright_cont_con">
+				<!-- 功能按钮 -->
+				<div class="indexright_cont_conl">
+					<div class="indexright_cont_conlt border_box"  ng-scrollbar>
+						<abn-tree tree-data="orgData" tree-control="orgTree"
+					on-select="orgSelected(branch)" expand-level="2"></abn-tree>
+					</div>
+				</div>
+				<div class="contentright_cont_con  system_conRwidth table_border">
+					<form ng-if="showCreatePackTable" style="height:100%;" name="myForm" class="form-validate">
+						<div class="pt-xl border_box border_box3"> 
+								<fieldset>
+									<div class="form-group">
+										<div class="col-md-9">
+											<label class="col-sm-3 control-label">销售包编号</label>
+											<div class="col-sm-9">
+												<input type="text" class="form-control color_blue inp_default2 inpBorder"  ng-model="salesPackage.salesPackageId" disabled>
+											</div>
+										</div>
+									</div>
+								</fieldset>
+								<fieldset>
+									<div class="form-group">
+										<div class="col-md-9">
+											<label class="col-sm-3 control-label">销售包名称</label>
+											<div class="col-sm-9">
+												<input type="text" class="form-control color_blue inp_default2 inpBorder" ng-model="salesPackage.salesPackageName">
+											</div>
+										</div>
+									</div>
+								</fieldset>
+								<fieldset>
+									<div class="form-group">
+										<div class="col-md-9">
+											<label class="control-label col-sm-3">创建时间</label>
+											<div class="col-sm-9">
+												<input type="text" class="form-control date_icon inpBorder color_blue" id="createTime" onclick="initDate('createTime')" ng-model="salesPackage.createTime" />
+											</div>
+										</div>
+										<!--<div class="col-md-9">
+											<date-ui labelName="创建时间" ng-model="salesPackage.createTime" dt="salesPackage.createTime"></date-ui>
+										</div>-->
+									</div>
+								</fieldset>
+								<fieldset>
+									<div class="form-group">
+										<!--<div class="col-md-9">
+											<date-ui labelName="编辑时间" ng-model="salesPackage.editTime" dt="salesPackage.editTime"></date-ui>
+										</div>-->
+										<div class="col-md-9">
+											<label class="control-label col-sm-3">编辑时间</label>
+											<div class="col-sm-9">
+												<input type="text" class="form-control date_icon inpBorder color_blue" id="editTime" onclick="initDate('editTime')" ng-model="salesPackage.editTime" />
+											</div>
+										</div> 
+									</div>
+								</fieldset>
+								<fieldset>
+									<div class="form-group">
+										<div class="col-md-9">
+											<label class="col-sm-3 control-label">价格</label>
+											<div class="col-sm-9">
+												<input type="text" name="price" class="form-control color_blue inp_default2 inpBorder" ng-model="salesPackage.money" />
+											</div>
+										</div>
+									</div>
+								</fieldset>
+								<fieldset>
+									<div class="form-group">
+										<div class="col-md-9">
+											<label class="col-sm-3 control-label">描述信息</label>
+											<div class="col-sm-9">
+												<textarea class="form-control color_blue inp_default2 inpBorder" ng-model="salesPackage.description"></textarea>
+											</div>
+										</div>
+									</div>
+								</fieldset>
+						</div>
+						<div class="panel-footer h60">
+							<div class="col-md-9">
+								<label class="col-sm-3 control-label"></label>
+								<div class="col-sm-9" style="padding-right: 15px;padding-left: 5px;">
+									<a class="save fl" ng-if="salesPackage.salesPackageId==null" ng-click="insertOrUpdatepackge(0)">保存</a>
+									<a class="save fl" ng-if="salesPackage.salesPackageId!=null" ng-click="insertOrUpdatepackge(1)">修改</a>
+									<a class="cancel fr" ng-click="goBack()">取消</a>
+								</div>
+							</div>
+						</div>
+	
+					</form>
+					<!--table 表格-->
+					<div ng-show="showDataTable" class="ngGrid" style="height:100%;">
+						<div class="border_box borderbox">
+							<table lg-grid class="table" model="dataProvider.getGridModel()">
+								<thead class="thead_bg">
+									<tr>
+										<th>模块编码</th>
+										<th>模块名称</th>
+										<th>是否已安装</th>
+										<th>显示顺序</th>
+										
+									</tr>
+								</thead>
+								<tbody>
+									<tr lg-row-start>
+										<td class="td_color font-small">{{ row.data.moduleCode}}</td>
+										<td class="td_color font-small">{{ row.data.moduleName }}</td>
+										<td class="td_color font-small" ng-if="row.data.status == 1">是</td>
+										<td class="text-danger font-small" ng-if="row.data.status == 0">否</td>
+										<td class="td_color font-small" ng-if="row.data.status != 1 && row.data.status != 0">未填写</td>
+										<td class="color_green font-small">{{ row.data.creator }}</td>
+									</tr>
+									<tr lg-row-end lg-expanded-row>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<service-pager data-provider="dataProvider"></service-pager>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	function initDate(times){
+		$.jeDate('#'+times,{format: 'YYYY-MM-DD',trigger:false,festival:true,isinitVal:true,ishmsVal:false,format:'YYYY-MM-DD'})
+	}
+</script>
+    
+    
+   

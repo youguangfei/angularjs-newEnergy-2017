@@ -1,0 +1,129 @@
+<!--故障统计页面-->
+<div class="faultStatisticsAddBox dataTopposition">
+	<!--头部-->
+	<div class="faultStatisticsAddTop RepairTop_box">
+		<!--top1-->
+		<button class="fl borderNone BgTransparent faultStatistics_btn" ng-click='faultStatis_search()'>查询</button>
+		<div class="potentialHeaderlist1 displayFlex">
+			<fieldset class="RepairText_boxlist fl fildedsetAfter cm-positive clearfix">
+					<div class="fl p0 Repari_carNum1">
+						<select-block config="vin_Config" model='selectVin' class="borderNone SelectBlock_width p0 Repai_carWidth"/>
+					</div>
+					<input type="text" class="Repari_carNumInput fr borderNone BgTransparent font-large InputColor" placeholder="请输入搜索的数据" ng-model="selectVin_value" id='selectVin_value'/>
+			</fieldset>
+			<div class="clearfix Chargingcale">
+				<div class="fl Chargingcale1">
+					<lable class="fl text-center LabelTextColor Repair_lineHeight pl LabelTextAfter1 font-large">开始时间</lable>
+					<div class="pl fr DateWidth_repair">
+						<input type="text" class="form-control date_icon fr color_blue ChargingTextAfter wt100 pl-xl" id="startTime1" ng-model="startTime1" readonly/>
+					</div>
+				</div>
+				<div class="Caleline fl Caleline1"></div>
+				<div class="fl Chargingcale1">
+					<lable class='fl text-center LabelTextColor Repair_lineHeight pl LabelTextAfter font-large'>结束时间</lable>
+					<div class="pl fr DateWidth_repair">
+						<input type="text" class="form-control date_icon fr color_blue ChargingTextAfter wt100" id="endTime1" ng-model="endTime1" readonly/>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+		<!--top2-->
+		<div class="faultStatisticslist2 clearfix">
+			<fieldset class="RepairText_boxlist fl">
+						<div class="form-group ">
+							<div class="col-md-12 p0">
+								<label class="col-sm-4 LabelTextColor">故障等级</label>
+								<div class="col-sm-6 p0">
+									<select-block config="faultLevel_Config1" model='selectLevel' class="borderNone SelectBlock_width p0" select-change="selectChange_level(newModel)"/>
+								</div>
+							</div>
+						</div>
+			</fieldset>
+		
+		<fieldset class="RepairText_boxlist fl">
+						<div class="form-group ">
+							<div class="col-md-12 p0">
+								<label class="col-sm-4 LabelTextColor">故障类型</label>
+								<div class="col-sm-6 p0">
+									<select-block config="faultType_Config1" model='serviceType' select-change="selectChange_type(newModel)" class="borderNone SelectBlock_width p0" />
+								</div>
+							</div>
+						</div>
+					</fieldset>
+				</div>
+	</div>
+	<!--中间内容部分-->
+	<div class="faultStatisticsCenter RepairTable_list">
+	   <div class="faultStatistBtn">
+			<div class="AddBtn_boxlist faultStatistBtn1 fl" ng-click='faultStatistBtn_btn1()'>
+				<button class="borderNone BgTransparent font-center">故障占比</button>
+			</div>
+			<div class="AddBtn_boxlist faultStatistBtn2 fl" ng-click='faultStatistBtn_btn2()'>
+				<button class="borderNone BgTransparent font-center">故障频率</button>
+			</div>
+	  </div>
+		<div class="RepairTable_list_center faultStatistTr">
+			<table class="table Table_trlist">
+				<thead class="thead_bg">
+					<tr>
+						<th class="Service_operationWidth Repair_tabfirth CharTd1">
+							<span class="thfir_text">车牌号</span>
+						</th>
+						<th class="Repair_theadth2">故障类型</th>
+						<th>故障等级</th>
+						<th>故障发生时间</th>
+						<th>故障名称</th>
+					</tr>
+				</thead>
+				<tbody class="Tr_hoverlist">
+					<tr ng-repeat='i in faultStatisticsdata1' ng-class="{active:activeIndex==$index}" ng-click="changeIndex($index)" class="{{ $even ? 'BackColor1even': 'BackColor1odd'}} ">
+						<td>{{i.licenseNumber}}</td>
+						<td>{{i.faulType}}</td>
+						<td>{{i.alarmLevel}}</td>
+						<td>{{i.starTime | date:'yyyy-MM-dd'}}</td>
+						<td>{{i.alarmName}}</td>
+						
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="myPagelistBox">
+			<div ng-if="myPagelist.totalCount>10" ui-pagination pg="myPagelist"></div>
+		</div>
+		</div>
+</div>
+<script type="text/javascript">
+	var start= {
+		format: 'YYYY-MM-DD',
+		isinitVal: true,
+		festival: false,
+		ishmsVal: false,
+		maxDate: $.nowDate(0), //最大日期
+		choosefun: function(elem, datas) {
+			end.minDate = datas; //开始日选好后，重置结束日的最小日期
+			endDates();
+		}
+	};
+	var end = {
+		format: 'YYYY-MM-DD',
+		isinitVal: true,
+		festival: false,
+		ishmsVal: false,
+		maxDate: $.nowDate(0), //设定最小日期为当前日期
+		choosefun: function(elem, datas) { //选中之后的回调函数
+			start.maxDate = datas; //将结束日的初始值设定为开始日的最大日期
+		}
+	};
+	//这里是日期联动的关键        
+	function endDates() {
+		//将结束日期的事件改成 false 即可
+		end.trigger = false;
+	}
+	$.jeDate('#startTime1', start);
+	$.jeDate('#endTime1', end);
+
+	function initDate(startEnd) {
+		$.jeDate('#' + startEnd, { trigger: false, festival: true, isinitVal: true, ishmsVal: false, format: 'YYYY-MM-DD hh:mm:ss' })
+	}
+</script>

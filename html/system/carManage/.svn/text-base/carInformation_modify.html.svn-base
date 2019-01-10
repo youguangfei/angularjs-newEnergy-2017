@@ -1,0 +1,413 @@
+<style type="text/css">
+	.carnumberName1{
+		width: 1.3rem;
+		margin-left: -0.2rem;
+	}
+</style>
+<div ng-include="'html/blocks/Public_background.html'"></div>
+<div style="width: 100%;height: 100%;">
+	<div class="Repair_Detpage_closeBtn" id="Repair_Detpage_closeBtn" ng-click="closeBlank()"></div>
+	<form class="Repair_Detpage carIf_form form-validate" name="myForm" novalidate ng-init="alreadyBt=false">
+		<!--标题-->
+		<div class="Repair_cartitle">
+			车辆详情
+		</div>
+		<!--内容区域-->
+		<div class="Repair_modifycontentList1" ng-init="carIf_tag=1">
+			<div class="Repair_cartitleContent">
+				<div class="carIn_mdTitle carIn_mdTitle1 fl ht100" ng-click="carIf_tag=1" ng-class="{'active':carIf_tag==1}">车辆信息</div>
+				<div class="carIn_mdTitle carIn_mdTitle2 fl ht100" ng-click="carIf_tag=2" ng-class="{'active':carIf_tag==2}">车主信息</div>
+				<div class="carIn_mdTitle carIn_mdTitle3 fl ht100" ng-click="carIf_tag=3" ng-class="{'active':carIf_tag==3}">可充电储能装置信息</div>
+				<div class="carIn_mdTitle carIn_mdTitle4 fl ht100" ng-click="carIf_tag=4" ng-class="{'active':carIf_tag==4}">驱动电机信息</div>
+			</div>
+			<!--修改模式-->
+			<div class="" ng-if="modifyT">
+				<div class="carIf_modifycontnetBox carInfo_box"  ng-show="carIf_tag==1">
+				<ul class="carInfo_box_ul1 fl"> 
+					<li>
+						<label class="fl ht100"><strong class="fr">*</strong><span class="fr">VIN号</span></label>
+						<input type="text" class="carIn_addInput BgTransparent borderNone ml fl ht100" ng-model="carInformation.vin" name="vin" required ng-maxlength="50"/>
+						<div class="Service_error Errorprompt" ng-show="myForm.vin.$error.required&&alreadyBt||(myForm.vin.$dirty&&myForm.vin.$invalid&&alreadyBt)"></div> 
+					</li>
+					<li>
+						<label class="fl ht100"><strong class="fr">*</strong><span class="fr">车辆类型</span></label>
+						<select-block config="carType_Config1" model='carType' select-change="selectCarType(newModel)" class="borderNone carInfo_slwth p0 fl ml" />
+					</li>
+					<li>
+						<label class="fl ht100"><strong class="fr">*</strong><span class="fr">SIM卡号</span></label>
+						<input type="text" class="carIn_addInput BgTransparent borderNone ml fl ht100" ng-model="carInformation.iccid" name="iccid" required ng-maxlength='50'/>
+						<div class="Service_error Errorprompt" ng-show="myForm.iccid.$error.required&&alreadyBt||(myForm.iccid.$dirty&&myForm.iccid.$invalid&&alreadyBt)"></div> 
+					</li>
+					<li>
+						<label class="fl ht100"><strong class="fr">*</strong><span class="fr">车辆型号</span></label>
+						<input type="text" class="carIn_addInput BgTransparent borderNone ml fl ht100" ng-model="carInformation.model" name="carModel" required ng-maxlength='50'/>
+						<div class="Service_error Errorprompt" ng-show="myForm.carModel.$error.required&&alreadyBt||(myForm.carModel.$dirty&&myForm.carModel.$invalid&&alreadyBt)"></div> 
+					</li>
+					<li>
+						<label class="fl ht100"><strong class="fr">*</strong><span class="fr">车辆批次</span></label>
+						<input type="text" class="carIn_addInput BgTransparent borderNone ml fl ht100" ng-model="carInformation.batch" name="carBatch" required ng-maxlength='50'/>
+						<div class="Service_error Errorprompt" ng-show="myForm.carBatch.$error.required&&alreadyBt||(myForm.carBatch.$dirty&&myForm.carBatch.$invalid&&alreadyBt)"></div> 
+					</li>
+				</ul>
+				<ul class="carInfo_box_ul2 fl"> 
+					<li>
+						<label class="fl ht100"><strong class="fr"></strong><span class="fr">发动机编号</span></label>
+						<input type="text" class="carIn_addInput BgTransparent borderNone ml fl ht100" ng-model="carInformation.engineNumber"/>
+					</li>
+					<li>
+						<label class="fl ht100"><strong class="fr"></strong><span class="fr">最高车速(km/h)</span></label>
+						<input type="text" class="carIn_addInput BgTransparent borderNone ml fl ht100"  ng-model="carInformation.maxSpeed"/>
+					</li>
+					<li>
+						<label class="fl ht100"><strong class="fr"></strong><span class="fr">电机驱动布置形式</span></label>
+						<input type="text" class="carIn_addInput BgTransparent borderNone ml fl ht100" ng-model="carInformation.dma"/>
+					</li>
+					<li>
+						<label class="fl ht100"><strong class="fr"></strong><span class="fr">档位传动比</span></label>
+						<input type="text" class="carIn_addInput BgTransparent borderNone ml fl ht100" ng-model="carInformation.gearRatio"/>
+					</li>
+				</ul>
+			</div>
+			
+				<div class="carIf_modifycontnetBox carInfo_box" ng-show="carIf_tag==2">
+					<ul class="carInfo_box_ul1 fl"> 
+						<li>
+							<label class="fl ht100"><strong class="fr">*</strong><span class="fr">车主姓名</span></label>
+							<input type="text" class="carIn_addInput BgTransparent borderNone ml fl ht100" ng-model="carCustomer.name" name="carMan_name" required ng-maxlength='50'/>
+							<div class="Service_error Errorprompt" ng-show="myForm.carMan_name.$error.required&&alreadyBt||(myForm.carMan_name.$dirty&&myForm.carMan_name.$invalid&&alreadyBt)"></div> 
+						</li>
+						<li>
+							<label class="fl ht100"><strong class="fr">*</strong><span class="fr">车主手机</span></label>
+							<input type="text" class="carIn_addInput BgTransparent borderNone ml fl ht100" ng-pattern="/(^1[3|4|5|7|8|9][0-9]{9}$)|(^\d{3}-\d{7,8}$)|(^\d{4}-\d{7,8}$)/" ng-model="carCustomer.phone" name="mobile" required ng-maxlength='50'/>
+							 <div class="Service_error Errorprompt" ng-show="(myForm.mobile.$dirty&& myForm.mobile.$invalid&&alreadyBt)||myForm.mobile.$error.required&&alreadyBt"></div>
+						</li>
+						<li>
+							<label class="fl ht100"><strong class="fr">*</strong><span class="fr">车辆使用方式</span></label>
+							<select-block config="carUse_Config1" model='carUseType' select-change="selectCarUse(newModel)" class="borderNone carInfo_slwth p0 fl ml" />
+						</li>
+					</ul>
+					<ul class="carInfo_box_ul2 fl"> 
+						<li>
+							<label class="fl ht100"><strong class="fr">*</strong><span class="fr">车辆使用单位</span></label>
+							<input type="text" class="carIn_addInput BgTransparent borderNone ml fl ht100" ng-model="carCustomer.unitName" name="carMan_unitName" required/>
+							<div class="Service_error Errorprompt" ng-show="myForm.carMan_unitName.$error.required&&alresdyBt||(myForm.carMan_unitName.$dirty&&myForm.carMan_unitName.$invalid&&alreadyBt)"></div>
+						</li>
+						<li>
+							<label class="fl ht100"><strong class="fr">*</strong><span class="fr">购车时间</span></label>
+							<input type="text" class="carIn_addInput BgTransparent borderNone ml fl ht100 color_blue form-control date_icon p0 pl" id="buyingTime2" ng-model="buyingTime" name="carBuyTime" readonly/>
+							<div class="Service_error Errorprompt  buyTime_Error" ng-show="carBuyTime"></div> 
+						</li>
+						<li>
+							<label class="fl ht100"><strong class="fr">*</strong><span class="fr">车牌号</span></label>
+							<input type="text" class="carIn_addInput BgTransparent borderNone ml fl ht100" ng-model="carInformation.licenseNumber" name="licenseNumber" required/>
+							<div class="Service_error Errorprompt" ng-show="myForm.licenseNumber.$error.required&&alreadyBt||(myForm.licenseNumber.$dirty&&myForm.licenseNumber.$invalid&&alreadyBt)"></div> 
+						</li>
+					</ul>
+					
+				</div>
+				
+				<div class="carIf_modifycontnetBox carIf_modifycontnetBox2 carInfo_box" ng-show="carIf_tag==3">
+					<div class="carInfo_subAd">
+						<span class="font-small">可充电储能装置个数</span>
+						<button class="AddBtn_boxlist" ng-click="carEnergy_push()">添加</button>
+					</div>
+					
+					<div class="carInfo_box3BigLook">
+						<div class="carInfo_box carInfo_box3"  ng-repeat="x in carEnergy track by $index">
+							<div class="font-big carInfo_box3Title">
+								<span class="font-small  font-big">可充电储能装置{{$index+1}}</span>
+								<button class="AddBtn_boxlist_smMt Repair_delete" ng-click="carEnergy_delete($index)" ng-if="$index>=1">删除</button>	
+							</div>
+							<ul class="carInfo_box_ul1 fl"> 
+								<li>
+									<label class="fl ht100"><strong class="fr">*</strong><span class="fr">可充电储能装置编号</span></label>
+									<input type="text" class="carIn_addInput BgTransparent borderNone ml fl ht100" ng-model="x.energyNumber" name="energyNumber0{{$index}}" required/>
+									<div class="Service_error Errorprompt" ng-show="myForm.energyNumber0{{$index}}.$error.required&&alreadyBt||(myForm.energyNumber0{{$index}}.$dirty&&myForm.energyNumber0{{$index}}.$invalid&&alreadyBt)"></div> 
+								</li>
+								<li>
+									<label class="fl ht100"><strong class="fr">*</strong><span class="fr">车载储能装置类型</span></label>
+									<input type="text" class="carIn_addInput BgTransparent borderNone ml fl ht100" ng-model="x.energyType" name="energyType0{{$index}}" required/>
+									<div class="Service_error Errorprompt" ng-show="myForm.energyType0{{$index}}.$error.required&&alreadyBt||(myForm.energyType0{{$index}}.$dirty&&myForm.energyType0{{$index}}.$invalid&&alreadyBt)"></div> 
+								</li>
+							</ul>
+							<ul class="carInfo_box_ul2 fl"> 
+								<li>
+									<label class="fl ht100"><strong class="fr">*</strong><span class="fr">类型总能量</span></label>
+									<input type="text" class="carIn_addInput BgTransparent borderNone ml fl ht100" ng-model="x.energyGross" name="energyGross0{{$index}}" required/>
+									<div class="Service_error Errorprompt" ng-show="myForm.energyGross0{{$index}}.$error.required&&alreadyBt||(myForm.energyGross0{{$index}}.$dirty&&myForm.energyGross0{{$index}}.$invalid&&alreadyBt)"></div> 
+								</li>
+								<li>
+									<label class="fl ht100"><strong class="fr">*</strong><span class="fr">储能装置冷却方式</span></label>
+									<input type="text" class="carIn_addInput BgTransparent borderNone ml fl ht100" ng-model="x.energyCoolingType" name="energyCoolingType0{{$index}}" required/>
+									<div class="Service_error Errorprompt" ng-show="myForm.energyCoolingType0{{$index}}.$error.required&&alreadyBt||(myForm.energyCoolingType0{{$index}}.$dirty&&myForm.energyCoolingType0{{$index}}.$invalid&&alreadyBt)"></div> 
+								</li>
+							</ul>
+						</div>
+						
+					</div>
+				
+				</div>
+					
+				<div class="carIf_modifycontnetBox carIf_modifycontnetBox2 carInfo_box" ng-show="carIf_tag==4">
+					<div class="carInfo_subAd">
+						<span class="font-small ">驱动电机个数</span>
+						<button class="AddBtn_boxlist" ng-click="carDriveMotor_push()">添加</button>
+					</div>
+					
+					<div class="carInfoM_box4Big">
+						<div class="carInfo_box carInfo_box4" ng-if="carDriveMotor.length>0" ng-repeat="x in carDriveMotor track by $index">
+							<div class="font-big carInfo_box3Title">
+								<span class="font-small  font-big">驱动电机{{$index+1}}</span>
+								<button class="AddBtn_boxlist_smMt Repair_delete" ng-click="carDriveMotor_delete($index)" ng-if="$index>=1">删除</button>	
+							</div>
+							<ul class="carInfo_box_ul1 fl"> 
+								<li>
+									<label class="fl ht100"><strong class="fr">*</strong><span class="fr">驱动电机序号</span></label>
+									<input type="text" class="carIn_addInput BgTransparent borderNone ml fl ht100" ng-model="x.dmNumber" name="dmNumber0{{$index}}" required/>
+									<div class="Service_error Errorprompt" ng-show="myForm.dmNumber0{{$index}}.$error.required&&alreadyBt||(myForm.dmNumber0{{$index}}.$dirty&&myForm.dmNumber0{{$index}}.$invalid&&alreadyBt)"></div> 
+								</li>
+								<li>
+									<label class="fl ht100"><strong class="fr">*</strong><span class="fr">驱动电机型号</span></label>
+									<input type="text" class="carIn_addInput BgTransparent borderNone ml fl ht100" ng-model="x.dmType" name="dmType0{{$index}}" required/>
+									<div class="Service_error Errorprompt" ng-show="myForm.dmType0{{$index}}.$error.required&&alreadyBt||(myForm.dmType0{{$index}}.$dirty&&myForm.dmType0{{$index}}.$invalid&&alreadyBt)"></div> 
+								</li>
+								<li>
+									<label class="fl ht100"><strong class="fr">*</strong><span class="fr">额定电压</span></label>
+									<input type="text" class="carIn_addInput BgTransparent borderNone ml fl ht100" ng-model="x.nominalVoltage" name="nominalVoltage0{{$index}}" required/>
+									<div class="Service_error Errorprompt" ng-show="myForm.nominalVoltage0{{$index}}.$error.required&&alreadyBt||(myForm.nominalVoltage0{{$index}}.$dirty&&myForm.nominalVoltage0{{$index}}.$invalid&&alreadyBt)"></div>
+								</li>
+								<li>
+									<label class="fl ht100"><strong class="fr">*</strong><span class="fr">冷却方式</span></label>
+									<input type="text" class="carIn_addInput BgTransparent borderNone ml fl ht100" ng-model="x.dmCoolingType" name="dmCoolingType0{{$index}}" required/>
+									<div class="Service_error Errorprompt" ng-show="myForm.dmCoolingType0{{$index}}.$error.required&&alreadyBt||(myForm.dmCoolingType0{{$index}}.$dirty&&myForm.dmCoolingType0{{$index}}.$invalid&&alreadyBt)"></div>
+								</li>
+								<li>
+									<label class="fl ht100"><strong class="fr">*</strong><span class="fr">峰值功率</span></label>
+									<input type="text" class="carIn_addInput BgTransparent borderNone ml fl ht100" ng-model="x.dmPower" name="dmPower0{{$index}}" required/>
+									<div class="Service_error Errorprompt" ng-show="myForm.dmPower0{{$index}}.$error.required&&alreadyBt||(myForm.dmPower0{{$index}}.$dirty&&myForm.dmPower0{{$index}}.$invalid&&alreadyBt)"></div>
+								</li>
+							</ul>
+							<ul class="carInfo_box_ul2 fl"> 
+								<li>
+									<label class="fl ht100"><strong class="fr">*</strong><span class="fr">最高转速（rpm）</span></label>
+									<input type="text" class="carIn_addInput BgTransparent borderNone ml fl ht100" ng-model="x.dmMrs" name="dmMrs0{{$index}}" required/>
+									<div class="Service_error Errorprompt" ng-show="myForm.dmMrs0{{$index}}.$error.required&&alreadyBt||(myForm.dmMrs0{{$index}}.$dirty&&myForm.dmMrs0{{$index}}.$invalid&&alreadyBt)"></div>
+								</li>
+								<li>
+									<label class="fl ht100"><strong class="fr">*</strong><span class="fr">最大工作电流(A)</span></label>
+									<input type="text" class="carIn_addInput BgTransparent borderNone ml fl ht100" ng-model="x.dmMaxElectricity" name="dmMaxElectricity0{{$index}}" required/>
+									<div class="Service_error Errorprompt" ng-show="myForm.dmMaxElectricity0{{$index}}.$error.required&&alreadyBt||(myForm.dmMaxElectricity0{{$index}}.$dirty&&myForm.dmMaxElectricity0{{$index}}.$invalid&&alreadyBt)"></div>
+									
+								</li>
+								<li>
+									<label class="fl ht100"><strong class="fr">*</strong><span class="fr">峰值转矩(N.m)</span></label>
+									<input type="text" class="carIn_addInput BgTransparent borderNone ml fl ht100" ng-model="x.dmTorque" name="dmTorque0{{$index}}" required/>
+									<div class="Service_error Errorprompt" ng-show="myForm.dmTorque0{{$index}}.$error.required&&alreadyBt||(myForm.dmTorque0{{$index}}.$dirty&&myForm.dmTorque0{{$index}}.$invalid&&alreadyBt)"></div>
+								</li>
+								<li>
+									<label class="fl ht100"><strong class="fr">*</strong><span class="fr">最大输出转矩(N.m)</span></label>
+									<input type="text" class="carIn_addInput BgTransparent borderNone ml fl ht100" ng-model="x.dmOutputTorque" name="dmOutputTorque0{{$index}}" required/>
+									<div class="Service_error Errorprompt" ng-show="myForm.dmOutputTorque0{{$index}}.$error.required&&alreadyBt||(myForm.dmOutputTorque0{{$index}}.$dirty&&myForm.dmOutputTorque0{{$index}}.$invalid&&alreadyBt)"></div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+					
+			</div>
+			
+			<!--查看模式-->
+			<div class="carIf_lookBox" ng-if="lookT">
+				<div class="carIf_modifycontnetBox carInfo_box"  ng-show="carIf_tag==1">
+				<ul class="carInfo_box_ul1 fl"> 
+					<li>
+						<label class="fl ht100"><span class="fr">VIN号</span></label>
+						<input type="text" class="carIn_addInput BgTransparent borderNone ml fl ht100" ng-model="carInformation.vin" name="vin" disabled/>
+						
+					</li>
+					<li>
+						<label class="fl ht100"><span class="fr">车辆类型</span></label>
+						<input type="text" class="carIn_addInput BgTransparent borderNone ml fl ht100" ng-model="carInformation.carTypeName"  disabled/>
+					</li>
+					<li>
+						<label class="fl ht100"><span class="fr">SIM卡号</span></label>
+						<input type="text" class="carIn_addInput BgTransparent borderNone ml fl ht100" ng-model="carInformation.iccid" name="iccid" disabled/>
+					</li>
+					<li>
+						<label class="fl ht100"><span class="fr">车辆型号</span></label>
+						<input type="text" class="carIn_addInput BgTransparent borderNone ml fl ht100" ng-model="carInformation.model" name="carModel" disabled/>
+					</li>
+					<li>
+						<label class="fl ht100"><span class="fr">车辆批次</span></label>
+						<input type="text" class="carIn_addInput BgTransparent borderNone ml fl ht100" ng-model="carInformation.batch" name="carBatch" disabled/>
+					</li>
+				</ul>
+				<ul class="carInfo_box_ul2 fl"> 
+					<li>
+						<label class="fl ht100"><strong class="fr"></strong><span class="fr">发动机编号</span></label>
+						<input type="text" class="carIn_addInput BgTransparent borderNone ml fl ht100" ng-model="carInformation.engineNumber" disabled/>
+					</li>
+					<li>
+						<label class="fl ht100"><strong class="fr"></strong><span class="fr">最高车速(km/h)</span></label>
+						<input type="text" class="carIn_addInput BgTransparent borderNone ml fl ht100"  ng-model="carInformation.maxSpeed" disabled/>
+					</li>
+					<li>
+						<label class="fl ht100"><strong class="fr"></strong><span class="fr">电机驱动布置形式</span></label>
+						<input type="text" class="carIn_addInput BgTransparent borderNone ml fl ht100" ng-model="carInformation.dma" disabled/>
+					</li>
+					<li>
+						<label class="fl ht100"><strong class="fr"></strong><span class="fr">档位传动比</span></label>
+						<input type="text" class="carIn_addInput BgTransparent borderNone ml fl ht100" ng-model="carInformation.gearRatio" disabled/>
+					</li>
+				</ul>
+			</div>
+			
+				<div class="carIf_modifycontnetBox carInfo_box" ng-show="carIf_tag==2">
+					<ul class="carInfo_box_ul1 fl"> 
+						<li>
+							<label class="fl ht100"><span class="fr">车主姓名</span></label>
+							<input type="text" class="carIn_addInput BgTransparent borderNone ml fl ht100" ng-model="carCustomer.name" name="carMan_name" disabled/>
+						</li>
+						<li>
+							<label class="fl ht100"><span class="fr">车主手机</span></label>
+							<input type="text" class="carIn_addInput BgTransparent borderNone ml fl ht100" ng-pattern="/(^1[3|4|5|7|8|9][0-9]{9}$)|(^\d{3}-\d{7,8}$)|(^\d{4}-\d{7,8}$)/" ng-model="carCustomer.phone" name="mobile" disabled/>
+						</li>
+						<li>
+							<label class="fl ht100"><span class="fr">车辆使用方式</span></label>
+							<input type="text" class="carIn_addInput BgTransparent borderNone ml fl ht100"  ng-model="useWayName"  disabled/>
+						</li>
+					</ul>
+					<ul class="carInfo_box_ul2 fl"> 
+						<li>
+							<label class="fl ht100"><span class="fr">车辆使用单位</span></label>
+							<input type="text" class="carIn_addInput BgTransparent borderNone ml fl ht100" ng-model="carCustomer.unitName" name="carMan_unitName" disabled/>
+						</li>
+						<li>
+							<label class="fl ht100"><span class="fr">购车时间</span></label>
+							<input type="text" class="carIn_addInput BgTransparent borderNone ml fl ht100" id="buyingTime" ng-model="buyingTime" name="carBuyTime" disabled/>
+						</li>
+						<li>
+							<label class="fl ht100"><span class="fr">车牌号</span></label>
+							<input type="text" class="carIn_addInput BgTransparent borderNone ml fl ht100" ng-model="carInformation.licenseNumber" name="licenseNumber" disabled/>
+						</li>
+					</ul>
+				</div>
+				
+				<div class="carIf_modifycontnetBox carIf_modifycontnetBox2 carInfo_box" ng-show="carIf_tag==3">
+					
+					<div class="carInfo_box3BigLook">
+						<div class="carInfo_box3"  ng-repeat="x in carEnergy track by $index">
+							<div class="font-big carInfo_box3Title">
+								<div class="font-small  font-big">可充电储能装置{{$index+1}}</div>
+							</div>
+							<ul class="carInfo_box_ul1 fl"> 
+								<li>
+									<label class="fl ht100"><span class="fr">可充电储能装置编号</span></label>
+									<input type="text" class="carIn_addInput BgTransparent borderNone ml fl ht100" ng-model="x.energyNumber" name="energyNumber0{{$index}}" disabled/>
+								</li>
+								<li>
+									<label class="fl ht100"><span class="fr">车载储能装置类型</span></label>
+									<input type="text" class="carIn_addInput BgTransparent borderNone ml fl ht100" ng-model="x.energyType" name="energyType0{{$index}}" disabled/>
+								</li>
+							</ul>
+							<ul class="carInfo_box_ul2 fl"> 
+								<li>
+									<label class="fl ht100"><span class="fr">类型总能量</span></label>
+									<input type="text" class="carIn_addInput BgTransparent borderNone ml fl ht100" ng-model="x.energyGross" name="energyGross0{{$index}}" disabled/>
+								</li>
+								<li>
+									<label class="fl ht100"><span class="fr">储能装置冷却方式</span></label>
+									<input type="text" class="carIn_addInput BgTransparent borderNone ml fl ht100" ng-model="x.energyCoolingType" name="energyCoolingType0{{$index}}" disabled/>
+								</li>
+							</ul>
+						</div>
+						
+					</div>
+				
+				</div>
+					
+				<div class="carIf_modifycontnetBox carIf_modifycontnetBox2 carInfo_box" ng-show="carIf_tag==4">
+					
+					<div class="carInfoM_box4Big">
+						<div class="carInfo_box4" ng-if="carDriveMotor.length>0" ng-repeat="x in carDriveMotor track by $index">
+							<div class="font-big carInfo_box3Title">
+								<div class="font-small  font-big">驱动电机{{$index+1}}</div>
+							</div>
+							<ul class="carInfo_box_ul1 fl"> 
+								<li>
+									<label class="fl ht100"><span class="fr">驱动电机序号</span></label>
+									<input type="text" class="carIn_addInput BgTransparent borderNone ml fl ht100" ng-model="x.dmNumber" name="dmNumber0{{$index}}" disabled/>
+								</li>
+								<li>
+									<label class="fl ht100"><span class="fr">驱动电机型号</span></label>
+									<input type="text" class="carIn_addInput BgTransparent borderNone ml fl ht100" ng-model="x.dmType" name="dmType0{{$index}}" disabled/>
+								</li>
+								<li>
+									<label class="fl ht100"><span class="fr">额定电压</span></label>
+									<input type="text" class="carIn_addInput BgTransparent borderNone ml fl ht100" ng-model="x.nominalVoltage" name="nominalVoltage0{{$index}}" disabled/>
+								</li>
+								<li>
+									<label class="fl ht100"><span class="fr">冷却方式</span></label>
+									<input type="text" class="carIn_addInput BgTransparent borderNone ml fl ht100" ng-model="x.dmCoolingType" name="dmCoolingType0{{$index}}" disabled/>
+								</li>
+								<li>
+									<label class="fl ht100"><span class="fr">峰值功率</span></label>
+									<input type="text" class="carIn_addInput BgTransparent borderNone ml fl ht100" ng-model="x.dmPower" name="dmPower0{{$index}}" disabled/>
+								</li>
+							</ul>
+							<ul class="carInfo_box_ul2 fl"> 
+								<li>
+									<label class="fl ht100"><span class="fr">最高转速（rpm）</span></label>
+									<input type="text" class="carIn_addInput BgTransparent borderNone ml fl ht100" ng-model="x.dmMrs" name="dmMrs0{{$index}}" disabled/>
+								</li>
+								<li>
+									<label class="fl ht100"><span class="fr">最大工作电流(A)</span></label>
+									<input type="text" class="carIn_addInput BgTransparent borderNone ml fl ht100" ng-model="x.dmMaxElectricity" name="dmMaxElectricity0{{$index}}" disabled/>
+								</li>
+								<li>
+									<label class="fl ht100"><span class="fr">峰值转矩(N.m)</span></label>
+									<input type="text" class="carIn_addInput BgTransparent borderNone ml fl ht100" ng-model="x.dmTorque" name="dmTorque0{{$index}}" disabled/>
+								</li>
+								<li>
+									<label class="fl ht100"><span class="fr">最大输出转矩(N.m)</span></label>
+									<input type="text" class="carIn_addInput BgTransparent borderNone ml fl ht100" ng-model="x.dmOutputTorque" name="dmOutputTorque0{{$index}}" disabled/>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+					
+			</div>
+			
+		</div>
+		<div class=" Repair_save2" ng-if="modifyT">
+			<button class="AddBtn_boxlist  borderNone td_color ht100 wt100" ng-click='RepairModify_save(myForm.$invalid);alreadyBt=true'>保存</button>
+			<button class="AddBtn_boxlist Modify_CancelBtn borderNone td_color ht100 wt100" ng-click='closeD()'>取消</button>
+		</div>
+		<div class=" Repair_save2" ng-if="lookT">
+			<button class="AddBtn_boxlist  borderNone td_color  ht100 wt100" ng-click='goModify()'>修改</button>
+		</div>
+	</form>
+	
+</div>
+<script type="text/javascript">
+	
+	var start = {
+		format: 'YYYY-MM-DD',
+		isinitVal: true,
+		festival: false,
+		ishmsVal: false,
+		maxDate: $.nowDate(0), //最大日期
+		choosefun: function(elem, datas) {
+			
+		}
+	};
+	
+	setTimeout(function(){
+		$.jeDate('#buyingTime2', start);
+	},150)
+	
+	function initDate(startEnd) {
+		$.jeDate('#' + startEnd, { trigger: false, festival: true, isinitVal: true, ishmsVal: false, format: 'YYYY-MM-DD hh:mm:ss' })
+	}
+</script>

@@ -1,0 +1,58 @@
+<div class="window dialog backImg_common1 moniter_Remote">
+	<form name="myForm" class="form-validate"  novalidate ng-if="CarOrfile_dialog==1">
+		<div class="mlong_title">
+  			{{title|textLengthSet:true:12:'...'}}
+  		</div>
+		<div class="panel-body">
+			 <fieldset class="RepairText_boxlist mlong_insbox font-small">
+					<div class="form-group">
+						<div class="col-md-12 p0">
+							<label class="col-sm-5 LabelTextColor">控制指令</label>
+							
+							<div class="col-sm-4 p0">
+								<select-block config="long_Config" model='selectLong' class="borderNone SelectBlock_width p0" select-change="selectChange1(newModel)"/>
+							</div>
+						</div>
+					</div>
+			 </fieldset>
+			
+		</div>
+		<div class="startUp">
+			<p>{{titleMseeages}}</p>
+		</div>
+		<div class="panel-footer h60 delete_diaolg">
+			<div class="col-md-12">
+				<div class="AddBtn_boxlist td_color">
+					<button class="BgTransparent borderNone ht100 wt100" ng-click="Moniter_option()">操作</button>
+				</div>
+			</div>
+		</div>
+  	</form>
+  	
+  	
+  	<form name="myForm" class="form-validate ml-xl" ng-if="CarOrfile_dialog==2">
+  		<div class="File_title1">{{title2}}</div>
+		
+			            		<div class="file">
+									<a href="javascript:;" class="a-upload AddBtn_boxlist">
+										选择文件
+										<input type="file" id="excelFile"   class="importFileAdds" onchange="angular.element(this).scope().changeFileName(this)"/>
+									</a>
+									<span class="choseFile">{{fileName}}</span>
+			            		</div>
+		<div class="AddBtn_boxlist  td_color" ng-click="importFileSave()">
+			<button ng-disabled="myForm.$invalid" class="borderNone BgTransparent saveBtn">导入</button>
+		</div>
+	</form>
+</div>
+<script>
+//	$('.ngdialog-content').myDrag({
+//		randomPosition: false,
+//		direction: 'all',
+//		handler: false,
+//		parent: 'body',
+//		dragEnd: function(x, y) {
+//
+//		},
+//	});
+</script>

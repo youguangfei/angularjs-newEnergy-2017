@@ -1,0 +1,53 @@
+<div class="ngdialog-message">
+	<div class="ngngdialog-message-top">新建/修改销售包 </div>
+	
+	<input type="text" ng-model="packInfo.name" disabled/><br><br>
+	
+	<!-- <input type="checkbox" name="module_id" value=""/>复选框一<br><br>
+	<input type="checkbox" name="module_id" value=""/>复选框一<br><br>
+	<input type="checkbox" name="module_id" value=""/>复选框一<br><br>
+	<input type="checkbox" name="module_id" value=""/>复选框一<br><br>
+	<input type="checkbox" name="module_id" value=""/>复选框一<br><br>
+	<input type="checkbox" name="module_id" value=""/>复选框一<br><br>
+	<input type="checkbox" name="module_id" value=""/>复选框一<br><br> -->
+	
+	<input type="checkbox" ng-true-value="true" ng-false-value="false" 
+		name="pack" ng-model="pack.m1">复选框一<br><br>
+		
+	<input type="checkbox" ng-true-value="true" ng-false-value="false" 
+		name="pack" ng-model="pack.m2">复选框二<br><br>
+		
+	<input type="checkbox" ng-true-value="true" ng-false-value="false" 
+		name="pack" ng-model="pack.m3">复选框三<br><br>
+	
+	<!-- <ul>
+		<li>
+			<span class="">*销售包名称</span>
+			<input type="text" ng-model="pack.salesPackageName"/>
+		</li>
+		<li>
+			<span class="">*描述</span>
+			<input type="text" ng-model="pack.description"/>
+		</li>
+		<li>
+			<span class="">*创建人</span>
+			<input type="text" ng-model="pack.creator"/>
+		</li>
+		<li>
+			<span class="">*创建时间</span>
+			<input type="text" ng-model="pack.createTime"/>
+		</li>
+		<li>
+			<span class="">*修改人</span>
+			<input type="text" ng-model="pack.editor"/>
+		</li>
+		<li>
+			<span class="">*修改时间</span>
+			<input type="text" ng-model="pack.editTime"/>
+		</li>
+	</ul> -->
+	<div class="functional_add_bot ngdialog-buttons">
+		<button class="functional_sub" ng-click="saveEle()">保存</button>
+		<button class="functional_re" ng-click="closeThisDialog()">取消</button>
+	</div>
+</div>

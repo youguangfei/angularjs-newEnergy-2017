@@ -1,0 +1,17 @@
+<div class="label-date">
+	<label class="col-sm-3 control-label">{{labelName}}</label>
+	<div class="col-sm-9">
+  		<div class="input-group">
+			<input type="text" class="form-control" datepicker-popup="{{myDefaultDateFormat}}" ng-model="dt"
+                            is-open="opened" min-date="minDate"
+                            datepicker-options="dateOptions"
+                            date-disabled="disabled(date,mode)" ng-required="true"
+                            close-text="Close"
+	       alt-input-formats="altInputFormats" max-date="maxEndDate"/>
+			<span class="input-group-btn" ng-if="!dateDisabled">
+			  <button type="button" class="btn btn-default" ng-disabled="dateDisabled" ng-click="open($event)">
+			  <i class="fa fa-calendar"></i></button>
+			</span>
+		</div>
+  	</div>
+</div>

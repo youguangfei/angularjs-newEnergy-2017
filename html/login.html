@@ -1,0 +1,49 @@
+<div class="ng-zoomBackDown ng-fluid loginbox">
+	<div ng-controller="loginController" class="block-center  wd-xl">
+	   <!-- START panel-->
+	   <div class="login_titleLogo"></div>
+	   <div class="panel panel-dark panel-flat">
+	      <div class="panel-body">
+	         <form name="loginForm" class="form-validate mb-lg" autocomplete="off" >
+	            <div class="form-group has-feedback">
+	            	<span class="fl login_lText">账号</span>
+	            	<input type="text" name="user_pwd" style="display:none;width:0;height:0;">
+	               <input type="text" name="user_name" placeholder="请输入手机号" ng-model="user.name" required="" class="form-control" oninvalid="setCustomValidity('请输入您的账号')" oninput="setCustomValidity('')" autocomplete='off' disableautocomplete/>
+	               <!--<span class="fa fa-user form-control-feedback text-muted"></span>-->
+	               <!--<span ng-show="loginForm.user_name.$dirty &amp;&amp; loginForm.user_name.$error.required" class="text-danger">用户名不能为空</span>-->
+	            </div>
+	            <div class="form-group has-feedback">
+	            	<span class="fl login_lText">密码</span>
+	            	<input type="password" name="user_pwd" style="display:none;width:0;height:0;">
+	               <input type="password" name="user_pwd" placeholder="请输入密码" ng-model="user.pwd" required="" class="form-control"  oninvalid="setCustomValidity('请输入账户密码')" oninput="setCustomValidity('')" autocomplete='false' disableautocomplete/>
+	               <!--<span class="fa fa-lock form-control-feedback text-muted"></span>-->
+	               <!--<span ng-show="loginForm.user_pwd.$dirty &amp;&amp; loginForm.user_pwd.$error.required" class="text-danger">密码不能为空</span>-->
+	            </div>
+	            <div class="login_inp form-group has-feedback clearfix ">
+	            	<span class="fl login_lText">验证码</span>
+				    <input type="text" id="code" class="form-control fl check_lgInput" name="code" placeholder="图形验证码" ng-model="user.captcha" ng-keyup="enter($event)" maxlength="4" >
+					<custom-captcha class="check-code captchaImg" monitor-var="monitorRefresh1"  captcha-id="captchaId" captcha-url="captchaUrl" num-flag="1" click-change="clickChange1(newModel)"/>
+				</div>
+				<div class="li-login_get">
+				  <div class="li-get_use fl">
+						<label class="i-checks m-b-none" id="remember_user"  ng-model="isNameStore" ng-class="{true:'name',false:'namefalse'}[!rememberMe]" ng-click="rememberuse()">
+							<input type="checkbox" ng-model="rememberUsr" />
+							<i></i>
+							<span class="login_mColor fr">记住账号</span>	                	 
+						</label>
+					</div>
+					<div class="li-get_password fr">
+						<label class="i-checks m-b-none" id="remember_pwd"  ng-model="isPwdStore" ng-class="{true:'uesrpwd',false:'pwdfalse'}[!rememberMe]" ng-click="rememberpwd()">
+							<input type="checkbox" ng-model="rememberPwd"  />
+							<i></i>
+							<span class="login_mColor fr">记住密码</span>	               	 
+						</label>
+					</div>
+				</div>
+	            <button class="btn btn-block loginBtn"  ng-click="login()">登录</button>
+	            <span ng-click="forget_pwd()" class="forget_pwd login_mColor fr mt">忘记密码</span>
+	         </form>
+	      </div>
+	   </div>
+	</div>
+</div>

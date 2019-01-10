@@ -1,0 +1,130 @@
+<style type="text/css">
+	#powerAnalysisMain2 {
+		width: 8rem;
+		height: 5rem;
+		margin: 0 auto;
+		float: left;
+		margin-left: 0.7rem;
+	}
+	#powerAnalysisMain1 {
+		width: 8rem;
+		height: 4rem;
+		float: left;
+		/*margin-top: 0.6rem;*/
+		margin-left: 0.6rem;
+	}
+	.powerAnalysis_dialog #powerAnalysisMain1 div {
+		overflow: visible !important;
+	}
+	.powerAnalysis_dialog #powerAnalysisMain2 div {
+		overflow: visible !important;
+	}
+	.StatisticsBtn{
+		margin-left: 6.8rem;
+		margin-top: -0.45rem;
+	}
+</style>
+<!--故障统计页面的故障占比和故障频率图-->
+<!--故障占比-->
+<div class="window dialog  powerAnalysis_dialog " ng-keyup="enter($event)" ng-show='faultStatist==1'>
+	<div class="powerAnalysislist clearfix">
+		<div class="text-center PowerTitle1">{{PowerTitle1}}</div>
+		<div class="clearfix faultleftop">
+		<div class="RepairText_boxlist p0 fl">
+			<label class="fl col-md-4 text-center p0 LabelTextColor Repair_lineHeight">开始日期</label>
+			<div class="col-md-6 p0 DateBox_list">
+				<input type="text" class="p0 pl form-control date_icon fl color_blue" id="startTime7" ng-model="startTime7" />
+			</div>
+		</div>
+		<div class="Repair_Caleline fl"></div>
+		<div class="RepairText_boxlist p0 fl">
+			<label class="fl col-md-4 text-center p0 LabelTextColor Repair_lineHeight">结束日期</label>
+			<div class="col-md-6 p0 DateBox_list">
+				<input type="text" class="p0 pl form-control date_icon fl color_blue" id="endTime7" ng-model="endTime7" />
+			</div>
+		</div>
+		<div class="AddBtn_boxlist fl StatisticsBtn" ng-click='Fault_btn1()'>
+			<button class="borderNone BgTransparent font-center">统计</button>
+		</div>
+	</div>
+		
+	</div>
+	<!--echarts图表-->
+	<div id="powerAnalysisMain2">
+		
+	</div>
+
+</div>
+
+<!--故障频率-->
+<div class="window dialog  powerAnalysis_dialog" ng-keyup="enter($event)" ng-show='faultStatist==2'>
+	<div class="powerAnalysislist clearfix">
+		<div class="PowerTitle1 text-center">{{PowerTitle}}</div>
+		<div class="clearfix faultleftop">
+		<div class="RepairText_boxlist p0 fl">
+			<label class="fl col-md-4 text-center p0 LabelTextColor Repair_lineHeight">开始日期</label>
+			<div class="col-md-6 p0 DateBox_list">
+				<input type="text" class="p0 pl form-control date_icon fl color_blue" id="startTime8" ng-model="startTime8" readonly/>
+			</div>
+		</div>
+		<div class="Repair_Caleline fl"></div>
+		<div class="RepairText_boxlist p0 fl">
+			<label class="fl col-md-4 text-center p0 LabelTextColor Repair_lineHeight">结束日期</label>
+			<div class="col-md-6 p0 DateBox_list">
+				<input type="text" class="p0 pl form-control date_icon fl color_blue" id="endTime8" ng-model="endTime8" readonly/>
+			</div>
+		</div>
+		<div class="AddBtn_boxlist fl StatisticsBtn" ng-click='Fault_btn2()'>
+			<button class="borderNone BgTransparent font-center">统计</button>
+		</div>
+	</div>
+	</div>
+	<!--echarts图表-->
+	
+	<div id="powerAnalysisMain1">
+
+	</div>
+
+</div>
+<script type="text/javascript">
+		var start2 = {
+		format: 'YYYY-MM-DD',
+		isinitVal: true,
+		festival: false,
+		ishmsVal: false,
+		maxDate: $.nowDate(0), //最大日期
+		choosefun: function(elem, datas) {
+			end2.minDate = datas; //开始日选好后，重置结束日的最小日期
+			endDates();
+		}
+	};
+	var end2 = {
+		//		skinCell:"je-bg-olive",
+		format: 'YYYY-MM-DD',
+		initAddVal: [0],
+		isinitVal: true,
+		festival: false,
+		ishmsVal: false,
+		maxDate: $.nowDate(0), //最大日期
+		choosefun: function(elem, datas) { //选中之后的回调函数
+			start2.maxDate = datas; //将结束日的初始值设定为开始日的最大日期
+			if (new Date(datas).toDateString() != new Date().toDateString()) {
+				start2.showTodaybtn=false;
+			}else{
+				start2.showTodaybtn=true;
+			}
+		}
+	};
+	//这里是日期联动的关键        
+	function endDates() {
+		//将结束日期的事件改成 false 即可
+		end2.trigger = false;
+	}
+	$.jeDate('#startTime7', start2);
+	$.jeDate('#endTime7', end2);
+	$.jeDate('#startTime8', start2);
+	$.jeDate('#endTime8', end2);
+	function initDate(startEnd) {
+		$.jeDate('#' + startEnd, { trigger: false, festival: true, isinitVal: true, ishmsVal: false, format: 'YYYY-MM-DD hh:mm:ss' })
+	}
+</script>

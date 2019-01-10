@@ -1,0 +1,59 @@
+<style type="text/css">
+	.ngdialog-content{
+		height: 7.3rem;
+	}
+	.ngdialog.ngdialog-theme-default .modal-header {
+	    line-height: initial;
+	}
+</style>
+<div class="window dialog wd-wide bg_default1 border_hight">
+    <div class="bg_default1 modal-header">
+    	<span class="fl color_w">车号：2356</span>
+    	<h4 class="modal-title text-center">电池信息</h2>
+	</div>
+  	<div class="modal-content bg_default1" style="box-shadow: 0;">
+  		 <div class="top_chart bg_default1 ">
+  		 	<div class="fl">
+  		 		<span>总电压：</span>
+  		 		<b>20（V）</b>
+  		 	</div>
+  		 	<div class="fl">
+  		 		<span>总电流：</span>
+  		 		<b>20（A）</b>
+  		 	</div>
+  		 	<div class="fl">
+  		 		<span>电池最高温度：</span>
+  		 		<b>50（℃）</b>
+  		 	</div>
+  		 	<div class="fl">
+  		 		<span class="fl">SOC容量：</span>
+  		 		<div class="big-progress-bar">
+					<div class="progress-bar" style="width: 80%">80%</div>
+				</div>
+				<span class="percentage">80%</span>
+  		 		<!--<div class="big-progress-bar">
+					<div class="progress-bar" ng-style="{'width': progress}">{{progress}}</div>
+				</div>
+				<span class="percentage">{{progress}}</span>-->
+  		 	</div>
+  		 </div>
+  		 <div class="border_box" style="height: 6.1rem;">
+  		 	<div class="row_echart">
+		      <div class="col-lg-12">
+		         <div id="panelChart2" class="panel panel-default panelChart bg_default1" style="height: 2.7rem;">
+		            <div class="panel-title">单体电池电压</div>
+		            <div class="panel-wrapper" id="voltage">
+		            </div>
+		         </div>
+		      </div>
+		      <div class="col-lg-12">
+		         <div id="panelChart2" class="panel panel-default panelChart bg_default1" style="height: 2.7rem;">
+		            <div class="panel-title">电池探针温度</div>
+		            <div class="panel-wrapper" id="eneryTwo">
+		            </div>
+		         </div>
+		      </div>
+		   </div>
+  		 </div>
+  	</div>
+</div>

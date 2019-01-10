@@ -1,0 +1,583 @@
+.systembox1 .dateBox .control-label{
+	/*border: none;*/
+}
+.systembox1 .row{
+	margin-left: 0px;
+}
+.systembox1 .paddleft0{
+	padding-left: 0px;
+}
+.systembox1 .topBox1 button.btn.marginLeft3{
+	float: right;
+	margin-right: 1rem;
+}
+.systembox1 .topBox1{
+	height: 1.2rem;
+}
+.systembox1 .indexright_cont_top{
+	height: 1.8rem;
+}
+.systembox1 .indexright_cont_con {
+	width: calc(100% - 0px);
+	width: -moz-calc(100% - 0px);
+	width: -webkit-calc(100% - 0px);
+	height: calc(100% - 1.8rem);
+	height: -moz-calc(100% - 1.8rem);
+	height: -webkit-calc(100% - 1.8rem);
+	height: -moz-calc(100% - 1.8rem);
+	overflow: hidden;
+}
+.systembox2 .indexright_cont_top{
+	height: 0.6rem;
+}
+.systembox2 .indexright_cont_con{
+	width: calc(100% - 0px);
+	width: -moz-calc(100% - 0px);
+	width: -webkit-calc(100% - 0px);
+	height: calc(100% - 0.6rem);
+	height: -moz-calc(100% - 0.6rem);
+	height: -webkit-calc(100% - 0.6rem);
+	height: -moz-calc(100% - 0.6rem);
+	overflow: hidden;
+}
+.systembox1 .panel,.systembox2 .panel{
+	background-color: rgba(0,0,0,0.19);
+	margin-bottom: 0px;
+}
+.systembox1 .panel-body,.systembox2 .panel-body{
+	padding-left: 1rem;
+}
+.table > tbody > tr.noHover_hColor{
+	background-color: rgba(0,0,0,0.19) ;
+}
+.table > tbody > tr.noHover_hColor td{
+	background-color: rgba(0,0,0,0.19) ;
+}
+.table > tbody > tr.noHover_hColor:hover{
+	background-color: rgba(0,0,0,0.19) ;
+	border: none;
+	box-shadow: none;
+}
+.table > tbody > tr.noHover_hColor td{
+	padding-left: 0px;
+	padding-right: 0px;
+}
+.systembox1 .tablef > tbody > tr > td,.systembox2 .tablef > tbody > tr > td,.systembox1 .tablef> thead > tr > th,.systembox2 .tablef> thead > tr > th{
+	padding: 0 0.16rem;
+	border: none;
+}
+.ngdialog-content .indexright_cont_conl{
+	/*background-color: #0f1f33;*/
+	border: 1px solid rgba(15,31,51,0.8);
+	
+}
+/*.systembox1 .contentright_cont_con .form-control,.systembox1 .contentright_cont_con .form-control {
+    background: #071522;
+    border-color: #1c3a78;
+    color: #2d92fa;
+    height: 0.5rem;
+    padding: 0.08rem 0.12rem;
+    border-radius: inherit;
+}    */
+/*model弹窗*/
+.empSelect_cont{
+	height: 6.5rem;
+}
+.modal-header .choseRowDataDiv input.form-control,.modal-header .choseRowDataDiv select{
+	background: #032343;
+    color: #1665b4;
+    border-color: #1284f5;
+    box-shadow: 0 0 3px #1284f5;
+    border-radius: 0px;
+}
+.modal-header .choseRowDataDiv .btn{
+	background: #032343;
+    color: #2e93fb;
+    border-color: #1284f5;
+    box-shadow: 0 0 3px #1284f5;
+    border-radius: 0px;
+} 
+/*右侧边栏,换肤*/
+.csstransforms3d .offsidebar-open .offsidebar{
+	height: 5.6rem;
+	margin-top: 1.12rem;
+}
+.layout-fixed .wrapperHeightBig {
+    margin: 0rem .2rem .2rem .2rem;
+    background: #122f4b;
+    width: calc(100% - 3.2rem);
+    width: -webkit-calc(100% - 3.2rem);
+    width: -moz-calc(100% - 3.2rem);
+    height: calc(100%);
+    opacity: .72;
+}
+.aside-collapsed.layout-fixed .wrapperHeightBig{
+	width: calc(100% - 0.4rem);
+    width: -webkit-calc(100% - 0.4rem);
+    width: -moz-calc(100% - 0.4rem);
+}
+.wrapper .offsidebarT{
+	position: absolute;
+    top: 0.92rem;
+    bottom: 0;
+    right: -3.36rem;
+    width: 235px;
+    height: 5.6rem;
+    border-left: 1px solid #cccccc;
+    background-color: #ffffff;
+    color: #515253;
+    z-index: 116;
+    -webkit-overflow-scrolling: touch;
+    -webkit-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+.wrapper .offsidebarT.open{
+	right: 0rem;
+}
+.offsidebarT h3{
+	margin: 0rem;
+	height: 0.52rem;
+	line-height: 0.52rem;
+	font-size: 0.18rem;
+	border-top-width: 1px;
+    border-top-style: solid;
+    background: #efeff0;
+    border-color: #c8c7cc;
+    border-radius: 0 !important;
+    text-align: left;
+    text-indent: 0.2rem;
+}
+.offsidebarT .pbox{
+	padding-left: 0rem;
+	text-indent: 0.14rem;
+}
+.offsidebarT .clearfix{
+	padding:0.15rem 0;
+	font-size: 0.18rem;
+	color: #8e8e93;
+	border-bottom: 1px solid #c8c7cc;
+}
+.offsidebarT .setting_icon {
+	display: none;
+    position: absolute;
+    top: 0rem;
+    z-index: 999;
+    right: 3.3rem;
+    padding: 10px 15px;
+    background: #fff;
+    border: 1px solid #c8c7cc;
+}
+.offsidebarT .pull-right{
+	margin-right: 0.3rem;	
+}
+.ThemesChangeBox .table-grid{
+	width: 50%;
+	float: left;
+}
+/*登录页面*/
+.loginbox{
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	width: 100%;
+	height: 100%;
+	background:url(../images/img1/login_bac1.jpg) no-repeat;
+	background-size: 100% 100%;
+}
+.loginbox .panel{
+	position: absolute;
+	top: 1.67rem;
+	right: 2.95rem;
+	width: 3.81rem;
+	height: 3.98rem;
+	padding: 0 0.38rem 0 0.16rem;
+	box-sizing: border-box;
+	margin-bottom: 0;
+	background: rgba(12,222,230,0.24);
+	border-top: 0.03rem solid  #10dcc5;
+}
+.login_titleLogo{
+	position: absolute;
+	top: 0.57rem;
+	left: 1rem;
+	width: 4.55rem;
+	height: 0.62rem;
+	background: url(../images/photo/login_titleLogo.png) no-repeat center center;
+	background-size: 100% 100%;
+}
+.loginbox .panel-body{
+	padding: 0.58rem 0 0 0;
+}
+.loginbox .form-group {
+    margin-bottom: 0.16rem;
+}
+.loginbox .login_lText{
+	display: block;
+	width: 0.6rem;
+	height: 0.45rem;
+	text-align: right;
+	line-height: 0.45rem;
+	margin-right: 0.15rem;
+	color: #54fdff;
+	font-size: 0.18rem;
+}
+.loginbox input.form-control {
+	width: 2.5rem;
+	height: 0.45rem;
+	background: rgba(3,14,23,0.26);
+	color: #29f4f6;
+	border:1px solid #30cacc;
+	font-size: 0.18rem;
+	line-height: 0.2rem;
+}
+.loginbox input.form-control:focus{
+	border: 1px solid #2ceef0;
+}
+.loginbox input.form-control:-webkit-autofill{
+	background: rgba(3,14,23,0.26);
+}
+.loginbox input.check_lgInput{
+	width: 1.52rem;
+	margin-right: 0.06rem;
+}
+.captchaImg{
+	width: 0.85rem;
+	height: 0.45rem;
+}
+.li-login_get {
+    width: 100%;
+    height: 0.3rem;
+    margin-bottom: 0.22rem;
+    color: #9198aa;
+}
+.li-get_use,.li-get_password{
+	width: 1.2rem;
+	font-size: 0.16rem;
+	color: #fff;
+}
+.li-get_use label,.li-get_password label{
+	position: relative;
+}
+.li-get_use span,.li-get_password span{
+	margin-top: 1px;
+	margin-left: 0.15rem;
+}
+.li-get_use{
+	margin-left: 0.75rem;
+}
+.i-checks {
+    font-size: 14px;
+    font-weight: normal;
+    margin-bottom: 0;
+}
+.i-checks input{
+    opacity: 0;
+}
+.i-checks > i {
+    position: absolute;
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    left: 0px;
+    top: 2px;
+    line-height: 1;
+    vertical-align: middle;
+    background-color: #fff;
+    color: #fff;
+    border: 1px solid #bababa;
+}
+.li-login_get .i-checks > i{
+	border: 1px solid #2ceef0;
+	background: rgba(33,150,243,0);
+}
+.i-checks > i:before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background-color: transparent;
+    content: "";
+    -webkit-transition: all 0.2s;
+    transition: all 0.2s;
+}
+.i-checks input:checked + i {
+  border-color: #4d9ddb;
+}
+.li-login_get .i-checks input:checked + i:before {
+    top: 4px;
+    left: 4px;
+    width: 9px;
+    height: 9px;
+    background: #14dfe1;
+} 
+input:-webkit-autofill
+{
+      -webkit-box-shadow: 0 0 0 1000px white inset;
+}
+.loginbox .loginBtn{
+	width: 2.5rem;
+	height: 0.45rem;
+	line-height: 0.45rem;
+	background: rgba(24,220,222,0.73);
+	margin-left: 0.75rem;
+	padding: 0;
+}
+.loginBtn:hover{
+	background: rgba(24,199,201,0.73);
+}
+.login_mColor{
+	color: #4bc7c8;
+}
+.forget_pwd{
+	cursor: pointer;
+}
+/*故障监控与统计页面*/
+/*故障监控页面*/
+.faultCause{
+	color: white;
+}
+.pay_incom_inbox1{
+	width: 100%;
+	height: 2rem;
+	margin-bottom: 20px;
+}
+.pay_incom_inbox2{
+	width: 100%;
+	height: 300px;
+	margin-bottom: 20px;
+}
+.pay_incom_inbox{
+	float: left;
+	width: 25%;
+	height: 100%;
+	overflow: hidden;
+	border-bottom: 1px solid #1284f5;
+	border-right: 1px solid #1284f5;
+}
+.pay_top_pie4{
+	border-right: none;
+}
+.pay_incom_inbox .pay_top_pie{
+	width: 100%;
+	height: 100%;
+}
+.pay_incom_inbox2-2{
+	width: 100%;
+	height: 100%;
+	outline:1px solid #1284f5;
+}
+.pay_incom_inbox2-1 .pay_top_pie{
+	width: 100%;
+	height: 100%;
+}
+/*.select_box*/
+.pay_incom_inbox2-2 .Bselect_box{
+	width: 100%;
+	height: 50px;
+	padding-top: 5px;
+	line-height: 38px;
+	background-color: rgba(40, 71, 101, 0.72);
+}
+.pay_incom_inbox2-2 .echartZheBox{
+	width: 100%;
+	height: calc(100% - 50px);
+	height: -webkit-calc(100% - 50px);
+	height: -moz-calc(100% - 50px);
+	border-bottom: 1px solid blue;
+	background: #fff;
+}
+.pay_incom_inbox2-2 select,.Bselect_box select{
+	float: left;
+	width: 2rem;
+	background: #032343;
+    color: #2e93fb;
+    border-color: #1284f5;
+    box-shadow: 0 0 3px #1284f5;
+    border-radius: 0px;
+}
+
+/*数据分析统计*/
+/*电池充电情况统计*/
+.batteryChargeBox .leftMap{
+	width: 4rem;
+	position:static;
+	overflow: scroll;
+	border: 1px solid #1284f5;
+}
+.batteryChargeBox .maintenanceSite_left{
+	overflow: hidden;
+}
+.batteryChargeBox .halfMap{
+	width: calc(100% - 4rem);
+	width: -webkit-calc(100% - 4rem);
+	width: -moz-calc(100% - 4rem);
+	width: -o-calc(100% - 4rem);
+}
+.batterySel_category .Bselect_box{
+	height: 1rem;
+}
+.Bselect_box{
+	height: 0.6rem;
+} 
+.Bselect_box label{
+	color: white;
+}
+.BatteryPie1{
+	width: 100%;
+	height:2.5rem;
+	border-bottom:1px solid #1284f5;
+}
+.batterySel_category{
+	width: 100%;
+	height:5rem;
+	border-bottom:1px solid #1284f5;
+}
+.batterySel_category2{
+	border-bottom: none;
+}
+.batterySel_category  select{
+	width:45%;
+	height: 0.3rem;
+	padding: 0 0.23rem 0 0;
+}
+.battery_leftcategory{
+	width: 100%;
+	height:4rem;
+}
+.battery_leftSwitch{
+	width: 100%;
+	height:3rem;
+}
+.battery_leftSwitch p{
+	color: #fff;
+	padding-left: 0.5rem;
+}
+.leftMap .Btselectfour .nav-tabs li.tab_wd {
+    width: 25%;
+}
+/*右侧折线柱状图*/
+.batteryCharge_zhezhu{
+	width: 100%;
+	height: 2.6rem;
+	overflow: hidden;
+}
+.batteryCharge_map{
+	width: 100%;
+	height:calc( 100% - 3.2rem);
+	height:-webkit-calc( 100% - 3.2rem);
+	height:-moz-calc( 100% - 3.2rem);
+	height:-o-calc( 100% - 3.2rem);
+}
+.mileage_modelImg{
+	width: 100%;
+	height: 2.23rem;
+	background: url(../images/photo/mileage_track_car.png) no-repeat center center;
+	background-size: 4rem 2.23rem;
+}
+/*参数统计--维修站点管理*/
+.maintenanceSite_top{
+	width: 100%;
+	height: 0.4rem;
+}
+.repairTop_tap{
+	position: relative;
+    width: 1.2rem;
+    height: 0.4rem;
+    margin-left: 0.1rem;
+    border: 1px solid #1284f5;
+    border-bottom: none;
+    background-color: #032343;
+    box-sizing: border-box;
+    font-size: 0.18rem;
+    text-align: center;
+    line-height: 0.4rem;
+}
+.repairTop_tap i{
+	position: absolute;
+	font-size: 0.14rem;
+	right: 0.07rem;
+}
+.repairTop_tap.active{
+	color: #2a87e8;
+}
+.maintenanceSite_center{
+	width: 100%;
+	height: calc(100% - 0.4rem);
+	height: -webkit-calc(100% - 0.4rem);
+	height: -moz-calc(100% - 0.4rem);
+}
+.maintenanceSite_ltitle{
+	width: 100%;
+	height: 0.4rem;
+	padding-left: 0.3rem;
+	line-height: 0.4rem;
+	margin: 0;
+	font-size: 0.16rem;
+	color: #2a87e8;
+}
+.maintenanceSite_leftContaint{
+	width: 100%;
+	height: calc(100% - 0.4rem);
+	height: -webkit-calc(100% - 0.4rem);
+	height: -moz-calc(100% - 0.4rem);
+	overflow: scroll;
+}
+.maintenanceSite_handle{
+	position: relative;
+	width: 100%;
+	height: 100px;
+	box-sizing: border-box;
+}
+.maintenanceSite_handle strong{
+	position: absolute;
+	font-size: 0.14rem;
+	padding: 0 0.14rem;
+	height: 0.3rem;
+	top: -0.14rem;
+	left: 0px;
+}
+.maintenSite_hdbtn{
+	width: 1rem;
+	height: 0.3rem;
+	text-align: center;
+	line-height: 0.3rem;
+	border-radius: 10px;
+	cursor: pointer;
+}
+.maintenSite_hdbtn2{
+	width: 2rem;
+}
+.maintenancelist{
+	margin-top: 30px;
+	min-height: 4.75rem;
+	height: auto;
+}
+.edit_inputSearch{
+	float: none;
+}
+.edit_inputSearch .form-control{
+	padding-right: 0.5rem;
+}
+.edit_inputSearch .inputSearch_icon{
+	position: absolute;
+	width: 0.5rem;
+    height: 100%;
+    right: 0.28rem;
+    top: 0;
+    background: url(../images/icon/inputSearch_icon.png) no-repeat center center;
+    background-size: 0.2rem 0.2rem;
+}
+.maintenancelist .nav{
+	margin-left: 20px;
+}
+.maintenancelist .nav > li > a{
+	padding: 0px 2px;
+}
+
+
+
+

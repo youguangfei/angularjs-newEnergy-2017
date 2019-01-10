@@ -1,0 +1,37 @@
+<style type="text/css">
+	.ngdialog-content{
+		left: 20%;
+		top: 15%;
+	}
+</style>
+<div class="window dialog wd-wide">
+	<div class="bg_default1 modal-header">
+    	<h4 class="modal-title text-center">增删模块</h4>
+	</div>
+	<div class="border_box h100" style="height: 400px;position: relative;">
+		<div class="indexright_cont_conl br_right" style="width: 50%;">
+			<div class="indexright_cont_conlt pl-xl pr-lg pt-xl" style="height: calc(100% - 0px);">
+				<p class="mb-lg color_w"><span class="p_span">[{{salesPackageName}}所有模块]</span></p>
+				<tree-selection tree="data.treePageModel"></tree-selection>
+			</div>
+		</div>
+		<div class="indexright_cont_conl" style="right: 0;width: 50%;">
+			<div class="border_box" style="height: calc(100% - 20px)">
+				<p class="mb-lg color_w pl-xl pt-xl"><span class="p_span">[平台所有模块]</span></p>
+				<tree-selection tree="data.treeAllModel"></tree-selection>
+			</div>
+		</div>
+	</div>
+	<div class="panel-footer wd-wide h60 clearfix">
+		<div class="col-md-12">
+			<a class="save fl" ng-click="leftAdd()">新增</a>
+			<div class="col-sm-4">
+			</div>
+			<a class="save fl" ng-click="determine()">确定</a>
+			<div class="col-sm-2">
+			</div>
+			<a class="cancel fr" ng-click="rightRemove()">删除</a>
+		</div>
+		
+	</div>
+</div>

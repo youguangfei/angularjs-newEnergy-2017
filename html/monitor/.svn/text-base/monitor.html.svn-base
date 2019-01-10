@@ -1,0 +1,210 @@
+<style type="text/css">
+	.aside-collapsed .wrapperHeight{
+		width: calc(100% - 0rem);
+	}
+	.topnavbar-wrapper,.topnavbar .navbar-header{
+		border-bottom: none;
+	}
+	.topnavbar{
+		height: 0;
+	}
+	.layout-fixed .wrapperHeight{
+		background: none;
+	}
+	.wrapper>section{
+		background: none;
+	}
+	.setting_icon {
+		display: none;
+	}
+.monitor_tabAll1{
+	padding-left: 0.2rem;
+}
+</style>
+<div style="width: 100%;height: 100%;" id="MapContent">
+	<!--左侧-->
+	<div class="leftMap fl defalut_bg" id="left_area"  ng-show="leftMap">
+		<div class="close_leftMap" id="close_leftMap" ng-click="changeLeftMap()"></div>
+		
+		<div class="monitor_ltSearchBox Repari_carNum">
+			<div class="col-md-12 p0 displayFlex ht100">
+				<div class="monitor_select p0 ht100 fl">
+					<select-block config="vin_Config" model='selectVin' class="borderNone SelectBlock_width p0 monitor_select monitor_carWidth ht100" select-change="selectChange_vin(newModel)"/>
+				</div>
+				<div class="monitor_input p0 ht100 fl">
+					<input type="text" class="borderNone BgTransparent font-large InputColor wt100 ht100 pl-sm" placeholder="请输入搜索的数据" ng-model="mSearchVin"/>
+				</div>
+				<div class="monitor_inputIcon p0 ht100 fl" ng-click="mSearch_car()">
+					
+				</div>
+			</div>
+		</div>
+		<div class="monitor_tabChange">
+			<ul class="list displayFlex" ng-init='toggle=1'>
+				<li ng-class="{active1: toggle == 1}" class="displayFlex monitor_tabAll1" ng-click='mCar_allCare(1)'>
+					<div class="monitor_tabAll"></div>
+					全部车辆
+				</li>
+				<li ng-class="{active1: toggle == 2}" class="displayFlex" ng-click='mCar_allCare(2)'>
+					<div class="monitor_tabCare"></div>
+					关注的车辆
+				</li>
+			</ul>
+		</div>
+		
+		<!--全部车辆-->
+		<div class="monitor_carLeft" ng-show='toggle==1'>
+			<!--车辆的三个选择条件-->
+			<div class="wd_xs fl monitor_selectUi wt100">
+				<div class="monitor_selectlist">
+					<button class="font-large">车辆使用单位</button>
+				    <select-block class="mUnit_select" config="monitor_selectConfig11" model="monitor_select11" select-change="selectChange_userUnit1(newModel)"/>
+				</div>
+				<div class="monitor_selectlist">
+					<button class="font-large">车辆使用方式</button>
+				    <select-block config="monitor_selectConfig12" model="monitor_select12" select-change="selectChange_12(newModel)" class="monitor_select3"/>
+				</div>
+				<div class="monitor_selectlist">
+					<button class="font-large">车辆使用状态</button>
+				    <select-block config="monitor_selectConfig13" model="monitor_select13" select-change="selectChange_13(newModel)" class="monitor_select3"/>
+				</div>
+			</div>
+			<div  class="monitor_carList" ng-class="{'mlongScroll':carInit_List.length>=28,'mMiddleScroll':carInit_List.length>=17&&carInit_List.length<28,'msmallScroll':carInit_List.length>3&&carInit_List.length<17}">
+				<ul >
+					<li  ng-repeat="carlist in carInit_List" class="displayFlex" ng-click="mGo_carView(carlist)" ng-class="mCarlist[{{carlist.mark}}]">
+						<div class="che"></div>
+						<span class="font-large flex1 breakWord">{{carlist.licenseNumber || carlist.vin || carlist.iccid}}</span>
+					</li>
+				</ul>
+				
+			</div>
+			<div class="monitor_carNumber">
+				当前情况下共<span>{{carNumber}}</span>辆车
+			</div>
+		</div>
+		
+		<!--关注的车辆-->
+		<div class="monitor_carLeft" ng-show='toggle==2'>
+			<!--车辆的三个选择条件-->
+			<div class="wd_xs fl monitor_selectUi wt100">
+				<div class="monitor_selectlist">
+					<button class="font-large">车辆使用单位</button>
+				    <select-block class="mUnit_select" config="monitor_selectConfig21" model="monitor_select21" select-change="selectChange_userUnit2(newModel)" ng-class="{'mUnit_select1':(monitor_selectConfig21.data&&monitor_selectConfig21.data.length>=7)}"/>
+				</div>
+				<div class="monitor_selectlist">
+					<button class="font-large">车辆使用方式</button>
+				    <select-block config="monitor_selectConfig22" model="monitor_select22" select-change="selectChange_22(newModel)" class="monitor_select3"/>
+				</div>
+				<div class="monitor_selectlist">
+					<button class="font-large">车辆使用状态</button>
+				    <select-block config="monitor_selectConfig23" model="monitor_select23" select-change="selectChange_23(newModel)" class="monitor_select3"/>
+				</div>
+			</div>
+			<div  class="monitor_carList" ng-class="{'mlongScroll':carCareInit_List.length>=28,'mMiddleScroll':carCareInit_List.length>=17&&carCareInit_List.length<28,'msmallScroll':carCareInit_List.length>3&&carCareInit_List.length<17}">
+				<ul>
+					<li  ng-repeat="carlist in carCareInit_List" class="displayFlex" ng-click="mGo_carView(carlist)" ng-class="mCarlist[{{carlist.mark}}]">
+						<div class="che"></div>
+						<span class="font-large flex1 breakWord">{{carlist.licenseNumber || carlist.vin || carlist.iccid}}</span>
+					</li>
+				</ul>
+			</div>
+			<div class="monitor_carNumber">
+				当前情况下共<span>{{carCareNumber}}</span>辆车
+			</div>
+		</div>
+		
+	</div>
+	<!--地图 start-->
+	
+	<div class="map_toolBox" id="map_toolBox" ng-class="{'conMapLeft':!leftMap}">
+		<ul ng-init="showOther_Tool=true">
+			<li>
+				<div class="list1">
+					<div class="mapToolIcon mapTserviceStation"  ng-click="showHide_site('服务站')" ng-class="{true:'active'}[siteTypeJson['服务站']]" ></div>
+					<div class="mapTool_hover">服务站</div>
+				</div>
+			</li>
+			<li ng-show="showOther_Tool">
+				<div class="list1">
+					<div class="mapToolIcon mapTchargingPile" ng-class="{true:'active'}[siteTypeJson['充电桩']]"  ng-click="showHide_site('充电桩')"></div>
+					<div class="mapTool_hover">充电桩</div>
+				</div>
+			</li>
+			<li ng-show="showOther_Tool">
+				<div class="list1">
+					<div class="mapToolIcon mapTchargingStation" ng-class="{true:'active'}[siteTypeJson['充电站']]" ng-click="showHide_site('充电站')"></div>
+					<div class="mapTool_hover">充电站</div>
+				</div>
+			</li>
+			<li ng-show="showOther_Tool">
+				<div class="list1">
+					<div class="mapToolIcon mapTparking" ng-click="showHide_site('停车场')" ng-class="{true:'active'}[siteTypeJson['停车场']]"></div>
+					<div class="mapTool_hover">停车场</div>
+				</div>
+			</li>
+			<li ng-show="showOther_Tool">
+				<div class="list1">
+					<div class="mapToolIcon mapTgasStation" ng-class="{true:'active'}[siteTypeJson['加油站']]" ng-click="showHide_site('加油站')"></div>
+					<div class="mapTool_hover">加油站</div>
+				</div>
+			</li>
+			<li ng-show="showOther_Tool">
+				<div class="list1">
+					<div class="mapToolIcon mapToolOther" ng-click="showHide_site('其它')" ng-class="{true:'active'}[siteTypeJson['其它']]"></div>
+					<div class="mapTool_hover">其它</div>
+				</div>
+			</li>
+			<li>
+				<div class="list1" ng-click="showOther_Tool=!showOther_Tool">
+					<div ng-class="{'arrow2':!showOther_Tool}" class="mapToolIcon mapToolArrow"></div>
+				</div>
+			</li>
+		</ul>
+	</div>
+	<div class="map_legend">
+		<ul>
+			<li>
+				<div class="zijia"></div>
+				<span>自购车</span>
+			</li>
+			<li>
+				<div class="zulinche"></div>
+				<span>租赁车</span>
+			</li>
+			<li>
+				<div class="map_legend_dot map_legend_dot1"></div>
+				<span>正常</span>
+			</li>
+			<li>
+				<div class="map_legend_dot map_legend_dot2"></div>
+				<span>离线</span>
+			</li>
+			<li>
+				<div class="map_legend_dot map_legend_dot3"></div>
+				<span>一级故障</span>
+			</li>
+			<li>
+				<div class="map_legend_dot map_legend_dot4"></div>
+				<span>二级故障</span>
+			</li>
+			<li>
+				<div class="map_legend_dot map_legend_dot5"></div>
+				<span>三级故障</span>
+			</li>
+		</ul>
+	</div>
+	<div class="map_refreshBox" id="map_refreshBox">
+		<div class="map_refreshDiv" ng-click="refresh_monitor()">
+			<div class="refreshDiv_hoverText">刷新</div>
+		</div>
+		<!--<div class="map_fullMonitorDiv">
+			<div class="fullMonitorDiv_hoverText">全屏监控</div>
+		</div>-->
+	</div>
+	
+	<div id="map" style="overflow:inherit;">
+		
+	</div>
+<!--地图end-->
+</div>
+

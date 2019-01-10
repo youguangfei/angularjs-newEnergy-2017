@@ -1,0 +1,63 @@
+<!-- START Top Navbar-->
+<nav role="navigation" class="navbar topnavbar">
+	
+   <!-- START navbar header-->
+   <div class="navbar-header">
+   		<div class="brand-logo">
+   		</div>
+	    <a href="javascript:;" ng-click="app.layout.isCollapsed = !app.layout.isCollapsed" class="hidden-xs">
+	       <em class="toggle-icon"></em>
+	    </a>
+	    <!--<a href="javascript:;" toggle-state="aside-toggled" no-persist="no-persist" class="visible-xs sidebar-toggle">
+	        <em class="toggle-icon"></em>
+	    </a>-->
+   </div>
+   <!-- END navbar header-->
+   <!-- START Nav wrapper-->
+   <div class="nav-wrapper changeColor" ng-init="headerFixedflag=true" ng-show="headerFixedflag" >
+      <ul class="nav navbar-nav navbar-right">
+      	<li dropdown="" class="dropdown dropdown-list user-block-info">
+           	  <div class="user-info user-info2 fr user_outLogin">
+               		<p class="displayFlex">
+               			<span>|</span>
+               			<button class="BgTransparent borderNone SignoutBtn" ng-click="loginout(user.name,user.token)">退出 
+               		</p>
+              </div> 
+              <div class="dropdown_div fr" id="dropdown_div" ng-click="change_dropM1($event)">
+	               		<div class="top-navbarclick clearfix">
+	               			<img src="images/img1/Contactavatar35x35.png"  align="center" class="Contactavatar fl"/>
+	               			<span class="userName1 TextOverflow fl">{{realNameuser || user.name|textLengthSet:true:11:'...'}}</span>
+	               		    <div class="pullDown_btn fl"></div>
+	               			<ul class="dropdown-menu1 animated2 flipInX" ng-show="dropM1">
+				               <!--Modify_password-->
+				              <li>
+				                  <div class="list-group">
+				                  	 <a ng-click="Modify_pwd()" href="javascript:;" target="_blank" class="list-group-item">
+				                        <!--<em class="fa fa-edit"></em>-->
+				                        <span>修改密码</span>
+				                      </a>
+				                  </div>
+				               </li>
+			            	</ul>
+	               		</div>
+              </div>
+              
+              <!--href="#/newsmessage" target="_blank"-->
+              <a  ng-click="goMessage()" class="fr">
+	              <div class="user-photo fl">
+	               	<div class="xiiaoxi1">
+	               		<div class="xiaoxi3 TextOverflow" ng-show='unReadMsgCount>0'>{{unReadMsgCount}}</div>
+	               	</div>
+	               </div>
+              </a>
+              
+            <!-- START Dropdown menu-->
+            
+           <!-- END Dropdown menu-->
+         </li>
+      </ul>
+      <!-- END Right Navbar-->
+   </div>
+   <!-- END Nav wrapper-->
+</nav>
+<!-- END Top Navbar-->

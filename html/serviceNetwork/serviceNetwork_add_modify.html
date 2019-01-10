@@ -1,0 +1,152 @@
+<style type="text/css">
+	.ngdialog_add1.ngdialog .ngdialog-content{
+		height: 60%;
+	}
+	.ngdialog_add2.ngdialog .ngdialog-content{
+		height: 5rem;
+	}
+	.Service_input1{
+		width: 100%;
+		height: 100%;
+	}
+	.Service_input2{
+		width: 1.7rem;
+		padding: 0.05rem 0.15rem;
+	}
+	.Serivice_address{
+		width: 1.6rem;
+		padding: 0 0.15rem;
+	}
+</style>
+<div class="window dialog backImg_common1 RepairAdd_Popup">
+	<div class="Repair_title1">
+  		<h5>{{title1}}</h5>
+  	</div>
+  	<!--新建-->
+	<form name="myForm" class="form-validate ml-xl" ng-if="addServiceForm" novalidate ng-init="alreadyBt=false">
+		<div class="panel-body border_box border_box2 font-large">
+			<fieldset class="RepairText_boxlist mt-lg">
+				<div class="col-md-12 p0">
+					<label class="col-sm-6 LabelTextColor labelWidth">网点类型</label>
+					<div class="col-sm-4 p0">
+						<select-block config="selectConfig2" model="serviceAdd.typeObj"/>
+					</div>
+				</div>
+			</fieldset>
+			<fieldset class="RepairText_boxlist mt-lg">
+				<div class="col-md-12 p0">
+					<label class="col-sm-5 LabelTextColor">名称</label>
+					<input type="text" class="col-sm-5 borderNone td_color BgTransparent font-large Service_input2"  ng-model="serviceAdd.name" ng-minlength="2"  name="name_text1" id='Add_name' autocomplete="off" required ng-maxlength='50'/>
+				    <span  class="Requiredtext1">*</span>
+				    <div class="Service_error Errorprompt" ng-show="myForm.name_text1.$dirty && myForm.name_text1.$invalid ||(myForm.name_text1.$error.required) && alreadyBt"></div>
+				    <!--<div ng-show='Error_messages' class="Error_messages">{{messages}}</div>-->
+				</div>
+			</fieldset>
+			<fieldset class="RepairText_boxlist mt-lg">
+				<div class="col-md-12 p0">
+					<label class="col-sm-5 LabelTextColor">联系人</label>
+				    <input type="text" class="col-sm-6 borderNone td_color BgTransparent font-large Service_input2" ng-model="serviceAdd.contacts" id="licenseNumber" name="contacts" ng-minlength="2" ng-maxlength='50'/>
+					<!--<div class="col-sm-1 Repair_Formverification">-->
+					    <!--<span ng-show="myForm.contacts.$error.required" class="Requiredtext"">*</span>-->
+					<!--</div>-->
+				</div>
+			</fieldset>
+			<fieldset class="RepairText_boxlist mt-lg">
+				<div class="col-md-12 p0">
+					<label class="col-sm-5 LabelTextColor">联系电话</label>
+						<input type="text" class="col-sm-6 borderNone td_color BgTransparent font-large Service_input2" ng-model="serviceAdd.phone"  ng-pattern="/(^1[3|4|5|7|8|9][0-9]{9}$)|(^\d{3}-\d{7,8}$)|(^\d{4}-\d{7,8}$)/" name="mobile"/>
+						
+						<!-- <span ng-show="myForm.mobile.$error.required" class="Requiredtext">*</span>-->
+						 <div class="Service_error Errorprompt" ng-show="myForm.mobile.$dirty&&alreadyBt&& myForm.mobile.$invalid&&alreadyBt" ></div>       
+				</div>
+			</fieldset>
+			<fieldset class="RepairText_boxlist Repair_boxwidth mt-lg">
+				<div class="col-md-12 p0 Repai_Address">
+						<label class="col-sm-5 LabelTextColor Labaddressafter fl">具体地址</label>
+						<textarea class="BgTransparent borderNone textareaSroller fl font-large textareaServicetop pl-lg dialog_textareaWidth dialog_textareaHeight" cols="" rows=""  ng-model='serviceAdd.address' ng-maxlength='500'></textarea>
+				</div>
+			</fieldset>
+					<div class="col-md-12 p0 mapStation">
+						<span class="col-sm-1 seviceMap_RqIcon">*</span>
+						<label class="LabelTextColor col-sm-5 pl">地图标注</label>
+						<div class="col-sm-4 displayFlex" ng-click="addTwo('add')">
+									<div class="Map_posicon"></div>
+									<a href="#" class="td_color">{{MapAdd_setTitle}}</a>
+									
+						</div>
+						<div class="col-sm-1">
+							<span ng-show="!serviceAdd.lng&&alreadyBt" class="Errorprompt Service_errorLng"></span>
+						</div>
+					</div>
+		</div>
+		
+			<div class="AddBtn_boxlist td_color text-center">
+				<button class="borderNone BgTransparent Service_input1 wt100 ht100" ng-click='serviceSave1($event,myForm.$invalid);alreadyBt=true'>保存</button>
+			</div>
+  	</form>
+  	<!--修改-->
+	<form name="myForm1" class="form-validate ml-xl" ng-if="modifyServiceForm" novalidate ng-init="alreadyBt1=false">
+		<div class="panel-body border_box border_box2">
+			<fieldset class="RepairText_boxlist mt-lg">
+				<div class="col-md-12 p0">
+					<label class="col-sm-8 LabelTextColor LabelWidth_list labelWidth">网点类型</label>
+					
+					<div class="col-sm-4 p0">
+						<select-block config="selectConfig2" model="serviceModify.typeObj" style="width: 100%;"/>
+						
+					</div>
+				</div>
+			</fieldset>
+			<fieldset class="RepairText_boxlist mt-lg">
+				<div class="col-md-12 p0">
+					<label class="col-sm-5 LabelTextColor">名称</label>
+					<input type="text" class="col-sm-5 borderNone td_color BgTransparent font-large Service_input2"  ng-model="serviceModify.name"  required name="name_text2" ng-maxlength='50'/>
+				    <span class="Requiredtext1">*</span>
+					<div class="Service_error Errorprompt" ng-show="(myForm1.name_text2.$dirty && myForm1.name_text2.$invalid&&alreadyBt1) ||(myForm1.name_text2.$error.required&&alreadyBt1)"></div>
+					<!--<div class="Error_messages1" ng-show='Error_messages1'>{{messages}}</div>-->
+				</div>
+			</fieldset>
+			<fieldset class="RepairText_boxlist mt-lg">
+				<div class="col-md-12 p0">
+					<label class="col-sm-5 LabelTextColor">联系人</label>
+					<input type="text" class="col-sm-6 borderNone td_color BgTransparent font-large Service_input2" ng-model="serviceModify.contacts" id="licenseNumber" name="modify_contacts" ng-maxlength='50'/>
+					<!--<span class="Requiredtext1">*</span>
+					<div class="Service_error Errorprompt" ng-show="myForm.modify_contacts.$dirty  && myForm.modify_contacts.$invalid ||(myForm.modify_contacts.$error.required)"></div>  -->
+				</div>
+			</fieldset>
+			
+			<fieldset class="RepairText_boxlist mt-lg">
+				<div class="col-md-12 p0">
+					<label class="col-sm-5 LabelTextColor">联系电话</label>
+						
+						<input type="text" class="col-sm-5 borderNone td_color BgTransparent font-large Service_input2" ng-model="serviceModify.phone" name="modify_phone"  ng-pattern="/(^1[3|4|5|7|8|9][0-9]{9}$)|(^\d{3}-\d{7,8}$)|(^\d{4}-\d{7,8}$)/" name="modify_phone"/>
+					<!--<span class="Requiredtext1">*</span>-->
+					<div class="Service_error Errorprompt" ng-show="myForm1.modify_phone.$dirty&&alreadyBt1 && myForm1.modify_phone.$invalid&&alreadyBt1"></div> 
+				</div>
+			</fieldset>
+			<fieldset class="RepairText_boxlist mt-lg">
+				<div class="col-md-12 p0">
+						<label class="col-sm-5 LabelTextColor">具体地址</label>
+						<input type="text" class="col-sm-4 borderNone td_color BgTransparent font-large TextOverflow Service_input2" ng-model="serviceModify.address" name="faultAddress" ng-maxlength='500'/>
+				</div>
+			</fieldset>
+			<fieldset class="mt-lg">
+				<div class="form-group clearfix mapStation">
+					<div class="col-md-12 p0">
+						<span class="col-sm-1 seviceMap_RqIcon">*</span>
+						<label class="col-sm-5 LabelTextColor font-large">地图标注</label>
+						<div class="col-sm-4" ng-click="addTwo('modify',serviceModify)">
+							<div class="Map_posicon fl pr"></div>
+							<a href="#" class="td_color fl font-large">修改</a>
+						</div>
+						<span ng-show="!serviceModify.lng&&alreadyBt1" class="Errorprompt Service_errorLng"></span>
+					</div>
+				</div>
+			</fieldset>
+		</div>
+		<div class="AddBtn_boxlist td_color">
+			<button class="borderNone BgTransparent saveBtn Service_input1" ng-click='serviceSave2($event,myForm1.$invalid);alreadyBt1=true'>保存</button>
+		</div>
+  	</form>
+  	
+</div>

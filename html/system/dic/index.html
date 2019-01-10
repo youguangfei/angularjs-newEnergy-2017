@@ -1,0 +1,180 @@
+<div class="side_right">
+	<div class="Box">
+		<div class="indexright_cont systembox2">
+			<div class="indexright_cont_top">
+				<div class="topBox2 clearfix">
+					<div class="button_box fr">
+						<button ng-click="createDicGroup()" ng-disabled="showCtrl != 1">
+							<em class="icon-magnifier-add"></em>
+							<span class="font-small">新增分组</span>
+						</button>
+						<button ng-click="createDic()" ng-disabled="showCtrl != 1 || branch.id == null">
+							<em class="fa fa-plus-square-o"></em>
+							<span class="font-small">新增字典/属性</span>
+						</button>
+						<button ng-click="updateDicGroup()" ng-disabled="showCtrl != 1 || branch.id == null || branch.mark.type == 2">
+							<em class="icon-pencil"></em>
+							<span class="q_logo90 font-small">修改</span>
+						</button>
+						<button ng-click="deleteItem()" ng-disabled="showCtrl != 1 || branch.id == null || branch.mark.type == 2">
+							<em class="fa fa-trash-o"></em>
+							<span class="q_logo90 font-small">删除</span>
+						</button>
+						
+					</div>
+				</div>
+				
+			</div>
+			<div class="indexright_cont_con">
+				<!-- 功能按钮 -->
+				<div class="indexright_cont_conl">
+					<div class="indexright_cont_conlt"  ng-scrollbar>
+						<abn-tree tree-data="orgData" tree-control="orgTree"
+							on-select="nodeSelected(branch)" on-disabled="showTable == 2" expand-level="2"></abn-tree>
+					</div>
+				</div>
+
+				<div class="contentright_cont_con  system_conRwidth table_border">
+					<form ng-if="showTable == 2" class="form-validate" name="myForm" style="height: 100%;">
+						<div class="pt-xl border_box border_box3"> 
+								<fieldset>
+									<div class="form-group">
+										<div class="col-md-7">
+											<label class="col-sm-3 control-label text-right">名称*</label>
+											<div class="col-sm-9">
+												<input type="text" class="form-control color_blue inp_default2 inpBorder"  ng-model="dic.name" name="name" required />
+												<span class="text-danger" ng-show="myForm.name.$dirty && myForm.name.$error.required">*名称不能为空</span>
+											</div>
+										</div>
+									</div>
+								</fieldset>
+								<fieldset>
+									<div class="form-group">
+										<div class="col-md-7">
+											<label class="col-sm-3 control-label text-right">序号*</label>
+											<div class="col-sm-9">
+												<input type="text" class="form-control color_blue inp_default2 inpBorder" ng-model="dic.sequence" name="sequence" ng-minlength="1" ng-maxlength="3" ng-pattern="/^[1-9][0-9]*$/" onkeyup="this.value=this.value.replace(/\D/g,'')" required />
+												<span class="text-danger" ng-show="myForm.sequence.$dirty && myForm.sequence.$invalid">*1-3位数字</span>
+											</div>
+										</div>
+									</div>
+								</fieldset>
+								<fieldset>
+									<div class="form-group">
+										<div class="col-md-7">
+											<label class="col-sm-3 control-label text-right">父节点</label>
+											<div class="col-sm-9">
+												<input type="text" class="form-control color_blue inp_default2 inpBorder dic" disabled ng-model="dic_pid_2_show" placeholder="分组/字典没有父节点">
+											</div>
+										</div>
+									</div>
+								</fieldset>
+								<fieldset>
+									<div class="form-group">
+										<div class="col-md-7">
+											<label class="col-sm-3 control-label text-right">级别</label>
+											<div class="col-sm-9">
+												<select class="dic form-control color_blue inp_default2 inpBorder" disabled ng-model="dic.level" ng-options="obj.selectVal as obj.selectName for obj in dic.levelSelect"></select>
+											</div>
+										</div>
+									</div>
+								</fieldset>
+								<fieldset>
+									<div class="form-group">
+										<div class="col-md-7">
+											<label class="col-sm-3 control-label text-right">类别</label>
+											<div class="col-sm-9">
+												<select class="dic form-control color_blue inp_default2 inpBorder" disabled ng-model="dic.type" ng-options="obj.selectVal as obj.selectName for obj in dic.typeSelect"></select>
+											</div>
+										</div>
+									</div>
+								</fieldset>
+						</div>
+						<div class="panel-footer h60">
+							<div class="col-md-7">
+								<label class="col-sm-3 control-label text-right"></label>
+								<div class="col-sm-9" style="padding-right: 15px;padding-left: 5px;">
+									<a class="save fl" ng-click="insertOrUpdate(myForm)">保存</a>
+									<a class="cancel fr" ng-click="goBack()">取消</a>
+								</div>
+							</div>
+						</div>
+					</form>
+					<div ng-if="showTable == 1 && showContent != 1" class="ngGrid" style="height:100%;">
+						<div class="borderbox">
+							<table lg-grid class="table" model="dataProvider.getGridModel()">
+								<thead class="thead_bg">
+									<tr>
+										<th>ID</th>
+										<th>级别</th>
+										<th>字典名称</th>
+										<th>父节点</th>
+										<th>序号</th>
+										<th>操作</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr lg-row-start>
+										<td class="td_color font-small">{{ row.data.dicId}}</td>
+										<td class="td_color font-small">{{ row.data.level }}</td>
+										<td class="td_color font-small">{{ row.data.name }}</td>
+										<td class="td_color font-small">[{{ branch.label }}]</td>
+										<td class="td_color font-small">{{ row.data.sequence }}</td>
+										<td>
+											<button lg-toggle-expanded-row="true" class="bgNone btn btn-sm borderNone" ng-click="updateItem(row)" title="修改">
+												<i class="fa fa-edit color_fonts"></i>
+											</button>
+											<button type="button" confirm-if="checked" confirm="Are you sure, {{name}}?" ng-click="deleteItem(row)" class="bgNone btn btn-sm borderNone" title="删除">
+												<i class="fa fa-trash-o text-danger"> </i>
+											</button>
+										</td>
+									</tr>
+									<tr lg-row-end />
+								</tbody>
+							</table>
+						</div>
+						<service-pager data-provider="dataProvider"></service-pager>
+					</div>
+				</div>
+			</div>	
+			
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	var start = {
+		    format: 'YYYY-MM-DD hh:mm',
+		    minDate: '2014-06-16 23:59:59', //设定最小日期为当前日期
+		    initAddVal:{MM:"-1"},   //初始化日期加n月
+		    isinitVal:true,
+		    festival:true,
+		    ishmsVal:false,
+		    maxDate: $.nowDate({DD:0}), //最大日期
+		    choosefun: function(elem,datas){
+		        end.minDate = datas; //开始日选好后，重置结束日的最小日期
+		        endDates();
+		    }
+	};
+	var end = {
+	    format: 'YYYY-MM-DD hh:mm',
+	    initAddVal:[0],
+	    minDate: $.nowDate(0), //设定最小日期为当前日期
+	    isinitVal:true,
+		festival:true,
+		ishmsVal:false,
+	    maxDate: '2099-06-16 23:59:59', //最大日期
+	    choosefun: function(elem,datas){ //选中之后的回调函数
+	        start.maxDate = datas; //将结束日的初始值设定为开始日的最大日期
+	    }
+	};
+	//这里是日期联动的关键        
+	function endDates() {
+	    //将结束日期的事件改成 false 即可
+	    end.trigger = false;
+	    $("#inpend").jeDate(end);
+	}
+	$.jeDate('#inpstart',start);
+	$.jeDate('#inpend',end);
+	
+	
+</script>

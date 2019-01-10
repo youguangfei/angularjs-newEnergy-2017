@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en" data-ng-app="angle">
+<head>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+   <meta name="description" content="{{app.description}}">
+   <meta name="keywords" content="app, responsive, angular, bootstrap, dashboard, admin">
+   <title data-ng-bind="::pageTitle()">桑德新能源云平台</title>
+   <link href="http://api.map.baidu.com/library/TrafficControl/1.4/src/TrafficControl_min.css" />
+   <!-- Bootstrap styles-->
+   <link rel="stylesheet" href="css/bootstrap.css" data-ng-if="!app.layout.isRTL">
+   <link rel="stylesheet" href="css/bootstrap-rtl.css" data-ng-if="app.layout.isRTL">
+   <link rel="stylesheet" href="css/jedate.css">
+   <link rel="stylesheet" href="css/animate.css">
+   <link rel="stylesheet" href="css/common.css">
+   <!-- Application styles-->
+   <link rel="stylesheet" href="css/app.css" data-ng-if="!app.layout.isRTL">
+   <link rel="stylesheet" href="css/index.css">
+   
+   <!-- Themes-->
+   <link rel="stylesheet" ng-href="{{app.layout.theme}}" data-ng-if="app.layout.theme">
+   <link rel="stylesheet" href="css/addSystem.css">
+   <link rel="stylesheet" href="css/zhang.css">
+   
+</head>
+
+<body data-ng-class="{'layout-fixed' : app.layout.isFixed, 'aside-collapsed' : app.layout.isCollapsed, 'layout-boxed' : app.layout.isBoxed, 'layout-fs': app.useFullLayout, 'hidden-footer': app.hiddenFooter, 'layout-h': app.layout.horizontal, 'aside-float': app.layout.isFloat}">
+   <div ui-view class="wrapper wrapper_outer">
+   </div>
+   <notifications-bar class="notifications"></notifications-bar>
+   
+    <script src="js/libs/jquery-1.10.2.min.js"></script>
+    
+    <script src="http://api.map.baidu.com/api?v=2.0&ak=jIwkULSx4biGbOxKkB8twKG3"></script>
+     <!--实时路况-->
+    <script type="text/javascript" src="http://api.map.baidu.com/library/TrafficControl/1.4/src/TrafficControl_min.js"></script>
+    <!--marker点聚合-->
+    <script type="text/javascript" src="http://api.map.baidu.com/library/TextIconOverlay/1.2/src/TextIconOverlay_min.js"></script>
+    <script src="js/libs/MarkerClusterer_min.js"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/library/GeoUtils/1.2/src/GeoUtils_min.js"></script>
+    <!--地图标注-->
+    <script src="js/build/MarkerTool.js"></script>
+    <!--<script type="text/javascript" src="http://api.map.baidu.com/library/MarkerTool/1.2/src/MarkerTool_min.js"></script>-->
+    <!--地图区域 回弹-->
+    <script type="text/javascript" src="http://api.map.baidu.com/library/AreaRestriction/1.2/src/AreaRestriction_min.js"></script>
+   <script src="js/libs/echarts.common.min.js"></script>
+    <!--<script src="js/build/CanvasLayer.js"></script>-->
+    <!--<script src="js/build/mapv.js"></script>-->
+    <script src="js/build/mapControl.js"></script>
+    <script src="js/libs/infoBox.min.js"></script>
+    <script src="js/libs/jedate.js"></script>
+	<script src="js/libs/bootstrap.min.js"></script>
+	<script src="js/libs/angular.js"></script>
+	<script src="js/libs/angular-animate.js"></script>
+	<script src="js/libs/angular-route.js"></script>
+	<script src="js/libs/angular-storage.js"></script>
+	<script src="js/libs/angular-cookies.min.js"></script>
+	<script src="js/libs/angular-touch.js"></script>
+    <script src="directives/fileUpload.js"></script>
+    <script src="js/build/addMe.js"></script>
+    <!--字符限制-->
+	<script src="js/build/common_Var.js"></script>
+	<!--eacharts图表-->
+	<script src="js/build/eachartsData.js"></script>
+	<script src="js/libs/ui-bootstrap-tpls.js"></script>
+	<script src="js/libs/ocLazyLoad.core.js"></script>
+	<script src="js/libs/cfp-loadingBar.js"></script>
+	<script src="js/libs/angular-ui-router.js"></script>
+	<script src="js/libs/angular-sanitize.min.js"></script>
+	<script src="js/libs/angular-resource.js"></script>
+	<script src="js/libs/angular-dynamic-locale.js"></script>
+	<script src="js/libs/angular-ui-utils.js"></script>
+	<script src="js/libs/angular-locale_zh-cn.js"></script>
+	<script src="js/libs/angular-touch.js"></script>
+	<script src="js/libs/angular-transter.js"></script>
+	<script src="js/libs/rem.min.js"></script>
+	<script src="js/libs/replay.js"></script>
+	<script src="directives/ng-range.js"></script>
+	
+	<script src="js/libs/drag2.js"></script>
+    <script src="js/app.init.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/constants.js"></script>
+    
+    <script src="services/requestService.js"></script>
+    <script src="services/loginService.js"></script>
+    <script src="services/cacheService.js"></script>
+    <script src="services/browser.js"></script>
+    <script src="services/utils.js"></script>
+    <script src="services/colorService.js"></script>
+    <script src="services/routeHelpers.js"></script>
+    <script src="services/toggleStateService.js"></script>
+    <script src="services/treeService.js"></script>
+    <script src="services/pagerService.js"></script>
+    <script src="services/echartService.js"></script>
+	<script src="services/dicService.js"></script>
+	
+	<script src="filter/dicFilter.js"></script>
+    
+    <script src="directives/sidebar.js"></script>
+    <script src="directives/toggle-state.js"></script>
+    <script src="directives/trigger-resize.js"></script>
+    <script src="directives/load-css.js"></script>
+    <script src="directives/ngNotificationsBar.js"></script>
+    <script src="directives/custom-captcha.js"></script>
+    <script src="directives/ng-tree-selection.js"></script>
+    <script src="directives/ng-select-custom.js"></script>
+    <script src="directives/ng-select-linkage.js"></script>
+    <script src="directives/light-grid.js"></script>
+    <script src="directives/abn_tree_directive.js"></script>
+    <script src="directives/datePicker.js"></script>
+    <script src="directives/filestyle.js"></script>
+    <script src="directives/panel-tool.js"></script>
+    <script src="directives/drag.js"></script>
+    <script src="directives/pagination.js"></script>
+    <script src="directives/select-block.js"></script>
+    <script src="directives/input-search.js"></script>
+
+    <!--controller-->
+    <script src="controllers/AppController.js"></script> 
+    <script src="controllers/sideMenuController.js"></script> 
+    <script src="controllers/loginController.js"></script>
+    
+    <!--系统管理-->
+	<script src="controllers/system/authorityController.js"></script> 
+	<script src="controllers/system/functionController.js"></script> 
+	<script src="controllers/system/dicController.js"></script> 
+	<script src="controllers/system/moduleController.js"></script> 
+	<script src="controllers/system/handleController.js"></script> 
+	<script src="controllers/system/empowerController.js"></script> 
+	<script src="controllers/system/empSelectController.js"></script> 
+    <script src="controllers/system/packageController.js"></script>
+    <script src="controllers/system/packeditController.js"></script>
+    <script src="controllers/system/packeditController.js"></script>
+    <script src="controllers/system/versionController.js"></script>
+    
+    <!--系统管理三个模块-->
+    <script src="controllers/system2/employeeAuthorityController.js"></script>
+    <script src="controllers/system2/carManagementController.js"></script>
+    <script src="controllers/system2/customerManagementController.js"></script>
+    <script src="controllers/system2/carInfoAddController.js"></script>
+    <script src="controllers/system2/carInfoModifyController.js"></script>
+    
+    <!--维修管理-->
+    <script src="controllers/afterService/repairRecordController.js"></script>
+    <script src="controllers/afterService/upGradeController.js"></script>
+    <script src="controllers/afterService/RepairModifyController.js"></script>
+    
+    	
+    <!--实时监控-->
+    <script src="controllers/monitor/monitorController.js"></script>
+    <script src="controllers/monitor/historyController.js"></script>
+    <script src="controllers/monitor/carDetailsController.js"></script>
+   	<script src="controllers/monitor/NewmessagesController.js"></script>
+   	
+	<!--服务网点-->
+	<script src="controllers/serviceNetWork/serviceNetworkController.js"></script>
+	<!--数据统计-->
+	<script src="controllers/dataStatistics/chargingStaticController.js"></script>
+	<script src="controllers/dataStatistics/powerAnalysisController.js"></script>
+	<script src="controllers/dataStatistics/potentialRangeController.js"></script>
+	<script src="controllers/dataStatistics/faultStatisticsAddController.js"></script>
+	<script src="controllers/dataStatistics/motorDataController.js"></script>
+	<script src="controllers/dataStatistics/batteryDataController.js"></script>
+	
+	<!--消息推送-->
+	<script type="text/javascript" src="http://cdn-hangzhou.goeasy.io/goeasy.js"></script>
+	
+	<script>
+
+		if(!$("html").hasClass("bgImg")){
+			var userId=getCookie("userId");
+			console.log(userId);
+			if(userId!=""&&userId!=null&&userId!=undefined){
+				$("html").addClass("bgImg");
+			}
+		}
+		
+		function getCookie(cname)
+		{
+		  var name = cname + "=";
+		  var ca = document.cookie.split(';');
+		  for(var i=0; i<ca.length; i++) 
+		  {
+		    var c = ca[i].trim();
+		    if (c.indexOf(name)==0) return c.substring(name.length,c.length);
+		  }
+		  return "";
+		}
+		
+	</script>
+	
+</body>
+</html>

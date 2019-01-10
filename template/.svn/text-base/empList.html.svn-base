@@ -1,0 +1,82 @@
+<style type="text/css">
+	.ngdialog-content{
+		left: 20%;
+		top: 15%;
+	}
+</style>
+<div class="window dialog wd-wide indexright_cont" style="padding: 0;" ng-controller="empSelectController">
+   <div class="modal-header panel-primary bg_default1 emolistBackground" style="height: 55px;">
+		<h4 class="modal-title ac fl col-md-2" style="width: 12%;line-height: .45rem;">人员选择</h4>
+		<div class="fl col-md-6 p0">
+			<div class="col-sm-4 pl0">
+				<input class="form-control inp_default2 color_blue inpBorder" type="text" ng-model="qryEmp.name" placeholder="姓名" />
+			</div>
+			<div class="col-sm-4 pl0">
+				<input class="form-control inp_default2 color_blue inpBorder" type="text" ng-model="qryEmp.employeeNo" placeholder="工号" />
+			</div>
+			<div class="col-sm-4 pl0 chooseDiv">
+				<ng-select-custom ng-if="jobTitleFlag" dic-id="dicId_jobTitle" init-option="----职务----" ng-model="qryEmp.jobTitle"/>
+			</div>
+		</div>
+		<div class="fl col-md-4">
+			<button type="button" class="btn inp_default2 border_raNone border_hight color_blue fl">
+				<span class="strLengthCss" style="padding-left: 0;">{{ choseRowData.org.name }}{{ choseRowData.name }}</span>
+				<span ng-if="choseRowData == null" style="padding-left: 0;">您所选择的人员</span>
+			</button>
+			<button class="btn inp_default2 border_raNone border_hight color_blue fl ml-lg" ng-click="query()">查询</button>
+		</div>
+	</div>
+	<!-- 功能按钮 -->
+	<div class="indexright_cont_conl">
+		<div class="indexright_cont_conlt border_box pt-lg p-lg pr-lg br_right emolistBackground" style="height: 463px">
+			<abn-tree tree-data="orgEmpData" tree-control="orgEmpTree"
+			on-select="orgSelected(branch)" expand-level="2"></abn-tree>
+		</div>
+	</div>
+	<!--表格-->
+	<div class="contentright_cont_con emolistBackground" style="width: calc(100% - 221px);">
+		<div class="ngGrid smallCheck" style="height: 400px;"> 
+			<div class="tree border_box" style="height: calc(100% - 55px);">
+				<div class="row_box">
+					<table lg-grid class="table" model="dataProvider.getGridModel()">
+						<thead class="thead_bg">
+							<tr>
+								<th>选择</th>
+								<th>工号</th>
+								<th>姓名</th>
+								<th>性别</th>
+								<th>职务</th>
+								<th>手机</th>
+								<th>办公电话</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr lg-row-start>
+								<td class="td_color font-small">
+									<label class="checkbox c-checkbox">
+										<input type="radio" name="row3" ng-click="choseEmp(row,this)" ng-model="radioCtrl.employeeId" value="{{ row.data.employeeId }}" />
+										<span></span>
+									</label>
+								</td>
+								<td class="font-small td_color">{{ row.data.employeeNo }}</td>
+								<td class="font-small td_color">{{ row.data.name }}</td>
+								<td class="font-small td_color">{{ row.data.gender }}</td>
+								<td class="font-small td_color">{{ row.data.jobTitle |
+									dicFilter:'7846845230464623'}}</td>
+								<td class="font-small td_color">{{ row.data.mobile }}</td>
+								<td class="font-small td_color">{{ row.data.telephone }}</td>
+							</tr>
+							<tr lg-row-end lg-expanded-row>
+								<td colspan="9" ng-include=""></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<service-pager data-provider="dataProvider"></service-pager>
+		</div>
+		<div class="modal-footer clearfix" style="border-top:1px solid #1b98d0;">
+			<a class="btn bgNone borderNone color_blue fr" ng-click="closeEmpower()">取消</a>
+			<a class="btn inp_default2 border_raNone border_hight color_blue fr" ng-click="selectEmp(choseRowData);choseEmp();">确认</a>
+		</div>
+	</div>

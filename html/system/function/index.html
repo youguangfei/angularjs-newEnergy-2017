@@ -1,0 +1,205 @@
+<div class="side_right">
+	<div class="Box">
+		<div class="indexright_cont systembox2">
+			<div class="indexright_cont_top">
+				<div class="topBox2 clearfix">
+					<div class="button_box fr">
+						<button ng-click="showTable = 2" ng-disabled="branch == null || showTable == 2">
+							<em class="icon-users"></em>
+							<span>新建</span>
+						</button>
+					</div>
+				</div>
+				
+			</div>
+			<div class="indexright_cont_con">
+				<!-- 功能按钮 -->
+				<div class="indexright_cont_conl fl">
+					<div class="indexright_cont_conlt"  ng-scrollbar>
+						<abn-tree tree-data="orgData" tree-control="orgTree" 
+							on-select="orgSelected(branch)" on-disabled="showTable == 2" expand-level="2"></abn-tree>
+					</div>
+				</div>
+				<div class="contentright_cont_con fl system_conRwidth table_border">
+					<script type="text/ng-template" id="detailsTemplate.html">
+						<div class="panel bigBg_default" style="margin-bottom: 0;">
+							<div class="panel-body">
+								<table cellpadding="0" class="tablef">
+									<thead class="thead_bg">
+										<tr>
+											<th class="color_w">父节点全码</th>
+											<th class="color_w">功能序号</th>
+											<th class="color_w">图标</th>
+											<th class="color_w">备注</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td class="color_green font-small" ng-if="row.data.funcCodePids == null">[无]</td>
+											<td class="td_color font-small" ng-if="row.data.funcCodePids != null">{{ row.data.funcCodePids }}</td>
+											<td class="td_color font-small">{{ row.data.sequence }}</td>
+											<td class="td_color font-small">{{ row.data.icon }}</td>
+											<td class="td_color font-small">{{ row.data.funcTips }}</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</script>
+					<form ng-if="showTable == 2" style="height: 100%;" name="myForm" class="form-validate">
+						<div class="pt-xl border_box border_box3">
+							<fieldset>
+								<div class="form-group">
+									<div class="col-md-6">
+										<label class="col-sm-3 control-label">功能编码</label>
+										<div class="col-sm-9">
+											<input type="text" class="form-control color_blue inp_default2 inpBorder" ng-model="entity.funcCode" disabled placeholder="系统自动生成">
+										</div>
+									</div>
+									<div class="col-md-6">
+										<label class="col-sm-3 control-label">功能名称*</label>
+										<div class="col-sm-9">
+											<input type="text" class="form-control color_blue inp_default2 inpBorder" name="funcName" ng-model="entity.funcName" required />
+											<span ng-show="myForm.funcName.$dirty && myForm.funcName.$error.required" class="text-danger">功能名称不能为空</span>
+										</div>
+									</div>
+								</div>
+							</fieldset>
+							<fieldset>
+								<div class="form-group">
+									<div class="col-md-6">
+										<label class="col-sm-3 control-label">上级功能</label>
+										<div class="col-sm-9">
+											<input type="text" class="form-control color_blue inp_default2 inpBorder" ng-model="branch.label" disabled/>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<label class="col-sm-3 control-label">功能级别</label>
+										<div class="col-sm-9">
+											<select ng-model="entity.funcLevel" class="form-control color_blue inp_default2 inpBorder" ng-options="obj.selectVal as obj.selectName for obj in entity.funcLevelSelect"></select>
+										</div>
+									</div>
+								</div>
+							</fieldset>
+							<fieldset>
+								<div class="form-group">
+									<div class="col-md-6">
+										<label class="col-sm-3 control-label">所属模块</label>
+										<div class="col-sm-9">
+											<input type="text" class="form-control color_blue inp_default2 inpBorder" ng-if="entity.funcId != null" ng-model="entity.moduleName" disabled />
+											<input type="text" class="form-control color_blue inp_default2 inpBorder" ng-if="entity.funcId == null" ng-model="branch.mark == null ? branch.label : branch.mark.moduleName" disabled />
+										</div>
+									</div>
+									<div class="col-md-6" ng-if="entity.funcLevel == -1">
+										<label class="col-sm-3 control-label">权限URL*</label>
+										<div class="col-sm-9">
+											<input type="text" class="form-control color_blue inp_default2 inpBorder" name="funcURL" ng-model="entity.funcURl" required />
+											<span ng-show="myForm.funcURL.$dirty && myForm.funcURL.$error.required" class="text-danger">权限URL不能为空</span>
+										</div>
+									</div>
+									<div class="col-md-6" ng-if="entity.funcLevel == 1">
+										<label class="col-sm-3 control-label">菜单URL*</label>
+										<div class="col-sm-9">
+											<input type="text" class="form-control color_blue inp_default2 inpBorder" name="menuURL" ng-model="entity.url" placeholder="home.sideMenu.module" required=""/>
+											<span ng-show="myForm.menuURL.$dirty && myForm.menuURL.$error.required" class="text-danger">菜单URL不能为空</span>
+										</div>
+									</div>
+								</div>
+							</fieldset>
+							<fieldset>
+								<div class="form-group">
+									<div class="col-md-6">
+										<label class="col-sm-3 control-label">图标</label>
+										<div class="col-sm-9">
+											<input type="text" class="form-control color_blue inp_default2 inpBorder" ng-model="entity.icon">
+										</div>
+									</div>
+									<div class="col-md-6">
+										<label class="col-sm-3 control-label">功能序号*</label>
+										<div class="col-sm-9">
+											<input type="text" class="form-control color_blue inp_default2 inpBorder" name="sequence" ng-model="entity.sequence" ng-maxlength="3" onkeyup="this.value=this.value.replace(/\D/g,'')" required/>
+											<span class="text-danger" ng-show="myForm.sequence.$dirty && myForm.sequence.$invalid">*1-3位数字</span>
+										</div>
+									</div>
+								</div>
+							</fieldset>
+							<fieldset>
+								<div class="form-group">
+									<div class="col-md-6">
+										<label class="col-sm-3 control-label">是否安装</label>
+										<div class="col-sm-9">
+											<select class="form-control color_blue inp_default2 inpBorder" ng-model="entity.isInstall" ng-options="obj.selectVal as obj.selectName for obj in entity.isInstallSelect"></select>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<label class="col-sm-3 control-label">备注</label>
+										<div class="col-sm-9">
+											<textarea style="resize: none;" ng-model="entity.funcTips" class="form-control color_blue inp_default2 inpBorder"></textarea>
+										</div>
+									</div>
+								</div>
+							</fieldset>
+						</div>
+						
+						<div class="panel-footer h60">
+							<div class="col-md-6">
+								<label class="col-sm-3 control-label"></label>
+								<a class="save" ng-click="insertOrUpdatefun(myForm)">保存</a>
+							</div>
+							<div class="col-md-6">
+								<label class="col-sm-3 control-label"></label>
+								<a class="cancel" ng-click="goBack()" style="margin-left: 15px;">取消</a>
+							</div>
+						</div>
+				</form>
+					<div ng-if="showTable == 1" class="ngGrid" style="height:100%;">
+						<div class="border_box borderbox">
+							<table lg-grid class="table" model="dataProvider.getGridModel()">
+								<thead class="thead_bg">
+									<tr>
+										<th>功能编码</th>
+										<th>功能名称</th>
+										<th>上级功能</th>
+										<th>功能级别</th>
+										<th>权限URL/菜单URL</th>
+										<th>操作</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr lg-row-start>
+										<td class="td_color font-small">{{row.data.funcCode }}</td>
+										<td class="td_color font-small">{{row.data.funcName }}</td>
+							
+										<td class="color_green font-small" ng-if="row.data.funcCodePid == null">[无]</td>
+										<td class="td_color font-small" ng-if="row.data.funcCodePid != null">{{ row.data.funcCodePid }}</td>
+										<td class="td_color font-small" ng-if="row.data.funcLevel == -1">[权限功能]</td>
+										<td class="td_color font-small" ng-if="row.data.funcLevel != -1">[菜单功能]</td>
+										<td class="td_color font-small" ng-if="row.data.funcLevel == -1">{{row.data.funcURl }}</td>
+										<td class="td_color font-small" ng-if="row.data	.funcLevel == 1">{{row.data.url }}</td>
+										<td>
+											<button lg-toggle-expanded-row class="bgNone btn btn-sm borderNone" title="查看">
+												<i class="icon-eye color_fonts"></i>
+											</button>
+											<button lg-toggle-expanded-row="true" class="bgNone btn btn-sm borderNone" ng-click="updatefun(row)" title="修改">
+												<i class="fa fa-edit color_fonts"></i>
+											</button>
+											<button type="button" ng-click="deletefun(row)" class="bgNone btn btn-sm borderNone" title="删除">
+												<i class="fa fa-trash-o text-danger">
+												</i>
+											</button>
+										</td>
+									</tr>
+									<tr lg-row-end lg-expanded-row class="bigBg_default" style="margin: 0;padding: 0;">
+										<td colspan="9" ng-include="'detailsTemplate.html'" style="margin: 0;padding: 0;"></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<service-pager data-provider="dataProvider"></service-pager>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+</div>

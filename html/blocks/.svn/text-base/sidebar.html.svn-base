@@ -1,0 +1,6 @@
+
+<!--<aside ng-include="'html/blocks/sidebar.html'" ng-controller="sideMenuController" class="aside"></aside>-->
+<div ui-view class="wrapperHeight bigBg_default"></div>
+
+<!--ng-href="{{$state.href(item.url, item.params)}}"-->
+		<!--ng-href="mainMenu(pIndex,item)"-->

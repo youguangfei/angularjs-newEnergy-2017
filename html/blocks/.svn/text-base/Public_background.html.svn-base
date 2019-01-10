@@ -1,0 +1,30 @@
+<!--头部-->
+<div class="fixed_topBox" id="fixed_topBox">
+	<div class="fixed_topLeftBox">
+		
+	</div>
+	<div class="fixed_topCenterBox">
+		<div class="fixed_top_transition"></div>
+	</div>
+	<div class="fixed_topRightBox">
+		
+	</div>
+	<div class="HistoryLogo"></div>
+</div>
+<!--中间-->
+<div class="fixed_centerBox">
+	<div class="fixed_centerLeft_Box"></div>
+	<div class="fixed_centerRight_Box"></div>
+</div>
+<!--尾部-->
+<div class="fixed_bottomBox" id="fixed_bottomBox">
+	<div class="fixed_bottomLeftBox">
+		
+	</div>
+	<div class="fixed_bottomCenterBox">
+		<!--<div class="fixed_bottom_transition"></div>-->
+	</div>
+	<div class="fixed_bottomRightBox">
+		
+	</div>
+</div>

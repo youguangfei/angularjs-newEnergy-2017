@@ -1,0 +1,308 @@
+<style>
+    .ngdialog.ngdialog-theme-default .ngdialog-content {
+        height: 100%;
+        max-width: 100%;
+        margin: 0 auto;
+    }
+
+    .dialog_inner_content {
+        height: 100%;
+        position: relative;
+    }
+
+    .modal-header {
+        height: 56px;
+        font-size: 20px;
+        line-height: 26px !important;
+    }
+    .row_box {
+        width: 100%;
+        height: calc(100% - 46px);
+        height: -webkit-calc(100% - 46px);
+        height: -moz-calc(100% - 46px);
+    }
+    .smallPlayer {
+    	position: absolute;
+        bottom: 20px;
+        width: 8rem;
+        height: 1.65rem;
+        border: 1px solid #13888c;
+        box-shadow: 0px 0px 16px #3b9a9d;
+        background: transparent;
+        margin: 0 auto;
+        z-index: 999 !important;
+       left: calc(50% - 335px);
+       left: -webkit-calc(50% - 335px);
+       left: -moz-calc(50% - 335px);
+       box-sizing: border-box;
+       background: rgb(0, 25, 33);
+    }
+    .anchorBL {
+        display: none;
+    }
+    .carRelaycondiv {
+        width: 100%;
+        height: 100px;
+        margin-top: 10px;
+    }
+    .col-sm-3 {
+        width: 25%;
+        float: left;
+    }
+    .col-sm-9 {
+        width: 75%;
+        float: left;
+    }
+    .mt10 {
+        margin-top: 10px;
+    }
+    .form-control.date_icon {
+        cursor: pointer;
+        background: #f1f1f1 url(images/img2/date_icon_addBac.png) no-repeat;
+        background-position: right center;
+        background-size: 26px 26px;
+        padding-right: 39px;
+    }
+    .btn {
+        color: #2e93fb;
+    }
+    .btn:hover {
+        color: #2e93fb;
+    }
+    .btn-primary, .btn-primary:hover, .btn-primary:focus, .btn-primary:active {
+        background-color: #f1f1f1;
+        color: #2e93fb;
+    }
+    .play-time-box .col-sm-9 {
+        padding: 0;
+    }
+    .mb {
+        margin-bottom: 5px;
+    }
+    .smallPlayer .playerTitle {
+        position: absolute;
+        top: -0.1rem;
+        right: -0.1rem;
+    }
+    .playerTop {
+        width: 100%;
+        height: 60px;
+        margin-top: -18px;
+       
+    }
+    .playKeys {
+        width: 110px;
+        margin-top: 0.1rem;
+        margin-left: 0rem;
+    }
+    .playerMiddle {
+        width: 280px;
+        margin-top: 0.1rem;
+    }
+    .playerMiddle .playering {
+        margin-top: 10px;
+    }
+    .player-add {
+        width: 120px;
+        margin: 5px 0 0 0;
+        margin-right: 30px;
+    }
+    .playerBottom {
+        width: 100%;
+        height: 0.7rem;
+        border-top: 1px solid #0a3c3d;
+    }
+    .playerBottom .date_select_box {
+        width: 230px;
+        margin-left: 172px;
+    }
+    .searchBtn {
+        margin: 30px 0 0 30px;
+        padding: 5px 15px;
+    }
+
+    .playsExitBtn {
+        margin: 30px 40px 0 0;
+    }
+    .playKeys button {
+        background: none;
+        text-indent: -9999px;
+        border: none;
+        background: 0 0 no-repeat;
+        -webkit-background-size: 100% 100%;
+        background-size: 100% 100%;
+    }
+    .playKeys button.prev, .playKeys button.next {
+        width: 26px;
+        height: 26px;
+        float: left;
+        margin-top: 6px;
+    }
+    .playKeys button.prev {
+        background-image: url("images/img1/player_next26x25.png");
+    }
+    .playKeys button.prev:focus {
+        background-image: url("images/img1/prev126x25.png");
+    }
+    .playKeys button.start {
+        width: 0.46rem;
+        height: 0.46rem;
+    }
+    .playKeys button.map_tstart {
+        width: 38px;
+        height: 38px;
+        border: 0;
+        float: left;
+        background: url("images/img1/player39x39.png") no-repeat;
+        margin-left: 6px;
+        cursor: pointer;
+        background-size: 100% 100%;
+    }
+    .playKeys button.map_tstop {
+        width: 38px;
+        height: 38px;
+        border: 0;
+        float: left;
+        background: url(images/img1/player38x38.png) no-repeat;
+        margin-left: 6px;
+        cursor: pointer;
+        background-size: 100% 100%;
+    }
+    .playKeys button.next {
+        background-image: url("images/img1/player_prev26x25.png");
+        margin-left: 6px;
+    }
+    .playKeys button.next:focus {
+        background-image: url("images/img1/next26x25.png");
+        margin-left: 6px;
+    }
+    .carPlayIcon li {
+        float: left;
+        margin-left: .1rem;
+        margin-top: 6px;
+    }
+    .carPlayIcon li a {
+        width: 30px;
+        height: 30px;
+        display: block;
+        text-decoration: none;
+    }
+    .carPlayIcon li .x1 {
+        background: url(images/img2/job_1x_gray.png) no-repeat center center;
+        background-size: 30px;
+    }
+    .carPlayIcon li .x2 {
+        background: url(images/img2/job_2x_gray.png) no-repeat center center;
+        background-size: 30px;
+    }
+    .carPlayIcon li .x3 {
+        background: url(images/img2/job_3x_gray.png) no-repeat center center;
+        background-size: 30px;
+    }
+    .carPlayIcon li.active .x1 {
+        background: url(images/img2/job_1x.png) no-repeat center center;
+        background-size: 30px;
+    }
+    .carPlayIcon li.active .x2 {
+        background: url(images/img2/job_2x.png) no-repeat center center;
+        background-size: 30px;
+    }
+    .carPlayIcon li.active .x3 {
+        background: url(images/img2/job_3x.png) no-repeat center center;
+        background-size: 30px;
+    }
+    .smallPlayer .narrows {
+        position: absolute;
+        width: 14px;
+        height: 14px;
+        right: 4px;
+        background: url(images/img2/douwnning.png) no-repeat center center;
+        background-size: 14px;
+        top: 8px;
+        border: none;
+    }
+    .smallPlayer .narrows:hover {
+        background: url(images/img2/douwnning_hover.png) no-repeat center center;
+        background-size: 14px;
+    }
+    /*大于今天的时间插件置灰*/
+    button[disabled]{
+        background: #e1e3e5;
+    }
+</style>
+<div ng-include="'html/blocks/Public_background.html'"></div>
+<div class="Repair_Detpage_closeBtn" id="Repair_Detpage_closeBtn" ng-click="closeBlank()"></div>
+<div class="history_box">
+        <!--<p class="row_box_title"></p>-->
+    <div class="carDialogMap" id="carDialogMap"></div>
+    <!--展开的播放器-->
+    <div class="smallPlayer" id="smallPlayer">
+        <div class="playerTop clearfix">
+            <div class="playKeys clearfix fl">
+                <button class="prev" ng-click="setCurrentIndex(-1)">前进</button>
+                <button class="start" ng-class="{'map_tstart':pause,'map_tstop':!pause}"
+                        ng-click="pauseOrRestart()">播放/暂停
+                </button>
+                <button class="next" ng-click="setCurrentIndex(1)">后退</button>
+            </div>
+            <div class="player playerMiddle fl">
+                <ng-range ng-range-min="0" ng-range-step="1" ng-range-max="{{rangeMax}}"
+                          acc="acc" rangs="rangeMax"
+                          range-changed="setCurrentIndex()" ng-model="range"></ng-range>
+            </div>
+            <!--<div class="player-add fr">
+                <ul class="carPlayIcon">
+                    <li role="presentation" ng-class="{active:speedBtns[0]}">
+                        <a href="javascript:void(0)" ng-click="setReplaySpeed(1500,0)" class="x1"></a>
+                    </li>
+                    <li role="presentation" ng-class="{active:speedBtns[1]}">
+                        <a href="javascript:void(0)" ng-click="setReplaySpeed(3000,1)"  class="x2"></a>
+                    </li>
+                    <li role="presentation" ng-class="{active:speedBtns[2]}">
+                        <a href="javascript:void(0)"  ng-click="setReplaySpeed(4500,2)" class="x3"></a>
+                    </li>
+                </ul>
+            </div>-->
+        </div>
+        <!--<button class="narrows" ng-class="{true: 'narrows', false: 'add-big'}[replayOpen]" ng-click ="" 'narrowsaddbig()'></button>-->
+
+        <div class="playerBottom">
+           
+            <!--ng-click="searchHistory()"-->
+            <div class="carDetail_searchbtn1 fl carDtalbox2top2 carDtalpTop displayFlex">
+						<div class="DateBox_list2 DateBox_list3 clearfix">
+							<label class="LabelTextColor fl pt-sm">日期</label>
+							<input type="text" class="form-control date_icon fl color_blue" id="startTime" ng-model="startTime1" readonly/>
+						</div>
+						<div class="Caleline3"></div>
+						<div class="DateBox_list2 DateBox_list3 clearfix">
+							<label class="LabelTextColor fl pt-sm">日期</label>
+							<input type="text" class="form-control date_icon fl color_blue" id="endTime" ng-model="endTime1" readonly/>
+						</div>
+			</div>
+            <button class="fl History_searchBtn borderNone" ng-click="searchHistory()">查询</button>
+            
+            
+            <!--<div class="playsExitBtn fr">-->
+            <!--&lt;!&ndash;ng-click="resetQuery()"&ndash;&gt;-->
+            <!--<button class="fl btn border_raNone color_blue "  style="background: none; " >退出回放</button>-->
+            <!--</div>-->
+        </div>
+
+    </div>
+    </div>
+    <!--展开的播放器-->
+<script>
+	$('#smallPlayer').myDrag({
+								randomPosition:false,
+								direction:'all',
+								handler:false,
+								parent:'body',
+								dragEnd:function(x,y){
+									
+								},
+	});
+	
+		
+</script>
+

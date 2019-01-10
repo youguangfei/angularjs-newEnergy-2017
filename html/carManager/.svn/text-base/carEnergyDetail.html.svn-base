@@ -1,0 +1,86 @@
+<style type="text/css">
+	.ngdialog-content{
+		left: 25%;
+		top: 10%;
+		height: 80%;
+	}
+</style>
+<div class="window dialog wd-wide bg_default1 border_hight">
+    <form name="loginForm" class="form-validate">
+		<div class="panel-body border_box border_box2">
+			<fieldset>
+				<div class="form-group">
+					<div class="col-md-12">
+						<label class="col-sm-3 control-label">服务网点类型</label>
+						<div class="col-sm-9">
+							<input type="text" class="form-control color_blue" name="name"  ng-model="serviceModify.type" required />
+							
+						</div>
+					</div>
+				</div>
+			</fieldset>
+			<fieldset>
+				<div class="form-group">
+					<div class="col-md-12">
+						<label class="col-sm-3 control-label">名称</label>
+						<div class="col-sm-9">
+							<input type="text" class="form-control color_blue"  ng-model="serviceModify.name"  />
+						</div>
+					</div>
+				</div>
+			</fieldset>
+			<fieldset>
+				<div class="form-group">
+					<div class="col-md-12">
+						<label class="col-sm-3 control-label">联系人</label>
+						<div class="col-sm-9">
+							 <input type="text" class="form-control color_blue" ng-model="serviceModify.contacts" id="licenseNumber" name="licenseNumber" ng-keyup="searchLicenseNumber()" />
+							 
+						</div>
+					</div>
+				</div>
+			</fieldset>
+			
+			<fieldset>
+				<div class="form-group">
+					<div class="col-md-12">
+						<label class="col-sm-3 control-label">联系人电话</label>
+						<div class="col-sm-9">
+							<input type="text" class="form-control color_blue" ng-model="serviceModify.phone" name="faultDescription" required />
+						</div>
+					</div>
+				</div>
+			</fieldset>
+			<fieldset>
+				<div class="form-group">
+					<div class="col-md-12">
+						<label class="col-sm-3 control-label">具体地址</label>
+						<div class="col-sm-9">
+							<input type="text" class="form-control color_blue" ng-model="serviceModify.address" name="faultAddress" required />
+						</div>
+					</div>
+				</div>
+			</fieldset>
+			<fieldset>
+				<div class="form-group">
+					<div class="col-md-12">
+						<label class="col-sm-3 control-label">地图标注</label>
+						<div class="col-sm-9 inp_boxs">
+									<a href="#">设置</a>
+						</div>
+					</div>
+				</div>
+			</fieldset>
+		</div>
+		<div class="panel-footer h60">
+			<div class="col-md-12">
+				<label class="col-sm-4 control-label"></label>
+				<div class="col-sm-6">
+					<button style="background: transparent;border: 1px solid blue;" ng-click='seariceSeave()'><a href="#" '>保存</a></button>
+					<button ng-click='goBack()' style="background: transparent;border:1px solid blue;">关闭</button>
+				</div>
+			</div>
+		</div>
+  	</form>
+</div>
+

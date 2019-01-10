@@ -1,0 +1,164 @@
+<div class="side_right">
+	<div class="Box">
+		<div class="indexright_cont systembox2">
+			<div class="indexright_cont_top">
+				<div class="topBox2 clearfix">
+					<div class="button_box fr">
+						<button ng-disabled="showTable == 2" ng-click="createMdl()">
+							<em class="icon-magnifier-add"></em>
+							<span>新增</span>
+						</button>
+					</div>
+				</div>
+				
+			</div>
+			<div class="indexright_cont_con">
+				<div class="contentright_cont_con table_border" style="width: calc(100% - 0px);">
+					<div ng-if="showTable == 1" class="ngGrid" style="height: calc(100% - 0px);">
+						<div class="border_box borderbox">
+							<table lg-grid class="table" model="dataProvider.getGridModel()">
+								<thead class="thead_bg">
+									<tr>
+										<th>模块编码</th>
+										<th>模块名称</th>
+										<th>URL地址</th>
+										<th>是否已安装</th>
+										<th>序号</th>
+										<th>操作</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr lg-row-start>
+										<td class="td_color font-small">{{ row.data.moduleCode}}</td>
+										<td class="td_color font-small">{{ row.data.moduleName }}</td>
+										<td class="td_color font-small">{{ row.data.url }}</td>
+										<td class="td_color font-small" ng-if="row.data.status == 1">是</td>
+										<td class="text-danger font-small" ng-if="row.data.status == 0">否</td>
+										<td class="color_green font-small"ng-if="row.data.status != 1 && row.data.status != 0">未填写</td>
+										<td class="td_color font-small">{{ row.data.sequence }}</td>
+										<td>
+											<button class="bgNone btn btn-sm borderNone" ng-disabled="showTable == 2" ng-click="updateMdl(row)" title="修改">
+												<i class="fa fa-edit color_fonts"></i>
+											</button>
+											<button class="bgNone btn btn-sm borderNone" ng-click="removeRow(row)" title="删除">
+												<i class="fa fa-trash-o" style="color: red;">
+												</i>
+											</button>
+										</td>
+									</tr>
+									<tr lg-row-end lg-expanded-row>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<service-pager data-provider="dataProvider"></service-pager>
+					</div>
+					
+					<form name="myForm" ng-if="showTable == 2" style="height:100%;" class="form-validate">
+						<div class="pt-xl border_box border_box3">
+								<fieldset>
+									<div class="form-group">
+										<div class="col-md-7">
+											<label class="col-sm-3 control-label">模块编号</label>
+											<div class="col-sm-9">
+												<input type="text" class="form-control color_blue inp_default2 inpBorder" ng-model="module.moduleCode" disabled placeholder="系统自动生成">
+											</div>
+										</div>
+									</div>
+								</fieldset>
+								<fieldset>
+									<div class="form-group">
+										<div class="col-md-7">
+											<label class="col-sm-3 control-label">URL地址*</label>
+											<div class="col-sm-9">
+												<input type="text" class="form-control color_blue inp_default2 inpBorder" name="moduleName" ng-model="module.moduleName" ng-maxlength="6" required>
+												<span class="text-danger" ng-show="myForm.moduleName.$dirty && myForm.moduleName.$invalid">*URL地址,必须是1-6字符</span>
+											</div>
+										</div>
+									</div>
+								</fieldset>
+								<fieldset>
+									<div class="form-group">
+										<div class="col-md-7">
+											<label class="col-sm-3 control-label">是否安装</label>
+											<div class="col-sm-9">
+												<select class="form-control color_blue inp_default2 inpBorder" ng-model="module.status" ng-options="obj.selectVal as obj.selectName for obj in module.statusSelect"></select>
+											</div>
+										</div>
+									</div>
+								</fieldset>
+								<fieldset>
+									<div class="form-group">
+										<div class="col-md-7">
+											<label class="col-sm-3 control-label">模块序号*</label>
+											<div class="col-sm-9">
+												<input type="text" class="form-control color_blue inp_default2 inpBorder" name="sequence" ng-model="module.sequence" ng-minlength="1" ng-maxlength="3" onkeyup="this.value=this.value.replace(/\D/g,'')" required/>
+												<span class="text-danger" ng-show="myForm.sequence.$dirty && myForm.sequence.$invalid">*模块序号不能为空，必须是1-3位数字</span>
+											</div>
+										</div>
+									</div>
+								</fieldset>
+								<fieldset>
+									<div class="form-group">
+										<div class="col-md-7">
+											<label class="col-sm-3 control-label">类别</label>
+											<div class="col-sm-9">
+												<select class="dic form-control color_blue inp_default2 inpBorder" disabled ng-model="dic.type" ng-options="obj.selectVal as obj.selectName for obj in dic.typeSelect"></select>
+											</div>
+										</div>
+									</div>
+								</fieldset>
+						</div>
+						<div class="panel-footer h60">
+							<div class="col-md-7">
+								<label class="col-sm-3 control-label"></label>
+								<div class="col-sm-9" style="padding-right: 15px;padding-left: 5px;">
+									<a class="save fl" ng-click="insertOrUpdateModule(myForm)">保存</a>
+									<a class="cancel fr" ng-click="goBack()">取消</a>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	var start = {
+		    format: 'YYYY-MM-DD hh:mm',
+		    minDate: '2014-06-16 23:59:59', //设定最小日期为当前日期
+		    initAddVal:{MM:"-1"},   //初始化日期加n月
+		    isinitVal:true,
+		    festival:true,
+		    ishmsVal:false,
+		    maxDate: $.nowDate({DD:0}), //最大日期
+		    choosefun: function(elem,datas){
+		        end.minDate = datas; //开始日选好后，重置结束日的最小日期
+		        endDates();
+		    }
+	};
+	var end = {
+	    format: 'YYYY-MM-DD hh:mm',
+	    initAddVal:[0],
+	    minDate: $.nowDate(0), //设定最小日期为当前日期
+	    isinitVal:true,
+		festival:true,
+		ishmsVal:false,
+	    maxDate: '2099-06-16 23:59:59', //最大日期
+	    choosefun: function(elem,datas){ //选中之后的回调函数
+	        start.maxDate = datas; //将结束日的初始值设定为开始日的最大日期
+	    }
+	};
+	//这里是日期联动的关键        
+	function endDates() {
+	    //将结束日期的事件改成 false 即可
+	    end.trigger = false;
+	    $("#inpend").jeDate(end);
+	}
+	$.jeDate('#inpstart',start);
+	$.jeDate('#inpend',end);
+	
+	
+</script>

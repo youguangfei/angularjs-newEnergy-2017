@@ -1,0 +1,158 @@
+<div class="side_right borderNone dataTopposition">
+	<div class="Box td_color">
+		<div class="td_color Font_size12">
+			<div class="indexright_cont_top RepairTop_box1">
+				<div class="topBox1 dateBox clearfix downBox RepairTop_boxlist1">
+					<fieldset class="RepairText_boxlist fl">
+						<div class="form-group ">
+							<div class="col-md-12 p0">
+								<label class="col-sm-4 LabelTextColor">所属公司</label>
+								<div class="col-sm-6 p0">
+									<select-block config="company_selectConfig1" model='select_company' select-change="selectChange_cpy(newModel)"   class="customerUnit_select  borderNone SelectBlock_width p0 mUnit_select"/>
+								</div>
+							</div>
+						</div>
+					</fieldset>
+					<fieldset class="RepairText_boxlist fl">
+							<div class="form-group Repari_carNum">
+								<div class="col-md-12 p0">
+									<label class="col-sm-4 LabelTextColor">客户姓名</label>
+									<input type="text" class="col-sm-6 borderNone  BgTransparent InputColor  employPone_height p0 pl font-large" placeholder="请输入客户姓名" ng-model='customerName' />
+								</div>
+							</div>
+					</fieldset>
+					<fieldset class="RepairText_boxlist fl">
+						<div class="form-group Repari_carNum">
+							<div class="col-md-12 p0">
+								<label class="col-sm-4 LabelTextColor">手机号码</label>
+								<input type="text" class="col-sm-6 borderNone  BgTransparent InputColor employPone_height p0 pl font-large" placeholder="请输入手机号码" ng-model='customerPhone' />
+							</div>
+						</div>
+					</fieldset>
+					<!--时间日期-->
+					<div class="twoLine fl mt-lg RepairTop_boxlist2" style="width: 100%;">
+						<button ng-click="customer_search()" class="BgTransparent  borderNone RepairBtn_search1">
+							搜索
+						</button>
+					</div>
+				</div>
+			</div>
+			<div class="indexright_cont_con ">
+				<div class="contentright_cont_con">
+					<div class="border_box borderbox RepairTable_list1 customer_list">
+						<div class="RepairTable_list_top sys_employTop">
+							<div class="AddBtn_boxlist fr text-center">
+								<button class="borderNone BgTransparent font-center wt100 ht100" ng-click='template_upLoad()'>模板下载</button>
+							</div>
+						
+							<div class="AddBtn_boxlist fr text-center">
+								<button class="borderNone BgTransparent font-center wt100 ht100" ng-click="importFile()">批量导入</button>
+							</div>
+							<div class="AddBtn_boxlist fr" ng-click="customer_Add()">
+								<button class="borderNone BgTransparent fl font-center Addcustomer_btn">新建客户员工</button>
+								<img src="images/img1/add16x16.png" alt="" class="fl" />
+							</div>
+						</div>
+						<div class="RepairTable_list_center">
+							<table class="table Table_trlist">
+								<thead class="thead_bg">
+									<tr>
+										<th class="Service_operationWidth Repair_tabfirth first_thWidth">
+											<span class="thfir_text">操作</span>
+										</th>
+						<th class="Repair_theadth2">客户姓名</th>
+										<th>所属公司</th>
+										<th>手机号码</th>
+										<th>创建时间</th>
+									</tr>
+								</thead>
+								<tbody class="Tr_hoverlist">
+									<tr ng-repeat="x in customerList" ng-class="{active:activeIndex==$index}" ng-click="changeIndex($index)" class="{{ $even ? 'BackColor1even': 'BackColor1odd'}}">
+										<td>
+											<button class="Btn_colorGreen borderNone  modifyButton_top RepairModify_btn mr-sm Modify_btn1" ng-click="customer_Modify(x)" ng-if="x.roleName!='管理人员'">修改</button>
+											<button ng-click='customer_Delete(x)' class="Btn_colorGreen borderNone  modifyButton_top RepairModify_btn ml-sm" ng-if="x.roleName!='管理人员'">删除</button>
+										</td>
+										<td>
+											{{x.name|textLengthSet:true:20:'...'}}
+										</td>
+										<td>
+											{{x.unitName|textLengthSet:true:20:'...'}}
+										</td>
+										<td>
+											{{x.phone}}
+										</td>
+										<td>
+											{{x.createTime | date:"yyyy-MM-dd HH:mm:ss" }}
+										</td>
+									</tr>
+								</tbody>
+							</table>
+
+						</div>
+
+						<!--分页-->
+						<!--<div class="PagingData_list displayFlex">
+										<div class="RepairPrev_pagetion">
+											<button class="BgTransparent borderNone color_blue Repairpagetion_btn">上一页</button>
+										</div>	
+										<div class="RepairNumber_pagetion">
+											
+										</div>
+										<div class="RepairNext_pagetion">
+											<button class="BgTransparent borderNone color_blue Repairpagetion_btn">下一页</button>
+										</div>
+								</div>-->
+						<div class="myPagelistBox">
+							<div ng-if="myPagelist.totalCount>10" ui-pagination pg="myPagelist"></div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+</div>
+
+<script type="text/javascript">
+	var start = {
+		format: 'YYYY-MM-DD hh:mm:ss',
+		minDate: '2014-06-16 23:59:59', //设定最小日期为当前日期
+		initAddVal: { MM: "-1" }, //初始化日期加n月
+		isinitVal: true,
+		festival: true,
+		ishmsVal: false,
+		maxDate: $.nowDate({ DD: 0 }), //最大日期
+		choosefun: function(elem, datas) {
+			end.minDate = datas; //开始日选好后，重置结束日的最小日期
+			endDates();
+		}
+	};
+	var end = {
+		//		skinCell:"je-bg-olive",
+		format: 'YYYY-MM-DD hh:mm:ss',
+		initAddVal: [0],
+		minDate: $.nowDate(0), //设定最小日期为当前日期
+		isinitVal: true,
+		festival: true,
+		ishmsVal: false,
+		maxDate: '2099-06-16 23:59:59', //最大日期
+		choosefun: function(elem, datas) { //选中之后的回调函数
+			start.maxDate = datas; //将结束日的初始值设定为开始日的最大日期
+		}
+	};
+	//这里是日期联动的关键        
+	function endDates() {
+		//将结束日期的事件改成 false 即可
+		end.trigger = false;
+	}
+	$.jeDate('#startTime', start);
+	$.jeDate('#endTime', end);
+	$.jeDate('#inpstart_createUser1', start);
+	$.jeDate('#inpend_createUser2', end);
+
+	function initDate(startEnd) {
+		$.jeDate('#' + startEnd, { trigger: false, festival: true, isinitVal: true, ishmsVal: false, format: 'YYYY-MM-DD hh:mm:ss' })
+	}
+</script>

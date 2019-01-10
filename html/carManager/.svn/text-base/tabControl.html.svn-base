@@ -1,0 +1,63 @@
+<style type="text/css">
+	.ngdialog-content{
+		height: 6rem;
+		left: 35%;
+		top: 15%;
+	}
+	.ngdialog.ngdialog-theme-default .modal-header {
+	    line-height: initial;
+	}
+	.control_tab .nav-tabs{
+		width: 3rem;
+	}
+	.control_tab .nav-tabs li{
+		width: 50%;
+		text-align: center;
+		margin-bottom: 0;
+	}
+</style>
+<div class="window dialog wd-wide bg_default1 border_hight">
+    <div class="bg_default1 modal-header">
+    	<h4 class="modal-title text-center">车辆信息</h2>
+	</div>
+	<div class="modal_content control_tab bg_default1 wd-wide">
+		<tabset>
+	        <tab heading="轨迹跟踪">
+	        	<div id="carBox" style="width: 100%;height: 4.44rem;">
+	        		
+	        	</div>
+			</tab>
+			<tab heading="远程控制">
+				<div class="border_box bg_default1" style="width:4rem;height:4.44rem;margin: .3rem auto;">
+					<form class="control_content form-validate mb-lg">
+						<p class="color_w mb-lg">车辆：京q28a71</p>
+						<fieldset>
+							<div class="form-group">
+								<div class="col-md-12">
+									<label class="col-sm-3 control-label text-right">控制指令</label>
+									<div class="col-sm-9">
+										<input type="text" class="form-control color_blue" />
+									</div>
+								</div>
+							</div>
+						</fieldset>
+						<fieldset>
+							<div class="form-group">
+								<div class="col-md-12">
+									<label class="col-sm-3 control-label text-right">推送消息</label>
+									<div class="col-sm-9">
+										<input type="text" class="form-control color_blue" />
+									</div>
+								</div>
+							</div>
+						</fieldset>
+					 </form>
+					 <div class="control_btn panel-footer"> 
+						<button class="save fl" style="margin-left:.8rem">确定</button> 
+						<button class="cancel fr">取消</button> 
+					</div>
+				</div>
+			</tab>
+		</tabset>
+	</div>
+</div>

@@ -1,0 +1,344 @@
+/*滚动条样式*/
+::-webkit-scrollbar-track-piece {
+	background-color: #0db0f3;
+	-webkit-border-radius: 6px
+}
+::-webkit-scrollbar {
+	width: 10px;
+	height: 10px
+}
+::-webkit-scrollbar-thumb {
+	background-color: #1664b2;
+	-webkit-border-radius: 10px;
+	/*outline: 2px solid #1664b2;
+	outline-offset: -2px;
+	border: 2px solid #1664b2;*/
+	filter: alpha(opacity=50);
+	-moz-opacity: 0.5;
+	-khtml-opacity: 0.5;
+	opacity: 0.5,
+}
+::-webkit-scrollbar-thumb:hover {
+	height: 50px;
+	background-color: #1664b2;
+	-webkit-border-radius: 8px
+}
+.tableHover{
+	background-color: rgba(2,89,159,0.88);
+	box-shadow: 0 0 7px 1px rgba(74,213,253,.67);
+}
+.button_box button span:hover{
+	color: #2e93fb;
+}
+/*默认字体、边框、按钮、背景、渐变及发光颜色*/
+.button_box em,
+.color_blue,.text-muted,
+.form-control.ui-select-search,
+.form-control.color_blue,
+.color_Blueted,
+.color_input{
+	color: #2ceef0;
+}
+/*改动通用代码(日历里面的字体颜色)*/
+.color_blue{
+	color: #ffffff !important;
+}
+.color_w,
+.form-validate .control-label,
+.nav-tabs>li a,
+.inp_boxs .ui-select-bootstrap > .ui-select-choices.dropdown-menu .ui-select-choices-row>a:hover{
+	color: #fff;
+}
+.button_box button.border1,
+.button_box button.border1:focus,
+.btn.border1,
+.border1,
+.border_hight,
+.form-control.border_hight,.btn.border_hight{
+	border: 1px solid #1284f5;
+	box-shadow:0 0 0.01rem #1284f5;
+}
+.button_box button:focus{
+	background: none;
+}
+.chooseDiv select.form-control{
+	border: 1px solid #1284f5;
+}
+.inpBorder,.form-control.inpBorder {
+	border: 1px solid #1284f5;
+}
+.br_right{
+	border-right: 1px solid #1284f5;
+}
+.border_hight{
+	border-color:#1284f5; 
+}
+.br_bottom{
+	border-bottom: 1px solid #1b98cf;
+}
+.box-shadow{
+	box-shadow:0 0 0.08rem #1284f5;
+}
+.border_shadow{
+	border-right: 1px solid #1284f5;
+	border-left: 1px solid #1284f5;
+	box-shadow:0 0 0.08rem #1284f5;
+}
+.bigBg_default{
+	/*background: rgba(0,47,75,.72);*/
+	/*background-blend-mode:overlay;*/
+}
+.bg_top{
+	background: #13324c;
+}
+.bg_black{
+	background: #000000;
+}
+.bg_blue,.tooltip_box.tooltip-inner{
+	background: #02599f;
+}
+.defalut_bg,.form-control.ui-select-search{
+	background: #0c2936;
+	
+}
+.bg_default1{
+	background: #0d1f33;
+}
+
+.inp_default1{
+	background: #080f22;
+}
+.border_shadow{
+	border-right: 1px solid #1284f5;
+	border-left: 1px solid #1284f5;
+	box-shadow:0 0 7px #1284f5;
+}
+.color_fonts{
+	color:#23b7e5;
+}
+.color_green{
+	color: #1fb71b;
+}
+.fa_color{
+	/*color: #68d4ff;*/
+}
+.fa_brColor{
+	 border: 1px solid #1998cd;
+}
+.fa_bg{
+	background: #0f1f33;
+}
+/*form 表单文本框字体、边框、按钮颜色*/
+.panel-footer .save,
+.panel-footer .cancel{
+	border: 1px solid #10569c;
+}
+.save,.save:hover{
+	background-color: #050e17;
+  	color: #fff;
+}
+/*.panel-footer button:disabled{
+	background-color: #050e17;
+	color: #10569c;
+}*/
+.cancel,.cancel:hover{
+	background-color: #050e17;
+	color: #10569c;
+}
+.td_color{
+	color: #ffffff;
+}
+/*.th_bg{
+	background: #0c1f32;
+}*/
+.pinkNumber{
+	color: #f448ff;
+}
+.td_green{
+	color: #12ca8d;
+}
+input::-webkit-input-placeholder{
+	color:#278687;
+}
+input::-moz-placeholder{
+	color:#278687;
+}
+input:-ms-input-placeholder{
+	color:#278687;
+}
+input:focus::-webkit-input-placeholder{
+	color:transparent;
+}
+input:focus::-moz-placeholder{
+	color:transparent;
+}
+input:focus:-ms-input-placeholder{
+	color:transparent;
+}
+textarea::-webkit-input-placeholder{
+	color:#278687;
+}
+textarea::-moz-placeholder{
+	color:#278687;
+}
+textarea:-ms-input-placeholder{
+	color:#278687;
+}
+textarea:focus::-webkit-input-placeholder{
+	color:transparent;
+}
+textarea:focus::-moz-placeholder{
+	color:transparent;
+}
+textarea:focus:-ms-input-placeholder{
+	color:transparent;
+}
+.form-control::-moz-placeholder {
+  color: #278687;
+  opacity: 1;
+}
+.form-control:-ms-input-placeholder {
+  color: #278687;
+}
+.form-control::-webkit-input-placeholder {
+  color: #278687;
+}
+.ui-select-bootstrap .ui-select-toggle{
+	color:#2e93fb; 
+	background: #0c2936;
+}
+.window .form-validate .ui-select-bootstrap .ui-select-toggle,
+.window .form-validate .form-control{
+	border-radius: 0;
+	background-color: #081421;
+	border: solid 1px rgba(58,105,247,.35);
+}
+.form-control:focus {
+  border-color: #1284f5;
+  box-shadow: inset 0 1px 1px rgba(18,132,245,.075), 0 0 8px rgba(18,132,245, 0.6);
+}
+/*弹框input 状态*/
+.ui-select-match.btn-default-focus{
+	/*border:1px solid #0f82bd;*/
+	border: none;
+}
+.btn-default,.ui-select-bootstrap .ui-select-toggle{
+	border-color: #1284F5;
+}
+.window .form-validate .form-control:focus,
+.btn-default-focus{
+	border-radius: 0;
+	border:1px solid #0f82bd;
+	box-shadow: 0 0 0.2rem #0f82bd;
+	font-size: .14rem;
+}
+.window .form-validate .form-control:disabled{
+	background-color: #0a1b2b;
+	border: solid 1px rgba(77,220,225,.15);
+	color: #d5e92;
+}
+/*弹框input 状态*/
+.form-control.inp_default2[readonly]{
+	color:#1284f5;
+	opacity: 1;
+	background: #032343;
+}
+.form-validate .form-control[disabled],
+.form-validate .form-validate fieldset[disabled]{
+	opacity: .9;
+	background: none;
+}
+
+.ngGrid .table > thead > tr > th{
+	border-bottom: 1px solid #0f7c7f;
+}
+.ngGrid .table > tbody > tr:hover,
+.ngGrid .table > tbody > tr:focus,
+.ngGrid .table > tbody > tr.active{
+	height: 0.44rem;
+	border-right: none;
+	border-left: none;
+	cursor: pointer;
+	box-sizing: border-box;
+	background: #077879;
+}
+ .table > tbody > tr > td,
+ .table thead tr th,
+ .tablef > tbody > tr > td{
+ 	font-size: 0.18rem;
+}
+.c-checkbox span,
+.c-radio span{
+	border: 1px solid rgba(27,152,207,0.8);
+}
+.c-checkbox:hover span,
+.c-radio:hover span {
+  border-color: #5d9cec;
+}
+/*form 表单*/
+.tooltip-inner .form-control[disabled]{
+	background: #032343;
+	border-color:#18abf9; 
+	box-shadow:0 0 0.01rem #18abf9; 
+}
+.btn_bg,
+.tooltip-inner .input-group-btn .btn-default,
+.bgTitle,.nav-tabs,
+.inp_default2,.form-control.inp_default2{
+	background: #032343;
+}
+.tooltip-inner .input-group-btn .btn-default{
+	border:1px solid #18abf9; 
+}
+/*tab切换*/
+.nav.nav-tabs > li{
+	border-right: 0.01rem solid #2e93fb;
+}
+.nav.nav-tabs > li:last-child{
+	border-right: none;
+}
+.nav-tabs > li.active > a, 
+.nav-tabs > li.active > a:hover, 
+.nav-tabs > li.active > a:focus{
+	color: #2e93fb;
+}
+.nav-tabs{
+	border: 1px solid #1284f5;
+	background-color: #032343;
+}
+.nav.nav-tabs > li.active > a, 
+.nav.nav-tabs > li.active > a:hover,
+.nav.nav-tabs > li.active > a:focus{
+	background-color: #021323;
+	color: #2e93fb;
+}
+.nav.nav-tabs > li > a:hover, 
+.nav.nav-tabs > li > a:focus{
+	box-shadow: 0 0 7px 1px rgba(74,213,253,.67);
+	-moz-box-shadow: 0 0 7px 1px rgba(74,213,253,.67);
+	box-shadow: 0 0 7px 1px rgba(74,213,253,.67);
+	background-color: #021323;
+	color: #2e93fb;
+}
+.inp_boxs .ui-select-bootstrap > .ui-select-choices.dropdown-menu{
+	background: #080f22;
+    border: 1px solid #1284f5;
+    border-radius: 0;
+    z-index: 1000;
+}
+.inp_boxs .ui-select-bootstrap > .ui-select-choices.dropdown-menu .ui-select-choices-row>a{
+	color: #2e93fb;
+}
+.inp_boxs .ui-select-bootstrap .ui-select-choices-row.active>a{
+	background: #174363;
+}
+/*.ngdialog.ngdialog-theme-default .ngdialog-content{
+	background: #0d1f33; 
+}*/
+/*.ngdialog.ngdialog-theme-default .ngdialog-content,.tooltip_box.tooltip-inner{
+	border: 0.02rem solid #1b98cf;
+	box-shadow:0 0 0.2rem #1b98cf; 
+}*/
+.wd-wide .modal-header{
+	border-bottom-color:#1b98cf;
+}

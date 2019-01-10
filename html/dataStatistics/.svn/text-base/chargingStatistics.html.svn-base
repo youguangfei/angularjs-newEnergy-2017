@@ -1,0 +1,128 @@
+<style type="text/css">
+	.ChargingBox #ChargingMap{
+		background: none !important;
+	}
+</style>
+<!--充电统计页面-->
+<div class="ChargingBox dataTopposition">
+	<!--头部-->
+	<div class="ChargingHeader RepairTop_box1">
+		<div class="ChargingHeaderlist displayFlex">
+			<fieldset class="RepairText_boxlist fl fildedsetAfter cm-positive clearfix">
+				<div class="p0 Repari_carNum1 fl">
+					<select-block config="vin_Config" model='selectVin' class="borderNone SelectBlock_width p0 Repai_carWidth"/>
+				</div>
+				<input type="text" class="Repari_carNumInput fr borderNone BgTransparent font-large InputColor" placeholder="请输入搜索的数据" ng-model="selectVin_value" id='selectVin_value'/>
+			</fieldset>
+			<div class="clearfix Chargingcale">
+				<div class="fl Chargingcale1">
+					<lable class="fl text-center LabelTextColor Repair_lineHeight pl LabelTextAfter font-large">开始时间</lable>
+					<div class="pl fr DateWidth_repair">
+						<input type="text" class="form-control date_icon fr color_blue ChargingTextAfter" id="startTime" ng-model="startTime1" readonly/>
+					</div>
+				</div>
+				<div class="Caleline fl Caleline1"></div>
+				<div class="fl Chargingcale1">
+					<lable class='fl text-center LabelTextColor Repair_lineHeight pl LabelTextAfter font-large'>结束时间</lable>
+					<div class="pl fr DateWidth_repair">
+						<input type="text" class="form-control date_icon fr color_blue ChargingTextAfter" id="endTime" ng-model="endTime1" readonly/>
+					</div>
+				</div>
+			</div>
+			<button class="fl borderNone BgTransparent charging_search1" ng-click='Chargingcale_search()'>查询</button>
+		</div>
+		
+	</div>
+	<!--充电统计地图-->
+	<div class="Chargingcontent mt-sm">
+		<div class="ChargingMapBox1">
+			<div id="ChargingMap" class="ChargingMap1"></div>
+		</div>
+	</div>
+	<!--尾部-->
+	<div class="Chargingfooter">
+		<div class="RepairTable_list_center Chargingpadd">
+			<table class="table Table_trlist Table_trlist2">
+				<thead class="thead_bg">
+					<tr>
+						<th class="Service_operationWidth Repair_tabfirth CharTd1">
+								<span class="thfir_text">序号</span>
+						</th>
+						<th class="Repair_theadth2 CharTd2">开始时间</th>
+						<th class="CharTd3">结束时间</th>
+						<th class="CharTd4">持续时间</th>
+						<th class="CharTd5">充电前SOC</th>
+						<th class="CharTd5">充电后SOC</th>
+						<th class="CharTd7">发生位置</th>
+					</tr>
+				</thead>
+			</table>
+			<div class="Chargingpadd1">
+			<table>
+				<tbody class="Tr_hoverlist">
+					<tr ng-repeat="x in charginglist" ng-class="{active:activeIndex==$index}" ng-click="changeIndex($index)" class="{{ $even ? 'BackColor1even': 'BackColor1odd'}}">
+						<td class="charginglisttd1">{{x.seqNum}}</td>
+						<td class="charginglisttd2">{{x.startTime | date:'yyyy-MM-dd HH:mm'}}</td>
+						<td class="charginglisttd3">{{x.endTime | date:'yyyy-MM-dd HH:mm'}}</td>
+						<td class="charginglisttd4">{{x.durationTime}}秒</td>
+						<td class="charginglisttd2">{{x.socBefore}}%</td>
+						<td class="charginglisttd2">{{x.socAfter}}%</td>
+						<td class="charginglisttd7">{{x.address}}</td>
+					</tr>
+				</tbody>
+			</table>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	
+	var start = {
+		format: 'YYYY-MM-DD hh:mm',
+		isinitVal: true,
+		festival: false,
+		ishmsVal: false,
+		maxDate: $.nowDate({ DD: 0 }), //最大日期
+		choosefun: function(elem, datas) {
+			console.log(datas);
+			var maxDay;
+			var month=new Date(datas).getMonth();
+			var day1=new Date(datas).setMonth(month+1);
+			var today=Date.parse(new Date());
+			
+			if(day1>today){
+				maxDay=today;
+			}else{
+				maxDay=day1;
+			}
+			end.minDate = datas; //开始日选好后，重置结束日的最小日期
+			end.maxDate=$.nowDate2(maxDay);
+			endDates();
+		}
+	};
+	var end = {
+		format: 'YYYY-MM-DD hh:mm',
+//		initAddVal: [0],
+		isinitVal: true,
+		festival: false,
+		ishmsVal: false,
+		maxDate: $.nowDate({ DD: 0 }), //最大日期
+		choosefun: function(elem, datas) { //选中之后的回调函数
+			start.maxDate = datas; //将结束日的初始值设定为开始日的最大日期
+			var month=new Date(datas).getMonth();
+			var day1=new Date(datas).setMonth(month-1);
+			start.minDate=$.nowDate2(day1);
+		}
+	};
+	//这里是日期联动的关键        
+	function endDates() {
+		//将结束日期的事件改成 false 即可
+		end.trigger = false;
+	}
+	$.jeDate('#startTime', start);
+	$.jeDate('#endTime', end);
+
+	function initDate(startEnd) {
+		$.jeDate('#' + startEnd, { trigger: false, festival: true, isinitVal: true, ishmsVal: false, format: 'YYYY-MM-DD hh:mm:ss' })
+	}
+</script>

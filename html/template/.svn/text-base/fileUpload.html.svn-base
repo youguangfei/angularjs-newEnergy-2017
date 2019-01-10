@@ -1,0 +1,114 @@
+<div class="row">
+	<div class="col-md-3" style="width: 29%;">
+		<!--如果支持HTML5就显示这个模块,angularfile自带的判断-->
+		<div ng-show="uploader.isHTML5" style="margin:0px;width: 200px;height: 200px;padding: 5px;">
+			<!-- options:定义的是后台上传接口 -->
+			<div style="margin: 0px;padding: 0px;" nv-file-drop="" uploader="uploader" options="">
+				<div style="margin: 0px;padding: 0px;width: 200px;height: 200px;text-align:center;vertical-align:middle;position:relative;" 
+					nv-file-over="" 
+					uploader="uploader"
+					over-class="another-file-over-class" 
+					class="well my-drop-zone">
+					<span ng-show="!isShow" style="font: bold 16px '微软雅黑';color: #666;display: block;padding-top: 20px;">可直接拖入图片</span>
+					<img ng-show="isShow" width="193px" height="193px" ng-src="{{imgSrc[imgSrc.length - 1]}}" style="position: absolute;top: 0;left: 0; " />
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-9" style="margin-bottom: 40px;width: 71%;">
+		<!-- <p>文件数目: {{uploader.queue.length }}</p> -->
+		<table class="table" style="color: #66d3ff;">
+			<thead>
+				<tr>
+					<th width="30%">图片名称</th>
+					<th ng-show="uploader.isHTML5">图片大小(MB)</th>
+					<th ng-show="uploader.isHTML5">上传进度</th>
+					<th>状态</th>
+					<th>操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<!--遍历图片，angularJS自带的集合-->
+				<tr ng-repeat="item in uploader.queue">
+					<td>
+						<!--图片名称--> <strong>{{item.file.name}}</strong> <!--显示图片并设置宽高-->
+						<div ng-show="uploader.isHTML5" ng-hide="isHide"
+							ng-thumb="{file: item._file,height: 100,width: 100}"></div>
+					</td>
+					<!--显示文件大小-->
+					<td ng-show="uploader.isHTML5" nowrap><span
+						ng-bind="item.file.size/1024/1024|number:2"></span>MB</td>
+					<!--显示上传进度-->
+					<td ng-show="uploader.isHTML5">
+						<div class="progress" style="margin-bottom: 0;">
+							<div class="progress-bar"
+								ng-style="{'width':item.progress + '%' }" role="progressbar"></div>
+						</div>
+					</td>
+					<!--上传状态-->
+					<td class="text-center">
+						<span ng-show="item.isSuccess">
+							<i class="glyphicon glyphicon-ok"></i>成功
+						</span> 
+						<span ng-show="item.isCancel"> 
+							<i class="glyphicon glyphicon-ban-circle"></i>终止
+						</span> 
+						<span ng-show="item.isError"> 
+							<i class="glyphicon glyphicon-remove"></i>{{message}}
+						</span>
+					</td>
+					<td nowrap>
+						<!--进行上传--> <!--ng-disabled：如果上传成功或上传中就警用该按钮-->
+						<button class="btn btn-success btn-xs" ng-click="item.upload()"
+							ng-disabled="item.isReady || item.isUploading || item.isSuccess">
+							<span class="glyphicon glyphicon-upload"></span>&nbsp;开始上传
+						</button> <!--ng-disabled：如果文件不是正在上传状态，不能点击该按钮-->
+						<div class="btn btn-warning btn-xs" ng-click="item.cancel()"
+							ng-disabled="!item.isUploading">
+							<span class="glyphicon glyphicon-ban-circle"></span>&nbsp;取消上传
+						</div>
+						<div class="btn btn-danger btn-xs" ng-click="removeItem($index,item)">
+							<span class="glyphicon glyphicon-trash"></span>&nbsp;删除文件
+						</div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<div>
+			<div style="color: #66d3ff;">
+				上传进度：
+				<!--上传总进度：多个文件的总进度-->
+				<div class="progress">
+					<div class="progress-bar progress-bar-striped active"
+						role="progressbar" ng-style="{ 'width': uploader.progress + '%' }">
+						<span>{{uploader.progress}}%</span>
+					</div>
+				</div>
+			</div>
+			<!--上传全部-->
+			<!--如果没有上传文件的话或者有文件正在上传，这个不能点击-->
+			<div class="btn btn-success btn-sm" ng-click="uploader.uploadAll()"
+				ng-disabled="!uploader.getNotUploadedItems().length || uploader.isUploading">
+				<span class="glyphicon glyphicon-upload"></span>上传全部
+			</div>
+			<div class="btn btn-warning btn-sm" ng-click="uploader.cancelAll()"
+				ng-disabled="!uploader.isUploading">
+				<span class="glyphicon glyphicon-ban-circle"></span>取消上传
+			</div>
+			<!--如果没文件就禁用按钮-->
+			<div class="btn btn-danger btn-sm" ng-click="removeAllItem()"
+				ng-disabled="!uploader.queue.length">
+				<span class="glyphicon glyphicon-trash"></span>删除文件
+			</div>
+			<div class="btn btn-primary pull-right btn-sm" ng-show="maxCount>0&&uploader.queue.length>=(maxCount-nowCount)">
+				<input id="dis" type="file"   nv-file-select=""  
+				uploader="uploader"   multiple disabled="disabled" ></input>
+			   
+			</div>
+			<div class="btn btn-primary pull-right btn-sm" ng-show="(maxCount>0&&uploader.queue.length<(maxCount-nowCount))||maxCount==null||nowCount==null">
+			    <input id="blo" type="file"   
+			    nv-file-select="" uploader="uploader" multiple ></input>
+			 </div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,318 @@
+<style type="text/css">
+	.carnumberName {
+		width: 1.3rem;
+		margin-left: -0.2rem;
+	}
+	.Repair_modifycontnet1 .text-center .LableDeriction {
+		margin-left: 0.8rem;
+	}
+	.Repair_modifycontnet2 li .wh100 {
+		width: 100%;
+		padding: 0 0.1rem;
+	}
+	.Repair_modifycontnet2 li .selectblock input {
+		width: 98%;
+	}
+	.Repair_modifycontnet2 li textarea {
+		padding-left: 0.1rem;
+	}
+	.modify_selectBox1 .select-content {
+		width: 3.3rem;
+	}
+	.modify_selectBox1 .select-content li {
+		width: 100%;
+	}
+</style>
+<div ng-include="'html/blocks/Public_background.html'"></div>
+<div style="width: 100%;height: 100%;">
+	<div class="Repair_Detpage_closeBtn" id="Repair_Detpage_closeBtn" ng-click="closeBlank()"></div>
+	<form name='Repairform' novalidate ng-init="alreadyBt=false">
+	<div class="Repair_Detpage">
+		<div class="Repair_cartitle">
+			报修单
+		</div>
+		<!--查看模式-->
+		<div class="Repair_modifycontentList1 overHidden" ng-show='Repair_type==1'>
+			<div class="Repair_cartitleContent Repair_cartitleContent1">
+				<div class="fl mr-xl ht100 ">
+					<span class="LabelTextColor">报修单号</span>
+					<input type="text" class="BgTransparent borderNone ht100" ng-disabled="inpudisabled" ng-model='workformCode' ng-maxlength='50'/>		
+				</div>
+				<div class="fl displayFlex Repair_status  ht100">
+					<span class="LabelTextColor">维修状态</span>
+					<div class="border_radiusAll05 ml">
+						<span ng-if="postModifydata.status==0">待处理</span>
+						<span ng-if="postModifydata.status==1">处理中</span>
+						<span ng-if="postModifydata.status==2">已完成</span>
+					</div>
+				</div>
+				<div class="fl ht100">
+					<span class="LabelTextColor fl">车牌号</span>
+					<div class="fl pl ht100">
+						<input type="text" class="BgTransparent borderNone ht100" ng-disabled="inpudisabled" ng-model='licenseNumber' ng-maxlength='50'/>
+					</div>
+				</div>
+			</div>
+			<div class="Repair_modifycontnetBox">
+				<ul class="fl Repair_modifycontnet2 Repair_modifycontnet2_2">
+					<li>
+						<span class="LabelTextColor">故障类型</span>
+						<input type="text " class="BgTransparent borderNone" ng-model='postModifydata.faulType' ng-disabled="inpudisabled" />
+					</li>
+					<li>
+						<span class="LabelTextColor ">故障等级</span>
+						<input type="text " class="BgTransparent borderNone " ng-disabled="inpudisabled" ng-model='postModifydata.faultRank' />
+					</li>
+					<li>
+						<span class="LabelTextColor ">VIN码</span>
+						<input type="text " class="BgTransparent borderNone " ng-disabled="inpudisabled" ng-model='postModifydata.vin' />
+					</li>
+					<li>
+						<span class="LabelTextColor ">SIM卡ICCID号</span>
+						<input type="text " class="BgTransparent borderNone " ng-disabled="inpudisabled" ng-model='postModifydata.iccid' />
+					</li>
+					<li>
+						<span class="LabelTextColor">故障地点</span>
+						<input type="text " class="BgTransparent borderNone TextOverflow" ng-disabled="inpudisabled" ng-model='postModifydata.faultAddress' />
+					</li>
+					<li class="text-center">
+						<span class="LabelTextColor LableDeriction">故障描述</span>
+						<textarea class="BgTransparent borderNone td_color textareavertical textareaSroller" cols="29" rows="3" ng-disabled="inpudisabled" ng-model='postModifydata.faultDescription'>
+						</textarea>
+					</li>
+					<li>
+						<span class="LabelTextColor ">预约维修站点</span>
+						<input type="text " class="BgTransparent borderNone " ng-disabled="inpudisabled" ng-model='postModifydata.siteName' />
+					</li>
+					<li>
+						<span class="LabelTextColor ">报修日期</span>
+						<input type="text " class="BgTransparent borderNone " ng-disabled="inpudisabled" ng-model='postModifydata.creaTime' />
+					</li>
+					<li>
+						<span class="LabelTextColor ">报修人</span>
+						<input type="text " class="BgTransparent borderNone " ng-disabled="inpudisabled" ng-model='postModifydata.operator' />
+					</li>
+				</ul>
+				<ul class="fl Repair_modifycontnet2 Repair_modifycontnet2_2">
+					<li>
+						<span class="LabelTextColor ">报修人电话</span>
+						<input type="text " class="BgTransparent borderNone " ng-disabled="inpudisabled" ng-model='postModifydata.phone' />
+
+						<li>
+							<span class="LabelTextColor ">维修开始日期</span>
+							<input type="text " class="BgTransparent borderNone " ng-disabled="inpudisabled" ng-model='postModifydata.starTime' />
+						</li>
+						<li>
+							<span class="LabelTextColor ">维修结束日期</span>
+							<input type="text " class="BgTransparent borderNone" ng-disabled="inpudisabled" ng-model='postModifydata.endTime' />
+						</li>
+						<li>
+							<span class="LabelTextColor">实际维修站点</span>
+							<input type="text " class="BgTransparent borderNone" ng-disabled="inpudisabled" ng-model='postModifydata.realSiteName' />
+						</li>
+						<li>
+							<span class="LabelTextColor">维修人</span>
+							<input type="text " class="BgTransparent borderNone" ng-model='maintainer' ng-disabled="inpudisabled"/>
+						</li>
+						<li class="text-center">
+							<span class="LabelTextColor LableDeriction">维修方案</span>
+							<textarea class="textareaSroller BgTransparent borderNone td_color textareavertical" cols="30" rows="4" ng-disabled="inpudisabled" ng-model='program'></textarea>
+						</li>
+						<li class="text-center">
+							<span class="LabelTextColor LableDeriction">备注</span>
+							<textarea class="BgTransparent borderNone td_color textareavertical textareaSroller" cols="30" rows="4" ng-disabled="inpudisabled" ng-model='remark'>
+							</textarea>
+						</li>
+				</ul>
+			</div>
+		</div>
+		<!--修改模式-->
+		<div class="Repair_modifycontentList1" ng-show='Repair_type==2'>
+			<div class="Repair_modifycontentList1">
+				<div class="Repair_cartitleContent Repair_cartitleContent1">
+						<div class="fl mr-xl  ht100">
+							<span class="LabelTextColor fl">报修单号</span>
+							<div class="modify_carnumber1 modify_carnumber fl">
+								<input type="text" class="BgTransparent borderNone" ng-model='workformCode' ng-maxlength='50'/>
+							</div>
+						</div>
+						<div class="fl  displayFlex Repair_status ht100">
+							<span class="LabelTextColor">维修状态</span>
+							<div class="Repair_process border_radiusAll05 monitor_carWidth">
+								<select-block config="selectCfg_Modifystatus" model="Modifystatus" />
+							</div>
+						</div>
+						<div class="fl ht100">
+							<span class="fl lookopen_error1">*</span>
+							<span class="LabelTextColor fl">车牌号</span>
+							<div class="modify_carnumber fl">
+								<input type="text" class="BgTransparent borderNone carnumberName pl ht100" ng-model='licenseNumber' name='Repair_carname' required ng-maxlength='50'/>
+							</div>
+							<div class="Errorprompt fl lookopen_error" ng-show="Repairform.Repair_carname.$dirty  && Repairform.Repair_carname.$invalid && alreadyBt ||(Repairform.Repair_carname.$error.required && alreadyBt)"></div>
+						</div>
+				</div>
+				<div class="Repair_modifycontnetBox">
+					<ul class="Repair_modifycontnet2 Repair_modifycontnet2_1 fl">
+						<li class="Reipair_fault">
+							<span class="LabelTextColor">故障类型</span>
+							<div class="Repair_modifylist">
+								<div class="Repair_process1 border_radiusAll05">
+									<select-block config="selectConfigType" class="borderNone SelectBlock_width p0 modify_selectBox" model='selectedType' />
+								</div>
+							</div>
+						</li>
+						<li class="Reipair_fault">
+							<span class="LabelTextColor">故障等级</span>
+							<div class="Repair_modifylist">
+								<div class="Repair_process1 border_radiusAll05">
+									<select-block config="selectConfigRank" model='selectRank' class="borderNone SelectBlock_width p0 modify_selectBox" />
+								</div>
+							</div>
+						</li>
+						<li>
+							<span class="LabelTextColor">故障地点</span>
+							<div class="Repair_modifylist">
+								<input type="text " class="BgTransparent borderNone wh100 TextOverflow" ng-model='faultAddress' ng-maxlength='50'/>
+							</div>
+						</li>
+						<li class="text-center cm-positive">
+							<span class="LabelTextColor">故障描述</span>
+							<div class="Repair_modifylist">
+								<textarea class="BgTransparent borderNone td_color textareaSroller textareavertical wt100 font-large" cols="29" rows="3" ng-model='faultDescription' ng-maxlength='500' name="faultDescription1"></textarea>
+							</div>
+							<div class="Errorprompt lookopen_error2" ng-show="Repairform.faultDescription1.$dirty && Repairform.faultDescription1.$invalid && alreadyBt"></div>
+						</li>
+						<li class="mt-xl Reipair_fault">
+							<span class="LabelTextColor ">预约维修站点</span>
+							<div class="Repair_modifylist">
+								<select-block config="selectConfigSite" model='selectSite' class="borderNone SelectBlock_width p0 modify_selectBox1 mUnit_select" />
+							</div>
+						</li>
+						<li ng-show="false">
+							<span class="LabelTextColor">报修日期</span>
+							<div class="Repair_modifylist">
+								<div class="DateBox_list1">
+									<input type="text" class="form-control date_icon color_blue " id="creaTime" ng-model="creaTime" />
+								</div>
+							</div>
+						</li>
+						<li>
+							<span class="LabelTextColor ">报修人</span>
+							<div class="Repair_modifylist">
+								<input type="text " class="BgTransparent borderNone wh100" ng-model="operator" ng-maxlength='50'/>
+							</div>
+						</li>
+						<li>
+							<span class="LabelTextColor ">报修人电话</span>
+							<div class="Repair_modifylist">
+								<input type="text " class="BgTransparent borderNone wh100" ng-model='phone' />
+							</div>
+						</li>
+					</ul>
+					<ul class="fl Repair_modifycontnet2 Repair_modifycontnet2_2">
+						<li>
+							<span class="LabelTextColor">维修开始日期</span>
+							<div class="Repair_modifylist">
+								<div class="DateBox_list2 ht100">
+									<input type="text" class="pl p0 form-control date_icon color_blue ht100" id="startTime1" ng-model="starTime" readonly/>
+								</div>
+							</div>
+						</li>
+						<li>
+							<span class="LabelTextColor">维修结束日期</span>
+							<div class="Repair_modifylist">
+								<div class="DateBox_list2 ht100">
+									<input type="text" class= "pl p0 form-control date_icon color_blue ht100" id="endTime1" ng-model="endTime" readonly/>
+								</div>
+							</div>
+						</li>
+						<li class="Reipair_fault">
+							<span class="LabelTextColor">实际维修站点</span>
+							<div class="Repair_modifylist">
+								<select-block config="selectConfigRealSite" model='selectRealSite' class="borderNone SelectBlock_width p0 modify_selectBox1 mUnit_select" />
+							</div>
+						</li>
+						<li class="Modifypopel">
+							<span class="LabelTextColor">维修人</span>
+							<div class="Repair_modifylist">
+								<input type="text " class="BgTransparent borderNone wh100" ng-model='maintainer' ng-maxlength='50'/>
+							</div>
+						</li>
+						<li class="text-center cm-positive">
+							<span class="LabelTextColor">维修方案</span>
+							<div class="Repair_modifylist">
+								<textarea class="BgTransparent borderNone td_color textareaSroller textareavertical wt100 font-large" cols="29" rows="3" ng-model="program" ng-maxlength='500' name="Repair_program1">{{program}}</textarea>
+							</div>
+							<div class="Errorprompt lookopen_error2" ng-show="Repairform.Repair_program1.$dirty && Repairform.Repair_program1.$invalid && alreadyBt"></div>
+						</li>
+						<li class="text-center cm-positive">
+							<span class="LabelTextColor">备注</span>
+							<div class="Repair_modifylist">
+								<textarea class="BgTransparent borderNone td_color textareaSroller textareavertical wt100 font-large" cols="29" rows="3" ng-model="remark" ng-maxlength='500' name="Repair_remark1">{{remark}}</textarea>
+							</div>
+							<div class="Errorprompt lookopen_error2" ng-show="Repairform.Repair_remark1.$dirty && Repairform.Repair_remark1.$invalid && alreadyBt"></div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="Repair_modifydelete">
+			<div class="AddBtn_boxlist td_color Repair_modify font-large fl" ng-show='Repair_type==1' ng-click='Repair_modifyBtn()'>
+				修改报修单
+			</div>
+			<div class="td_color AddBtn_boxlist Repair_delete font-large fl" ng-show='Repair_type==1' ng-click='Repair_lookDelete()'>
+				删除报修单
+			</div>
+			<div class="AddBtn_boxlist td_color Repair_save font-large" ng-show='Repair_type==2'>
+				<button class="borderNone td_color  ht100 wt100 BgTransparent" ng-click='RepairModify_save(Repairform.$invalid);alreadyBt=true'>提交</button>
+			</div>
+		</div>
+	</div>
+	</form>
+</div>
+<script type="text/javascript">
+	$("#creaTime").jeDate({
+		format: 'YYYY-MM-DD',
+		isinitVal: true,
+		festival: true,
+		ishmsVal: false,
+		maxDate: $.nowDate({ DD: 0 }), //最大日期
+	});
+
+	var start = {
+		format: 'YYYY-MM-DD',
+		initAddVal: [2], //初始化日期加n月
+		isinitVal: true,
+		festival: false,
+		ishmsVal: false,
+		maxDate: $.nowDate({ DD: 0 }), //最大日期
+		choosefun: function(elem, datas) {
+			end.minDate = datas; //开始日选好后，重置结束日的最小日期
+			endDates();
+		}
+	};
+	var end = {
+		//		skinCell:"je-bg-olive",
+		format: 'YYYY-MM-DD',
+		initAddVal: [0],
+		isinitVal: true,
+		festival: false,
+		ishmsVal: false,
+		maxDate: $.nowDate({ DD: 0 }), //最大日期
+		choosefun: function(elem, datas) { //选中之后的回调函数
+			start.maxDate = datas; //将结束日的初始值设定为开始日的最大日期
+		}
+	};
+	//这里是日期联动的关键        
+	function endDates() {
+		//将结束日期的事件改成 false 即可
+		end.trigger = false;
+	}
+	//	startTime1
+	$.jeDate('#startTime1', start);
+	$.jeDate('#endTime1', end);
+
+	function initDate(startEnd) {
+		$.jeDate('#' + startEnd, { trigger: false, festival: true, isinitVal: true, ishmsVal: false, format: 'YYYY-MM-DD hh:mm:ss' })
+	}
+</script>

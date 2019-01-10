@@ -1,0 +1,413 @@
+<style type="text/css">
+	.ngGrid div.ng-isolate-scope{
+		height: calc(100% - 50px);
+	}
+	.dialog .form-validate .nav-tabs{
+		width:8.5rem;
+	}
+	.nav.nav-tabs>li>a{
+		width: 1.5rem;
+		text-align: center;
+		margin-right: 0;
+	}
+	.nav.nav-tabs>li:nth-child(2)>a{
+		width: 2.92rem;
+	}
+	.nav.nav-tabs>li:nth-child(3)>a{
+		width: 2.51rem;
+	}
+	.dialog .form-validate .tab-content{
+		padding:0.15rem;
+	}
+	.ngdialog.ngdialog-theme-default .ngdialog-content{
+		height: 8rem;
+	}
+	.panel-footer{
+		width: 8rem;
+		margin: 0 auto;
+	}
+</style>
+<div class="window dialog wd-wide">
+    <div class="bg_default1 modal-header" id="ngdialogContent-header">
+    	<h4 class="modal-title text-center">{{form_title}}</h2>
+	</div>
+	<form name="myForm" class="form-validate">
+		<tabset>
+			<tab heading="车辆信息">
+				<div class="panel-body border_box">
+			      	<fieldset>
+						<div class="form-group">
+							<div class="col-md-12">
+								<label class="col-sm-3 control-label text-right">VIN号*</label>
+								<div class="col-sm-9">
+									<input type="text" class="form-control color_blue" id="vin" name="vin" ng-model="car.vin" maxlength="20" ng-pattern="/[A-Za-z0-9]/" required />
+									<span ng-show="myForm.vin.$dirty &amp;&amp; myForm.vin.$error.required" class="text-danger">vin名称不能为空</span> 
+								</div>
+							</div>
+						</div>
+					</fieldset>
+					<fieldset>
+						<div class="form-group">
+							<div class="col-md-12">
+								<label class="col-sm-3 control-label text-right">SIM卡号*</label>
+								<div class="col-sm-9">
+									<input type="text" class="form-control color_blue" name="iccid" ng-model="car.iccid" maxlength="25" ng-pattern="/[A-Za-z0-9]/" required />
+									<span ng-show="myForm.iccid.$dirty &amp;&amp; myForm.iccid.$error.required" class="text-danger">SIM卡号名称不能为空</span>
+								</div>
+							</div>
+						</div>
+					</fieldset>
+					<fieldset>
+						<div class="form-group">
+							<div class="col-md-12">
+								<label class="col-sm-3 control-label text-right">车辆型号*</label>
+								<div class="col-sm-9">
+									<!--<input type="text" class="form-control color_blue" ng-model="car.model" name="model" maxlength="15" ng-pattern="/[A-Za-z0-9]/" required />-->
+									<ng-select-custom dic-id="dicId_model" ng-model="car.model" required />
+									<span ng-show="myForm.model.$dirty &amp;&amp; myForm.model.$error.required" class="text-danger">型号不能为空</span>
+								</div>
+							</div>
+						</div>
+					</fieldset>
+					<fieldset>
+						<div class="form-group">
+							<div class="col-md-12">
+								<label class="col-sm-3 control-label text-right">车辆批次*</label>
+								<div class="col-sm-9">
+									<ng-select-custom dic-id="dicId_batch" ng-model="car.batch" required />
+									<!--<input type="text" class="form-control color_blue" name="batch" ng-model="car.batch" maxlength="20" ng-pattern="/[A-Za-z0-9]/" required />-->
+									<span ng-show="myForm.batch.$dirty &amp;&amp; myForm.batch.$error.required" class="text-danger">车辆批次不能为空</span>
+								</div>
+							</div>
+						</div>
+					</fieldset>
+					<fieldset>
+						<div class="form-group">
+							<div class="col-md-12">
+								<label class="col-sm-3 control-label text-right">发动机编号</label>
+								<div class="col-sm-9">
+									<input type="text" class="form-control color_blue" ng-model="car.engineNumber" />
+								</div>
+							</div>
+						</div>
+					</fieldset>
+					<fieldset>
+						<div class="form-group">
+							<div class="col-md-12">
+								<label class="col-sm-3 control-label text-right">最高车速(km/h)</label>
+								<div class="col-sm-9">
+									<input type="text" class="form-control color_blue" ng-model="car.maxSpeed" name="maxSpeed" maxlength="10" ng-pattern="/[0-9]/" />
+									<span ng-show="myForm.maxSpeed.$dirty &amp;&amp; myForm.maxSpeed.$invalid" class="text-danger">只能输入数字且最大为10位数</span>
+								</div>
+							</div>
+						</div>
+					</fieldset>
+					<fieldset>
+						<div class="form-group">
+							<div class="col-md-12">
+								<label class="col-sm-3 control-label text-right">电机驱动布置形式</label>
+								<div class="col-sm-9">
+									<!--<input type="text" class="form-control color_blue" ng-model="car.dma" />-->
+									<ng-select-custom dic-id="dicId_dma" ng-model="car.dma" />
+								</div>
+							</div>
+						</div>
+					</fieldset>
+					<fieldset>
+						<div class="form-group">
+							<div class="col-md-12">
+								<label class="col-sm-3 control-label text-right">档位传动比</label>
+								<div class="col-sm-9">
+									<textarea class="form-control color_blue" ng-model="car.gearRatio" placeholder="例如： 0001：3.704；:0001：2.202；0010：1.414；:0100：1；0101:0.802；0110:0.501；1101:0.201；1110：2.222；1111:0.001"></textarea>
+								</div>
+							</div>
+						</div>
+					</fieldset>
+				</div>
+			</tab>
+			<tab heading="可充电储能装置信息">
+				<div class="border_box pt0">
+            		<div class="tab_title clearfix cm-positive">
+            			<label class="control-label text-right fl mr-lg">可充电储能装置个数</label>
+						<div class="tab_text fl">
+							<a class="btn btn-info" ng-click="carEnergy_add()">添加</a>
+							<div class="fade in" ng-show="showCarEnergy">
+								最多添加5个
+							</div>
+						</div>
+					</div>
+					<div class="cm-positive dialog_border mt-lg" ng-repeat="x in carEnergyList track by $index" modle="x">
+						<div class="panel-body">
+							<fieldset>
+								<div class="form-group">
+									<div class="col-md-12">
+										<label class="col-sm-3 control-label text-right border_radius">可充电储能装置{{$index+1}}</label>
+									</div>
+								</div>
+							</fieldset>
+							<fieldset>
+								<div class="form-group">
+									<div class="col-md-12">
+										<label class="col-sm-3 control-label text-right">可充电储能装置编号*</label>
+										<div class="col-sm-9">
+											<input type="text" class="form-control color_blue" ng-model="x.energyNumber" name="energyNumber" required />
+											<span ng-show="myForm.energyNumber.$dirty &amp;&amp; myForm.energyNumber.$error.required" class="text-danger">可充电储能装置编号名称不能为空</span>
+										</div>
+									</div>
+								</div>
+							</fieldset>
+							<fieldset>
+								<div class="form-group">
+									<div class="col-md-12">
+										<label class="col-sm-3 control-label text-right">车载储能装置类型 *</label>
+										<div class="col-sm-9">
+											<ng-select-custom dic-id="dicId_energyType" ng-model="car.energyType" required />
+											<!--<input type="text" class="form-control color_blue" ng-model="x.energyType" name="energyType" required />-->
+											<span ng-show="myForm.energyType.$dirty &amp;&amp; myForm.energyType.$error.required" class="text-danger">车载储能装置类型不能为空</span>
+										</div>
+									</div>
+								</div>
+							</fieldset>
+						
+							<fieldset>
+								<div class="form-group">
+									<div class="col-md-12">
+										<label class="col-sm-3 control-label text-right">类型总能量(J)*</label>
+										<div class="col-sm-9">
+											<input type="text" class="form-control color_blue" ng-model="x.energyGross" name="energyGross" required />
+											<span ng-show="myForm.energyGross.$dirty &amp;&amp; myForm.energyGross.$error.required" class="text-danger">类型总能量不能为空</span>
+										</div>
+									</div>
+								</div>
+							</fieldset>
+							<fieldset>
+								<div class="form-group">
+									<div class="col-md-12">
+										<label class="col-sm-3 control-label text-right">储能装置冷却方式*</label>
+										<div class="col-sm-9">
+											<ng-select-custom dic-id="dicId_energyCoolingType" ng-model="car.energyCoolingType" required /> 
+											<!--<input type="text" class="form-control color_blue" ng-model="x.energyCoolingType" name="energyCoolingType" required />-->
+											<span ng-show="myForm.energyCoolingType.$dirty &amp;&amp; myForm.energyCoolingType.$error.required" class="text-danger">储能装置冷却方式</span>
+										</div>
+									</div>
+								</div>
+							</fieldset>
+						</div>
+					</div>
+				</div>
+			</tab>
+			<tab heading="驱动电机信息">
+				<div class="border_box pt0">
+            		<div class="tab_title clearfix cm-positive">
+            			<label class="control-label text-right fl mr-lg">驱动电机个数</label>
+						<div class="tab_text fl">
+							<a class="btn btn-info" ng-click="carDriveMotor_add()">添加</a>
+							<div class="fade in" ng-show="showCarDriveMotor">
+								最多添加4个
+							</div>
+						</div>
+					</div>
+					<div class="cm-positive dialog_border mt-lg" ng-repeat="x in carDriveMotorList track by $index" modle="x">
+						<div class="panel-body">
+							<fieldset>
+								<div class="form-group">
+									<div class="col-md-12">
+										<label class="col-sm-3 control-label text-right border_radius">驱动电机{{$index+1}}</label>
+									</div>
+								</div>
+							</fieldset>
+							<fieldset>
+								<div class="form-group">
+									<div class="col-md-12">
+										<label class="col-sm-3 control-label text-right">驱动电机序号*</label>
+										<div class="col-sm-9">
+											<input type="text" class="form-control color_blue" name="dmNumber" ng-model="x.dmNumber" required />
+											<span ng-show="myForm.dmNumber.$dirty &amp;&amp; myForm.dmNumber.$error.required" class="text-danger">驱动电机序号名称不能为空</span>
+										</div>
+									</div>
+								</div>
+							</fieldset>
+							<fieldset>
+								<div class="form-group">
+									<div class="col-md-12">
+										<!--下拉框-->
+										<label class="col-sm-3 control-label text-right">驱动电机型号*</label>
+										<div class="col-sm-9">
+											<input type="text" class="form-control color_blue" name="dmType" ng-model="x.dmType" required />
+											<span ng-show="myForm.dmType.$dirty &amp;&amp; myForm.dmType.$error.required" class="text-danger">驱动电机型号名称不能为空</span>
+										</div>
+									</div>
+								</div>
+							</fieldset>
+							<fieldset> 
+								<div class="form-group">
+									<div class="col-md-12">
+										<label class="col-sm-3 control-label text-right">额定电压* </label>
+										<div class="col-sm-9">
+											<input type="text" class="form-control color_blue" ng-model="x.nominalVoltage" name="nominalVoltage" required />
+											<span ng-show="myForm.nominalVoltage.$dirty &amp;&amp; myForm.nominalVoltage.$error.required" class="text-danger">额定电压不能为空</span>
+										</div>
+									</div>
+								</div>
+							</fieldset>
+							<fieldset>
+								<div class="form-group">
+									<div class="col-md-12">
+										<label class="col-sm-3 control-label text-right">最大工作电流*</label>
+										<div class="col-sm-9">
+											<input type="text" class="form-control color_blue" name="dmMaxElectricity" ng-model="x.dmMaxElectricity" required />
+											<span ng-show="myForm.dmMaxElectricity.$dirty &amp;&amp; myForm.dmMaxElectricity.$error.required" class="text-danger">最大工作电流不能为空</span>
+										</div>
+									</div>
+								</div>
+							</fieldset>
+							<fieldset>
+								<div class="form-group">
+									<div class="col-md-12">
+										<label class="col-sm-3 control-label text-right">冷却方式*</label>
+										<div class="col-sm-9">
+											<input type="text" class="form-control color_blue" ng-model="x.dmCoolingType" name="dmCoolingType" required />
+											<span ng-show="myForm.dmCoolingType.$dirty &amp;&amp; myForm.dmCoolingType.$error.required" class="text-danger">冷却方式不能为空</span>
+										</div>
+									</div>
+								</div>
+							</fieldset>
+							<fieldset>
+								<div class="form-group">
+									<div class="col-md-12">
+										<label class="col-sm-3 control-label text-right">峰值功率*</label>
+										<div class="col-sm-9">
+											<input type="text" class="form-control color_blue" ng-model="x.dmPower" name="dmPower" required />
+											<span ng-show="myForm.dmPower.$dirty &amp;&amp; myForm.dmPower.$error.required" class="text-danger">峰值功率不能为空</span>
+										</div>
+									</div>
+								</div>
+							</fieldset>
+							<fieldset>
+								<div class="form-group">
+									<div class="col-md-12">
+										<label class="col-sm-3 control-label text-right">最高转速(rpm)*</label>
+										<div class="col-sm-9">
+											<input type="text" class="form-control color_blue" ng-model="x.dmMrs" name="dmMrs" required />
+											<span ng-show="myForm.dmMrs.$dirty &amp;&amp; myForm.dmMrs.$error.required" class="text-danger">最高转速不能为空</span>
+										</div>
+									</div>
+								</div>
+							</fieldset>
+							<fieldset>
+								<div class="form-group">
+									<div class="col-md-12">
+										<label class="col-sm-3 control-label text-right">峰值转矩(N.m)*</label>
+										<div class="col-sm-9">
+											<input type="text" class="form-control color_blue" ng-model="x.dmTorque" name="dmTorque" required />
+											<span ng-show="myForm.dmTorque.$dirty &amp;&amp; myForm.dmTorque.$error.required" class="text-danger">峰值转矩不能为空</span>
+										</div>
+									</div>
+								</div>
+							</fieldset>
+							<fieldset>
+								<div class="form-group">
+									<div class="col-md-12">
+										<label class="col-sm-3 control-label text-right">最大输出转矩(N.m)*</label>
+										<div class="col-sm-9">
+											<input type="text" class="form-control color_blue" name="dmOutputTorque" ng-model="x.dmOutputTorque" required />
+											<span ng-show="myForm.dmOutputTorque.$dirty &amp;&amp; myForm.dmOutputTorque.$error.required" class="text-danger">最大输出转矩不能为空</span>
+										</div>
+									</div>
+								</div>
+							</fieldset>
+						</div>
+					</div>
+				</div>
+			</tab>
+			<tab heading="车主信息">
+				<div class="border_box">
+					<fieldset>
+						<div class="form-group">
+							<div class="col-md-12">
+								<label class="col-sm-3 control-label text-right">车主姓名*</label>
+								<div class="col-sm-9">
+									<input type="text" class="form-control color_blue" name="name" ng-model="car.name" required />
+									<span ng-show="myForm.name.$dirty &amp;&amp; myForm.name.$error.required" class="text-danger">车主姓名名称不能为空</span>
+								</div>
+							</div>
+						</div>
+					</fieldset>
+					<fieldset>
+						<div class="form-group">
+							<div class="col-md-12">
+								<label class="col-sm-3 control-label text-right">车主手机*</label>
+								<div class="col-sm-9">
+									<input type="text" class="form-control color_blue" ng-model="car.phone" name="phone" ng-pattern="/^[1][35789][0-9]{9}$/" required />
+									<span ng-show="myForm.phone.$dirty &amp;&amp; myForm.phone.$error.required" class="text-danger">车主手机不能为空</span>
+									<span ng-show="myForm.phone.$dirty &amp;&amp; myForm.phone.$invalid" class="text-danger">电话格式不正确</span>
+								</div>
+							</div>
+						</div>
+					</fieldset>
+					<fieldset>
+						<div class="form-group">
+							<div class="col-md-12">
+								<label class="col-sm-3 control-label text-right">车辆使用方式*</label>
+								<div class="col-sm-9">
+									<ng-select-custom dic-id="dicId_vehicle" ng-model="car.vehicle" required />
+									<!--<input type="text" class="form-control color_blue" name="vehicle" ng-model="car.vehicle" required />-->
+									<span ng-show="myForm.vehicle.$dirty &amp;&amp; myForm.vehicle.$error.required" class="text-danger">车辆使用方式不能为空</span>
+								</div>
+							</div>
+						</div>
+					</fieldset>
+					<fieldset>
+						<div class="form-group">
+							<div class="col-md-12">
+								<label class="col-sm-3 control-label text-right">车辆使用单位*</label>
+								<div class="col-sm-9">
+									<ng-select-custom dic-id="dicId_unit" ng-model="car.unit" />
+									<!--<input type="text" class="form-control color_blue" ng-model="car.unit" />-->
+								</div>
+							</div>
+						</div>
+					</fieldset>
+					
+					<fieldset>
+						<div class="form-group">
+							<div class="col-md-12">
+								<label class="col-sm-3 control-label text-right">购车时间*</label>
+								<div class="col-sm-9">
+									<input type="text" class="form-control color_blue date_icon" name="buyingTime" ng-model="car.buyingTime" id="inpdate" onclick="$.jeDate('#inpdate',{trigger:false,festival:true,isinitVal:true,ishmsVal:false,format:'YYYY-MM-DD hh:mm'})" />
+									<!--<span ng-show="myForm.buyingTime.$dirty &amp;&amp; myForm.buyingTime.$error.required" class="text-danger">时间不能为空</span>-->
+								</div>
+							</div>
+						</div>
+					</fieldset>
+					<fieldset>
+						<div class="form-group">
+							<div class="col-md-12">
+								<label class="col-sm-3 control-label text-right">车牌号*</label>
+								<div class="col-sm-9">
+									<input type="text" class="form-control color_blue" name="licenseNumber" ng-model="car.licenseNumber" required />
+									<span ng-show="myForm.licenseNumber.$dirty &amp;&amp; myForm.licenseNumber.$error.required" class="text-danger">车牌号不能为空</span>
+								</div>
+							</div>
+						</div>
+					</fieldset>
+				</div>
+			</tab>
+		</tabset>
+		<div class="panel-footer h60">
+			<div class="col-md-6">
+				<label class="col-sm-6 control-label text-right"></label>
+				<div class="col-sm-6">
+					<button class="save fl" ng-disabled="myForm.$invalid" ng-click="insertcar()">提交</button>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<label class="col-sm-7 control-label text-right"></label>
+				<div class="col-sm-5">
+					<a class="cancel" ng-click="goBack()">取消</a>
+				</div>
+			</div>
+		</div>
+  	</form>
+</div>
+

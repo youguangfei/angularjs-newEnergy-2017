@@ -1,0 +1,53 @@
+<style type="text/css">
+	.authority_cont_center{
+		height: 400px;
+		overflow: auto;
+	}
+	.contentright_cont_con{
+		width: calc(100% - 220px);
+	}
+	.dialog .tree{
+		overflow: auto;
+	} 
+	.authorization{
+		background: #0d2f34;
+	}
+	.BackBlue{
+		background: #0d2f34;
+	}
+</style>
+<div class="window dialog wd-wide indexright_cont bg_default1 authorization" style="padding: 0;">
+   <div class="bg_default1 modal-header">
+    	<h4 class="modal-title text-center">授权管理</h2>
+	</div>
+	<div class="authority_cont_center">
+		<!-- 功能按钮 -->
+		<div class="indexright_cont_conl fl">
+			<div class="indexright_cont_conlt pt-lg p-lg pr-lg br_right"  ng-scrollbar>
+				<abn-tree tree-data="data.tree" tree-control="authTree"
+					on-select="authSelected(branch)" expand-level="2"></abn-tree>
+			</div>
+		</div>
+		<!--表格-->
+		<div class="contentright_cont_con fl">
+			<div class="tab1 panel-default panel-body" style="height: 380px;padding: .15rem 0;"> 
+				<p class="pl-lg font-center color_blue">您正在给
+				<span ng-if="authorityType==0" class="p_span">[{{branch.label}}]</span>
+				<span ng-if="authorityType==1" class="p_span">[{{user.name}}]</span>
+				进行{{ authbranch.label }}</p>
+				<div class="tree border_box mt-sm" style="height: calc(100% - 50px);background: #0d2f34;">
+					<div class="row_box">
+						<tree-selection on-select="unSelected(level,isOrg);" tree="data.treeAuthority" is-org="data.isOrg"></tree-selection>
+						<!--<tree-selection tree="data.treeAuthority" is-org="data.isOrg"></tree-selection>-->
+					</div>
+				</div>
+				<div class="panel-footer clearfix bg_default1 BackBlue">
+					<a class="save fl" ng-click="saveRoleAuthen()">保存</a>
+					<a class="cancel fr" ng-click="closeEmpower()">取消</a>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+
+</div>

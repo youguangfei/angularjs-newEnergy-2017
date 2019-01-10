@@ -1,0 +1,20 @@
+<div class="ngFooterPanel clearfix">    
+     <div class="ngPagerContainer fa_color displayFlex mt">
+     	<div class="RepairPrev_pagetion">
+	       		<button class="ngPagerButton borderNone BgTransparent pt-sm pagetion_btn1 font-large" ng-disabled="pg.pageNo == 1" ng-click="prevPage()">上一页</button>
+	    </div>   
+	    
+	       <ul class="page_ul RepairNumber_pagetion text-center">
+	       		<li ng-repeat="pageNuber in pageList track by $index" class=" " ng-click="jumpToPage(pageNuber)" ng-class="{'active':pg.pageNo==pageNuber}">{{pageNuber}}</li>
+	       </ul>
+	    
+	       <div class="RepairNext_pagetion">
+	      		<button class="ngPagerButton borderNone BgTransparent pt-sm pagetion_btn2 font-large" ng-disabled="pg.pageNo == pg.numberOfPages" ng-click="nextPage()">下一页</button>
+	      </div>
+	</div>
+	
+</div>
+
+
+
+
